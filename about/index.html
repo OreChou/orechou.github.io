@@ -20,18 +20,22 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://orechou.github.io/archives/index.html">
+    <meta name="description" content="做了很多事情，也什么事情没做。 2012 ~ 2016 重庆大学|计算机学院|本科2016 ~ 2019 重庆大学|计算机学院|城市计算三篇 CCF-C 会议论文 2019 ~ 2021 维沃移动通信(深圳)有限公司 影像系统集成开发部 应用工程师做了软件重构、预览 VSYNC 优化 2021.6 ~ 至今 牛客 后端工程师">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About me.">
+<meta property="og:url" content="https://orechou.github.io/about/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="做了很多事情，也什么事情没做。 2012 ~ 2016 重庆大学|计算机学院|本科2016 ~ 2019 重庆大学|计算机学院|城市计算三篇 CCF-C 会议论文 2019 ~ 2021 维沃移动通信(深圳)有限公司 影像系统集成开发部 应用工程师做了软件重构、预览 VSYNC 优化 2021.6 ~ 至今 牛客 后端工程师">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-03T15:38:27.467Z">
+<meta property="article:modified_time" content="2021-08-03T15:38:27.467Z">
 <meta property="article:author" content="OreChou">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>OreChou&#39;s Studio</title>
+    <title>About me. · OreChou&#39;s Studio</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -219,6 +223,8 @@
         }
     </script>
     
+        <body class="about-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -276,16 +282,22 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
+    
+        
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/about-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                About me.
             
         </h1>
         <!-- 副标题 -->
@@ -423,74 +435,15 @@
         
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
-    
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/MySQL_Explain/">
-                
-                <span class="abstract-title-text">MySQL Explain</span>
-            </a>
-            <div class="abstract-content">
-                MySQL ExplainExplain 是 MySQL 自带的查询优化器。
-使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性：id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra
-数据库性能瓶颈，主要关注 CPU 和 IO。
-id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
-小表永远驱动大表，三种情况：（1）id 相同，执行顺序是由上至下的（2）id 不同，如果是子查询，id 序号会递增，id 值越大优先级越高，越先被执行...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/06</span>
-                </div>
-                <!-- tags -->
-                
-                    <div class= abstract-tags >
-    
-    
-        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
-    
-</div>
+                <!-- 不可以删除，否则会调用 post 的 layout -->
+<main class="main about-page">
+    <article class="article-entry">
+        <p>做了很多事情，也什么事情没做。</p>
+<p>2012 ~ 2016 重庆大学|计算机学院|本科<br>2016 ~ 2019 重庆大学|计算机学院|城市计算三篇 CCF-C 会议论文</p>
+<p>2019 ~ 2021 维沃移动通信(深圳)有限公司 影像系统集成开发部 应用工程师<br>做了软件重构、预览 VSYNC 优化</p>
+<p>2021.6 ~ 至今 牛客 后端工程师</p>
 
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
-            
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2021/07/07/hello-world/">
-                
-                <span class="abstract-title-text">Hello World</span>
-            </a>
-            <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo ...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/07/07</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-    <!-- paginator  -->
-    
+    </article>
 </main>
 
                 <!-- profile -->
