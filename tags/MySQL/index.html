@@ -22,7 +22,7 @@
     <meta name="description" content="">
     <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://orechou.github.io/tags/MySQL/index.html">
+<meta property="og:url" content="https://orechou.github.io/tags/mysql/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="OreChou">
@@ -431,28 +431,31 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/MySQL_Explain/">
+            <a class="abstract-title" href="/2018/05/03/old_posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/">
                 
-                <span class="abstract-title-text">MySQL Explain</span>
+                <span class="abstract-title-text">数据库相关总结</span>
             </a>
             <div class="abstract-content">
-                MySQL ExplainExplain 是 MySQL 自带的查询优化器。
-使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性：id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra
-数据库性能瓶颈，主要关注 CPU 和 IO。
-id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
-小表永远驱动大表，三种情况：（1）id 相同，执行顺序是由上至下的（2）id 不同，如果是子查询，id 序号会递增，id 值越大优先级越高，越先被执行...
+                事务ACID四个单词的首字母组合：Atomicity、Consistency、Isolation、Durability
+Atomicity（原子性）：一个事务必须被视为一个最小不可分割的工作单元，事务中的操作要么全部执行提交完成成功，要么全部失败回滚。
+Consistency（一致性）：系统的状态总是从一个一致性的状态转换到另外一个一致性状态。
+Isolation（隔离性）：一个事务中所有的操作在成功提交之前，对其他的事务是不可见的。
+Durability（持久性）：
+数据库引擎文件系统中，Mysql将每个数据库（Schema）保存为数据库目录下的一个子目录。创建表时，Mysql在数据库...
             </div>
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/06</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/05/03</span>
                 </div>
                 <!-- tags -->
                 
                     <div class= abstract-tags >
     
     
-        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+        <a class="post-tag" href="javascript:void(0);" data-tags="数据库">数据库</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="mysql">mysql</a>
     
 </div>
 
@@ -574,7 +577,282 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
     
@@ -583,7 +861,7 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 25
         </div>
         <!-- search  -->
         
@@ -599,6 +877,12 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2021/08/10/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">MySQL 慢 SQL 分析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span>
             <a class="archive-post-title" href="/2021/08/06/MySQL_Explain/">MySQL Explain</a>
         </li>
@@ -609,13 +893,154 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
                 
                 </ul>
             
-            <div class="archive-year"> Invalid date </div>
+            <div class="archive-year"> 2018 </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2021/07/07/hello-world/">Hello World</a>
+            <span class="archive-post-date">09/27</span>
+            <a class="archive-post-title" href="/2018/09/27/old_posts/Linux/Socket-%E5%85%A5%E9%97%A8/">Socket 入门</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/27</span>
+            <a class="archive-post-title" href="/2018/09/27/old_posts/Linux/Linux-%E5%91%BD%E4%BB%A4/">Linux 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/26</span>
+            <a class="archive-post-title" href="/2018/09/26/old_posts/Networks/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE/">计算机网络：传输层协议</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span>
+            <a class="archive-post-title" href="/2018/09/25/old_posts/Java/Java-%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3-HashCode/">Java 基础：详解 HashCode</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2018/09/19/old_posts/Linux/Linux-IO-%E5%8E%9F%E7%90%86/">Linux IO 原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2018/09/16/old_posts/Java/Java%20NIO/">Java NIO</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span>
+            <a class="archive-post-title" href="/2018/09/15/old_posts/Linux%20%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80/">Linux 命令基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span>
+            <a class="archive-post-title" href="/2018/09/15/old_posts/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/">服务器性能指标</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2018/06/20/old_posts/MVVM%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%AE%9E%E7%8E%B0/">JavaScript MVVM 双向绑定的实现</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/">JavaScript 严格模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/Java%20%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentLinkedQueue%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">Java并发容器ConcurrentLinkedQueue源码解析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/JPA%20&%20ORM%20&%20Spring%20Data%20JPA%20%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">ORM & JPA  & Spring Data JPA 之间的关系</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2018/05/03/old_posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/">数据库相关总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2018/04/01/old_posts/TensorLy_In_Action/">Tensor Decomposition in TensorLy</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2016 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span>
+            <a class="archive-post-title" href="/2016/11/21/old_posts/spring_flow/">Spring Web Flow</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2016/11/20/old_posts/%E8%A7%A3%E6%9E%90tern%E5%B7%A5%E4%BD%9C%E6%B5%81/">OSWorkflow</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2016/11/08/old_posts/%E8%A7%A3%E6%9E%90tern%E6%A1%86%E6%9E%B6Model%E5%B1%82/">Tern Model层解析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2016/09/11/old_posts/Sept-11-2016/">Sept-11-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/09</span>
+            <a class="archive-post-title" href="/2016/07/09/old_posts/July-9-2016/">July-9-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span>
+            <a class="archive-post-title" href="/2016/05/08/old_posts/May-8-2016/">May-8-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span>
+            <a class="archive-post-title" href="/2016/03/02/old_posts/DP/">关于DP</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span>
+            <a class="archive-post-title" href="/2016/01/25/old_posts/Android_Notes/">Android Notes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span>
+            <a class="archive-post-title" href="/2016/01/13/old_posts/Blog/">Build this Blog</a>
         </li>
     
     </div>
@@ -629,6 +1054,76 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
                 MySQL
             </span>
         
+            <span class="sidebar-tag-name" data-tags="JS">
+                <span class="iconfont-archer">&#xe606;</span>
+                JS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发容器">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发容器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Python">
+                <span class="iconfont-archer">&#xe606;</span>
+                Python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                Tensor
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="mysql">
+                <span class="iconfont-archer">&#xe606;</span>
+                mysql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JPA">
+                <span class="iconfont-archer">&#xe606;</span>
+                JPA
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Network">
+                <span class="iconfont-archer">&#xe606;</span>
+                Network
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Socket">
+                <span class="iconfont-archer">&#xe606;</span>
+                Socket
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机网络">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机网络
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="TCP">
+                <span class="iconfont-archer">&#xe606;</span>
+                TCP
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="UDP">
+                <span class="iconfont-archer">&#xe606;</span>
+                UDP
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -639,6 +1134,46 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="JavaScript">
+            <span class="iconfont-archer">&#xe60a;</span>
+            JavaScript
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux/Network">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux/Network
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机网络">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机网络
+        </span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>

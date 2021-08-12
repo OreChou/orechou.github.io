@@ -446,6 +446,46 @@
             
         
         <article class="index-post">
+            <a class="abstract-title" href="/2021/08/10/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">
+                
+                <span class="abstract-title-text">MySQL 慢 SQL 分析</span>
+            </a>
+            <div class="abstract-content">
+                慢查询日志分析设置慢查询可以通过修改命令设置：
+
+设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效
+查看是否开启：SHOW VARIABLES LIKE ‘%slow_query_log%’;
+设置阈值：SET GLOBAL long_query_time=3;
+查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE ‘long_query_time%’; #重连或新开一个会话才能看到修改值
+
+也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：
+12345[my...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/10</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
             <a class="abstract-title" href="/2021/08/06/MySQL_Explain/">
                 
                 <span class="abstract-title-text">MySQL Explain</span>
@@ -482,29 +522,296 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/07/07/hello-world/">
+            <a class="abstract-title" href="/2018/09/27/old_posts/Linux/Socket-%E5%85%A5%E9%97%A8/">
                 
-                <span class="abstract-title-text">Hello World</span>
+                <span class="abstract-title-text">Socket 入门</span>
             </a>
             <div class="abstract-content">
-                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
-
-More info: Writing
-Run server1$ hexo ...
+                <p>Socket 英文有插座的意思，可以想象端口就是插座上的口，端口不能被其他进程占用。想象 Socket 类似于操作某个 IP 地址上的某个端口以达到点对点通信的目的，需要绑定到某个具体的进程和端口。</p>
+<p>Socket 原本代表的是 Unix 上的原始套接字（RawSocket）用于描述文件的内存镜像，但因为 Unix 的设计哲学是“一切都是文件”，所以后来的网络版的进程间通信也就被冠名为文件描述符。本质上讲 Socket 是 Unix 系统设计的一种思想。</p>
+<p>Socket 没有层的概念，可以把它看成是对 TCP/IP 协议簇的一个门面模式的封装。可以让编程变得更加简单。</p>
             </div>
             <div class="abstract-post-meta">
                 <!-- date -->
                 <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/07/07</span>
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/27</span>
                 </div>
                 <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Network">Network</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Socket">Socket</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/27/old_posts/Linux/Linux-%E5%91%BD%E4%BB%A4/">
+                
+                <span class="abstract-title-text">Linux 命令</span>
+            </a>
+            <div class="abstract-content">
+                <p>Linux 命令时刻都会用到，除了 ls、cd、chmod 等，常用的可以分成两类，系统性能监控相关的命令和文本处理相关的命令。</p>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/27</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/26/old_posts/Networks/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE/">
+                
+                <span class="abstract-title-text">计算机网络：传输层协议</span>
+            </a>
+            <div class="abstract-content">
+                <p>在计算机网络的分层协议的体系结构中，不管是 OSI 体系结构、五层体系结构还是 TCP/IP 体系结构，它们都有传输层。传输层提供了进程间的通用数据传输服务。应用层的协议很多，定义通用的传输层协议就很重要，能够支持不断增多的应用层协议。</p>
+<p>如下图所示，TCP/IP 协议簇呈现沙漏的形状，TCP 和 IP 协议起到了举足轻重的作用。网络层 IP 协议提供了尽最大努力交付的功能，而要保证数据的正确传输，需要 TCP 协议来做这个事情。</p>
+<p><img src="/images/tcp:ip.png"></p>
+<p>传输层一共提供了两种协议：</p>
+<ul>
+<li>传输控制协议</li>
+<li>用户数据报协议</li>
+</ul>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/26</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="计算机网络">计算机网络</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="TCP">TCP</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="UDP">UDP</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/25/old_posts/Java/Java-%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3-HashCode/">
+                
+                <span class="abstract-title-text">Java 基础：详解 HashCode</span>
+            </a>
+            <div class="abstract-content">
+                <p>Java 中所有的类都继承自 Object 类，Object 类中有个返回 hashCode 的本地方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>在文档的注释中很清楚的说明了 hashCode 的作用，和它应该满足的一些要求。</p>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/25</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/19/old_posts/Linux/Linux-IO-%E5%8E%9F%E7%90%86/">
+                
+                <span class="abstract-title-text">Linux IO 原理</span>
+            </a>
+            <div class="abstract-content">
+                <p>在上一篇<a href="http://orechou.github.io/2018/09/15/Java-Java-NIO/">文章</a>中主要介绍了 Java NIO 相关基础和 Reactor 模式，NIO 的实现在不同的平台上依赖于操作系统所提供的系统调用。下面将介绍 NIO 在 Linux 平台上的底层实现原理。</p>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/19</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/16/old_posts/Java/Java%20NIO/">
+                
+                <span class="abstract-title-text">Java NIO</span>
+            </a>
+            <div class="abstract-content">
+                <p>Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。</p>
+<p>Java 的 IO 大致可以分为如下几类：</p>
+<ul>
+<li>磁盘操作：File</li>
+<li>字节操作：InputStream &amp; OutputStream</li>
+<li>字符操作：Reader &amp; Writer</li>
+<li>网络操作：Socket</li>
+</ul>
+<p>最开始 Java 只提供了 BIO（Block IO），Block IO 的意思是线程调用 IO 操作的时候，线程会阻塞等待 IO 完成。在这个期间，线程除了等待无法完成其他的事情。因为这种 IO 模式，之前的 Java 框架在编写服务器的时候，会对每一个 Socket 的请求新建一个线程进行处理。因为线程的新建与销毁是需要消耗系统资源的，所以若系统频繁地创建与销毁线程，那么会对系统资源造成很大的浪费。在这种 IO 模式下的改进方式是利用池化技术，通过线程池的方式来管理线程，减少线程频繁创建和销毁的开销。但是并没有改变最根本的问题，即一个服务请求的连接都需要一个线程来处理，在高并发的情况下，阻塞 IO 的实现肯定无法满足性能的需求。</p>
+<p>针对这一问题，在 JDK 1.4 中 NIO 就登场了。</p>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/16</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Java">Java</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/15/old_posts/Linux%20%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80/">
+                
+                <span class="abstract-title-text">Linux 命令基础</span>
+            </a>
+            <div class="abstract-content">
+                <p>Linux 基础命令是任何一个开发人员应该掌握的基本技能。大多数项目的生产部署环境都会选择 Linux，所以在项目运维和故障排除的时候，Linux 命令能够起到关键的作用。</p>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2018/09/15/old_posts/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/">
+                
+                <span class="abstract-title-text">服务器性能指标</span>
+            </a>
+            <div class="abstract-content">
+                <p>在对互联网服务进行服务端性能测试时，主要关注两方面的性能指标：</p>
+<ul>
+<li><strong>业务指标</strong>：如吞吐量(QPS、TPS)、响应时间(RT)、并发数、业务成功率等</li>
+<li><strong>资源指标</strong>：如 CPU、内存、Disk I/O、Network I/O等资源的消耗情况<br>本文主要介绍一些广泛适用的、基本的资源指标以及这些指标在 Linux 服务器的获取方式。</li>
+</ul>
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2018/09/15</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="Linux">Linux</a>
+    
+</div>
+
                 
             </div>
         </article>
         <div class="index-post-divider"></div>
     
     <!-- paginator  -->
+    
+        <nav class="page-nav">
+            <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">NEXT &gt;</a>
+        </nav>
     
 </main>
 
@@ -697,7 +1004,282 @@ Run server1$ hexo ...
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
     
@@ -706,7 +1288,7 @@ Run server1$ hexo ...
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 2
+        Total : 25
         </div>
         <!-- search  -->
         
@@ -722,6 +1304,12 @@ Run server1$ hexo ...
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span>
+            <a class="archive-post-title" href="/2021/08/10/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">MySQL 慢 SQL 分析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/06</span>
             <a class="archive-post-title" href="/2021/08/06/MySQL_Explain/">MySQL Explain</a>
         </li>
@@ -732,13 +1320,154 @@ Run server1$ hexo ...
                 
                 </ul>
             
-            <div class="archive-year"> Invalid date </div>
+            <div class="archive-year"> 2018 </div>
             <ul class="year-list">
             
         
         <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2021/07/07/hello-world/">Hello World</a>
+            <span class="archive-post-date">09/27</span>
+            <a class="archive-post-title" href="/2018/09/27/old_posts/Linux/Socket-%E5%85%A5%E9%97%A8/">Socket 入门</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/27</span>
+            <a class="archive-post-title" href="/2018/09/27/old_posts/Linux/Linux-%E5%91%BD%E4%BB%A4/">Linux 命令</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/26</span>
+            <a class="archive-post-title" href="/2018/09/26/old_posts/Networks/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%9A%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE/">计算机网络：传输层协议</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span>
+            <a class="archive-post-title" href="/2018/09/25/old_posts/Java/Java-%E5%9F%BA%E7%A1%80%E8%AF%A6%E8%A7%A3-HashCode/">Java 基础：详解 HashCode</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/19</span>
+            <a class="archive-post-title" href="/2018/09/19/old_posts/Linux/Linux-IO-%E5%8E%9F%E7%90%86/">Linux IO 原理</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span>
+            <a class="archive-post-title" href="/2018/09/16/old_posts/Java/Java%20NIO/">Java NIO</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span>
+            <a class="archive-post-title" href="/2018/09/15/old_posts/Linux%20%E5%91%BD%E4%BB%A4%E5%9F%BA%E7%A1%80/">Linux 命令基础</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/15</span>
+            <a class="archive-post-title" href="/2018/09/15/old_posts/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87/">服务器性能指标</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/20</span>
+            <a class="archive-post-title" href="/2018/06/20/old_posts/MVVM%E5%8F%8C%E5%90%91%E7%BB%91%E5%AE%9A%E7%9A%84%E5%AE%9E%E7%8E%B0/">JavaScript MVVM 双向绑定的实现</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/">JavaScript 严格模式</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/Java%20%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentLinkedQueue%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/">Java并发容器ConcurrentLinkedQueue源码解析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/12</span>
+            <a class="archive-post-title" href="/2018/06/12/old_posts/JPA%20&%20ORM%20&%20Spring%20Data%20JPA%20%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/">ORM & JPA  & Spring Data JPA 之间的关系</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/03</span>
+            <a class="archive-post-title" href="/2018/05/03/old_posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/">数据库相关总结</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">04/01</span>
+            <a class="archive-post-title" href="/2018/04/01/old_posts/TensorLy_In_Action/">Tensor Decomposition in TensorLy</a>
+        </li>
+    
+        
+            
+            
+                
+                </ul>
+            
+            <div class="archive-year"> 2016 </div>
+            <ul class="year-list">
+            
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/21</span>
+            <a class="archive-post-title" href="/2016/11/21/old_posts/spring_flow/">Spring Web Flow</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/20</span>
+            <a class="archive-post-title" href="/2016/11/20/old_posts/%E8%A7%A3%E6%9E%90tern%E5%B7%A5%E4%BD%9C%E6%B5%81/">OSWorkflow</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/08</span>
+            <a class="archive-post-title" href="/2016/11/08/old_posts/%E8%A7%A3%E6%9E%90tern%E6%A1%86%E6%9E%B6Model%E5%B1%82/">Tern Model层解析</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/11</span>
+            <a class="archive-post-title" href="/2016/09/11/old_posts/Sept-11-2016/">Sept-11-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/09</span>
+            <a class="archive-post-title" href="/2016/07/09/old_posts/July-9-2016/">July-9-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/08</span>
+            <a class="archive-post-title" href="/2016/05/08/old_posts/May-8-2016/">May-8-2016</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">03/02</span>
+            <a class="archive-post-title" href="/2016/03/02/old_posts/DP/">关于DP</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/25</span>
+            <a class="archive-post-title" href="/2016/01/25/old_posts/Android_Notes/">Android Notes</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/13</span>
+            <a class="archive-post-title" href="/2016/01/13/old_posts/Blog/">Build this Blog</a>
         </li>
     
     </div>
@@ -752,6 +1481,76 @@ Run server1$ hexo ...
                 MySQL
             </span>
         
+            <span class="sidebar-tag-name" data-tags="JS">
+                <span class="iconfont-archer">&#xe606;</span>
+                JS
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Java">
+                <span class="iconfont-archer">&#xe606;</span>
+                Java
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="并发容器">
+                <span class="iconfont-archer">&#xe606;</span>
+                并发容器
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Linux">
+                <span class="iconfont-archer">&#xe606;</span>
+                Linux
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Python">
+                <span class="iconfont-archer">&#xe606;</span>
+                Python
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Tensor">
+                <span class="iconfont-archer">&#xe606;</span>
+                Tensor
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="数据库">
+                <span class="iconfont-archer">&#xe606;</span>
+                数据库
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="mysql">
+                <span class="iconfont-archer">&#xe606;</span>
+                mysql
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="JPA">
+                <span class="iconfont-archer">&#xe606;</span>
+                JPA
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Network">
+                <span class="iconfont-archer">&#xe606;</span>
+                Network
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="Socket">
+                <span class="iconfont-archer">&#xe606;</span>
+                Socket
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="计算机网络">
+                <span class="iconfont-archer">&#xe606;</span>
+                计算机网络
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="TCP">
+                <span class="iconfont-archer">&#xe606;</span>
+                TCP
+            </span>
+        
+            <span class="sidebar-tag-name" data-tags="UDP">
+                <span class="iconfont-archer">&#xe606;</span>
+                UDP
+            </span>
+        
     </div>
     <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
@@ -762,6 +1561,46 @@ Run server1$ hexo ...
 
         <div class="sidebar-panel-categories">
     <div class="sidebar-categories-name">
+    
+        <span class="sidebar-category-name" data-categories="JavaScript">
+            <span class="iconfont-archer">&#xe60a;</span>
+            JavaScript
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Java">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Java
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Python">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Python
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="数据库">
+            <span class="iconfont-archer">&#xe60a;</span>
+            数据库
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="运维">
+            <span class="iconfont-archer">&#xe60a;</span>
+            运维
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="Linux/Network">
+            <span class="iconfont-archer">&#xe60a;</span>
+            Linux/Network
+        </span>
+    
+        <span class="sidebar-category-name" data-categories="计算机网络">
+            <span class="iconfont-archer">&#xe60a;</span>
+            计算机网络
+        </span>
     
     </div>
     <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
