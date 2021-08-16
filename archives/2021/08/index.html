@@ -431,7 +431,90 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/08/10/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">
+            <a class="abstract-title" href="/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/">
+                
+                <span class="abstract-title-text">MySQL 实现列表数据置顶</span>
+            </a>
+            <div class="abstract-content">
+                有的列表获取的业务场景，需要根据一些条件将数据置顶。
+例如有一张表有 id 和 name 两个字段。数据表如下。
+
+
+
+id
+name
+
+
+
+1
+1_name
+
+
+2
+2_name
+
+
+3
+3_name
+
+
+4
+4_name
+
+
+5
+5_name
+
+
+6
+6_name
+
+
+7
+7_name
+
+
+8
+8_name
+
+
+9
+9_name
+
+
+10
+10_name
+
+
+若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：
+1234567SELECT * FROM goods ORDER BY 	CASE 		WHEN id = 5 THE...
+            </div>
+            <div class="abstract-post-meta">
+                <!-- date -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2021/08/16</span>
+                </div>
+                <!-- tags -->
+                
+                    <div class= abstract-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+    
+</div>
+
+                
+            </div>
+        </article>
+        <div class="index-post-divider"></div>
+    
+        
+        
+        
+            
+        
+        <article class="index-post">
+            <a class="abstract-title" href="/2021/08/10/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">
                 
                 <span class="abstract-title-text">MySQL 慢 SQL 分析</span>
             </a>
@@ -471,7 +554,7 @@
             
         
         <article class="index-post">
-            <a class="abstract-title" href="/2021/08/06/MySQL_Explain/">
+            <a class="abstract-title" href="/2021/08/06/mysql/MySQL_Explain/">
                 
                 <span class="abstract-title-text">MySQL Explain</span>
             </a>
@@ -729,7 +812,38 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
         
         
         
+        
+        
+        
+        
+        
     
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -898,7 +1012,7 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
     
     <div class="total-and-search">
         <div class="total-archive">
-        Total : 25
+        Total : 26
         </div>
         <!-- search  -->
         
@@ -914,14 +1028,20 @@ id反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。
             
         
         <li class="archive-post-item">
+            <span class="archive-post-date">08/16</span>
+            <a class="archive-post-title" href="/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/">MySQL 实现列表数据置顶</a>
+        </li>
+    
+        
+        <li class="archive-post-item">
             <span class="archive-post-date">08/10</span>
-            <a class="archive-post-title" href="/2021/08/10/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">MySQL 慢 SQL 分析</a>
+            <a class="archive-post-title" href="/2021/08/10/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/">MySQL 慢 SQL 分析</a>
         </li>
     
         
         <li class="archive-post-item">
             <span class="archive-post-date">08/06</span>
-            <a class="archive-post-title" href="/2021/08/06/MySQL_Explain/">MySQL Explain</a>
+            <a class="archive-post-title" href="/2021/08/06/mysql/MySQL_Explain/">MySQL Explain</a>
         </li>
     
         

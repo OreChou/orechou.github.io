@@ -20,18 +20,23 @@
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     
     <meta name="description" content="">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://orechou.github.io/archives/2016/11/index.html">
+    <meta name="description" content="有的列表获取的业务场景，需要根据一些条件将数据置顶。 例如有一张表有 id 和 name 两个字段。数据表如下。    id name    1 1_name   2 2_name   3 3_name   4 4_name   5 5_name   6 6_name   7 7_name   8 8_name   9 9_name   10 10_name   若需要将 id 为 5 和 7 的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 实现列表数据置顶">
+<meta property="og:url" content="https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="有的列表获取的业务场景，需要根据一些条件将数据置顶。 例如有一张表有 id 和 name 两个字段。数据表如下。    id name    1 1_name   2 2_name   3 3_name   4 4_name   5 5_name   6 6_name   7 7_name   8 8_name   9 9_name   10 10_name   若需要将 id 为 5 和 7 的">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-16T06:46:00.000Z">
+<meta property="article:modified_time" content="2021-08-16T07:16:32.666Z">
 <meta property="article:author" content="OreChou">
+<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="icon" href="/assets/favicon.ico">
     
-    <title>OreChou&#39;s Studio</title>
+    <title>MySQL 实现列表数据置顶 · OreChou&#39;s Studio</title>
     <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
 /* This file is meant as a standalone workflow for
 - testing support for link[rel=preload]
@@ -219,6 +224,8 @@
         }
     </script>
     
+        <body class="post-body">
+    
         <!-- header -->
         <header class="header header-mobile">
     <!-- top read progress line -->
@@ -248,6 +255,17 @@
     </div>
     <!-- toggle banner for post layout -->
     
+        
+            <div class="banner">
+        
+            <div class="blog-title header-element">
+                <a href="/">OreChou&#39;s Studio</a>
+            </div>
+            <div class="post-title header-element">
+                <a href="#" class="post-name">MySQL 实现列表数据置顶</a>
+            </div>
+        </div>
+    
 </header>
 
         <!-- dark mode -->
@@ -276,24 +294,79 @@
 
 
 
+    height:50vh;
+
 ">
     
     <!-- 主页  -->
+    
+        
+    <!-- 404页  -->
             
     <div class="site-intro-placeholder"></div>
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
+            
+                MySQL 实现列表数据置顶
+            <!-- 404 -->
             
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+                
+            <!-- 404 -->
+            
         </p>
         <!-- 文章页 meta -->
+        
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                
+                    <div class= post-intro-tags >
+    
+    
+        <a class="post-tag" href="javascript:void(0);" data-tags="MySQL">MySQL</a>
+    
+</div>
+
+                
+                
+                    <div class="post-intro-read">
+                        <span>Word count: <span class="post-count word-count">119</span>Reading time: <span class="post-count reading-time">1 min</span></span>
+                    </div>
+                
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2021/08/16</span>
+                    <!-- busuanzi -->
+                    
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
         
     </div>
 </div>
@@ -423,86 +496,113 @@
         
             <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
             <div class="container container-unloaded">
-                <main class="main index-page">
+                <main class="main post-page">
+    <article class="article-entry">
+        <p>有的列表获取的业务场景，需要根据一些条件将数据置顶。</p>
+<p>例如有一张表有 id 和 name 两个字段。数据表如下。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>1_name</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2_name</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3_name</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4_name</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5_name</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6_name</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7_name</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8_name</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9_name</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10_name</td>
+</tr>
+</tbody></table>
+<p>若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM goods ORDER BY </span><br><span class="line">	CASE </span><br><span class="line">		WHEN id = 5 THEN -10000</span><br><span class="line">		WHEN id = 7 THEN -9999 </span><br><span class="line">		ELSE id </span><br><span class="line">	END</span><br><span class="line">LIMIT 0, 5</span><br></pre></td></tr></table></figure>
+    </article>
+    <!-- license -->
     
-        
-        
-        
+        <div class="license-wrapper">
+            <p>Author：<a href="https://orechou.github.io">OreChou</a>
+            <p>原文链接：<a href="https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/">https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</a>
+            <p>发表日期：<a href="https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/">August 16th 2021, 2:46:00 pm</a>
+            <p>更新日期：<a href="https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/">August 16th 2021, 3:16:32 pm</a>
+            <p>版权声明：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2016/11/21/old_posts/spring_flow/">
-                
-                <span class="abstract-title-text">Spring Web Flow</span>
-            </a>
-            <div class="abstract-content">
-                本Blog内容主要基于《Spring In Action》第四版和Github上面的sample。The first production ready 1.0 release was made on 2006-10-26. Version 2.0, first released on 2008-04-29。从那之后就没有大的版本更新。
+        </li>
+        <li class="previous">
+            
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2021/08/10/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/" title="MySQL 慢 SQL 分析">
+                    <div class="prevTitle">MySQL 慢 SQL 分析</div>
+                </a>
+            
+        </li>
+    </ul>
+    <!-- comment -->
+     
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
 
-1、在Spring中配置Web Flow《Spring In Action》第四版说“还不支持在Java中配置Spring Web Flow”，但是实际上已经支持了Java的配置。主要在代码中继承并实现AbstractFlowConfiguration接...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/11/21</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
+
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2016/11/20/old_posts/%E8%A7%A3%E6%9E%90tern%E5%B7%A5%E4%BD%9C%E6%B5%81/">
-                
-                <span class="abstract-title-text">OSWorkflow</span>
-            </a>
-            <div class="abstract-content">
-                特点：没有好的可视化工具，2.8.0是最新的版本，但这已经是07年的版本。目前官网已经没有对他提供更新。原理：主要基于有限状态机（Finite state machine），将每一个状态描述成流程中的一个步骤。jar包：osworkflow、oscore、propertySet。
-1、基本概念工作流描述文件，一个xml文件。wrokflow:一个根元素，代表了一个工作流。一般由多个step构成，step表示一个流程。step:每一个步骤中可以有一个或者多个action，action表示一个动作。每执行完一个步骤，就会走向下一个步骤。在不同的步骤之中流程的状态可以不断的改变，状态类别可以设...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/11/20</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
-    
-        
-        
-        
+
             
-        
-        <article class="index-post">
-            <a class="abstract-title" href="/2016/11/08/old_posts/%E8%A7%A3%E6%9E%90tern%E6%A1%86%E6%9E%B6Model%E5%B1%82/">
-                
-                <span class="abstract-title-text">Tern Model层解析</span>
-            </a>
-            <div class="abstract-content">
-                com.tern.dbdb对JDBC做了封装，提供了一系列的对数据库的操作。函数提供了链式的操作。db获取app.yml中的配置进行数据库的连接(ConnectionPool类)，支持了如MySql、Oracle、Sqlite等多种数据库。查询等获取的数据库的数据以DataTable（返回一张表的数据），或者以DataRow（返回一条数据行的数据）作为对象返回。
-com.tern.daodao是对db的再一次做的封装，从而满足MVC中的Model层的要求。
-1、Modeldao中的核心类之一，实现了数据模型的封装。其定义了数据表名称、所包含的列（属性）的信息（如：列名、列数据类型、约...
-            </div>
-            <div class="abstract-post-meta">
-                <!-- date -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer">&#xe676;</span><span class="abstract-time">2016/11/08</span>
-                </div>
-                <!-- tags -->
-                
-            </div>
-        </article>
-        <div class="index-post-divider"></div>
+
+            
+
+            <!-- utteranc评论 -->
+
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+
+            
+            
+
+        </div>
     
-    <!-- paginator  -->
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    
+    <!-- Mathjax -->
     
 </main>
 
@@ -593,6 +693,23 @@ com.tern.daodao是对db的再一次做的封装，从而满足MVC中的Model层�
 
         </div>
         <!-- toc -->
+        
+            <div class="toc-wrapper" style=
+
+
+
+
+
+
+
+    top:50vh;
+
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                
+            </div>
         
         <!-- sidebar -->
         <div class="sidebar sidebar-hide">
@@ -1279,6 +1396,8 @@ com.tern.daodao是对db的再一次做的封装，从而满足MVC中的Model层�
         <!-- CNZZ -->
         
         <!-- async load share.js -->
+        
+            <script src="/scripts/share.js" async></script>    
         
         <!-- mermaid -->
         
