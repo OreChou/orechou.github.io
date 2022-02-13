@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Java提供了多种并发队列，具体如下：  无锁非阻塞队列：ConcurrentLinkedQueue &amp; ConcurrentLinkedDeque 普通阻塞队列：ArrayBlockingQueue &amp; LinkedBlockingQuene &amp; LinkedBlockingDeque">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Java并发容器ConcurrentLinkedQueue源码解析">
+<meta property="og:url" content="https://orechou.github.io/back_posts/old_posts/Java%20%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentLinkedQueue%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90.html">
+<meta property="og:site_name" content="OreChou&#39;s Workspace">
+<meta property="og:description" content="Java提供了多种并发队列，具体如下：  无锁非阻塞队列：ConcurrentLinkedQueue &amp; ConcurrentLinkedDeque 普通阻塞队列：ArrayBlockingQueue &amp; LinkedBlockingQuene &amp; LinkedBlockingDeque">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-29T06:35:18.520Z">
+<meta property="article:modified_time" content="2018-06-12T12:56:38.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="并发容器">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Java并发容器ConcurrentLinkedQueue源码解析</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>OreChou&#39;s Workspace</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a href="/book/">Book</a></li><!--
+   --><!--
+     --><li><a href="/game/">Game</a></li><!--
+   --><!--
+     --><li><a href="/gallery/">Gallery</a></li><!--
+   -->
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <p>Java提供了多种并发队列，具体如下：</p>
+<ol>
+<li>无锁非阻塞队列：ConcurrentLinkedQueue &amp; ConcurrentLinkedDeque</li>
+<li>普通阻塞队列：ArrayBlockingQueue &amp; LinkedBlockingQuene &amp; LinkedBlockingDeque<span id="more"></span></li>
+</ol>
+<h2 id="1、ConcurrentLinkedQueue"><a href="#1、ConcurrentLinkedQueue" class="headerlink" title="1、ConcurrentLinkedQueue"></a>1、ConcurrentLinkedQueue</h2><p>ConcurrentLinkedQueue和ConcurrentLinkedDeque是无锁非阻塞的，其实现方式是通过循环CAS（wait-free算法）。内部的数据结构是链表，都没有大小限制，容量是无限的。其 size() 遍历整个队列统计个数，不是一个O(1)时间的方法，并且返回的值不能准确的反应队列的实际大小。</p>
+<h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><h4 id="head-amp-tail-节点"><a href="#head-amp-tail-节点" class="headerlink" title="head &amp; tail 节点"></a>head &amp; tail 节点</h4><p>head 和 tail 并不是一定指向整个队列的首部，和尾部。其满足一些规则：不变性和可变性。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">   * A node from which the first live (non-deleted) node (if any)</span><br><span class="line">   * can be reached in O(1) time.</span><br><span class="line">   * Invariants（不变性）:</span><br><span class="line">   * - all live nodes are reachable from head via succ() （所有的节点都可以通过 head 使用 succ() 方法取得）</span><br><span class="line">   * - head != null （head 节点不为 null）</span><br><span class="line">   * - (tmp = head).next != tmp || tmp != head （其实就是 head.next != head）</span><br><span class="line">   * Non-invariants:</span><br><span class="line">   * - head.item may or may not be null. （head 节点的值可能为null）</span><br><span class="line">   * - it is permitted for tail to lag behind head, that is, for tail</span><br><span class="line">   *   to not be reachable from head! （允许 tail 滞后于 head, 也就是调用 succ() 方法, 从 head 不可达tail）</span><br><span class="line">   */</span><br><span class="line">  private transient volatile Node&lt;E&gt; head;</span><br><span class="line">  </span><br><span class="line">  /**</span><br><span class="line">   * A node from which the last node on list (that is, the unique</span><br><span class="line">   * node with node.next == null) can be reached in O(1) time.</span><br><span class="line">   * Invariants:</span><br><span class="line">   * - the last node is always reachable from tail via succ() （tail 节点通过succ()方法一定到达队列中的最后一个节点(node.next = null)）</span><br><span class="line">   * - tail != null</span><br><span class="line">   * Non-invariants:</span><br><span class="line">   * - tail.item may or may not be null. （tail 节点的值可能为null）</span><br><span class="line">   * - it is permitted for tail to lag behind head, that is, for tail</span><br><span class="line">   *   to not be reachable from head! （允许 tail 滞后于 head, 也就是调用 succ() 方法, 从 head 不可达tail）</span><br><span class="line">   * - tail.next may or may not be self-pointing to tail. （tail.next 可能指向 tail）</span><br><span class="line">   */</span><br><span class="line">  private transient volatile Node&lt;E&gt; tail;</span><br></pre></td></tr></table></figure>
+<h4 id="入队列offer"><a href="#入队列offer" class="headerlink" title="入队列offer"></a>入队列offer</h4><p>元素入队的主要的工作：</p>
+<ol>
+<li>将入队节点设置成当前队列尾节点的下一个节点</li>
+<li>更新 tail 节点（tail节点不总是为队尾节点，减少了CAS更新 tail 节点的次数，提高入队效率）：<ul>
+<li>若 tail 节点的next节点不为空，则将入队节点设置成 tail 节点</li>
+<li>若 tail 节点的next节点为空，则将入队节点设置成 tail 的next节点</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">public boolean offer(E e) &#123;</span><br><span class="line">    checkNotNull(e);</span><br><span class="line">    // 根据传入的值构造节点</span><br><span class="line">    final Node&lt;E&gt; newNode = new Node&lt;E&gt;(e);</span><br><span class="line">    // 通过 tail 节点找到队列的尾节点</span><br><span class="line">    for (Node&lt;E&gt; t = tail, p = t;;) &#123;</span><br><span class="line">        Node&lt;E&gt; q = p.next;</span><br><span class="line">        // 定位p为队列的尾节点</span><br><span class="line">        if (q == null) &#123;</span><br><span class="line">            // 使用cas将新节点加入到队尾</span><br><span class="line">            // 比较p的next是否为null，为null才会设置成功。这里实现了同步，防止了别人已经修改了队尾，而设置了错误的位置</span><br><span class="line">            // if如果失败，则会循环再次执行</span><br><span class="line">            if (p.casNext(null, newNode)) &#123;</span><br><span class="line">                // 插入成功之后，判断队尾节节点的前一个节点是否是tail节点，若不是，则将tail节点指向队尾节点</span><br><span class="line">                if (p != t) // hop two nodes at a time</span><br><span class="line">                    casTail(t, newNode);  // Failure is OK.</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">            // Lost CAS race to another thread; re-read next</span><br><span class="line">        &#125;</span><br><span class="line">        else if (p == q)</span><br><span class="line">            // We have fallen off list.  If tail is unchanged, it</span><br><span class="line">            // will also be off-list, in which case we need to</span><br><span class="line">            // jump to head, from which all live nodes are always</span><br><span class="line">            // reachable.  Else the new tail is a better bet.</span><br><span class="line">            // 这里的情况是 p == p.next，并且t为tail节点。表示这个队列刚初始化，正在准备添加节点，所以返回head节点</span><br><span class="line">            p = (t != (t = tail)) ? t : head;</span><br><span class="line">        else</span><br><span class="line">            // Check for tail updates after two hops.</span><br><span class="line">            // 重新赋值p结点，让p成为尾节点</span><br><span class="line">            p = (p != t &amp;&amp; t != (t = tail)) ? t : q;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="出队poll"><a href="#出队poll" class="headerlink" title="出队poll"></a>出队poll</h4><p>元素出队的主要工作：</p>
+<ol>
+<li>根据 head 节点找到队列首个不为空的节点，并CAS让该节点出队</li>
+<li>更新 head 节点（head 节点不总是为队首节点，减少了CAS更新 head 节点的次数，提高入队效率）：<ul>
+<li>若 head 节点有元素，不会更新head节点</li>
+<li>若 head 节点没有元素，将 head 指向队列的首节点</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">public E poll() &#123;</span><br><span class="line">       restartFromHead:</span><br><span class="line">       for (;;) &#123;</span><br><span class="line">           for (Node&lt;E&gt; h = head, p = h, q;;) &#123;</span><br><span class="line">               E item = p.item;</span><br><span class="line">               // 若头节点的值不为空，并且cas设置头节点值为null成功</span><br><span class="line">               if (item != null &amp;&amp; p.casItem(item, null)) &#123;</span><br><span class="line">                   // Successful CAS is the linearization point</span><br><span class="line">                   // for item to be removed from this queue.</span><br><span class="line">                   // 若当前节点不是 head 节点</span><br><span class="line">                   if (p != h) // hop two nodes at a time</span><br><span class="line">                       // 若当前节点的下一个节点不为空，则将 head 节点指向当前节点的下一个节点，否者指向当前节点</span><br><span class="line">                       updateHead(h, ((q = p.next) != null) ? q : p);</span><br><span class="line">                   // 返回出队的值</span><br><span class="line">                   return item;</span><br><span class="line">               &#125;</span><br><span class="line">               // 若当前节点的下一个节点为空，则该队列已空，重新设置 head 节点，并返回null</span><br><span class="line">               else if ((q = p.next) == null) &#123;</span><br><span class="line">                   updateHead(h, p);</span><br><span class="line">                   return null;</span><br><span class="line">               &#125;</span><br><span class="line">               // 该情况为，p是已经删除的 head 节点，继续循环</span><br><span class="line">               else if (p == q)</span><br><span class="line">                   continue restartFromHead;</span><br><span class="line">               else</span><br><span class="line">                   // 重新赋值p节点</span><br><span class="line">                   p = q;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><p>因为其采用的是无锁的方式，所以能够满足高并发情况下的需求，其性能优于BlockingQueue<br>。缺点在于其size()方法为一个O(n)时间复杂度的方法，并且返回的值并不是一个准确的值，所以在实际应用中，无法有效获取队列中节点的个数。</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/game/">Game</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

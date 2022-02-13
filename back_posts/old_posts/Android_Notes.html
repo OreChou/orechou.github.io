@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Quick Start1、在程序中实现事件监听器的4种形式内部类（优点：可以在当前类中服用该监听器；可以自由访问外部类的所有界面组件）外部类（优点：确实需要被多个GUI界面共享，而且主要是完成某种业务逻辑的实现）（But：实际上不推荐将业务逻辑实现写在事件监听器中，包含业务逻辑的事件监听器将导致程序的显示逻辑和业务逻辑耦合。通常考虑使用业务逻辑组件来定义业务逻辑功能，再让事件监听器来调用业务逻辑组">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Android Notes">
+<meta property="og:url" content="https://orechou.github.io/back_posts/old_posts/Android_Notes.html">
+<meta property="og:site_name" content="OreChou&#39;s Workspace">
+<meta property="og:description" content="Quick Start1、在程序中实现事件监听器的4种形式内部类（优点：可以在当前类中服用该监听器；可以自由访问外部类的所有界面组件）外部类（优点：确实需要被多个GUI界面共享，而且主要是完成某种业务逻辑的实现）（But：实际上不推荐将业务逻辑实现写在事件监听器中，包含业务逻辑的事件监听器将导致程序的显示逻辑和业务逻辑耦合。通常考虑使用业务逻辑组件来定义业务逻辑功能，再让事件监听器来调用业务逻辑组">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-29T06:35:18.520Z">
+<meta property="article:modified_time" content="2016-01-25T12:52:35.000Z">
+<meta property="article:author" content="OreChou">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Android Notes</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>OreChou&#39;s Workspace</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a href="/book/">Book</a></li><!--
+   --><!--
+     --><li><a href="/game/">Game</a></li><!--
+   --><!--
+     --><li><a href="/gallery/">Gallery</a></li><!--
+   -->
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="1、在程序中实现事件监听器的4种形式"><a href="#1、在程序中实现事件监听器的4种形式" class="headerlink" title="1、在程序中实现事件监听器的4种形式"></a>1、在程序中实现事件监听器的4种形式</h3><p>内部类（优点：可以在当前类中服用该监听器；可以自由访问外部类的所有界面组件）<br>外部类（优点：确实需要被多个GUI界面共享，而且主要是完成某种业务逻辑的实现）（But：实际上不推荐将业务逻辑实现写在事件监听器中，包含业务逻辑的事件监听器将导致程序的显示逻辑和业务逻辑耦合。通常考虑使用业务逻辑组件来定义业务逻辑功能，再让事件监听器来调用业务逻辑组件的业务逻辑方法。）<br>Activity本身作为事件监听器（缺点：程序结构混乱；诡异）<br>匿名内部类（事件处理器没有复用价值。But：事实上这是目前使用最广泛的形式）<br>直接绑定到标签（函数是public，参数传入一个View）</p>
+<h3 id="2、基于监听的事件处理比基于回调的事件处理的优势"><a href="#2、基于监听的事件处理比基于回调的事件处理的优势" class="headerlink" title="2、基于监听的事件处理比基于回调的事件处理的优势"></a>2、基于监听的事件处理比基于回调的事件处理的优势</h3><p>（1）基于监听的时间处理模型分工更明确，事件源、事件监听器有两个类分开实现，具有更好的可维护性。<br>（2）Android的事件处理机制保证基于监听的事件监听器会被优先触发。</p>
+<h3 id="3、Activity的四种加载模式"><a href="#3、Activity的四种加载模式" class="headerlink" title="3、Activity的四种加载模式"></a>3、Activity的四种加载模式</h3><p>Android采用Task来管理多个Activity。可以把Task理解成Activity栈，Task以栈的形式来管理Activity。<br>（1）standard模式：Android总会为目标Activity创建一个新的实例，并将该Activity添加到当前Task栈中，这种模式不会启动新的Task，新Activity将被添加到原有的Task中。<br>（2）singleTop模式：当将要启动的目标Activity已经位于Task栈顶时，系统不会重新创建目标Activity的实例，而是直接复用已有的Activity实例。<br>（3）singleTask模式：要启动的目标Activity已经存在、但没有位于Task栈顶，系统将会把位于该Activity上面的所有Activity移出Task栈，从而使得目标Activity转入栈顶。<br>（4）singleInstance模式：启动的目标Activity不存在，系统先创建一个新的Task，再创建目标Activity实例，并将它加入新的Task栈顶。如果目标Activity已经存在，无论他位于哪个应用程序中、位于哪个Task中，系统都会把该Activity所在的Task转到前台，从而使该Activity显示出来。</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/game/">Game</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Linux 命令时刻都会用到，除了 ls、cd、chmod 等，常用的可以分成两类，系统性能监控相关的命令和文本处理相关的命令。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Linux 命令">
+<meta property="og:url" content="https://orechou.github.io/back_posts/old_posts/Linux/Linux-%E5%91%BD%E4%BB%A4.html">
+<meta property="og:site_name" content="OreChou&#39;s Workspace">
+<meta property="og:description" content="Linux 命令时刻都会用到，除了 ls、cd、chmod 等，常用的可以分成两类，系统性能监控相关的命令和文本处理相关的命令。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-29T06:35:18.520Z">
+<meta property="article:modified_time" content="2018-09-27T12:33:48.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Linux 命令</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>OreChou&#39;s Workspace</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a href="/book/">Book</a></li><!--
+   --><!--
+     --><li><a href="/game/">Game</a></li><!--
+   --><!--
+     --><li><a href="/gallery/">Gallery</a></li><!--
+   -->
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <p>Linux 命令时刻都会用到，除了 ls、cd、chmod 等，常用的可以分成两类，系统性能监控相关的命令和文本处理相关的命令。</p>
+<span id="more"></span>
+
+<p>常用系统相关的命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>top</td>
+<td>能够实时显示系统中各个进程的资源占用状况，类似于Windows的任务管理器</td>
+</tr>
+<tr>
+<td>ps</td>
+<td>用于显示当前进程的状态。</td>
+</tr>
+<tr>
+<td>iostat</td>
+<td>对系统的磁盘操作活动进行监视。它的特点是汇报磁盘活动统计情况，同时也会汇报出CPU使用情况。</td>
+</tr>
+<tr>
+<td>free</td>
+<td>显示系统使用和空闲的内存情况，包括物理内存、交互区内存(swap)和内核缓冲区内存。共享内存将被忽略。</td>
+</tr>
+<tr>
+<td>vmstat</td>
+<td>可对操作系统的虚拟内存、进程、CPU 活动进行监控。它是对系统的整体情况进行统计，不足之处是无法对某个进程进行深入分析。</td>
+</tr>
+<tr>
+<td>lsof</td>
+<td>（list open files）列出当前系统打开文件的工具。在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。用于查看你进程开打的文件，打开文件的进程，进程打开的端口( TCP、UDP )。</td>
+</tr>
+<tr>
+<td>netstat</td>
+<td>显示与 IP、TCP、UDP 和 ICMP 协议相关的统计数据，一般用于检验本机各端口的网络连接情况。</td>
+</tr>
+</tbody></table>
+<p>常用文件、文本处理相关的命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cat、more、less、head、tail</td>
+<td>不用多说，查看文件。</td>
+</tr>
+<tr>
+<td>find</td>
+<td>在目录结构中搜索文件，并执行指定的操作。</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>主要用于文本内容的查找，它支持正则表达式查找。</td>
+</tr>
+<tr>
+<td>cut</td>
+<td>可以按列来切分文件，可用于处理使用固定宽度字段的文件。</td>
+</tr>
+<tr>
+<td>sed</td>
+<td>（stream editor）流编辑器，常用的用法是进行文本替换。</td>
+</tr>
+<tr>
+<td>awk</td>
+<td>可进行高级文本处理。通常由 3 个部分组成：BEGIN、END 和带模式匹配选项的公共语句块，但是三个部分都是可选的。awk 以逐行的形式处理文件。（1）首先执行 BEGIN 语句块中的语句；（2）接着从文件或 stdin 中读取一行，如果能改匹配 pattern，则执行随后的语句块中的语句。重复该过程直到数据读取结束。（3）当读到输入数据流的结束之后，执行 END 语句块。</td>
+</tr>
+<tr>
+<td>which</td>
+<td>查找某个命令的位置。</td>
+</tr>
+<tr>
+<td>whereis</td>
+<td>跟 which 类似，还能改打印出其对应的命令手册以及源代码的路径。</td>
+</tr>
+</tbody></table>
+<p>一些参数：</p>
+<p>-f：指定字符</p>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/game/">Game</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

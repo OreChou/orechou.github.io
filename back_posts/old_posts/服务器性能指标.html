@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="在对互联网服务进行服务端性能测试时，主要关注两方面的性能指标：  业务指标：如吞吐量(QPS、TPS)、响应时间(RT)、并发数、业务成功率等 资源指标：如 CPU、内存、Disk I&#x2F;O、Network I&#x2F;O等资源的消耗情况本文主要介绍一些广泛适用的、基本的资源指标以及这些指标在 Linux 服务器的获取方式。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="服务器性能指标">
+<meta property="og:url" content="https://orechou.github.io/back_posts/old_posts/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87.html">
+<meta property="og:site_name" content="OreChou&#39;s Workspace">
+<meta property="og:description" content="在对互联网服务进行服务端性能测试时，主要关注两方面的性能指标：  业务指标：如吞吐量(QPS、TPS)、响应时间(RT)、并发数、业务成功率等 资源指标：如 CPU、内存、Disk I&#x2F;O、Network I&#x2F;O等资源的消耗情况本文主要介绍一些广泛适用的、基本的资源指标以及这些指标在 Linux 服务器的获取方式。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-29T06:35:18.519Z">
+<meta property="article:modified_time" content="2018-09-15T07:19:30.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>服务器性能指标</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+    <div class="content index py4">
+        
+          <header id="header">
+  <a href="/">
+  
+    
+      <div id="logo" style="background-image: url(/images/logo.png);"></div>
+    
+  
+    <div id="title">
+      <h1>OreChou&#39;s Workspace</h1>
+    </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      <!--
+     --><li><a href="/">Home</a></li><!--
+   --><!--
+     --><li><a href="/about/">About</a></li><!--
+   --><!--
+     --><li><a href="/archives/">Writing</a></li><!--
+   --><!--
+     --><li><a href="/book/">Book</a></li><!--
+   --><!--
+     --><li><a href="/game/">Game</a></li><!--
+   --><!--
+     --><li><a href="/gallery/">Gallery</a></li><!--
+   -->
+    </ul>
+  </div>
+</header>
+
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  
+
+  <div class="content" itemprop="articleBody">
+      
+          <p>在对互联网服务进行服务端性能测试时，主要关注两方面的性能指标：</p>
+<ul>
+<li><strong>业务指标</strong>：如吞吐量(QPS、TPS)、响应时间(RT)、并发数、业务成功率等</li>
+<li><strong>资源指标</strong>：如 CPU、内存、Disk I/O、Network I/O等资源的消耗情况<br>本文主要介绍一些广泛适用的、基本的资源指标以及这些指标在 Linux 服务器的获取方式。</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="服务器性能指标"><a href="#服务器性能指标" class="headerlink" title="服务器性能指标"></a>服务器性能指标</h1><h2 id="CPU-相关"><a href="#CPU-相关" class="headerlink" title="CPU 相关"></a>CPU 相关</h2><h3 id="负载-（Load）"><a href="#负载-（Load）" class="headerlink" title="负载 （Load）"></a>负载 （Load）</h3><p>在类 Unix 系统中，系统负载是对当前 CPU 工作量的度量，定义为特定时间间隔内运行队列中的平均线程数。</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>Linux 上查看机器负载的指令如下：</p>
+<ul>
+<li><strong>uptime 命令</strong>：打印系统总共运行了多长时间和系统的平均负载（1 分钟、5 分钟、15 分钟）</li>
+<li><strong>w 命令</strong>：显示目前登入系统的用户信息，系统最近 1 分钟、5 分钟、15 分钟的平均负载</li>
+<li><strong>top 命令</strong>：实时显示系统中各个进程的资源占用状态</li>
+</ul>
+<p>通过将系统 1 分钟、5 分钟、15 分钟的平均负载称为 load1、load5、load15</p>
+<h4 id="Java-应用导致-load-飚升的排查"><a href="#Java-应用导致-load-飚升的排查" class="headerlink" title="Java 应用导致 load 飚升的排查"></a>Java 应用导致 load 飚升的排查</h4><p>负载过高可能的原因：</p>
+<ol>
+<li>内存泄露导致频繁的 GC</li>
+<li>出现了死锁的情况</li>
+<li>有大字段的读写，IO</li>
+</ol>
+<p>若线上 load ，可考虑将堆栈内存 dump ，重启系统，零时解决。解决的步骤如下：</p>
+<h5 id="查看-load-情况"><a href="#查看-load-情况" class="headerlink" title="查看 load 情况"></a>查看 load 情况</h5><p>首先使用 uptime 查看当前系统的 load</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> OreChou@orechoudeMacBook-Pro $ uptime</span><br><span class="line">17:35  up 10 days, 20:09, 3 users, load averages: 3.05 3.92 3.35</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看占用-CPU-较高进程"><a href="#查看占用-CPU-较高进程" class="headerlink" title="查看占用 CPU 较高进程"></a>查看占用 CPU 较高进程</h5><p>使用 top 命令，查看 CPU 占用较高的进程 ID</p>
+<h5 id="查看占用-CPU-较高线程"><a href="#查看占用-CPU-较高线程" class="headerlink" title="查看占用 CPU 较高线程"></a>查看占用 CPU 较高线程</h5><p>因为 linux 的内核中，进程与线程的数据结构相同。所以通过进程 ID 查找当前进程中占用 CPU 较高的线程 ID。使用指令 <code>top -Hp pid</code>。</p>
+<h5 id="查看该线程的栈空间"><a href="#查看该线程的栈空间" class="headerlink" title="查看该线程的栈空间"></a>查看该线程的栈空间</h5><p>因为 JVM 线程对应的就是一个 linux 内核中的线程，所以可以通过 jstack 查看该线程的方法栈，找到正在执行的方法。使用命令 <code>jstack pid | grep -A 200 tid</code></p>
+<h3 id="利用率（Usage）"><a href="#利用率（Usage）" class="headerlink" title="利用率（Usage）"></a>利用率（Usage）</h3><p>在类 Unix 系统中，利用率是对当前 CPU 工作量的度量，定义为特定时间间隔内 CPU 被占用的情况。</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>us</td>
+<td>用户进程执行时间百分比</td>
+<td>us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期超50%的使用，那么我们就该考虑优化程序算法或者进行加速。</td>
+</tr>
+<tr>
+<td>sy</td>
+<td>内核系统进程执行时间百分比</td>
+<td>sy的值高时，说明系统内核消耗的CPU资源多，这并不是良性表现，我们应该检查原因。</td>
+</tr>
+<tr>
+<td>id</td>
+<td>空闲时间百分比</td>
+<td></td>
+</tr>
+<tr>
+<td>wa</td>
+<td>IO 等待时间百分比</td>
+<td>wa的值高时，说明IO等待比较严重，这可能由于磁盘大量作随机访问造成，也有可能磁盘出现瓶颈（块操作）。</td>
+</tr>
+<tr>
+<td>st</td>
+<td>虚拟 CPU 等待实际 CPU 的时间的百分比</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="常用命令-1"><a href="#常用命令-1" class="headerlink" title="常用命令"></a>常用命令</h4><p>Linux 上查看机器 CPU 利用率的命令如下：</p>
+<ul>
+<li><strong>vmstat 命令</strong>：展现给定时间间隔的服务器的状态值。包括服务器的CPU 使用率，内存使用，虚拟内存交换情况,IO 读写情况。</li>
+<li><strong>top 命令</strong>：实时显示系统中各个进程的资源占用状态。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> vmstat 时间间隔 采样次数</span></span><br><span class="line">procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----</span><br><span class="line"> r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st</span><br><span class="line"> 0  0      0 2479444      0 3165172    0    0   196 15905    2    8  0  0 84  5 11</span><br><span class="line"> 0  0      0 2479404      0 3165176    0    0     0  2804 81664 2715  0  0 90  1  9</span><br></pre></td></tr></table></figure>
+
+<h4 id="Java-应用导致-Usage-飚升的排查"><a href="#Java-应用导致-Usage-飚升的排查" class="headerlink" title="Java 应用导致 Usage 飚升的排查"></a>Java 应用导致 Usage 飚升的排查</h4><p>Java 应用导致 CPU 利用率过高的原因：</p>
+<ol>
+<li>内存泄露导致大量的 GC</li>
+<li>代码存在死循环</li>
+</ol>
+<p>排查的方法同上。</p>
+<h2 id="内存相关"><a href="#内存相关" class="headerlink" title="内存相关"></a>内存相关</h2><p>Linux 中的内存可以分成三个部分，物理内存、虚拟内存和 Swap 分区（交换区）。</p>
+<ul>
+<li><strong>物理内存</strong>：内存条那部分内存空间，实际的内存空间。</li>
+<li><strong>虚拟内存</strong>：是计算机系统内存管理的一种技术。使得应用程序认为它拥有连续可用的内存（一个连续完整的地址空间），而实际上，它通常是被分隔成多个物理内存碎片，还有部分暂时存储在外部磁盘存储器上，在需要时进行数据交换。与没有使用虚拟内存技术的系统相比，使用这种技术的系统使得大型程序的编写变得更容易，对真正的物理内存的使用也更有效率。</li>
+<li><strong>Swap 分区</strong>：当系统物理内存的不够用的时候，把物理内存中的一部分空间释放出来，以供当前运行的程序使用。那些被释放的空间可能来自一些很长时间没有什么操作的程序，这些被释放的空间被临时保存到 Swap 分区中（磁盘上），等到那些程序要运行时，再从Swap 分区中恢复保存的数据到内存中。</li>
+</ul>
+<p>内存相关的性能指标主要是，内存的使用率。</p>
+<h3 id="使用率（Usage）"><a href="#使用率（Usage）" class="headerlink" title="使用率（Usage）"></a>使用率（Usage）</h3><p>在上面的概念中物理内存和 Swap 分区是实际的物理的空间。描述内存使用的属性如下：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>total</td>
+<td>物理内存总大小</td>
+<td></td>
+</tr>
+<tr>
+<td>used</td>
+<td>已经分配的内存的大小（包括了 shared、buffers 和 cached）</td>
+<td></td>
+</tr>
+<tr>
+<td>free</td>
+<td>未被分配的内存的大小</td>
+<td></td>
+</tr>
+<tr>
+<td>shared</td>
+<td>共享内存</td>
+<td></td>
+</tr>
+<tr>
+<td>buffers</td>
+<td>存放要输出到 disk（块设备）的数据，缓冲满了一次写，提高IO性能（内存 -&gt; 磁盘）</td>
+<td></td>
+</tr>
+<tr>
+<td>cached</td>
+<td>存放从 disk 上读出的数据，常用的缓存起来，减少IO（磁盘 -&gt; 内存）</td>
+<td></td>
+</tr>
+</tbody></table>
+<h4 id="常用命令-2"><a href="#常用命令-2" class="headerlink" title="常用命令"></a>常用命令</h4><p>Linux 上查看内存使用的命令如下：</p>
+<ul>
+<li><strong>free 命令</strong>：显示 Linux 系统中空闲的、已用的物理内存及 swap 内存，及被内核使用的 buffer 等</li>
+<li><strong>top 命令</strong>：top 命令是很全能的，实时显示系统中各个进程的资源占用状态。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:          8192       2802       5389          0          0       1559</span><br><span class="line">-/+ buffers/cache:       1243       6948</span><br><span class="line">Swap:        16383          0      16383</span><br></pre></td></tr></table></figure>
+
+<p>可以在 linux 下使用 /proc/meminfo 文件查看操作系统的使用状态。free 也是基于 /proc/meminfo 文件的内容实现的。</p>
+<h4 id="Java-内存泄露排查思路"><a href="#Java-内存泄露排查思路" class="headerlink" title="Java 内存泄露排查思路"></a>Java 内存泄露排查思路</h4><h5 id="获取内存占用较高的-PID"><a href="#获取内存占用较高的-PID" class="headerlink" title="获取内存占用较高的 PID"></a>获取内存占用较高的 PID</h5><h5 id="使用-jmap-命令"><a href="#使用-jmap-命令" class="headerlink" title="使用 jmap 命令"></a>使用 jmap 命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">jmap -heap 3331：查看java 堆（heap）使用情况</span><br><span class="line"></span><br><span class="line">jmap -histo 3331：查看堆内存(histogram)中的对象数量及大小</span><br><span class="line"></span><br><span class="line">jmap -histo:live 3331：JVM会先触发gc，然后再统计信息</span><br><span class="line"></span><br><span class="line">jmap -dump:format=b,file=heapDump 3331：将内存使用的详细情况输出到文件</span><br></pre></td></tr></table></figure>
+
+<p>也可以得到 dump 文件，再进行分析。</p>
+<h3 id="页面交换（Paging）"><a href="#页面交换（Paging）" class="headerlink" title="页面交换（Paging）"></a>页面交换（Paging）</h3><p>页面交换包括从 Swap 交换到内存和从内存交换到 Swap，如果系统出现频繁的页面交换，需要引起注意。可以从 vmstat 中的 si 和 so 指标可以查看：</p>
+<ul>
+<li>si：每秒从 Swap 读取到内存的数据大小</li>
+<li>so：每秒从内存写入到 Swap 的数据大小</li>
+</ul>
+
+        
+  </div>
+</article>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2022
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/game/">Game</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
