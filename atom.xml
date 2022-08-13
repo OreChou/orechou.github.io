@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2022-05-13T16:26:22.945Z</updated>
+  <updated>2022-08-13T07:40:45.264Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -17,11 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【其他】常用资源</title>
+    <title>【读书】《被讨厌的勇气：“自我启发之父”阿德勒的哲学课》</title>
+    <link href="https://orechou.github.io/2022/08/13/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/"/>
+    <id>https://orechou.github.io/2022/08/13/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</id>
+    <published>2022-08-13T07:37:00.000Z</published>
+    <updated>2022-08-13T07:40:45.264Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;三句话总结本书&quot;&gt;&lt;a href=&quot;#三句话总结本书&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Reading" scheme="https://orechou.github.io/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【生活】手机应用安装 &amp; 使用指南</title>
+    <link href="https://orechou.github.io/2022/06/05/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
+    <id>https://orechou.github.io/2022/06/05/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
+    <published>2022-06-04T16:20:00.000Z</published>
+    <updated>2022-06-05T07:48:04.198Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如今的世界，手机已经属于出行、工作、娱乐、生活所必不可缺少的设备。各种应用软件，例如知乎、抖音、淘宝等占据了人生的大部分时间。我作为电子产品的重度用户，在每天与电子设备的接触过程中，不仅耗费了大量的时间、也让身体出现一些问题。鉴于此，我决定优化手机应用软件的安装、使用，将手</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Java】自定义 Spring Security 鉴权</title>
+    <link href="https://orechou.github.io/2022/06/01/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/"/>
+    <id>https://orechou.github.io/2022/06/01/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/</id>
+    <published>2022-06-01T09:00:00.000Z</published>
+    <updated>2022-06-04T16:06:49.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="https://orechou.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【资源】Batcave Resources 第一期</title>
     <link href="https://orechou.github.io/2022/05/13/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/"/>
     <id>https://orechou.github.io/2022/05/13/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</id>
     <published>2022-05-13T15:40:00.000Z</published>
-    <updated>2022-05-13T16:26:22.945Z</updated>
+    <updated>2022-07-12T07:41:33.804Z</updated>
     
     
       
@@ -29,7 +98,7 @@
         
         
     <summary type="html">&lt;p&gt;下面记录一些平时收录的一些资源。&lt;/p&gt;
-&lt;h2 id=&quot;资源&quot;&gt;&lt;a href=&quot;#资源&quot; class=&quot;headerlink&quot; title=&quot;资源&quot;&gt;&lt;/a&gt;资源&lt;/h2&gt;&lt;p&gt;[1]&lt;a</summary>
+&lt;h2 id=&quot;资源站&quot;&gt;&lt;a href=&quot;#资源站&quot; class=&quot;headerlink&quot; title=&quot;资源站&quot;&gt;&lt;/a&gt;资源站&lt;/h2&gt;&lt;p&gt;[1]&lt;a</summary>
         
       
     
@@ -41,11 +110,11 @@
   </entry>
   
   <entry>
-    <title>【歌曲】Deadman&#39;s Gun</title>
+    <title>【歌曲】Deadman&#39;s Gun &amp;&amp; That&#39;s The Way It Is</title>
     <link href="https://orechou.github.io/2022/04/28/life/Deadman&#39;s%20Gun/"/>
     <id>https://orechou.github.io/2022/04/28/life/Deadman&#39;s%20Gun/</id>
     <published>2022-04-27T16:25:00.000Z</published>
-    <updated>2022-04-27T16:33:37.530Z</updated>
+    <updated>2022-07-30T09:27:42.092Z</updated>
     
     
       
@@ -53,7 +122,7 @@
         
         
     <summary type="html">&lt;p&gt;成长道路是比较痛苦的，从青年一路走过来，自己的棱角被磨圆，没有了以往的神气。&lt;br&gt;往往在深夜的时候，想起曾经那些喜欢的英雄，都已过去，都已逝去。&lt;br&gt;而我才后知后觉，忘了告别。&lt;/p&gt;
-&lt;p&gt;歌曲的 &lt;a</summary>
+&lt;p&gt;歌曲 Deadman’s Gun 的 &lt;a</summary>
         
       
     
