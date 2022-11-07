@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2022-11-01T07:37:22.812Z</updated>
+  <updated>2022-11-07T08:57:23.140Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Weekly】No.3 带娃 2</title>
+    <link href="https://orechou.github.io/2022/11/06/weekly/No.3%20%E5%B8%A6%E5%A8%83%202/"/>
+    <id>https://orechou.github.io/2022/11/06/weekly/No.3%20%E5%B8%A6%E5%A8%83%202/</id>
+    <published>2022-11-06T14:00:00.000Z</published>
+    <updated>2022-11-07T08:57:23.140Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本周的主题就是带娃。&lt;/p&gt;
+&lt;h1 id=&quot;Technology&quot;&gt;&lt;a href=&quot;#Technology&quot; class=&quot;headerlink&quot; title=&quot;Technology&quot;&gt;&lt;/a&gt;Technology&lt;/h1&gt;&lt;h2 id=&quot;Backend&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="weekly" scheme="https://orechou.github.io/tags/weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>【Weekly】No.2 整理 &amp; 带娃</title>
@@ -177,9 +201,9 @@
     
     
     
-    <category term="Song" scheme="https://orechou.github.io/tags/Song/"/>
-    
     <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
+    
+    <category term="Song" scheme="https://orechou.github.io/tags/Song/"/>
     
   </entry>
   
