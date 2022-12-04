@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2022-11-07T08:57:23.140Z</updated>
+  <updated>2022-12-04T15:21:57.922Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -17,74 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Weekly】No.3 带娃 2</title>
-    <link href="https://orechou.github.io/2022/11/06/weekly/No.3%20%E5%B8%A6%E5%A8%83%202/"/>
-    <id>https://orechou.github.io/2022/11/06/weekly/No.3%20%E5%B8%A6%E5%A8%83%202/</id>
-    <published>2022-11-06T14:00:00.000Z</published>
-    <updated>2022-11-07T08:57:23.140Z</updated>
+    <title>【Cyber Weekly】No.1 The Shining</title>
+    <link href="https://orechou.github.io/2022/12/04/weekly/No.1%20The%20Shining/"/>
+    <id>https://orechou.github.io/2022/12/04/weekly/No.1%20The%20Shining/</id>
+    <published>2022-12-04T14:00:00.000Z</published>
+    <updated>2022-12-04T15:21:57.922Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;本周的主题就是带娃。&lt;/p&gt;
-&lt;h1 id=&quot;Technology&quot;&gt;&lt;a href=&quot;#Technology&quot; class=&quot;headerlink&quot; title=&quot;Technology&quot;&gt;&lt;/a&gt;Technology&lt;/h1&gt;&lt;h2 id=&quot;Backend&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;p&gt;&lt;code&gt;Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活碎嘴。&lt;/code&gt;&lt;br&gt;&lt;img</summary>
         
       
     
     
     
     
-    <category term="weekly" scheme="https://orechou.github.io/tags/weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Weekly】No.2 整理 &amp; 带娃</title>
-    <link href="https://orechou.github.io/2022/10/31/weekly/No.2%20%E6%95%B4%E7%90%86%20&amp;%20%E5%B8%A6%E5%A8%83/"/>
-    <id>https://orechou.github.io/2022/10/31/weekly/No.2%20%E6%95%B4%E7%90%86%20&amp;%20%E5%B8%A6%E5%A8%83/</id>
-    <published>2022-10-31T14:00:00.000Z</published>
-    <updated>2022-11-01T07:37:22.812Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本周开始休陪产假，连续 15 天。这两周第一个计划是适配娃的节奏，如果可能的话降低她的起夜次数；第二个计划是养成一个记录的习惯，记录技术、生活等内容。&lt;br&gt;以下内容记录于：20221024 ~ 20221030&lt;/p&gt;
-&lt;h1 id=&quot;Technology&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="weekly" scheme="https://orechou.github.io/tags/weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Weekly】No.1 开始周记</title>
-    <link href="https://orechou.github.io/2022/10/23/weekly/No.1%20%E5%BC%80%E5%A7%8B%E5%91%A8%E8%AE%B0/"/>
-    <id>https://orechou.github.io/2022/10/23/weekly/No.1%20%E5%BC%80%E5%A7%8B%E5%91%A8%E8%AE%B0/</id>
-    <published>2022-10-23T14:00:00.000Z</published>
-    <updated>2022-10-24T08:49:54.649Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;这个周记记录一下每周的积累。题材不限，可包含各种技术、资源、新闻等。&lt;br&gt;本周结束后开始休产假，休到 11 月 7 号。&lt;/p&gt;
-&lt;h1 id=&quot;Technology&quot;&gt;&lt;a href=&quot;#Technology&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="weekly" scheme="https://orechou.github.io/tags/weekly/"/>
+    <category term="cyber weekly" scheme="https://orechou.github.io/tags/cyber-weekly/"/>
     
   </entry>
   
@@ -201,9 +152,9 @@
     
     
     
-    <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
-    
     <category term="Song" scheme="https://orechou.github.io/tags/Song/"/>
+    
+    <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
     
   </entry>
   
