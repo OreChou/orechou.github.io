@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2023-01-19T13:52:51.499Z</updated>
+  <updated>2023-01-23T14:11:47.675Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -17,35 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【生活】2023 年 OKR</title>
-    <link href="https://orechou.github.io/2023/01/29/life/2023%20%E5%B9%B4%20OKR/"/>
-    <id>https://orechou.github.io/2023/01/29/life/2023%20%E5%B9%B4%20OKR/</id>
-    <published>2023-01-29T04:00:00.000Z</published>
-    <updated>2023-01-19T13:52:51.499Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今年的 OKR 如下，年底 review：&lt;/p&gt;
-&lt;h1 id=&quot;家庭&quot;&gt;&lt;a href=&quot;#家庭&quot; class=&quot;headerlink&quot; title=&quot;家庭&quot;&gt;&lt;/a&gt;家庭&lt;/h1&gt;&lt;p&gt;okr1: 陪伴妻子和女儿成长</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
     <title>【Cyber Weekly】No.3 There and back again</title>
     <link href="https://orechou.github.io/2023/01/22/weekly/No.3%20There%20and%20back%20again/"/>
     <id>https://orechou.github.io/2023/01/22/weekly/No.3%20There%20and%20back%20again/</id>
     <published>2023-01-22T14:00:00.000Z</published>
-    <updated>2023-01-23T14:10:40.905Z</updated>
+    <updated>2023-01-23T14:11:47.675Z</updated>
     
     
       
@@ -63,6 +39,30 @@
     
     
     <category term="cyber weekly" scheme="https://orechou.github.io/tags/cyber-weekly/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【生活】2023 年 OKR</title>
+    <link href="https://orechou.github.io/2023/01/19/life/2023%20%E5%B9%B4%20OKR/"/>
+    <id>https://orechou.github.io/2023/01/19/life/2023%20%E5%B9%B4%20OKR/</id>
+    <published>2023-01-19T04:00:00.000Z</published>
+    <updated>2023-01-23T14:17:58.633Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今年的 OKR 如下，年底 review：&lt;/p&gt;
+&lt;h1 id=&quot;家庭&quot;&gt;&lt;a href=&quot;#家庭&quot; class=&quot;headerlink&quot; title=&quot;家庭&quot;&gt;&lt;/a&gt;家庭&lt;/h1&gt;&lt;p&gt;okr1: 陪伴妻子和女儿成长</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Life" scheme="https://orechou.github.io/tags/Life/"/>
     
   </entry>
   
