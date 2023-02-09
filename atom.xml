@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2023-02-05T09:51:27.522Z</updated>
+  <updated>2023-02-09T14:44:57.149Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Spring】关于 PriorityOrdered 和 Ordered 的使用</title>
+    <link href="https://orechou.github.io/2023/02/09/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://orechou.github.io/2023/02/09/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-02-09T15:00:00.000Z</published>
+    <updated>2023-02-09T14:44:57.149Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring" scheme="https://orechou.github.io/tags/Spring/"/>
+    
+    <category term="Java" scheme="https://orechou.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>【Cyber Weekly】No.4 Do not go gentle into that good night</title>
