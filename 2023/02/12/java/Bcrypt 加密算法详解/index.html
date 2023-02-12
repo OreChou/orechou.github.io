@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。 什么是 Bcrypt 加密算法Bcrypt 是一种密码哈希函数，用于加密用户密码。它是一种强大且安全的算法，用于存储用户密码，并在用户登录时进行验证。Bcrypt 算法使用了 Blowfish 加密算法，它在对用户密码进行加密时需要一个随机的盐值，这样就可以避免暴力破解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bcrypt 加密算法详解">
+<meta property="og:url" content="https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:description" content="最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。 什么是 Bcrypt 加密算法Bcrypt 是一种密码哈希函数，用于加密用户密码。它是一种强大且安全的算法，用于存储用户密码，并在用户登录时进行验证。Bcrypt 算法使用了 Blowfish 加密算法，它在对用户密码进行加密时需要一个随机的盐值，这样就可以避免暴力破解。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-02-12T10:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-12T13:17:37.750Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Spring">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="密码学">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Bcrypt 加密算法详解</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/02/09/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&text=Bcrypt 加密算法详解"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&is_video=false&description=Bcrypt 加密算法详解"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Bcrypt 加密算法详解&body=Check out this article: https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&name=Bcrypt 加密算法详解&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&t=Bcrypt 加密算法详解"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">什么是 Bcrypt 加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">加密的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-Salt"><span class="toc-number">2.1.</span> <span class="toc-text">生成 Salt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%AF%86%E7%A0%81%E5%92%8C-salt-%E8%BF%9B%E8%A1%8C%E5%8A%A0%E5%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">对密码和 salt 进行加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">2.3.</span> <span class="toc-text">增加复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E6%96%87"><span class="toc-number">2.4.</span> <span class="toc-text">生成密文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-SHA-256-%E7%AE%97%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">与 SHA-256 算法的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">实际的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81"><span class="toc-number">4.2.</span> <span class="toc-text">实现源码</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Bcrypt 加密算法详解
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">OreChou</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-02-12T10:00:00.000Z" itemprop="datePublished">2023-02-12</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Java/" rel="tag">Java</a>, <a class="tag-link-link" href="/tags/Spring/" rel="tag">Spring</a>, <a class="tag-link-link" href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/" rel="tag">密码学</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <p>最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。</p>
+<h2 id="什么是-Bcrypt-加密算法"><a href="#什么是-Bcrypt-加密算法" class="headerlink" title="什么是 Bcrypt 加密算法"></a>什么是 Bcrypt 加密算法</h2><p>Bcrypt 是一种密码哈希函数，用于加密用户密码。它是一种强大且安全的算法，用于存储用户密码，并在用户登录时进行验证。<br>Bcrypt 算法使用了 Blowfish 加密算法，它在对用户密码进行加密时需要一个随机的盐值，这样就可以避免暴力破解。此外，Bcrypt 算法还具有慢哈希的特性，即在加密过程中使用的复杂度可以通过 cost 参数来控制，从而使用户的密码更加安全。</p>
+<h2 id="加密的过程"><a href="#加密的过程" class="headerlink" title="加密的过程"></a>加密的过程</h2><h3 id="生成-Salt"><a href="#生成-Salt" class="headerlink" title="生成 Salt"></a>生成 Salt</h3><p>首先，Bcrypt 会生成一个随机的 salt，这个 salt 会被用于密码加密过程。</p>
+<h3 id="对密码和-salt-进行加密"><a href="#对密码和-salt-进行加密" class="headerlink" title="对密码和 salt 进行加密"></a>对密码和 salt 进行加密</h3><p>然后，密码和 salt 会被结合在一起，并使用密码哈希函数进行加密。</p>
+<h3 id="增加复杂度"><a href="#增加复杂度" class="headerlink" title="增加复杂度"></a>增加复杂度</h3><p>在加密的过程中，Bcrypt 会使用指定的 cost 参数进行加密，这个参数代表加密的次数。通过增加 cost 参数，可以使加密过程更加复杂，从而提高密码的安全性。</p>
+<h3 id="生成密文"><a href="#生成密文" class="headerlink" title="生成密文"></a>生成密文</h3><p>Bcrypt 加密后的密文是一个长度为 60~100 个字符的字符串。它包含了以下几部分信息：</p>
+<ol>
+<li>版本标识：Bcrypt 的密文开头一般以 “$2y$” 或 “$2a$” 开头，这代表了 Bcrypt 的版本信息。</li>
+<li>cost 参数：密文的下一个字符是数字，代表了 Bcrypt 加密过程中使用的 cost 参数。</li>
+<li>salt：接下来的 22 个字符代表了随机生成的 salt。使用 Base64 编码。</li>
+<li>哈希值：最后的字符串是加密后的哈希值，代表了密码的密文形式。使用 Base 64 编码。<br>一个加密后的密文可能如下所示：<code>&quot;$2a$10$S8U6dsEjvAUtf7XuUzK8.eDmI.xMh7OJj0s8Q7WuOvZDz9XBk1PM2&quot;</code>。</li>
+</ol>
+<h2 id="与-SHA-256-算法的对比"><a href="#与-SHA-256-算法的对比" class="headerlink" title="与 SHA-256 算法的对比"></a>与 SHA-256 算法的对比</h2><p>Bcrypt 和 SHA-256 都是常用的哈希算法，但它们的安全性是有所不同的。Bcrypt 有如下的优点：</p>
+<ol>
+<li>慢哈希：Bcrypt 算法具有慢哈希的特点，即在加密过程中使用的计算复杂度可以通过 cost 参数来控制，从而使密码更加安全。而 SHA-256 并不具有这种特点，速度较快。</li>
+<li>盐值：Bcrypt 在加密过程中使用了随机的盐值，这样就可以避免暴力破解。盐值存储在加密后的密文中，每个用户都有一个唯一的盐值。而 SHA-256 不支持使用盐值，因此它在数据库密码加密方面比 Bcrypt 更不安全</li>
+<li>强度：Bcrypt 算法具有较高的强度，比 SHA-256 算法更难被破解。</li>
+</ol>
+<p>由于 Bcrypt 算法具有以上特点，因此它可以有效防止数据库被拖库，并保证密码不被泄露。即使数据库被黑客获取，他们也无法获得用户的原始密码，因为密码已经被加密。因此，使用 Bcrypt 算法存储密码是一种安全的方法。</p>
+<h2 id="实际的应用"><a href="#实际的应用" class="headerlink" title="实际的应用"></a>实际的应用</h2><p>Spring Security 就内置了 Bcrypt 算法的编码器 <code>BcryptPasswordEncoder</code>。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>在项目中添加 <code>org.springframework.security:spring-security-crypto</code> 的依赖后在配置项中声明一个 Bean，代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> PasswordEncoder <span class="title">passwordEncoder</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BcryptPasswordEncoder();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后我们就可以在其他地方使用这个 <code>PasswordEncoder</code> 了，对应了两个方法 <code>encode</code>() 和 <code>matches</code>()。</p>
+<h3 id="实现源码"><a href="#实现源码" class="headerlink" title="实现源码"></a>实现源码</h3><p>其实现了 <code>PasswordEncoder</code> 接口，接口的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">PasswordEncoder</span> </span>&#123;</span><br><span class="line">	<span class="function">String <span class="title">encode</span><span class="params">(CharSequence rawPassword)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">matches</span><span class="params">(CharSequence rawPassword, String encodedPassword)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>编码的具体实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">encode</span><span class="params">(CharSequence rawPassword)</span> </span>&#123;</span><br><span class="line">    String salt;</span><br><span class="line">    <span class="keyword">if</span> (strength &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (random != <span class="keyword">null</span>) &#123;</span><br><span class="line">            salt = Bcrypt.gensalt(strength, random);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            salt = Bcrypt.gensalt(strength);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        salt = Bcrypt.gensalt();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Bcrypt.hashpw(rawPassword.toString(), salt);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">hashpw</span><span class="params">(String password, String salt)</span> <span class="keyword">throws</span> IllegalArgumentException </span>&#123;</span><br><span class="line">    Bcrypt B;</span><br><span class="line">    String real_salt;</span><br><span class="line">    <span class="keyword">byte</span> passwordb[], saltb[], hashed[];</span><br><span class="line">    <span class="keyword">char</span> minor = (<span class="keyword">char</span>) <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rounds, off = <span class="number">0</span>;</span><br><span class="line">    StringBuilder rs = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">if</span> (salt == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;salt cannot be null&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> saltLength = salt.length();</span><br><span class="line">    <span class="keyword">if</span> (saltLength &lt; <span class="number">28</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Invalid salt&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (salt.charAt(<span class="number">0</span>) != <span class="string">&#x27;$&#x27;</span> || salt.charAt(<span class="number">1</span>) != <span class="string">&#x27;2&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Invalid salt version&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (salt.charAt(<span class="number">2</span>) == <span class="string">&#x27;$&#x27;</span>) &#123;</span><br><span class="line">        off = <span class="number">3</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        minor = salt.charAt(<span class="number">2</span>);</span><br><span class="line">        <span class="keyword">if</span> (minor != <span class="string">&#x27;a&#x27;</span> || salt.charAt(<span class="number">3</span>) != <span class="string">&#x27;$&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Invalid salt revision&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        off = <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (saltLength - off &lt; <span class="number">25</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Invalid salt&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Extract number of rounds</span></span><br><span class="line">    <span class="keyword">if</span> (salt.charAt(off + <span class="number">2</span>) &gt; <span class="string">&#x27;$&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Missing salt rounds&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    rounds = Integer.parseint(salt.substring(off, off + <span class="number">2</span>));</span><br><span class="line">    real_salt = salt.substring(off + <span class="number">3</span>, off + <span class="number">25</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        passwordb = (password + (minor &gt;= <span class="string">&#x27;a&#x27;</span> ? <span class="string">&quot;00&quot;</span> : <span class="string">&quot;&quot;</span>)).getBytes(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">catch</span> (UnsupportedEncodingException uee) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(<span class="string">&quot;UTF-8 is not supported&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    saltb = decode_base64(real_salt, BCRYPT_SALT_LEN);</span><br><span class="line">    B = <span class="keyword">new</span> Bcrypt();</span><br><span class="line">    hashed = B.crypt_raw(passwordb, saltb, rounds);</span><br><span class="line">    rs.append(<span class="string">&quot;$2&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (minor &gt;= <span class="string">&#x27;a&#x27;</span>) &#123;</span><br><span class="line">        rs.append(minor);</span><br><span class="line">    &#125;</span><br><span class="line">    rs.append(<span class="string">&quot;$&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (rounds &lt; <span class="number">10</span>) &#123;</span><br><span class="line">        rs.append(<span class="string">&quot;0&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    rs.append(rounds);</span><br><span class="line">    rs.append(<span class="string">&quot;$&quot;</span>);</span><br><span class="line">    encode_base64(saltb, saltb.length, rs);</span><br><span class="line">    encode_base64(hashed, bf_crypt_ciphertext.length * <span class="number">4</span> - <span class="number">1</span>, rs);</span><br><span class="line">    <span class="keyword">return</span> rs.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>验证密码的实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Boolean <span class="title">matches</span><span class="params">(CharSequence rawPassword, String encodedPassword)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (encodedPassword == <span class="keyword">null</span> || encodedPassword.length() == <span class="number">0</span>) &#123;</span><br><span class="line">        logger.warn(<span class="string">&quot;Empty encoded password&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!BCRYPT_PATTERN.matcher(encodedPassword).matches()) &#123;</span><br><span class="line">        logger.warn(<span class="string">&quot;Encoded password does not look like Bcrypt&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> Bcrypt.checkpw(rawPassword.toString(), encodedPassword);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title">checkpw</span><span class="params">(String plaintext, String hashed)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> equalsNoEarlyReturn(hashed, hashpw(plaintext, hashed));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> Boolean <span class="title">equalsNoEarlyReturn</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] caa = a.toCharArray();</span><br><span class="line">    <span class="keyword">char</span>[] cab = b.toCharArray();</span><br><span class="line">    <span class="keyword">if</span> (caa.length != cab.length) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">byte</span> ret = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; caa.length; i++) &#123;</span><br><span class="line">        ret |= caa[i] ^ cab[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>整个的代码是比较简单的，就不详细说明了。</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/gallery/">Gallery</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">什么是 Bcrypt 加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">加密的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90-Salt"><span class="toc-number">2.1.</span> <span class="toc-text">生成 Salt</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E5%AF%86%E7%A0%81%E5%92%8C-salt-%E8%BF%9B%E8%A1%8C%E5%8A%A0%E5%AF%86"><span class="toc-number">2.2.</span> <span class="toc-text">对密码和 salt 进行加密</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A2%9E%E5%8A%A0%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-number">2.3.</span> <span class="toc-text">增加复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E6%96%87"><span class="toc-number">2.4.</span> <span class="toc-text">生成密文</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-SHA-256-%E7%AE%97%E6%B3%95%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-number">3.</span> <span class="toc-text">与 SHA-256 算法的对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E9%99%85%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">实际的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">4.1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%BA%90%E7%A0%81"><span class="toc-number">4.2.</span> <span class="toc-text">实现源码</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&text=Bcrypt 加密算法详解"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&is_video=false&description=Bcrypt 加密算法详解"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Bcrypt 加密算法详解&body=Check out this article: https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&title=Bcrypt 加密算法详解"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&name=Bcrypt 加密算法详解&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/&t=Bcrypt 加密算法详解"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9RBGC8GJC6');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'orechou';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

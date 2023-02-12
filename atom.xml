@@ -6,7 +6,7 @@
   <link href="https://orechou.github.io/atom.xml" rel="self"/>
   
   <link href="https://orechou.github.io/"/>
-  <updated>2023-02-09T14:44:57.149Z</updated>
+  <updated>2023-02-12T13:17:37.750Z</updated>
   <id>https://orechou.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>【Spring】关于 PriorityOrdered 和 Ordered 的使用</title>
+    <title>Bcrypt 加密算法详解</title>
+    <link href="https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://orechou.github.io/2023/02/12/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
+    <published>2023-02-12T10:00:00.000Z</published>
+    <updated>2023-02-12T13:17:37.750Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。&lt;/p&gt;
+&lt;h2 id=&quot;什么是-Bcrypt-加密算法&quot;&gt;&lt;a href=&quot;#什么是-Bcrypt-加密算法&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Spring" scheme="https://orechou.github.io/tags/Spring/"/>
+    
+    <category term="Java" scheme="https://orechou.github.io/tags/Java/"/>
+    
+    <category term="密码学" scheme="https://orechou.github.io/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于 PriorityOrdered 和 Ordered 的使用</title>
     <link href="https://orechou.github.io/2023/02/09/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://orechou.github.io/2023/02/09/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2023-02-09T15:00:00.000Z</published>
-    <updated>2023-02-09T14:44:57.149Z</updated>
+    <updated>2023-02-12T13:17:43.415Z</updated>
     
     
       
@@ -46,7 +74,7 @@
     <link href="https://orechou.github.io/2023/02/05/weekly/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/"/>
     <id>https://orechou.github.io/2023/02/05/weekly/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/</id>
     <published>2023-02-05T14:00:00.000Z</published>
-    <updated>2023-02-05T09:51:27.522Z</updated>
+    <updated>2023-02-05T09:51:27.000Z</updated>
     
     
       
@@ -70,7 +98,7 @@
     <link href="https://orechou.github.io/2023/01/25/other/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/"/>
     <id>https://orechou.github.io/2023/01/25/other/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</id>
     <published>2023-01-25T14:00:00.000Z</published>
-    <updated>2023-01-25T15:11:49.858Z</updated>
+    <updated>2023-01-25T15:10:01.000Z</updated>
     
     
       
@@ -95,7 +123,7 @@
     <link href="https://orechou.github.io/2023/01/22/weekly/No.3%20There%20and%20back%20again/"/>
     <id>https://orechou.github.io/2023/01/22/weekly/No.3%20There%20and%20back%20again/</id>
     <published>2023-01-22T14:00:00.000Z</published>
-    <updated>2023-01-23T14:11:47.675Z</updated>
+    <updated>2023-01-23T14:10:40.000Z</updated>
     
     
       
@@ -121,7 +149,7 @@
     <link href="https://orechou.github.io/2023/01/19/life/2023%20%E5%B9%B4%20OKR/"/>
     <id>https://orechou.github.io/2023/01/19/life/2023%20%E5%B9%B4%20OKR/</id>
     <published>2023-01-19T04:00:00.000Z</published>
-    <updated>2023-01-23T14:17:58.633Z</updated>
+    <updated>2023-01-23T14:11:09.000Z</updated>
     
     
       
@@ -145,7 +173,7 @@
     <link href="https://orechou.github.io/2022/12/11/weekly/No.2%20Red%20dead%20Redemption/"/>
     <id>https://orechou.github.io/2022/12/11/weekly/No.2%20Red%20dead%20Redemption/</id>
     <published>2022-12-11T14:00:00.000Z</published>
-    <updated>2022-12-12T02:00:06.781Z</updated>
+    <updated>2022-12-12T02:00:06.000Z</updated>
     
     
       
@@ -192,7 +220,7 @@
     <link href="https://orechou.github.io/2022/08/13/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/"/>
     <id>https://orechou.github.io/2022/08/13/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</id>
     <published>2022-08-13T07:37:00.000Z</published>
-    <updated>2022-08-13T07:40:45.264Z</updated>
+    <updated>2022-08-13T07:40:45.000Z</updated>
     
     
       
@@ -215,7 +243,7 @@
     <link href="https://orechou.github.io/2022/06/05/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
     <id>https://orechou.github.io/2022/06/05/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
     <published>2022-06-04T16:20:00.000Z</published>
-    <updated>2022-06-05T07:48:04.198Z</updated>
+    <updated>2022-06-05T07:48:04.000Z</updated>
     
     
       
@@ -234,11 +262,11 @@
   </entry>
   
   <entry>
-    <title>【Java】自定义 Spring Security 鉴权</title>
+    <title>自定义 Spring Security 鉴权</title>
     <link href="https://orechou.github.io/2022/06/01/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/"/>
     <id>https://orechou.github.io/2022/06/01/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/</id>
     <published>2022-06-01T09:00:00.000Z</published>
-    <updated>2023-02-08T14:55:09.044Z</updated>
+    <updated>2023-02-12T13:18:01.380Z</updated>
     
     
       
@@ -252,6 +280,8 @@
     
     
     
+    <category term="Spring" scheme="https://orechou.github.io/tags/Spring/"/>
+    
     <category term="Java" scheme="https://orechou.github.io/tags/Java/"/>
     
   </entry>
@@ -261,7 +291,7 @@
     <link href="https://orechou.github.io/2022/05/13/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/"/>
     <id>https://orechou.github.io/2022/05/13/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</id>
     <published>2022-05-13T15:40:00.000Z</published>
-    <updated>2022-07-12T07:41:33.804Z</updated>
+    <updated>2022-07-12T07:41:33.000Z</updated>
     
     
       
@@ -285,7 +315,7 @@
     <link href="https://orechou.github.io/2022/04/28/life/Deadman&#39;s%20Gun/"/>
     <id>https://orechou.github.io/2022/04/28/life/Deadman&#39;s%20Gun/</id>
     <published>2022-04-27T16:25:00.000Z</published>
-    <updated>2023-01-25T15:09:00.616Z</updated>
+    <updated>2022-07-30T09:27:42.000Z</updated>
     
     
       
@@ -311,7 +341,7 @@
     <link href="https://orechou.github.io/2022/04/12/life/EDC%20%E6%B8%85%E5%8D%95/"/>
     <id>https://orechou.github.io/2022/04/12/life/EDC%20%E6%B8%85%E5%8D%95/</id>
     <published>2022-04-12T15:40:00.000Z</published>
-    <updated>2022-05-29T09:32:45.464Z</updated>
+    <updated>2022-05-29T09:32:45.000Z</updated>
     
     
       
@@ -331,11 +361,11 @@
   </entry>
   
   <entry>
-    <title>【iOS】在地图中绘制坐标轨迹</title>
-    <link href="https://orechou.github.io/2022/03/27/iOS/iOS_%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"/>
-    <id>https://orechou.github.io/2022/03/27/iOS/iOS_%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</id>
+    <title>使用 SwiftUI 在地图中绘制坐标轨迹</title>
+    <link href="https://orechou.github.io/2022/03/27/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"/>
+    <id>https://orechou.github.io/2022/03/27/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</id>
     <published>2022-03-27T09:43:00.000Z</published>
-    <updated>2022-03-27T11:15:57.214Z</updated>
+    <updated>2023-02-12T13:19:19.543Z</updated>
     
     
       
@@ -360,7 +390,7 @@
     <link href="https://orechou.github.io/2022/02/13/life/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/"/>
     <id>https://orechou.github.io/2022/02/13/life/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/</id>
     <published>2022-02-13T07:40:00.000Z</published>
-    <updated>2022-05-13T15:52:31.736Z</updated>
+    <updated>2022-05-13T15:52:31.000Z</updated>
     
     
       
@@ -384,7 +414,7 @@
     <link href="https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/"/>
     <id>https://orechou.github.io/2021/08/16/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</id>
     <published>2021-08-16T06:46:00.000Z</published>
-    <updated>2022-03-27T11:14:09.194Z</updated>
+    <updated>2022-03-27T11:14:09.000Z</updated>
     
     
       
@@ -408,7 +438,7 @@
     <link href="https://orechou.github.io/2021/08/10/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/"/>
     <id>https://orechou.github.io/2021/08/10/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/</id>
     <published>2021-08-10T04:30:00.000Z</published>
-    <updated>2022-03-27T11:14:03.743Z</updated>
+    <updated>2022-03-27T11:14:03.000Z</updated>
     
     
       
@@ -431,7 +461,7 @@
     <link href="https://orechou.github.io/2021/08/06/mysql/MySQL_Explain/"/>
     <id>https://orechou.github.io/2021/08/06/mysql/MySQL_Explain/</id>
     <published>2021-08-06T09:00:00.000Z</published>
-    <updated>2022-03-27T11:14:13.632Z</updated>
+    <updated>2022-03-27T11:14:13.000Z</updated>
     
     
       
