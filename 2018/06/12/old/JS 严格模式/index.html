@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="概述ECMAScript 严格模式是采用具有限制性 JavaScript 变体的一种方式。其目的主要有以下几点：  消除 JavaScript 语法的一些不合理、严谨的地方，减少一些怪异行为  消除代码运行的一些不安全之处，保证代码运行的安全  提高编译器效率，增加运行速度  为未来版本的 JavaScript 做好铺垫">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 严格模式">
+<meta property="og:url" content="https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/index.html">
+<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:description" content="概述ECMAScript 严格模式是采用具有限制性 JavaScript 变体的一种方式。其目的主要有以下几点：  消除 JavaScript 语法的一些不合理、严谨的地方，减少一些怪异行为  消除代码运行的一些不安全之处，保证代码运行的安全  提高编译器效率，增加运行速度  为未来版本的 JavaScript 做好铺垫">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-06-12T12:54:28.000Z">
+<meta property="article:modified_time" content="2018-06-12T12:54:28.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="JS">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>JavaScript 严格模式</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2018/06/12/old/JPA%20&%20ORM%20&%20Spring%20Data%20JPA%20%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2018/04/01/old/TensorLy_In_Action/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&text=JavaScript 严格模式"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&is_video=false&description=JavaScript 严格模式"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript 严格模式&body=Check out this article: https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&name=JavaScript 严格模式&description=&lt;h3 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;ECMAScript 严格模式是采用具有限制性 JavaScript 变体的一种方式。其目的主要有以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;消除 JavaScript 语法的一些不合理、严谨的地方，减少一些怪异行为&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;消除代码运行的一些不安全之处，保证代码运行的安全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;提高编译器效率，增加运行速度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;为未来版本的 JavaScript 做好铺垫&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&t=JavaScript 严格模式"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">对于脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9D%A5%E7%9A%84%E6%94%B9%E5%8F%98"><span class="toc-number">3.</span> <span class="toc-text">带来的改变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%BF%85%E9%A1%BB%E6%98%BE%E7%A4%BA%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.</span> <span class="toc-text">全局变量必须显示声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8-with-%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.2.</span> <span class="toc-text">禁止使用 with 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eval-%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">3.3.</span> <span class="toc-text">eval 作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2-this-%E6%8C%87%E5%90%91%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.</span> <span class="toc-text">禁止 this 指向全局对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E5%9C%A8%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E9%81%8D%E5%8E%86%E8%B0%83%E7%94%A8%E6%A0%88"><span class="toc-number">3.5.</span> <span class="toc-text">禁止在函数内部遍历调用栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8F%98%E9%87%8F%E6%88%96%E5%B1%9E%E6%80%A7%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">3.6.</span> <span class="toc-text">删除变量或属性的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%8A%A5%E9%94%99"><span class="toc-number">3.7.</span> <span class="toc-text">显示报错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%90%8D%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">3.8.</span> <span class="toc-text">重名的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E5%85%AB%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">3.9.</span> <span class="toc-text">禁止八进制表示法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">3.10.</span> <span class="toc-text">arguments 对象的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E5%A3%B0%E6%98%8E%E5%9C%A8%E9%9D%9E%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%AD"><span class="toc-number">3.11.</span> <span class="toc-text">函数不能声明在非函数的代码块中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8A%A0%E7%9A%84%E4%BF%9D%E7%95%99%E5%AD%97"><span class="toc-number">3.12.</span> <span class="toc-text">新增加的保留字</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        JavaScript 严格模式
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">OreChou</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-06-12T12:54:28.000Z" itemprop="datePublished">2018-06-12</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/categories/JavaScript/">JavaScript</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/JS/" rel="tag">JS</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>ECMAScript 严格模式是采用具有限制性 JavaScript 变体的一种方式。其目的主要有以下几点：</p>
+<ul>
+<li><p>消除 JavaScript 语法的一些不合理、严谨的地方，减少一些怪异行为</p>
+</li>
+<li><p>消除代码运行的一些不安全之处，保证代码运行的安全</p>
+</li>
+<li><p>提高编译器效率，增加运行速度</p>
+</li>
+<li><p>为未来版本的 JavaScript 做好铺垫</p>
+</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h3><h4 id="对于脚本"><a href="#对于脚本" class="headerlink" title="对于脚本"></a>对于脚本</h4><p>将 use strict 放在整个脚本的第一行（必须放置在第一行，否则无效），整个脚本以严格模式运行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"><span class="meta"></span></span></span><br><span class="line"><span class="meta"><span class="javascript">	&quot;use strict&quot;</span></span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(<span class="string">&quot;This is in strict mode.&quot;</span>)</span></span><br><span class="line"><span class="javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的写法有缺点，当有多个脚本文件的时候，不利于文件的合并。变通的做法是将整个脚本文件放在立即执行的匿名函数中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &#x27;use strict&#x27;</span></span><br><span class="line">  <span class="comment">// follow codes</span></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+
+<p>将 use strict 放在函数的第一行，整个函数以严格模式运行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">strict</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &#x27;use strict&#x27;</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;This is in strict mode.&#x27;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="带来的改变"><a href="#带来的改变" class="headerlink" title="带来的改变"></a>带来的改变</h3><h4 id="全局变量必须显示声明"><a href="#全局变量必须显示声明" class="headerlink" title="全局变量必须显示声明"></a>全局变量必须显示声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line">v = <span class="number">1</span> <span class="comment">// 报错。v 未声明</span></span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;&#125; <span class="comment">// 报错。i 未声明</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止使用-with-语句"><a href="#禁止使用-with-语句" class="headerlink" title="禁止使用 with 语句"></a>禁止使用 with 语句</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="keyword">var</span> v = <span class="number">1</span></span><br><span class="line"><span class="comment">// 严格模式限制了一些动态绑定</span></span><br><span class="line"><span class="comment">// 在这里 with 语句无法在编译时确定属性归属于哪个对象</span></span><br><span class="line"><span class="keyword">with</span> (o) &#123; <span class="comment">// 语法错误</span></span><br><span class="line">  v = <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="eval-作用域"><a href="#eval-作用域" class="headerlink" title="eval 作用域"></a>eval 作用域</h4><p>正常模式下有两种作用域（ scope ）：全局作用域、函数作用域。严格模式下有了第三种作用域， eval 作用域</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;</span><br><span class="line">var v = 1</span><br><span class="line">// eval 创建了自身的作用域，它所生成的变量只用于 eval 内部</span><br><span class="line">console.log(eval(&#x27;var v = 2; v&#x27;)) // 输出 2</span><br><span class="line">console.log(v) // 输出 1</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止-this-指向全局对象"><a href="#禁止-this-指向全局对象" class="headerlink" title="禁止 this 指向全局对象"></a>禁止 this 指向全局对象</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function f() &#123;</span><br><span class="line">  return !this // false, this 为全局对象，不为 null 和 undefined，所以返回 false</span><br><span class="line">&#125;</span><br><span class="line">function f() &#123;</span><br><span class="line">  &#x27;use strict&#x27;</span><br><span class="line">  return !this // true, this 不指向全局对象，为 undefined</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止在函数内部遍历调用栈"><a href="#禁止在函数内部遍历调用栈" class="headerlink" title="禁止在函数内部遍历调用栈"></a>禁止在函数内部遍历调用栈</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="meta">  &#x27;use strict&#x27;</span></span><br><span class="line">  <span class="comment">// properties may not be accessed on strict mode functions or the arguments objects for calls to them</span></span><br><span class="line">  f.caller <span class="comment">// 报错</span></span><br><span class="line">  f.arguments <span class="comment">// 报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="删除变量或属性的限制"><a href="#删除变量或属性的限制" class="headerlink" title="删除变量或属性的限制"></a>删除变量或属性的限制</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x27;use strict&#x27;</span><br><span class="line">var a = 1</span><br><span class="line">delete a // 报错，禁止删除变量</span><br><span class="line">var obj = Object.create(null, &#123;</span><br><span class="line">  &#x27;a&#x27;: &#123;</span><br><span class="line">    value: 1,</span><br><span class="line">    configurable: true</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x27;b&#x27;: &#123;</span><br><span class="line">    value: 2,</span><br><span class="line">    configurable: false</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">// 只有 configurable 为 true 的对象属性才能被删除</span><br><span class="line">delete obj.a // 成功</span><br><span class="line">delete obj.b // 失败</span><br></pre></td></tr></table></figure>
+
+<h4 id="显示报错"><a href="#显示报错" class="headerlink" title="显示报错"></a>显示报错</h4><p>正常模式下有些行为会失败，不会报错；严格模式下将报错，情况如下：</p>
+<ul>
+<li><p>对一个对象的只读属性赋值</p>
+</li>
+<li><p>对一个只使用 getter 方法读取的属性赋值</p>
+</li>
+<li><p>对禁止扩展的对象添加新属性</p>
+</li>
+<li><p>删除一个不可删除的属性</p>
+</li>
+</ul>
+<h4 id="重名的错误"><a href="#重名的错误" class="headerlink" title="重名的错误"></a>重名的错误</h4><p>情况如下：</p>
+<ul>
+<li><p>对象不能有重名的属性</p>
+</li>
+<li><p>函数不能有重名的参数</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">p</span>: <span class="number">2</span> </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a, a, b</span>) </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="禁止八进制表示法"><a href="#禁止八进制表示法" class="headerlink" title="禁止八进制表示法"></a>禁止八进制表示法</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;use strict&quot;;</span><br><span class="line">// 正常模式下，整数的第一位如果是0，表示这是八进制数</span><br><span class="line">var a = 0100; // 语法错误</span><br></pre></td></tr></table></figure>
+
+<h4 id="arguments-对象的限制"><a href="#arguments-对象的限制" class="headerlink" title="arguments 对象的限制"></a>arguments 对象的限制</h4><p>arguments 对象是所有非箭头函数中都可用的局部变量</p>
+<p>限制如下：</p>
+<ul>
+<li><p>不允许对 arguments 赋值</p>
+</li>
+<li><p>arguments 不再追踪参数变化</p>
+</li>
+<li><p>禁止使用 arguments.callee</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="comment">// 不允许对 arguments 赋值</span></span><br><span class="line"><span class="built_in">arguments</span>++; <span class="comment">// 语法错误</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="keyword">set</span> <span class="title">p</span>(<span class="params"><span class="built_in">arguments</span></span>) &#123; &#125; &#125;; <span class="comment">// 语法错误</span></span><br><span class="line"><span class="keyword">try</span> &#123; &#125; <span class="keyword">catch</span> (<span class="built_in">arguments</span>) &#123; &#125; <span class="comment">// 语法错误</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">arguments</span>(<span class="params"></span>) </span>&#123; &#125; <span class="comment">// 语法错误</span></span><br><span class="line"><span class="keyword">var</span> f = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">&quot;arguments&quot;</span>, <span class="string">&quot;&#x27;use strict&#x27;; return 17;&quot;</span>); <span class="comment">// 语法错误</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// arguments 不再追踪参数变化</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">	a = <span class="number">2</span>;</span><br><span class="line">	<span class="keyword">return</span> [a, <span class="built_in">arguments</span>[<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">1</span>); <span class="comment">// 正常模式为[2,2]</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line"><span class="meta">  &quot;use strict&quot;</span>;</span><br><span class="line">  a = <span class="number">2</span>;</span><br><span class="line">  <span class="keyword">return</span> [a, <span class="built_in">arguments</span>[<span class="number">0</span>]];</span><br><span class="line">&#125;</span><br><span class="line">f(<span class="number">1</span>); <span class="comment">// 严格模式为[2,1]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 禁止使用 arguments.callee</span></span><br><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// argumens.callee 指向当前执行的函数</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">arguments</span>.callee; </span><br><span class="line">&#125;;</span><br><span class="line">f(); <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="函数不能声明在非函数的代码块中"><a href="#函数不能声明在非函数的代码块中" class="headerlink" title="函数不能声明在非函数的代码块中"></a>函数不能声明在非函数的代码块中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123; &#125; <span class="comment">// 语法错误</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="新增加的保留字"><a href="#新增加的保留字" class="headerlink" title="新增加的保留字"></a>新增加的保留字</h4><p>implements, interface, let, package, private, protected, public, static, yield</p>
+<p>保留字无法作为变量名</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/book/">Book</a></li>
+         
+          <li><a href="/gallery/">Gallery</a></li>
+         
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">使用方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%84%9A%E6%9C%AC"><span class="toc-number">2.1.</span> <span class="toc-text">对于脚本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A6%E6%9D%A5%E7%9A%84%E6%94%B9%E5%8F%98"><span class="toc-number">3.</span> <span class="toc-text">带来的改变</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%BF%85%E9%A1%BB%E6%98%BE%E7%A4%BA%E5%A3%B0%E6%98%8E"><span class="toc-number">3.1.</span> <span class="toc-text">全局变量必须显示声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8-with-%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.2.</span> <span class="toc-text">禁止使用 with 语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#eval-%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">3.3.</span> <span class="toc-text">eval 作用域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2-this-%E6%8C%87%E5%90%91%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.4.</span> <span class="toc-text">禁止 this 指向全局对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E5%9C%A8%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E9%81%8D%E5%8E%86%E8%B0%83%E7%94%A8%E6%A0%88"><span class="toc-number">3.5.</span> <span class="toc-text">禁止在函数内部遍历调用栈</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%8F%98%E9%87%8F%E6%88%96%E5%B1%9E%E6%80%A7%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">3.6.</span> <span class="toc-text">删除变量或属性的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%8A%A5%E9%94%99"><span class="toc-number">3.7.</span> <span class="toc-text">显示报错</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%87%8D%E5%90%8D%E7%9A%84%E9%94%99%E8%AF%AF"><span class="toc-number">3.8.</span> <span class="toc-text">重名的错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A6%81%E6%AD%A2%E5%85%AB%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E6%B3%95"><span class="toc-number">3.9.</span> <span class="toc-text">禁止八进制表示法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments-%E5%AF%B9%E8%B1%A1%E7%9A%84%E9%99%90%E5%88%B6"><span class="toc-number">3.10.</span> <span class="toc-text">arguments 对象的限制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E4%B8%8D%E8%83%BD%E5%A3%B0%E6%98%8E%E5%9C%A8%E9%9D%9E%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%9D%97%E4%B8%AD"><span class="toc-number">3.11.</span> <span class="toc-text">函数不能声明在非函数的代码块中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E5%8A%A0%E7%9A%84%E4%BF%9D%E7%95%99%E5%AD%97"><span class="toc-number">3.12.</span> <span class="toc-text">新增加的保留字</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&text=JavaScript 严格模式"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&is_video=false&description=JavaScript 严格模式"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JavaScript 严格模式&body=Check out this article: https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&title=JavaScript 严格模式"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&name=JavaScript 严格模式&description=&lt;h3 id=&#34;概述&#34;&gt;&lt;a href=&#34;#概述&#34; class=&#34;headerlink&#34; title=&#34;概述&#34;&gt;&lt;/a&gt;概述&lt;/h3&gt;&lt;p&gt;ECMAScript 严格模式是采用具有限制性 JavaScript 变体的一种方式。其目的主要有以下几点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;消除 JavaScript 语法的一些不合理、严谨的地方，减少一些怪异行为&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;消除代码运行的一些不安全之处，保证代码运行的安全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;提高编译器效率，增加运行速度&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;为未来版本的 JavaScript 做好铺垫&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.github.io/2018/06/12/old/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/&t=JavaScript 严格模式"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/gallery/">Gallery</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9RBGC8GJC6');
+    </script>
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'orechou';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
