@@ -406,13 +406,6 @@
   </url>
   
   <url>
-    <loc>https://orechou.live/tags/MySQL/</loc>
-    <lastmod>2023-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://orechou.live/tags/Life/</loc>
     <lastmod>2023-02-19</lastmod>
     <changefreq>weekly</changefreq>
@@ -421,6 +414,34 @@
   
   <url>
     <loc>https://orechou.live/tags/Song/</loc>
+    <lastmod>2023-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.live/tags/MySQL/</loc>
+    <lastmod>2023-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.live/tags/Tools/</loc>
+    <lastmod>2023-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.live/tags/Efficiency/</loc>
+    <lastmod>2023-02-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.live/tags/Other/</loc>
     <lastmod>2023-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -491,27 +512,6 @@
   
   <url>
     <loc>https://orechou.live/tags/cyber-weekly/</loc>
-    <lastmod>2023-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.live/tags/Tools/</loc>
-    <lastmod>2023-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.live/tags/Efficiency/</loc>
-    <lastmod>2023-02-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.live/tags/Other/</loc>
     <lastmod>2023-02-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
