@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-02-18T11:15:33.903Z</updated>
+  <updated>2023-03-05T12:22:37.117Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Cyber Weekly】No.5 The Curious Case of Benjamin Button</title>
+    <link href="https://orechou.live/weekly/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/"/>
+    <id>https://orechou.live/weekly/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</id>
+    <published>2023-03-05T14:00:00.000Z</published>
+    <updated>2023-03-05T12:22:37.117Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;You could be mad as a mad dog at the way things went, you can swear and curse the fates, but when it comes to the end, you</summary>
+        
+      
+    
+    
+    
+    
+    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>【读书】《卓有成效的工程师》</title>
@@ -469,29 +493,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;慢查询日志分析&quot;&gt;&lt;a href=&quot;#慢查询日志分析&quot; class=&quot;headerlink&quot; title=&quot;慢查询日志分析&quot;&gt;&lt;/a&gt;慢查询日志分析&lt;/h2&gt;&lt;h3 id=&quot;设置慢查询&quot;&gt;&lt;a href=&quot;#设置慢查询&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MySQL" scheme="https://orechou.live/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MySQL】Explain</title>
-    <link href="https://orechou.live/mysql/MySQL_Explain/"/>
-    <id>https://orechou.live/mysql/MySQL_Explain/</id>
-    <published>2021-08-06T09:00:00.000Z</published>
-    <updated>2022-03-27T11:14:13.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;MySQL-Explain&quot;&gt;&lt;a href=&quot;#MySQL-Explain&quot; class=&quot;headerlink&quot; title=&quot;MySQL Explain&quot;&gt;&lt;/a&gt;MySQL Explain&lt;/h1&gt;&lt;p&gt;Explain 是 MySQL</summary>
         
       
     

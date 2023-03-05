@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orechou.live/weekly/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</loc>
+    <lastmod>2023-03-05</lastmod>
+  </url>
+  <url>
     <loc>https://orechou.live/reading/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
     <lastmod>2023-02-18</lastmod>
   </url>
