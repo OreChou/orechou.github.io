@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-03-05T12:57:01.471Z</updated>
+  <updated>2023-03-19T13:39:08.185Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Cyber Weekly】No.6 Suzume</title>
+    <link href="https://orechou.live/weekly/No.6%20Suzume/"/>
+    <id>https://orechou.live/weekly/No.6%20Suzume/</id>
+    <published>2023-03-19T14:00:00.000Z</published>
+    <updated>2023-03-19T13:39:08.185Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;《Suzume》是新海诚的第 8 部电影，中文名是《铃芽之旅》，国内将在本月的 24 号引进上映。本周在 Apple Music 上一直循环该电影歌词（电影在日本去年年底已上映），仍旧是 RADWIMPS 乐队的词曲。自 16</summary>
+        
+      
+    
+    
+    
+    
+    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>【Cyber Weekly】No.5 The Curious Case of Benjamin Button</title>
@@ -470,29 +494,6 @@
         
     <summary type="html">&lt;p&gt;有的列表获取的业务场景，需要根据一些条件将数据置顶。&lt;/p&gt;
 &lt;p&gt;例如有一张表有 id 和 name</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MySQL" scheme="https://orechou.live/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MySQL】慢 SQL 分析</title>
-    <link href="https://orechou.live/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/"/>
-    <id>https://orechou.live/mysql/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/</id>
-    <published>2021-08-10T04:30:00.000Z</published>
-    <updated>2022-03-27T11:14:03.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;慢查询日志分析&quot;&gt;&lt;a href=&quot;#慢查询日志分析&quot; class=&quot;headerlink&quot; title=&quot;慢查询日志分析&quot;&gt;&lt;/a&gt;慢查询日志分析&lt;/h2&gt;&lt;h3 id=&quot;设置慢查询&quot;&gt;&lt;a href=&quot;#设置慢查询&quot; class=&quot;headerlink&quot;</summary>
         
       
     
