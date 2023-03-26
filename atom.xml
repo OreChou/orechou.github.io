@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-03-19T13:39:08.185Z</updated>
+  <updated>2023-03-26T13:33:54.492Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Cyber Weekly】No.7 Kanata Haluka</title>
+    <link href="https://orechou.live/weekly/No.7%20Kanata%20Haluka/"/>
+    <id>https://orechou.live/weekly/No.7%20Kanata%20Haluka/</id>
+    <published>2023-03-26T14:00:00.000Z</published>
+    <updated>2023-03-26T13:33:54.492Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;歌词：&lt;br&gt;君の笑い方はなぜか優しさに似てた&lt;br&gt;君の歌い方は今日の夕立に見えた&lt;br&gt;何千年後の人類が何をしているかより&lt;br&gt;まだ誰も知らない顔で 笑う君を見たい&lt;br&gt;僕にはない</summary>
+        
+      
+    
+    
+    
+    
+    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    
+  </entry>
   
   <entry>
     <title>【Cyber Weekly】No.6 Suzume</title>
@@ -477,30 +501,6 @@
     
     
     <category term="Life" scheme="https://orechou.live/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【MySQL】实现列表数据置顶</title>
-    <link href="https://orechou.live/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/"/>
-    <id>https://orechou.live/mysql/MySQL_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</id>
-    <published>2021-08-16T06:46:00.000Z</published>
-    <updated>2022-03-27T11:14:09.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;有的列表获取的业务场景，需要根据一些条件将数据置顶。&lt;/p&gt;
-&lt;p&gt;例如有一张表有 id 和 name</summary>
-        
-      
-    
-    
-    
-    
-    <category term="MySQL" scheme="https://orechou.live/tags/MySQL/"/>
     
   </entry>
   
