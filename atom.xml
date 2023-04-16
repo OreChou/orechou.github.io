@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-04-01T07:17:39.060Z</updated>
+  <updated>2023-04-16T15:51:18.727Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>何时退休：先做一个财务自由计划.md</title>
+    <link href="https://orechou.live/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"/>
+    <id>https://orechou.live/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</id>
+    <published>2023-04-16T15:30:00.000Z</published>
+    <updated>2023-04-16T15:51:18.727Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;https://orechou.oss-cn-shenzhen.aliyuncs.com/images/The_Shawshank_Redemption_01.jpeg&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;I think it the</summary>
+        
+      
+    
+    
+    
+    
+    <category term="investment" scheme="https://orechou.live/tags/investment/"/>
+    
+  </entry>
   
   <entry>
     <title>投资季度总结（2023Q1）</title>
@@ -476,31 +501,6 @@
     
     
     <category term="Life" scheme="https://orechou.live/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用 SwiftUI 在地图中绘制坐标轨迹</title>
-    <link href="https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"/>
-    <id>https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</id>
-    <published>2022-03-27T09:43:00.000Z</published>
-    <updated>2023-02-12T13:19:19.543Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;一直有想做属于自己的 App 的想法，零零散散地有学习一些内容，现在决定开启一个记录学习过程的系列博文，以此来巩固自己所学到的 iOS 开发知识和激励自己把第一个 App</summary>
-        
-      
-    
-    
-    
-    
-    <category term="iOS" scheme="https://orechou.live/tags/iOS/"/>
-    
-    <category term="SwiftUI" scheme="https://orechou.live/tags/SwiftUI/"/>
     
   </entry>
   
