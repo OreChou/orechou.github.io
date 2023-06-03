@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-04-16T16:10:52.199Z</updated>
+  <updated>2023-06-03T08:29:48.519Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kafka 消息大量积压的一些总结</title>
+    <link href="https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
+    <id>https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
+    <published>2023-06-03T08:30:00.000Z</published>
+    <updated>2023-06-03T08:29:48.519Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文主要总结一些 Kafka 作为消息队列使用时，当线上出现消息大量积压后的处理方法以及平时使用时应该注意的点。一般从三个方向排查分析问题，消费者的问题、分区设计的问题和网络问题。&lt;/p&gt;
+&lt;h1 id=&quot;消费者导致&quot;&gt;&lt;a href=&quot;#消费者导致&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="middleware" scheme="https://orechou.live/tags/middleware/"/>
+    
+    <category term="Kafka" scheme="https://orechou.live/tags/Kafka/"/>
+    
+  </entry>
   
   <entry>
     <title>何时退休（一）：先做一个财务自由计划</title>
@@ -477,30 +503,6 @@
     <category term="Life" scheme="https://orechou.live/tags/Life/"/>
     
     <category term="Song" scheme="https://orechou.live/tags/Song/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【生活】EDC 清单</title>
-    <link href="https://orechou.live/life/EDC%20%E6%B8%85%E5%8D%95/"/>
-    <id>https://orechou.live/life/EDC%20%E6%B8%85%E5%8D%95/</id>
-    <published>2022-04-12T15:40:00.000Z</published>
-    <updated>2022-05-29T09:32:45.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;EDC means everyday carry，即是每日通勤携带的物件。之前看过一本书《只过必要生活》，里面有一个建议是将你每天会用到的物品都放到通勤背包中每天携带。这篇博文就是整理我如今每天必用、必带的物品。&lt;/p&gt;
-&lt;h2 id=&quot;数码物品&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
     
   </entry>
   
