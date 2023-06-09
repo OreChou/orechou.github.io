@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-03T08:29:48.519Z</updated>
+  <updated>2023-06-09T07:20:01.834Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JUC 工具：LockSupport</title>
+    <link href="https://orechou.live/java/JUC-tools-LockSupport/"/>
+    <id>https://orechou.live/java/JUC-tools-LockSupport/</id>
+    <published>2023-06-09T09:00:00.000Z</published>
+    <updated>2023-06-09T07:20:01.834Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;p&gt;&lt;code&gt;LockSupport&lt;/code&gt; 是 Java 并发工具包</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Java" scheme="https://orechou.live/tags/Java/"/>
+    
+    <category term="JUC" scheme="https://orechou.live/tags/JUC/"/>
+    
+  </entry>
   
   <entry>
     <title>Kafka 消息大量积压的一些总结</title>
@@ -477,32 +502,6 @@
     
     
     <category term="Other" scheme="https://orechou.live/tags/Other/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【歌曲】Deadman&#39;s Gun &amp;&amp; That&#39;s The Way It Is</title>
-    <link href="https://orechou.live/life/Deadman&#39;s%20Gun/"/>
-    <id>https://orechou.live/life/Deadman&#39;s%20Gun/</id>
-    <published>2022-04-27T16:25:00.000Z</published>
-    <updated>2022-07-30T09:27:42.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;成长道路是比较痛苦的，从青年一路走过来，自己的棱角被磨圆，没有了以往的神气。&lt;br&gt;往往在深夜的时候，想起曾经那些喜欢的英雄，都已过去，都已逝去。&lt;br&gt;而我才后知后觉，忘了告别。&lt;/p&gt;
-&lt;p&gt;歌曲 Deadman’s Gun 的 &lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
-    
-    <category term="Song" scheme="https://orechou.live/tags/Song/"/>
     
   </entry>
   
