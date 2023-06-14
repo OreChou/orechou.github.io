@@ -39,6 +39,21 @@
     
     <!-- title -->
     <title>Kafka 消息大量积压的一些总结</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -57,9 +72,9 @@
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -80,13 +95,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/java/juc-tools-locksupport/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/java/juc-tools-locksupport/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="Next post" href="/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -100,7 +115,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&text=Kafka 消息大量积压的一些总结"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&is_video=false&description=Kafka 消息大量积压的一些总结"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Kafka 消息大量积压的一些总结&body=Check out this article: https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Kafka 消息大量积压的一些总结&body=Check out this article: https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
@@ -110,32 +125,35 @@
 </ul>
 
     </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AF%BC%E8%87%B4"><span class="toc-number">1.</span> <span class="toc-text">消费者导致</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E6%B6%88%E8%B4%B9%E9%80%9F%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">提高消费速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">其他的注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B6%88%E8%B4%B9%E8%80%85%E8%8E%B7%E5%8F%96%E6%B6%88%E6%81%AF%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">控制消费者获取消息的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化消费者的处理逻辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%AE%BE%E8%AE%A1%E4%B8%8D%E5%90%88%E7%90%86%E5%AF%BC%E8%87%B4"><span class="toc-number">2.</span> <span class="toc-text">分区设计不合理导致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E7%93%B6%E9%A2%88%E5%AF%BC%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">网络带宽瓶颈导致</span></a></li></ol>
-    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AF%BC%E8%87%B4"><span class="toc-number">1.</span> <span class="toc-text">消费者导致</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E6%B6%88%E8%B4%B9%E9%80%9F%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">提高消费速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">其他的注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B6%88%E8%B4%B9%E8%80%85%E8%8E%B7%E5%8F%96%E6%B6%88%E6%81%AF%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">控制消费者获取消息的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化消费者的处理逻辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%AE%BE%E8%AE%A1%E4%B8%8D%E5%90%88%E7%90%86%E5%AF%BC%E8%87%B4"><span class="toc-number">2.</span> <span class="toc-text">分区设计不合理导致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E7%93%B6%E9%A2%88%E5%AF%BC%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">网络带宽瓶颈导致</span></a></li></ol>
+      </div>
+    
   </span>
 </div>
 
     
-    <div class="content index py4">
+    <div class="content index py4 ">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
-    <h1 class="posttitle" itemprop="name headline">
+    <h1 class="posttitle p-name" itemprop="name headline">
         Kafka 消息大量积压的一些总结
     </h1>
 
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">OreChou</span>
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
       </span>
       
     <div class="postdate">
       
-        <time datetime="2023-06-03T08:30:00.000Z" itemprop="datePublished">2023-06-03</time>
+        <time datetime="2023-06-03T08:30:00.000Z" class="dt-published" itemprop="datePublished">2023-06-03</time>
         
       
     </div>
@@ -145,8 +163,8 @@
 
       
     <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/Kafka/" rel="tag">Kafka</a>, <a class="tag-link-link" href="/tags/middleware/" rel="tag">middleware</a>
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Kafka/" rel="tag">Kafka</a>, <a class="p-category" href="/tags/middleware/" rel="tag">middleware</a>
     </div>
 
 
@@ -154,7 +172,7 @@
   </header>
   
 
-  <div class="content" itemprop="articleBody">
+  <div class="content e-content" itemprop="articleBody">
     <p>本文主要总结一些 Kafka 作为消息队列使用时，当线上出现消息大量积压后的处理方法以及平时使用时应该注意的点。一般从三个方向排查分析问题，消费者的问题、分区设计的问题和网络问题。</p>
 <h1 id="消费者导致"><a href="#消费者导致" class="headerlink" title="消费者导致"></a>消费者导致</h1><p>大部分消息积压基本都是消费者出现了状况，消费者处理的速度慢、或者消费者出现了故障。确认消费者出现问题后，我们首先要做的就是恢复或者提高消费速度。</p>
 <h2 id="提高消费速度"><a href="#提高消费速度" class="headerlink" title="提高消费速度"></a>提高消费速度</h2><p>一般来说，我们会对消息队列里面消息数量做监控，当消息到达一定阈值的时候，自动化地去对消费者的数量扩容。但是因为 Kafka 的 Topic 的 Partition 数量是有限制的，当消费者的数量扩容到 Partition 数量之后，再对消费者数量进行增加就没有作用了。如果这时并没有解决消费者速度的问题，我们需要能够快速把消费的能力再放大，相应的步骤如下：</p>
@@ -204,23 +222,26 @@
 
     <div id="nav-footer" style="display: none">
       <ul>
-         
+        
           <li><a href="/">Home</a></li>
-         
+        
           <li><a href="/archives/">Writing</a></li>
-         
+        
           <li><a href="/book/">Book</a></li>
-         
+        
           <li><a href="/gallery/">Gallery</a></li>
-         
+        
           <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AF%BC%E8%87%B4"><span class="toc-number">1.</span> <span class="toc-text">消费者导致</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E6%B6%88%E8%B4%B9%E9%80%9F%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">提高消费速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">其他的注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B6%88%E8%B4%B9%E8%80%85%E8%8E%B7%E5%8F%96%E6%B6%88%E6%81%AF%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">控制消费者获取消息的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化消费者的处理逻辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%AE%BE%E8%AE%A1%E4%B8%8D%E5%90%88%E7%90%86%E5%AF%BC%E8%87%B4"><span class="toc-number">2.</span> <span class="toc-text">分区设计不合理导致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E7%93%B6%E9%A2%88%E5%AF%BC%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">网络带宽瓶颈导致</span></a></li></ol>
-    </div>
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B6%88%E8%B4%B9%E8%80%85%E5%AF%BC%E8%87%B4"><span class="toc-number">1.</span> <span class="toc-text">消费者导致</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E9%AB%98%E6%B6%88%E8%B4%B9%E9%80%9F%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">提高消费速度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E7%9A%84%E6%B3%A8%E6%84%8F%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">其他的注意点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E6%B6%88%E8%B4%B9%E8%80%85%E8%8E%B7%E5%8F%96%E6%B6%88%E6%81%AF%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-number">1.2.1.</span> <span class="toc-text">控制消费者获取消息的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%B6%88%E8%B4%B9%E8%80%85%E7%9A%84%E5%A4%84%E7%90%86%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.2.</span> <span class="toc-text">优化消费者的处理逻辑</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%BA%E8%AE%BE%E8%AE%A1%E4%B8%8D%E5%90%88%E7%90%86%E5%AF%BC%E8%87%B4"><span class="toc-number">2.</span> <span class="toc-text">分区设计不合理导致</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E7%93%B6%E9%A2%88%E5%AF%BC%E8%87%B4"><span class="toc-number">3.</span> <span class="toc-text">网络带宽瓶颈导致</span></a></li></ol>
+      </div>
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -228,7 +249,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&text=Kafka 消息大量积压的一些总结"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&is_video=false&description=Kafka 消息大量积压的一些总结"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Kafka 消息大量积压的一些总结&body=Check out this article: https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Kafka 消息大量积压的一些总结&body=Check out this article: https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/&title=Kafka 消息大量积压的一些总结"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
@@ -240,10 +261,12 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -282,12 +305,12 @@
 
 
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
 
 
 
@@ -295,14 +318,14 @@
 <!-- clipboard -->
 
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
     var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
     // mount it!
     $(".highlight table").before(btn);
     var clip = new ClipboardJS('.btn-copy', {
@@ -322,21 +345,9 @@
 
 <!-- search -->
 
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9RBGC8GJC6');
-    </script>
-
 <!-- Baidu Analytics -->
 
 <!-- Cloudflare Analytics -->
-
-<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

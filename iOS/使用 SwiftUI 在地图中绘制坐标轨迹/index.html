@@ -43,6 +43,21 @@
     
     <!-- title -->
     <title>使用 SwiftUI 在地图中绘制坐标轨迹</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -61,9 +76,9 @@
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -84,13 +99,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/life/EDC%20%E6%B8%85%E5%8D%95/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/life/EDC%20%E6%B8%85%E5%8D%95/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="Next post" href="/life/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/life/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -104,7 +119,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&text=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&is_video=false&description=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用 SwiftUI 在地图中绘制坐标轨迹&body=Check out this article: https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 SwiftUI 在地图中绘制坐标轨迹&body=Check out this article: https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
@@ -114,32 +129,31 @@
 </ul>
 
     </div>
-    <div id="toc">
-      
-    </div>
+    
+    
   </span>
 </div>
 
     
-    <div class="content index py4">
+    <div class="content index py4 ">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
-    <h1 class="posttitle" itemprop="name headline">
+    <h1 class="posttitle p-name" itemprop="name headline">
         使用 SwiftUI 在地图中绘制坐标轨迹
     </h1>
 
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">OreChou</span>
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
       </span>
       
     <div class="postdate">
       
-        <time datetime="2022-03-27T09:43:00.000Z" itemprop="datePublished">2022-03-27</time>
+        <time datetime="2022-03-27T09:43:00.000Z" class="dt-published" itemprop="datePublished">2022-03-27</time>
         
       
     </div>
@@ -149,8 +163,8 @@
 
       
     <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/SwiftUI/" rel="tag">SwiftUI</a>, <a class="tag-link-link" href="/tags/iOS/" rel="tag">iOS</a>
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/SwiftUI/" rel="tag">SwiftUI</a>, <a class="p-category" href="/tags/iOS/" rel="tag">iOS</a>
     </div>
 
 
@@ -158,7 +172,7 @@
   </header>
   
 
-  <div class="content" itemprop="articleBody">
+  <div class="content e-content" itemprop="articleBody">
     <p>一直有想做属于自己的 App 的想法，零零散散地有学习一些内容，现在决定开启一个记录学习过程的系列博文，以此来巩固自己所学到的 iOS 开发知识和激励自己把第一个 App 实现出来。<br>脑海中一直有个做地图类应用的想法，本科做移动轨迹相关的毕业设计。此类应用主要包括地图（Map）、坐标点（Location）、绘制轨迹（Polyline）几个要素。这篇博文将会使用 SwiftUI 在地图上连接坐标点绘制出轨迹。GPS 坐标数据可以在 <a target="_blank" rel="noopener" href="https://www.microsoft.com/en-us/download/confirmation.aspx?id=52367">microsoft</a> 上下载。效果如下：<br><img src="https://raw.githubusercontent.com/OreChou/PicBed/main/img/polyline_demo.png"><br>首先创建一个 SwiftUI 工程的项目，项目的文件组织如下：<br><img src="https://raw.githubusercontent.com/OreChou/PicBed/main/img/SwiftUIPolyline_Project.png"><br>先定义坐标点的数据结构，代码如下：</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Foundation</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Location</span>: <span class="title">Hashable</span>, <span class="title">Codable</span>, <span class="title">Identifiable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> id: <span class="type">Int</span></span><br><span class="line">    <span class="comment">// 经度</span></span><br><span class="line">    <span class="keyword">var</span> longitude: <span class="type">Double</span></span><br><span class="line">    <span class="comment">// 纬度</span></span><br><span class="line">    <span class="keyword">var</span> latitude: <span class="type">Double</span></span><br><span class="line">    <span class="keyword">var</span> isValid: <span class="type">Bool</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>坐标数据的 ViewModel，我们将从 location.json 中加载所有的坐标点，代码如下：</p>
@@ -186,23 +200,22 @@
 
     <div id="nav-footer" style="display: none">
       <ul>
-         
+        
           <li><a href="/">Home</a></li>
-         
+        
           <li><a href="/archives/">Writing</a></li>
-         
+        
           <li><a href="/book/">Book</a></li>
-         
+        
           <li><a href="/gallery/">Gallery</a></li>
-         
+        
           <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      
-    </div>
+    
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -210,7 +223,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&text=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&is_video=false&description=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=使用 SwiftUI 在地图中绘制坐标轨迹&body=Check out this article: https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=使用 SwiftUI 在地图中绘制坐标轨迹&body=Check out this article: https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/iOS/%E4%BD%BF%E7%94%A8%20SwiftUI%20%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/&title=使用 SwiftUI 在地图中绘制坐标轨迹"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
@@ -222,10 +235,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -264,12 +277,12 @@
 
 
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
 
 
 
@@ -277,14 +290,14 @@
 <!-- clipboard -->
 
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
     var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
     // mount it!
     $(".highlight table").before(btn);
     var clip = new ClipboardJS('.btn-copy', {
@@ -304,21 +317,9 @@
 
 <!-- search -->
 
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9RBGC8GJC6');
-    </script>
-
 <!-- Baidu Analytics -->
 
 <!-- Cloudflare Analytics -->
-
-<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 

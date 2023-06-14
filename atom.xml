@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-09T07:20:01.834Z</updated>
+  <updated>2023-06-14T10:07:14.826Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
+    <link href="https://orechou.live/ai-tools/use-chatgpt-program/"/>
+    <id>https://orechou.live/ai-tools/use-chatgpt-program/</id>
+    <published>2023-06-14T10:30:00.000Z</published>
+    <updated>2023-06-14T10:07:14.826Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近半导体和 AI 概念股狂涨，在二级市场没有搭上这趟车的我坐不住了。不敢追高的我只能写一写博客来缓解郁闷的心情。这篇文章是我作为程序员，介绍一下日常工作里，如何使用 ChatGPT 简化我的工作。&lt;/p&gt;
+&lt;h2 id=&quot;分析需求&quot;&gt;&lt;a href=&quot;#分析需求&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="AI" scheme="https://orechou.live/tags/AI/"/>
+    
+    <category term="ChatGPT" scheme="https://orechou.live/tags/ChatGPT/"/>
+    
+  </entry>
   
   <entry>
     <title>JUC 工具：LockSupport</title>
@@ -478,30 +504,6 @@
     <category term="Spring" scheme="https://orechou.live/tags/Spring/"/>
     
     <category term="Java" scheme="https://orechou.live/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【资源】Batcave Resources 第一期</title>
-    <link href="https://orechou.live/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/"/>
-    <id>https://orechou.live/other/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</id>
-    <published>2022-05-13T15:40:00.000Z</published>
-    <updated>2022-07-12T07:41:33.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;下面记录一些平时收录的一些资源。&lt;/p&gt;
-&lt;h2 id=&quot;资源站&quot;&gt;&lt;a href=&quot;#资源站&quot; class=&quot;headerlink&quot; title=&quot;资源站&quot;&gt;&lt;/a&gt;资源站&lt;/h2&gt;&lt;p&gt;[1]&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Other" scheme="https://orechou.live/tags/Other/"/>
     
   </entry>
   

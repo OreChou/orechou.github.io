@@ -40,6 +40,21 @@
     
     <!-- title -->
     <title>Spring Web Flow</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
     <!-- styles -->
     
 <link rel="stylesheet" href="/css/style.css">
@@ -58,9 +73,9 @@
 <body class="max-width mx-auto px3 ltr">
     
       <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
   <span id="menu">
     <span id="nav">
       <ul>
@@ -81,13 +96,13 @@
     <span id="actions">
       <ul>
         
-        <li><a class="icon" aria-label="Previous post" href="/old/TensorLy_In_Action/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Previous post" href="/old/TensorLy_In_Action/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
-        <li><a class="icon" aria-label="Next post" href="/old/%E8%A7%A3%E6%9E%90tern%E5%B7%A5%E4%BD%9C%E6%B5%81/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Next post" href="/old/%E8%A7%A3%E6%9E%90tern%E5%B7%A5%E4%BD%9C%E6%B5%81/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
-        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="Share post" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
       <span id="i-prev" class="info" style="display:none;">Previous post</span>
       <span id="i-next" class="info" style="display:none;">Next post</span>
@@ -101,7 +116,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/old/spring_flow/&text=Spring Web Flow"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/old/spring_flow/&is_video=false&description=Spring Web Flow"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Spring Web Flow&body=Check out this article: https://orechou.live/old/spring_flow/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring Web Flow&body=Check out this article: https://orechou.live/old/spring_flow/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
@@ -111,32 +126,31 @@
 </ul>
 
     </div>
-    <div id="toc">
-      
-    </div>
+    
+    
   </span>
 </div>
 
     
-    <div class="content index py4">
+    <div class="content index py4 ">
         
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
   <header>
     
-    <h1 class="posttitle" itemprop="name headline">
+    <h1 class="posttitle p-name" itemprop="name headline">
         Spring Web Flow
     </h1>
 
 
 
     <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">OreChou</span>
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
       </span>
       
     <div class="postdate">
       
-        <time datetime="2016-11-21T03:34:27.000Z" itemprop="datePublished">2016-11-21</time>
+        <time datetime="2016-11-21T03:34:27.000Z" class="dt-published" itemprop="datePublished">2016-11-21</time>
         
       
     </div>
@@ -150,7 +164,7 @@
   </header>
   
 
-  <div class="content" itemprop="articleBody">
+  <div class="content e-content" itemprop="articleBody">
     <p>本Blog内容主要基于《Spring In Action》第四版和Github上面的sample。The first production ready 1.0 release was made on 2006-10-26. Version 2.0, first released on 2008-04-29。从那之后就没有大的版本更新。</p>
 <hr>
 <p>1、在Spring中配置Web Flow<br>《Spring In Action》第四版说“还不支持在Java中配置Spring Web Flow”，但是实际上已经支持了Java的配置。主要在代码中继承并实现<code>AbstractFlowConfiguration</code>接口。首先做好SpringMVC的Java配置。因为Spring Web Flow是构建于SpringMVC基础之上，所有的请求都需要首先经过SpringMVC的DispatcherServlet。<br>（1）装配流程执行器<br>实现一个继承了AbstractFlowConfiguration的类。<br><code>    @Bean     public FlowExecutor flowExecutor() &#123;         return getFlowExecutorBuilder(flowRegistry())                 .addFlowExecutionListener(new SecurityFlowExecutionListener(), &quot;*&quot;)                 .build();     &#125;</code><br>流程执行器驱动流程的执行，当用户进入一个流程时，流程执行器会为用户创建并启动一个流程执行实例。<br>（2）配置流程注册表<br>加载流程定义并让流程执行器能够使用它们。<br><code>    @Bean     public FlowDefinitionRegistry flowRegistry() &#123;         return getFlowDefinitionRegistryBuilder(flowBuilderServices())         .setBasePath(&quot;/WEB-INF&quot;)                 .addFlowLocationPattern(&quot;/**/*-flow.xml&quot;).build();     &#125;</code><br>（3）处理流程请求<br>需要配置一个FlowHandlerMapping来帮助DispatcherServlet将流程的请求发送给Spring Web Flow。<br><code>    @Bean     public FlowHandlerMapping flowHandlerMapping() &#123;         FlowHandlerMapping handlerMapping = new FlowHandlerMapping();         handlerMapping.setOrder(-1);         handlerMapping.setFlowRegistry(this.webFlowConfig.flowRegistry());         return handlerMapping;     &#125;</code><br>这里面装配了流程注册表，这样就能够知道如何将请求的URL匹配到流程上。配置这个Bean的作用只是将流程请求定向到swf，但是并不做响应。<br><code>    @Bean     public FlowHandlerAdapter flowHandlerAdapter() &#123;         FlowHandlerAdapter handlerAdapter = new FlowHandlerAdapter();         handlerAdapter.setFlowExecutor(this.webFlowConfig.flowExecutor());         handlerAdapter.setSaveOutputToFlashScopeOnRedirect(true);         return handlerAdapter;     &#125;</code><br>我们可以看到这里面设置了流程的执行器，类似于SpringMVC中的控制器，它会响应发送的请求，并对其进行处理。</p>
@@ -175,23 +189,22 @@
 
     <div id="nav-footer" style="display: none">
       <ul>
-         
+        
           <li><a href="/">Home</a></li>
-         
+        
           <li><a href="/archives/">Writing</a></li>
-         
+        
           <li><a href="/book/">Book</a></li>
-         
+        
           <li><a href="/gallery/">Gallery</a></li>
-         
+        
           <li><a href="/about/">About</a></li>
         
       </ul>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      
-    </div>
+    
+    
 
     <div id="share-footer" style="display: none">
       <ul>
@@ -199,7 +212,7 @@
   <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/old/spring_flow/&text=Spring Web Flow"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/old/spring_flow/&is_video=false&description=Spring Web Flow"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Spring Web Flow&body=Check out this article: https://orechou.live/old/spring_flow/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Spring Web Flow&body=Check out this article: https://orechou.live/old/spring_flow/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
   <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/old/spring_flow/&title=Spring Web Flow"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
@@ -211,10 +224,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
     </div>
 
   </div>
@@ -253,12 +266,12 @@
 
 
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
 
 
     <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
 
 
 
@@ -266,14 +279,14 @@
 <!-- clipboard -->
 
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
   
   <script type="text/javascript">
   $(function() {
     // copy-btn HTML
     var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
     // mount it!
     $(".highlight table").before(btn);
     var clip = new ClipboardJS('.btn-copy', {
@@ -293,21 +306,9 @@
 
 <!-- search -->
 
-<!-- Google Analytics -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9RBGC8GJC6');
-    </script>
-
 <!-- Baidu Analytics -->
 
 <!-- Cloudflare Analytics -->
-
-<!-- Umami Analytics -->
 
 <!-- Disqus Comments -->
 
