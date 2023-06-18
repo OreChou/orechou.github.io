@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-14T10:07:14.826Z</updated>
+  <updated>2023-06-18T14:29:46.677Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【观影】《The Flash》</title>
+    <link href="https://orechou.live/life/movie/the-flash/"/>
+    <id>https://orechou.live/life/movie/the-flash/</id>
+    <published>2023-06-18T15:00:00.000Z</published>
+    <updated>2023-06-18T14:29:46.677Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Run, Barry, Run.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;https://orechou.oss-cn-shenzhen.aliyuncs.com/images/flash.jpeg&quot;&gt;&lt;/p&gt;
+&lt;p&gt;最终</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Movie" scheme="https://orechou.live/tags/Movie/"/>
+    
+  </entry>
   
   <entry>
     <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
@@ -479,31 +506,6 @@
     
     
     <category term="Life" scheme="https://orechou.live/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>自定义 Spring Security 鉴权</title>
-    <link href="https://orechou.live/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/"/>
-    <id>https://orechou.live/java/Java_%E8%87%AA%E5%AE%9A%E4%B9%89%20Spring%20Security%20%E9%89%B4%E6%9D%83/</id>
-    <published>2022-06-01T09:00:00.000Z</published>
-    <updated>2023-02-12T13:18:01.380Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h1&gt;&lt;p&gt;当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Spring" scheme="https://orechou.live/tags/Spring/"/>
-    
-    <category term="Java" scheme="https://orechou.live/tags/Java/"/>
     
   </entry>
   
