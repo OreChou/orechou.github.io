@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-18T14:29:46.677Z</updated>
+  <updated>2023-06-27T08:23:44.733Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【DevOps】使用 Grafana 和 Prometheus 做服务监控</title>
+    <link href="https://orechou.live/devops/grafana-prometheus-practice/"/>
+    <id>https://orechou.live/devops/grafana-prometheus-practice/</id>
+    <published>2023-06-27T07:45:00.000Z</published>
+    <updated>2023-06-27T08:23:44.733Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近需要对自己的一些服务做监控，于是想要动手实践使用一下 Grafana 和 Prometheus。这篇文章就主要介绍搭建 Grafana 和 Prometheus 对 MySQL 做监控的过程。&lt;/p&gt;
+&lt;h1 id=&quot;工具介绍&quot;&gt;&lt;a href=&quot;#工具介绍&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="DevOps" scheme="https://orechou.live/tags/DevOps/"/>
+    
+    <category term="Grafana" scheme="https://orechou.live/tags/Grafana/"/>
+    
+    <category term="Prometheus" scheme="https://orechou.live/tags/Prometheus/"/>
+    
+  </entry>
   
   <entry>
     <title>【观影】《The Flash》</title>
@@ -483,29 +511,6 @@
     
     
     <category term="Reading" scheme="https://orechou.live/tags/Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【生活】手机应用安装 &amp; 使用指南</title>
-    <link href="https://orechou.live/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"/>
-    <id>https://orechou.live/life/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85%20&amp;%20%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</id>
-    <published>2022-06-04T16:20:00.000Z</published>
-    <updated>2022-06-05T07:48:04.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如今的世界，手机已经属于出行、工作、娱乐、生活所必不可缺少的设备。各种应用软件，例如知乎、抖音、淘宝等占据了人生的大部分时间。我作为电子产品的重度用户，在每天与电子设备的接触过程中，不仅耗费了大量的时间、也让身体出现一些问题。鉴于此，我决定优化手机应用软件的安装、使用，将手</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
     
   </entry>
   
