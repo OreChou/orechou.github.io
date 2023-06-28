@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-27T08:23:44.733Z</updated>
+  <updated>2023-06-28T10:23:11.680Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【DevOps】使用 Docker 搭建 MySQL 主从复制架构</title>
+    <link href="https://orechou.live/devops/mysql-master-slave-practice/"/>
+    <id>https://orechou.live/devops/mysql-master-slave-practice/</id>
+    <published>2023-06-28T10:30:00.000Z</published>
+    <updated>2023-06-28T10:23:11.680Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这篇文章介绍一下如何使用 Docker 搭建 MySQL 主从复制架构，文中的架构中包含一个主节点 master，一个从节点 slave。&lt;/p&gt;
+&lt;h1 id=&quot;创建-docker-网络&quot;&gt;&lt;a href=&quot;#创建-docker-网络&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="MySQL" scheme="https://orechou.live/tags/MySQL/"/>
+    
+    <category term="DevOps" scheme="https://orechou.live/tags/DevOps/"/>
+    
+  </entry>
   
   <entry>
     <title>【DevOps】使用 Grafana 和 Prometheus 做服务监控</title>
@@ -488,29 +514,6 @@
     
     
     <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【读书】《被讨厌的勇气：“自我启发之父”阿德勒的哲学课》</title>
-    <link href="https://orechou.live/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/"/>
-    <id>https://orechou.live/reading/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%EF%BC%9A%E2%80%9C%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E2%80%9D%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</id>
-    <published>2022-08-13T07:37:00.000Z</published>
-    <updated>2023-02-18T11:15:06.935Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;三句话总结本书&quot;&gt;&lt;a href=&quot;#三句话总结本书&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Reading" scheme="https://orechou.live/tags/Reading/"/>
     
   </entry>
   

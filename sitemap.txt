@@ -1,3 +1,4 @@
+https://orechou.live/devops/mysql-master-slave-practice/
 https://orechou.live/devops/grafana-prometheus-practice/
 https://orechou.live/life/movie/the-flash/
 https://orechou.live/book/index.html
