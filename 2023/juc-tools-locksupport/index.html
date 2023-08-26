@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="简介LockSupport 是 Java 并发工具包 java.util.concurrent 中的一个用于创建锁和其他同步类的基本线程阻塞原语。LockSupport 提供了 park() 和 unpark() 方法来停止和恢复线程。这些方法比低级的 wait&#x2F;notify 和 notifyAll 方法更容易使用，并且与 java.util.concurrent 的高级同步工具更好地互相配合。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JUC 工具：LockSupport">
+<meta property="og:url" content="https://orechou.live/2023/juc-tools-locksupport/index.html">
+<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:description" content="简介LockSupport 是 Java 并发工具包 java.util.concurrent 中的一个用于创建锁和其他同步类的基本线程阻塞原语。LockSupport 提供了 park() 和 unpark() 方法来停止和恢复线程。这些方法比低级的 wait&#x2F;notify 和 notifyAll 方法更容易使用，并且与 java.util.concurrent 的高级同步工具更好地互相配合。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-09T09:00:00.000Z">
+<meta property="article:modified_time" content="2023-06-09T07:20:01.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="JUC">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>JUC 工具：LockSupport</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2023/use-chatgpt-program/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2023/juc-tools-locksupport/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2023/juc-tools-locksupport/&text=JUC 工具：LockSupport"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2023/juc-tools-locksupport/&is_video=false&description=JUC 工具：LockSupport"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JUC 工具：LockSupport&body=Check out this article: https://orechou.live/2023/juc-tools-locksupport/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2023/juc-tools-locksupport/&name=JUC 工具：LockSupport&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2023/juc-tools-locksupport/&t=JUC 工具：LockSupport"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%94%E7%96%91"><span class="toc-number">3.</span> <span class="toc-text">答疑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q1%EF%BC%9Apark-%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84-blocker-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">Q1：park 方法中的 blocker 的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q2%EF%BC%9ALockSupport-%E7%9B%B8%E6%AF%94%E4%BA%8E-Object-wait-%E5%92%8C-Object-notify-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">3.2.</span> <span class="toc-text">Q2：LockSupport 相比于 Object.wait 和 Object.notify 的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q3-LockSupport-park-%E4%BC%9A%E9%87%8A%E6%94%BE%E9%94%81%E8%B5%84%E6%BA%90%E5%90%97"><span class="toc-number">3.3.</span> <span class="toc-text">Q3: LockSupport.park()会释放锁资源吗</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        JUC 工具：LockSupport
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-06-09T09:00:00.000Z" class="dt-published" itemprop="datePublished">2023-06-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/JUC/" rel="tag">JUC</a>, <a class="p-category" href="/tags/Java/" rel="tag">Java</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><code>LockSupport</code> 是 Java 并发工具包 <code>java.util.concurrent</code> 中的一个用于创建锁和其他同步类的基本线程阻塞原语。<code>LockSupport</code> 提供了 <code>park()</code> 和 <code>unpark()</code> 方法来停止和恢复线程。这些方法比低级的 <code>wait/notify</code> 和 <code>notifyAll</code> 方法更容易使用，并且与 <code>java.util.concurrent</code> 的高级同步工具更好地互相配合。</p>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><p>在下面这个例子中，我们定义了两个线程。t1 打印数字，t2 打印字母。我们想要实现的效果是  t1 和 t2 交替打印，即输出结果为 “1A2B3C4D5E6F7G”。使用 <code>LockSupport</code> 的 <code>park()</code> 和 <code>unpark()</code> 方法，我们可以精确地控制线程的执行顺序，实现线程间的同步。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.LockSupport;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LockSupportDemo</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="type">Thread</span> <span class="variable">t1</span> <span class="operator">=</span> <span class="literal">null</span>, t2 = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">char</span>[] a1 = <span class="string">&quot;1234567&quot;</span>.toCharArray();</span><br><span class="line">        <span class="type">char</span>[] a2 = <span class="string">&quot;ABCDEFG&quot;</span>.toCharArray();</span><br><span class="line"></span><br><span class="line">        t1 = <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">char</span> c : a1) &#123;</span><br><span class="line">                System.out.print(c);</span><br><span class="line">                LockSupport.unpark(t2); <span class="comment">// 叫醒t2</span></span><br><span class="line">                LockSupport.park(); <span class="comment">// 阻塞t1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">&quot;t1&quot;</span>);</span><br><span class="line"></span><br><span class="line">        t2 = <span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">char</span> c : a2) &#123;</span><br><span class="line">                LockSupport.park(); <span class="comment">// 阻塞t2</span></span><br><span class="line">                System.out.print(c);</span><br><span class="line">                LockSupport.unpark(t1); <span class="comment">// 叫醒t1</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, <span class="string">&quot;t2&quot;</span>);</span><br><span class="line"></span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="答疑"><a href="#答疑" class="headerlink" title="答疑"></a>答疑</h1><h2 id="Q1：park-方法中的-blocker-的作用"><a href="#Q1：park-方法中的-blocker-的作用" class="headerlink" title="Q1：park 方法中的 blocker 的作用"></a>Q1：park 方法中的 blocker 的作用</h2><p>这个 blocker 参数实际上是一个与该挂起操作关联的对象，这个对象会在调用 <code>park()</code> 方法后被设置到该线程，用于后续诊断和监控工具查看。它并不参与 <code>park()</code> 方法的工作逻辑，也不会影响挂起或者恢复线程的操作。这个对象通常是执行该操作的同步抽象（例如锁）。在调用 <code>park</code> 方法之后，可以使用 <code>getBlocker(Thread)</code> 方法来检索和清除该对象。</p>
+<p>总的来说，blocker 对象主要是用于诊断和监控目的，它能帮助开发者或者工具更好地理解线程为何被挂起，以及哪个对象是造成线程挂起的原因。</p>
+<h2 id="Q2：LockSupport-相比于-Object-wait-和-Object-notify-的优势"><a href="#Q2：LockSupport-相比于-Object-wait-和-Object-notify-的优势" class="headerlink" title="Q2：LockSupport 相比于 Object.wait 和 Object.notify 的优势"></a>Q2：LockSupport 相比于 Object.wait 和 Object.notify 的优势</h2><p><code>LockSupport</code> 相较于 <code>Object.wait</code> 和 <code>Object.notify</code> 提供了更高级、更安全、更灵活的线程同步机制，主要体现在以下几点：</p>
+<ol>
+<li>无需在同步代码块里：调用 <code>LockSupport</code> 的 <code>park()</code> 和 <code>unpark()</code> 方法不需要在 <code>synchronized</code> 代码块中，避免了不必要的同步，比较灵活。</li>
+<li>中断影响：如果线程正在调用 <code>park()</code> 阻塞，那么如果其他线程中断它，那么 <code>park()</code> 方法会返回，但不会抛出 <code>InterruptedException</code> 异常。</li>
+<li>提供了 blocker 的概念：<code>LockSupport</code> 可以知道是因为什么原因导致线程被阻塞，这对于问题排查等方面会更有帮助。</li>
+<li><code>unpark</code> 可以先于 <code>park</code> 调用：在 <code>Object.wait</code> 和 <code>Object.notify</code> 中，必须先执行 <code>wait</code> 再执行 <code>notify</code>，否则 <code>notify</code> 的作用会丢失，而 <code>LockSupport</code> 则允许 <code>unpark</code> 先执行。</li>
+</ol>
+<h2 id="Q3-LockSupport-park-会释放锁资源吗"><a href="#Q3-LockSupport-park-会释放锁资源吗" class="headerlink" title="Q3: LockSupport.park()会释放锁资源吗"></a>Q3: LockSupport.park()会释放锁资源吗</h2><p>不会。<code>LockSupport.park()</code> 方法只是让当前线程进入等待状态，它不会释放任何线程可能持有的锁。这是因为，<code>LockSupport.park()</code> 是一个底层的线程阻塞工具，而不涉及 Java 的同步控制块（即 synchronized 关键字）或者 <code>java.util.concurrent</code> 包中的高级锁工具。<br>在使用 <code>LockSupport.park()</code> 时，需要特别注意这一点。如果一个线程在持有锁的情况下调用了 <code>park()</code> 方法并被阻塞，那么可能会导致其他试图获取该锁的线程也被阻塞，从而可能引发活跃性问题。</p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/book/">Book</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AD%94%E7%96%91"><span class="toc-number">3.</span> <span class="toc-text">答疑</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Q1%EF%BC%9Apark-%E6%96%B9%E6%B3%95%E4%B8%AD%E7%9A%84-blocker-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-number">3.1.</span> <span class="toc-text">Q1：park 方法中的 blocker 的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q2%EF%BC%9ALockSupport-%E7%9B%B8%E6%AF%94%E4%BA%8E-Object-wait-%E5%92%8C-Object-notify-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">3.2.</span> <span class="toc-text">Q2：LockSupport 相比于 Object.wait 和 Object.notify 的优势</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q3-LockSupport-park-%E4%BC%9A%E9%87%8A%E6%94%BE%E9%94%81%E8%B5%84%E6%BA%90%E5%90%97"><span class="toc-number">3.3.</span> <span class="toc-text">Q3: LockSupport.park()会释放锁资源吗</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2023/juc-tools-locksupport/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2023/juc-tools-locksupport/&text=JUC 工具：LockSupport"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2023/juc-tools-locksupport/&is_video=false&description=JUC 工具：LockSupport"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=JUC 工具：LockSupport&body=Check out this article: https://orechou.live/2023/juc-tools-locksupport/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2023/juc-tools-locksupport/&title=JUC 工具：LockSupport"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2023/juc-tools-locksupport/&name=JUC 工具：LockSupport&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2023/juc-tools-locksupport/&t=JUC 工具：LockSupport"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'orechou';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

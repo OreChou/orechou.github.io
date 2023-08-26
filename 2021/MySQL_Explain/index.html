@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="MySQL ExplainExplain 是 MySQL 自带的查询优化器。 使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性：id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra 数据库性能瓶颈，主要关注 CPU 和 IO。 id反映的是表的读取顺">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【MySQL】Explain">
+<meta property="og:url" content="https://orechou.live/2021/MySQL_Explain/index.html">
+<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:description" content="MySQL ExplainExplain 是 MySQL 自带的查询优化器。 使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性：id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra 数据库性能瓶颈，主要关注 CPU 和 IO。 id反映的是表的读取顺">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-06T09:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-27T11:14:13.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>【MySQL】Explain</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2021/MySQL_%E6%85%A2%20SQL%20%E5%88%86%E6%9E%90/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2018/Socket-%E5%85%A5%E9%97%A8/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2021/MySQL_Explain/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2021/MySQL_Explain/&text=【MySQL】Explain"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2021/MySQL_Explain/&is_video=false&description=【MySQL】Explain"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【MySQL】Explain&body=Check out this article: https://orechou.live/2021/MySQL_Explain/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2021/MySQL_Explain/&name=【MySQL】Explain&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2021/MySQL_Explain/&t=【MySQL】Explain"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-Explain"><span class="toc-number">1.</span> <span class="toc-text">MySQL Explain</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#id"><span class="toc-number">1.1.</span> <span class="toc-text">id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select-type"><span class="toc-number">1.2.</span> <span class="toc-text">select_type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-number">1.3.</span> <span class="toc-text">table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#type"><span class="toc-number">1.4.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#possible-key-amp-key-amp-key-len"><span class="toc-number">1.5.</span> <span class="toc-text">possible_key &amp; key &amp; key_len</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref"><span class="toc-number">1.6.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rows"><span class="toc-number">1.7.</span> <span class="toc-text">rows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#filtered"><span class="toc-number">1.8.</span> <span class="toc-text">filtered</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extra"><span class="toc-number">1.9.</span> <span class="toc-text">Extra</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        【MySQL】Explain
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2021-08-06T09:00:00.000Z" class="dt-published" itemprop="datePublished">2021-08-06</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/MySQL/" rel="tag">MySQL</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="MySQL-Explain"><a href="#MySQL-Explain" class="headerlink" title="MySQL Explain"></a>MySQL Explain</h1><p>Explain 是 MySQL 自带的查询优化器。</p>
+<p>使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性：<br>id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra</p>
+<p>数据库性能瓶颈，主要关注 CPU 和 IO。</p>
+<h2 id="id"><a href="#id" class="headerlink" title="id"></a>id</h2><p>反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。</p>
+<p>小表永远驱动大表，三种情况：<br>（1）id 相同，执行顺序是由上至下的<br>（2）id 不同，如果是子查询，id 序号会递增，id 值越大优先级越高，越先被执行<br>（3）id 存在相同的，也存在不同的，所有组中，id 越大越先执行，如果 id 相同的，从上往下顺序执行</p>
+<h2 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h2><p>反映的是 MySQL 理解的查询类型，有几下几种：</p>
+<ul>
+<li>SIMPLE：简单的 SELECT 查询，查询中不包含子查询或 UNION</li>
+<li>PRIMARY：查询中若包含任何复杂的字部分，最外层查询标记为 PRIMARY</li>
+<li>SUBQUERY：SELECT 或 WHERE 列表中的子查询</li>
+<li>DERIVED：在 FROM 列表中包含的子查询，MySQL 会递归执行这些子查询，把结果放在临时表里</li>
+<li>UNION：若第二个 SELECT 出现在 UNION 后，则被标记为 UNION，若 UNION 包含在 FROM 字句的子查询中，外层 SELECT 将被标记为 DERIVED</li>
+<li>UNION RESULT：UNION 后的结果集</li>
+</ul>
+<h2 id="table"><a href="#table" class="headerlink" title="table"></a>table</h2><p>反映的是数据从哪张表中读取出来。</p>
+<p>例如 <code>&lt;derived2&gt;</code> 表示从 id 为 2 的临时表读取。</p>
+<h2 id="type"><a href="#type" class="headerlink" title="type"></a>type</h2><p>type 是访问类型排序，反映的是 SQL 的优化状态，有如下几种：</p>
+<ul>
+<li>system：从单表只查出一行记录（等于系统表），这是 const 类型的特例，一般不会出现</li>
+<li>const：查询条件用到了常量，通过索引一次就找到，常在使用 primary key 或 unique 索引中出现</li>
+<li>eq_ref：唯一性索引扫描，对于每个索引键，表中只有一条记录与之匹配，常见于主键或唯一索引扫描</li>
+<li>ref：非唯一性索引扫描，返回匹配某个单独值的所有行，本质上也是一种索引访问，它可能会找到多个符合条件的行，与eq_ref的差别是eq_ref只匹配了一条记录</li>
+<li>range：只检索给定范围的行，使用一个索引来选择行。key列显示使用了哪个索引，一般是在where语句中出现了 between、&lt;、&gt;、in 等的查询</li>
+<li>index：full Index scan，index 和 all 的区别为 index 类型只遍历索引树。这通常比 all 快，因为索引文件通常比数据文件小</li>
+<li>all：全表扫描，如果查询数据量很大时，全表扫描效率是很低的</li>
+</ul>
+<p>在 SQL 优化中至少做到 range 级别，最好能达到 ref 级别</p>
+<h2 id="possible-key-amp-key-amp-key-len"><a href="#possible-key-amp-key-amp-key-len" class="headerlink" title="possible_key &amp; key &amp; key_len"></a>possible_key &amp; key &amp; key_len</h2><p>possible_key 反映的是 MySQL 推测可能用到的索引，不一定被查询实际使用到。<br>key 反映的是实际使用到的索引，若为 null 则是因为没有建索引或者索引失效。<br>key_len 反映索引中使用的字节数，可计算计算查询中使用的索引的长度，越短越好。其显示的值为索引字段的最大可能长度，而非实际使用长度。</p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><p>ref 反映的是哪些列或者常量被用于查找索引列上的值。</p>
+<h2 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h2><p>rows 反映的根据表的统计信息和索引选用的情况，大致估算出来到找到所有记录所需要读取的行数。</p>
+<h2 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h2><p>使用 explain extended 时会出现这个列，5.7 之后的版本默认就有这个字段。这个字段表示存储引擎返回的数据在 server 层过滤后，剩下多少满足查询的记录数量的比例，不是具体记录数。</p>
+<h2 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h2><p>Extra 反映的不适合在其他列显示，但是也很重要的信息，主要有以下几种：</p>
+<ul>
+<li>Using filesort：MySQL 中无法利用索引完成的排序，这时会对数据使用一个外部的索引排序，而不是按照表内的索引顺序进行读取。</li>
+<li>Using temporary：使用了临时表保存中间结果，MySQL 在对查询结果排序时使用临时表。常见于排序 order by 和分组查询 group by。</li>
+<li>Using index：MySQL 相应的 select 操作中使用了覆盖索引，避免了访问表的数据行，效率高。</li>
+<li>Using where：MySQL 使用了 where 过滤。</li>
+<li>Using join buffer：MySQL 使用了连接缓存。</li>
+<li>Impossible where：where 子句的值为 false。</li>
+<li>Distinct：优化 distinct 操作，在找到第一匹配的元组后即停止找同样值的动作。</li>
+</ul>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/book/">Book</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-Explain"><span class="toc-number">1.</span> <span class="toc-text">MySQL Explain</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#id"><span class="toc-number">1.1.</span> <span class="toc-text">id</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select-type"><span class="toc-number">1.2.</span> <span class="toc-text">select_type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table"><span class="toc-number">1.3.</span> <span class="toc-text">table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#type"><span class="toc-number">1.4.</span> <span class="toc-text">type</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#possible-key-amp-key-amp-key-len"><span class="toc-number">1.5.</span> <span class="toc-text">possible_key &amp; key &amp; key_len</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ref"><span class="toc-number">1.6.</span> <span class="toc-text">ref</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rows"><span class="toc-number">1.7.</span> <span class="toc-text">rows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#filtered"><span class="toc-number">1.8.</span> <span class="toc-text">filtered</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Extra"><span class="toc-number">1.9.</span> <span class="toc-text">Extra</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2021/MySQL_Explain/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2021/MySQL_Explain/&text=【MySQL】Explain"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2021/MySQL_Explain/&is_video=false&description=【MySQL】Explain"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【MySQL】Explain&body=Check out this article: https://orechou.live/2021/MySQL_Explain/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2021/MySQL_Explain/&title=【MySQL】Explain"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2021/MySQL_Explain/&name=【MySQL】Explain&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2021/MySQL_Explain/&t=【MySQL】Explain"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'orechou';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>

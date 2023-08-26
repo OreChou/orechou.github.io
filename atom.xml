@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-06-28T10:23:11.680Z</updated>
+  <updated>2023-08-26T03:36:52.044Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>There and back again</title>
+    <link href="https://orechou.live/2023/48-there-and-back-again/"/>
+    <id>https://orechou.live/2023/48-there-and-back-again/</id>
+    <published>2023-08-23T15:30:00.000Z</published>
+    <updated>2023-08-26T03:36:52.044Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我从小生活在重庆的一个边陲小县城里，读初中之前是在县里的一个镇上，上了初中到了县城，读大学就到了市里。在镇上的那十多年我活动的范围并不大，小的时候受我妈管束比较多，很多事情不让去做，现在那个镇子到底有几条街我也回忆不起来了。在县城读书的那几年倒是自由了不少，那时候对游戏厅和</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【DevOps】使用 Docker 搭建 MySQL 主从复制架构</title>
-    <link href="https://orechou.live/devops/mysql-master-slave-practice/"/>
-    <id>https://orechou.live/devops/mysql-master-slave-practice/</id>
+    <link href="https://orechou.live/2023/mysql-master-slave-practice/"/>
+    <id>https://orechou.live/2023/mysql-master-slave-practice/</id>
     <published>2023-06-28T10:30:00.000Z</published>
-    <updated>2023-06-28T10:23:11.680Z</updated>
+    <updated>2023-06-28T10:23:11.000Z</updated>
     
     
       
@@ -44,10 +67,10 @@
   
   <entry>
     <title>【DevOps】使用 Grafana 和 Prometheus 做服务监控</title>
-    <link href="https://orechou.live/devops/grafana-prometheus-practice/"/>
-    <id>https://orechou.live/devops/grafana-prometheus-practice/</id>
+    <link href="https://orechou.live/2023/grafana-prometheus-practice/"/>
+    <id>https://orechou.live/2023/grafana-prometheus-practice/</id>
     <published>2023-06-27T07:45:00.000Z</published>
-    <updated>2023-06-27T08:23:44.733Z</updated>
+    <updated>2023-06-27T08:23:44.000Z</updated>
     
     
       
@@ -72,8 +95,8 @@
   
   <entry>
     <title>【观影】《The Flash》</title>
-    <link href="https://orechou.live/life/movie/the-flash/"/>
-    <id>https://orechou.live/life/movie/the-flash/</id>
+    <link href="https://orechou.live/2023/the-flash/"/>
+    <id>https://orechou.live/2023/the-flash/</id>
     <published>2023-06-18T15:00:00.000Z</published>
     <updated>2023-06-18T14:29:46.677Z</updated>
     
@@ -99,10 +122,10 @@
   
   <entry>
     <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
-    <link href="https://orechou.live/ai-tools/use-chatgpt-program/"/>
-    <id>https://orechou.live/ai-tools/use-chatgpt-program/</id>
+    <link href="https://orechou.live/2023/use-chatgpt-program/"/>
+    <id>https://orechou.live/2023/use-chatgpt-program/</id>
     <published>2023-06-14T10:30:00.000Z</published>
-    <updated>2023-06-14T10:07:14.826Z</updated>
+    <updated>2023-06-14T10:07:14.000Z</updated>
     
     
       
@@ -125,10 +148,10 @@
   
   <entry>
     <title>JUC 工具：LockSupport</title>
-    <link href="https://orechou.live/java/juc-tools-locksupport/"/>
-    <id>https://orechou.live/java/juc-tools-locksupport/</id>
+    <link href="https://orechou.live/2023/juc-tools-locksupport/"/>
+    <id>https://orechou.live/2023/juc-tools-locksupport/</id>
     <published>2023-06-09T09:00:00.000Z</published>
-    <updated>2023-06-09T07:20:01.834Z</updated>
+    <updated>2023-06-09T07:20:01.000Z</updated>
     
     
       
@@ -150,8 +173,8 @@
   
   <entry>
     <title>Kafka 消息大量积压的一些总结</title>
-    <link href="https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
-    <id>https://orechou.live/web/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
+    <link href="https://orechou.live/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
+    <id>https://orechou.live/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
     <published>2023-06-03T08:30:00.000Z</published>
     <updated>2023-06-03T08:29:48.519Z</updated>
     
@@ -176,8 +199,8 @@
   
   <entry>
     <title>何时退休（一）：先做一个财务自由计划</title>
-    <link href="https://orechou.live/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"/>
-    <id>https://orechou.live/investment/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</id>
+    <link href="https://orechou.live/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"/>
+    <id>https://orechou.live/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</id>
     <published>2023-04-16T15:30:00.000Z</published>
     <updated>2023-04-16T16:10:52.199Z</updated>
     
@@ -201,8 +224,8 @@
   
   <entry>
     <title>投资季度总结（2023Q1）</title>
-    <link href="https://orechou.live/investment/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/"/>
-    <id>https://orechou.live/investment/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/</id>
+    <link href="https://orechou.live/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/"/>
+    <id>https://orechou.live/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/</id>
     <published>2023-04-01T14:00:00.000Z</published>
     <updated>2023-04-01T07:17:39.060Z</updated>
     
@@ -225,8 +248,8 @@
   
   <entry>
     <title>【Cyber Weekly】No.7 Kanata Haluka</title>
-    <link href="https://orechou.live/weekly/No.7%20Kanata%20Haluka/"/>
-    <id>https://orechou.live/weekly/No.7%20Kanata%20Haluka/</id>
+    <link href="https://orechou.live/2023/No.7%20Kanata%20Haluka/"/>
+    <id>https://orechou.live/2023/No.7%20Kanata%20Haluka/</id>
     <published>2023-03-26T14:00:00.000Z</published>
     <updated>2023-03-26T13:33:54.492Z</updated>
     
@@ -249,10 +272,10 @@
   
   <entry>
     <title>【Cyber Weekly】No.6 Suzume</title>
-    <link href="https://orechou.live/weekly/No.6%20Suzume/"/>
-    <id>https://orechou.live/weekly/No.6%20Suzume/</id>
+    <link href="https://orechou.live/2023/No.6%20Suzume/"/>
+    <id>https://orechou.live/2023/No.6%20Suzume/</id>
     <published>2023-03-19T14:00:00.000Z</published>
-    <updated>2023-03-19T13:39:08.185Z</updated>
+    <updated>2023-03-19T13:44:30.213Z</updated>
     
     
       
@@ -273,8 +296,8 @@
   
   <entry>
     <title>【Cyber Weekly】No.5 The Curious Case of Benjamin Button</title>
-    <link href="https://orechou.live/weekly/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/"/>
-    <id>https://orechou.live/weekly/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</id>
+    <link href="https://orechou.live/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/"/>
+    <id>https://orechou.live/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</id>
     <published>2023-03-05T14:00:00.000Z</published>
     <updated>2023-03-05T12:57:01.471Z</updated>
     
@@ -297,8 +320,8 @@
   
   <entry>
     <title>【读书】《卓有成效的工程师》</title>
-    <link href="https://orechou.live/reading/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
-    <id>https://orechou.live/reading/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</id>
+    <link href="https://orechou.live/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    <id>https://orechou.live/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</id>
     <published>2023-02-18T11:30:00.000Z</published>
     <updated>2023-02-18T11:15:33.903Z</updated>
     
@@ -320,8 +343,8 @@
   
   <entry>
     <title>Bcrypt 加密算法详解</title>
-    <link href="https://orechou.live/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://orechou.live/java/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
+    <link href="https://orechou.live/2023/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://orechou.live/2023/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
     <published>2023-02-12T10:00:00.000Z</published>
     <updated>2023-02-12T13:17:37.750Z</updated>
     
@@ -348,8 +371,8 @@
   
   <entry>
     <title>关于 PriorityOrdered 和 Ordered 的使用</title>
-    <link href="https://orechou.live/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://orechou.live/java/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <link href="https://orechou.live/2023/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://orechou.live/2023/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
     <published>2023-02-09T15:00:00.000Z</published>
     <updated>2023-02-12T13:17:43.415Z</updated>
     
@@ -373,8 +396,8 @@
   
   <entry>
     <title>【Cyber Weekly】No.4 Do not go gentle into that good night</title>
-    <link href="https://orechou.live/weekly/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/"/>
-    <id>https://orechou.live/weekly/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/</id>
+    <link href="https://orechou.live/2023/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/"/>
+    <id>https://orechou.live/2023/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/</id>
     <published>2023-02-05T14:00:00.000Z</published>
     <updated>2023-02-05T09:51:27.000Z</updated>
     
@@ -397,8 +420,8 @@
   
   <entry>
     <title>【效率】关于记录的工具及流程</title>
-    <link href="https://orechou.live/other/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/"/>
-    <id>https://orechou.live/other/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</id>
+    <link href="https://orechou.live/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/"/>
+    <id>https://orechou.live/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</id>
     <published>2023-01-25T14:00:00.000Z</published>
     <updated>2023-01-25T15:10:01.000Z</updated>
     
@@ -422,8 +445,8 @@
   
   <entry>
     <title>【Cyber Weekly】No.3 There and back again</title>
-    <link href="https://orechou.live/weekly/No.3%20There%20and%20back%20again/"/>
-    <id>https://orechou.live/weekly/No.3%20There%20and%20back%20again/</id>
+    <link href="https://orechou.live/2023/No.3%20There%20and%20back%20again/"/>
+    <id>https://orechou.live/2023/No.3%20There%20and%20back%20again/</id>
     <published>2023-01-22T14:00:00.000Z</published>
     <updated>2023-01-23T14:10:40.000Z</updated>
     
@@ -448,8 +471,8 @@
   
   <entry>
     <title>【生活】2023 年 OKR</title>
-    <link href="https://orechou.live/life/2023%20%E5%B9%B4%20OKR/"/>
-    <id>https://orechou.live/life/2023%20%E5%B9%B4%20OKR/</id>
+    <link href="https://orechou.live/2023/2023%20%E5%B9%B4%20OKR/"/>
+    <id>https://orechou.live/2023/2023%20%E5%B9%B4%20OKR/</id>
     <published>2023-01-19T04:00:00.000Z</published>
     <updated>2023-01-23T14:11:09.000Z</updated>
     
@@ -472,8 +495,8 @@
   
   <entry>
     <title>【Cyber Weekly】No.2 Red dead Redemption</title>
-    <link href="https://orechou.live/weekly/No.2%20Red%20dead%20Redemption/"/>
-    <id>https://orechou.live/weekly/No.2%20Red%20dead%20Redemption/</id>
+    <link href="https://orechou.live/2022/No.2%20Red%20dead%20Redemption/"/>
+    <id>https://orechou.live/2022/No.2%20Red%20dead%20Redemption/</id>
     <published>2022-12-11T14:00:00.000Z</published>
     <updated>2022-12-12T02:00:06.000Z</updated>
     
@@ -484,29 +507,6 @@
         
     <summary type="html">&lt;blockquote&gt;
 &lt;p&gt;Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活碎嘴。&lt;br&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Cyber Weekly】No.1 The Shining</title>
-    <link href="https://orechou.live/weekly/No.1%20The%20Shining/"/>
-    <id>https://orechou.live/weekly/No.1%20The%20Shining/</id>
-    <published>2022-12-04T14:00:00.000Z</published>
-    <updated>2022-12-04T15:21:51.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活碎嘴。&lt;/code&gt;&lt;br&gt;&lt;img</summary>
         
       
     

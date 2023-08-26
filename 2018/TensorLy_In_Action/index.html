@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="最近因论文需要而学习张量和张量分解。看了诸多论文之后，想使用一些开源工具来实际操作一下张量。就选择了TensorLy，选择它的原因主要因为它文档写得详细…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tensor Decomposition in TensorLy">
+<meta property="og:url" content="https://orechou.live/2018/TensorLy_In_Action/index.html">
+<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:description" content="最近因论文需要而学习张量和张量分解。看了诸多论文之后，想使用一些开源工具来实际操作一下张量。就选择了TensorLy，选择它的原因主要因为它文档写得详细…">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://7xsjdx.com1.z0.glb.clouddn.com/tucker.png">
+<meta property="og:image" content="http://7xsjdx.com1.z0.glb.clouddn.com/cp.png">
+<meta property="og:image" content="http://7xsjdx.com1.z0.glb.clouddn.com/tucker_demo.png">
+<meta property="article:published_time" content="2018-04-01T12:18:57.000Z">
+<meta property="article:modified_time" content="2018-04-01T12:18:57.000Z">
+<meta property="article:author" content="OreChou">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Tensor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://7xsjdx.com1.z0.glb.clouddn.com/tucker.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Tensor Decomposition in TensorLy</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RBGC8GJC6"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9RBGC8GJC6');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/2018/JS%20%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2016/spring_flow/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2018/TensorLy_In_Action/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2018/TensorLy_In_Action/&text=Tensor Decomposition in TensorLy"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2018/TensorLy_In_Action/&is_video=false&description=Tensor Decomposition in TensorLy"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tensor Decomposition in TensorLy&body=Check out this article: https://orechou.live/2018/TensorLy_In_Action/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2018/TensorLy_In_Action/&name=Tensor Decomposition in TensorLy&description=&lt;p&gt;最近因论文需要而学习张量和张量分解。看了诸多论文之后，想使用一些开源工具来实际操作一下张量。就选择了TensorLy，选择它的原因主要因为它文档写得详细…&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2018/TensorLy_In_Action/&t=Tensor Decomposition in TensorLy"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#QuickSort"><span class="toc-number">1.</span> <span class="toc-text">QuickSort</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-What-is-TensorLy"><span class="toc-number">1.1.</span> <span class="toc-text">1.What is TensorLy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Basic-Operations"><span class="toc-number">1.2.</span> <span class="toc-text">2.Basic Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Import-the-library"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.Import the library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Create-a-tensor"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.Create a tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Unfolding-tensor-by-mode"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.Unfolding tensor by mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Folding-tensor"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.Folding tensor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Tensor-decomposition"><span class="toc-number">1.3.</span> <span class="toc-text">3.Tensor decomposition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">4.Demo</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Tensor Decomposition in TensorLy
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">OreChou</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-04-01T12:18:57.000Z" class="dt-published" itemprop="datePublished">2018-04-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Python/">Python</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Python/" rel="tag">Python</a>, <a class="p-category" href="/tags/Tensor/" rel="tag">Tensor</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>最近因论文需要而学习张量和张量分解。看了诸多论文之后，想使用一些开源工具来实际操作一下张量。就选择了TensorLy，选择它的原因主要因为它文档写得详细…</p>
+<span id="more"></span>
+
+<h1 id="QuickSort"><a href="#QuickSort" class="headerlink" title="QuickSort"></a>QuickSort</h1><h2 id="1-What-is-TensorLy"><a href="#1-What-is-TensorLy" class="headerlink" title="1.What is TensorLy"></a>1.What is TensorLy</h2><p>传送门在<a target="_blank" rel="noopener" href="https://tensorly.github.io/stable/home.html">这里</a>。TensorLy是一个简单快速的Python张量库，优点在于纯Python实现，依赖少，并且能够支持如Numpy、MXnet多种数据的底层。最重要的是文档详细。</p>
+<h2 id="2-Basic-Operations"><a href="#2-Basic-Operations" class="headerlink" title="2.Basic Operations"></a>2.Basic Operations</h2><h3 id="1-Import-the-library"><a href="#1-Import-the-library" class="headerlink" title="1.Import the library"></a>1.Import the library</h3><p>首先要引入相应的库才能使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import tensorly as tl</span><br></pre></td></tr></table></figure>
+<h3 id="2-Create-a-tensor"><a href="#2-Create-a-tensor" class="headerlink" title="2.Create a tensor"></a>2.Create a tensor</h3><p>使用numpy生成一个三维数组，并构建成TensorLy中的张量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor = tl.tensor(np.arange(24).reshape((3, 4, 2)))</span><br></pre></td></tr></table></figure>
+<h3 id="3-Unfolding-tensor-by-mode"><a href="#3-Unfolding-tensor-by-mode" class="headerlink" title="3.Unfolding tensor by mode"></a>3.Unfolding tensor by mode</h3><p>将张量按维度展开</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import tensorly as unfold</span><br><span class="line">unfold(tensor, 0) # mode-1 unfolding</span><br></pre></td></tr></table></figure>
+<h3 id="4-Folding-tensor"><a href="#4-Folding-tensor" class="headerlink" title="4.Folding tensor"></a>4.Folding tensor</h3><p>将展开的数组按维度还原成张量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from tensorly import fold</span><br><span class="line">unfolding = unfold(tensor, 1)</span><br><span class="line">original_shape = tensor.shape</span><br><span class="line">fold(unfolding, 1, original_shape)</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Tensor-decomposition"><a href="#3-Tensor-decomposition" class="headerlink" title="3.Tensor decomposition"></a>3.Tensor decomposition</h2><p>张量分解有很多种分解方法，但主要的分解方法有两种：Tucker分解和CP分解，其中CP分解是Tucker分解的一个特例。TensorLy也提供了这两种方法的实现。<br>Tucker分解的公式为 X = S * A * B * C，X是原张量，S为分解之后产生的核心张量，A、B、C分别为分解之后关于3个维度的矩阵。图示如下：<img src="http://7xsjdx.com1.z0.glb.clouddn.com/tucker.png" alt="Image"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from tensorly.decomposition import tucker</span><br><span class="line"># tucker函数传入一个张量，并指定核心张量的各个维度的长度</span><br><span class="line"># tucker函数的返回结果是分解完成之后的核心张量，和各个维度的矩阵</span><br><span class="line">core, factors = tucker(tensor, ranks=[2, 3, 1])</span><br></pre></td></tr></table></figure>
+<p>CP分解是Tucker分解的特例。如果Tucker分解中的核心张量是一个超对角结构（对角，并且三个维度的长度相等），则Tucker分解退化为CP分解。公式为 X = λ * A * B * C（带权重），X是原张量，λ矩阵为分解之后超对角张量的对角值，A、B、C分别为分解之后关于3个维度的矩阵。图示如下：<img src="http://7xsjdx.com1.z0.glb.clouddn.com/cp.png" alt="Image"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from tensorly.decomposition import parafac</span><br><span class="line"># parafac函数传入一个张量，并指定原张量的一个估计（近似）的秩</span><br><span class="line"># 返回的就是分解之后</span><br><span class="line">factors = parafac(tensor, rank=2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Demo"><a href="#4-Demo" class="headerlink" title="4.Demo"></a>4.Demo</h2><p>使用张量分解的的一个例子</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import tensorly as tl</span><br><span class="line">import numpy as np</span><br><span class="line">from tensorly.decomposition import parafac</span><br><span class="line">from tensorly.decomposition import tucker</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">random_state = 12345</span><br><span class="line">tl.set_backend(&#x27;numpy&#x27;)</span><br><span class="line"></span><br><span class="line"># 打开图片</span><br><span class="line">image_png = Image.open(&#x27;/Users/orechou/Downloads/index_1.jpg&#x27;)</span><br><span class="line"># 打印图片的信息</span><br><span class="line">print(image_png)</span><br><span class="line">data = np.reshape(image_png, [1000, 1500, 3])</span><br><span class="line"></span><br><span class="line"># 将值从int转变成float，因为在分解的过程中会产生浮点数</span><br><span class="line">image = tl.tensor(data, dtype=&#x27;float64&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def to_image(tensor):</span><br><span class="line">    &quot;&quot;&quot;A convenience function to convert from a float dtype back to uint8&quot;&quot;&quot;</span><br><span class="line">    im = tl.to_numpy(tensor)</span><br><span class="line">    im -= im.min()</span><br><span class="line">    im /= im.max()</span><br><span class="line">    im *= 255</span><br><span class="line">    return im.astype(np.uint8)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># Rank of the CP decomposition</span><br><span class="line">cp_rank = 25</span><br><span class="line"># Rank of the Tucker decomposition</span><br><span class="line">tucker_rank = [100, 100, 2]</span><br><span class="line"></span><br><span class="line"># Perform the CP decomposition</span><br><span class="line">factors = parafac(image, rank=cp_rank, init=&#x27;random&#x27;, tol=10e-6)</span><br><span class="line"># Reconstruct the image from the factors</span><br><span class="line">cp_reconstruction = tl.kruskal_to_tensor(factors)</span><br><span class="line"></span><br><span class="line"># Tucker decomposition</span><br><span class="line">core, tucker_factors = tucker(image, ranks=tucker_rank, init=&#x27;random&#x27;, tol=10e-5, random_state=random_state)</span><br><span class="line">tucker_reconstruction = tl.tucker_to_tensor(core, tucker_factors)</span><br><span class="line"></span><br><span class="line"># Plotting the original and reconstruction from the decompositions</span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(1, 3, 1)</span><br><span class="line">ax.set_axis_off()</span><br><span class="line">ax.imshow(to_image(image))</span><br><span class="line">ax.set_title(&#x27;Original&#x27;)</span><br><span class="line"></span><br><span class="line">ax = fig.add_subplot(1, 3, 2)</span><br><span class="line">ax.set_axis_off()</span><br><span class="line">ax.imshow(to_image(cp_reconstruction))</span><br><span class="line">ax.set_title(&#x27;CP&#x27;)</span><br><span class="line"></span><br><span class="line">ax = fig.add_subplot(1, 3, 3)</span><br><span class="line">ax.set_axis_off()</span><br><span class="line">ax.imshow(to_image(tucker_reconstruction))</span><br><span class="line">ax.set_title(&#x27;Tucker&#x27;)</span><br><span class="line"></span><br><span class="line">plt.tight_layout()</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>效果如下：<img src="http://7xsjdx.com1.z0.glb.clouddn.com/tucker_demo.png" alt="Image"></p>
+
+  </div>
+</article>
+
+    <div class="blog-post-comments">
+        <div id="disqus_thread">
+            <noscript>Please enable JavaScript to view the comments.</noscript>
+        </div>
+    </div>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a href="/book/">Book</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#QuickSort"><span class="toc-number">1.</span> <span class="toc-text">QuickSort</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-What-is-TensorLy"><span class="toc-number">1.1.</span> <span class="toc-text">1.What is TensorLy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Basic-Operations"><span class="toc-number">1.2.</span> <span class="toc-text">2.Basic Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Import-the-library"><span class="toc-number">1.2.1.</span> <span class="toc-text">1.Import the library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Create-a-tensor"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.Create a tensor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Unfolding-tensor-by-mode"><span class="toc-number">1.2.3.</span> <span class="toc-text">3.Unfolding tensor by mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Folding-tensor"><span class="toc-number">1.2.4.</span> <span class="toc-text">4.Folding tensor</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Tensor-decomposition"><span class="toc-number">1.3.</span> <span class="toc-text">3.Tensor decomposition</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Demo"><span class="toc-number">1.4.</span> <span class="toc-text">4.Demo</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2018/TensorLy_In_Action/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2018/TensorLy_In_Action/&text=Tensor Decomposition in TensorLy"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2018/TensorLy_In_Action/&is_video=false&description=Tensor Decomposition in TensorLy"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Tensor Decomposition in TensorLy&body=Check out this article: https://orechou.live/2018/TensorLy_In_Action/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2018/TensorLy_In_Action/&title=Tensor Decomposition in TensorLy"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2018/TensorLy_In_Action/&name=Tensor Decomposition in TensorLy&description=&lt;p&gt;最近因论文需要而学习张量和张量分解。看了诸多论文之后，想使用一些开源工具来实际操作一下张量。就选择了TensorLy，选择它的原因主要因为它文档写得详细…&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2018/TensorLy_In_Action/&t=Tensor Decomposition in TensorLy"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    OreChou
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a href="/book/">Book</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+    <script type="text/javascript">
+        var disqus_shortname = 'orechou';
+
+        (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        }());
+    </script>
+
+<!-- utterances Comments -->
+
+</body>
+</html>
