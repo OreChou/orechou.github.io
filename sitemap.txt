@@ -1,3 +1,4 @@
+https://orechou.live/2023/49-the-parctice-mockjs/
 https://orechou.live/2023/48-there-and-back-again/
 https://orechou.live/book/index.html
 https://orechou.live/saying/index.html
@@ -84,6 +85,9 @@ https://orechou.live/tags/Movie/
 https://orechou.live/tags/DevOps/
 https://orechou.live/tags/Grafana/
 https://orechou.live/tags/Prometheus/
+https://orechou.live/tags/OpenAPI/
+https://orechou.live/tags/JSON-Schema/
+https://orechou.live/tags/mockjs/
 https://orechou.live/categories/Java/
 https://orechou.live/categories/JavaScript/
 https://orechou.live/categories/Linux/
