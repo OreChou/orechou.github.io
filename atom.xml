@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-09-11T12:49:57.012Z</updated>
+  <updated>2023-11-07T15:34:39.992Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>写在巨人完结之后</title>
+    <link href="https://orechou.live/2023/50-attack-on-titan/"/>
+    <id>https://orechou.live/2023/50-attack-on-titan/</id>
+    <published>2023-11-07T12:50:00.000Z</published>
+    <updated>2023-11-07T15:34:39.992Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我是听了&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="進撃の巨人" scheme="https://orechou.live/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>关于接口 mock 的技术实现</title>
@@ -494,30 +517,6 @@
     
     
     <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【生活】2023 年 OKR</title>
-    <link href="https://orechou.live/2023/2023%20%E5%B9%B4%20OKR/"/>
-    <id>https://orechou.live/2023/2023%20%E5%B9%B4%20OKR/</id>
-    <published>2023-01-19T04:00:00.000Z</published>
-    <updated>2023-01-23T14:11:09.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今年的 OKR 如下，年底 review：&lt;/p&gt;
-&lt;h1 id=&quot;家庭&quot;&gt;&lt;a href=&quot;#家庭&quot; class=&quot;headerlink&quot; title=&quot;家庭&quot;&gt;&lt;/a&gt;家庭&lt;/h1&gt;&lt;p&gt;okr1: 陪伴妻子和女儿成长</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
     
   </entry>
   
