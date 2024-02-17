@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI on OreChou</title>
-    <link>/tags/ai/</link>
+    <link>https://www.orechou.com/tags/ai/</link>
     <description>Recent content in AI on OreChou</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 14 Jun 2023 18:30:00 +0000</lastBuildDate>
-    <atom:link href="/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.orechou.com/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
-      <link>/posts/2023/use-chatgpt-program/</link>
+      <link>https://www.orechou.com/posts/2023/use-chatgpt-program/</link>
       <pubDate>Wed, 14 Jun 2023 18:30:00 +0000</pubDate>
-      <guid>/posts/2023/use-chatgpt-program/</guid>
+      <guid>https://www.orechou.com/posts/2023/use-chatgpt-program/</guid>
       <description>最近半导体和 AI 概念股狂涨，在二级市场没有搭上这趟车的我坐不住了。不敢追高的我只能写一写博客来缓解郁闷的心情。这篇文章是我作为程序员，介绍一下日常工作里，如何使用 ChatGPT 简化我的工作。&#xA;分析需求 比如本周有一个需求：对含有文件下载 URL 链接的 Excel 文件进行处理，将每一行中的链接的文件下载下来后进行打包，打包后的文件名使用该行的某几个属性值命名。 举一个例子，比如 Excel 的文件如下&#xA;表头1 表头2 表头3 表头4 A B https://www.apple.com.cn/privacy/docs/A_Day_in_the_Life_of_Your_Data.pdf https://www.apple.com.cn/privacy/docs/A_Day_in_the_Life_of_Your_Data.pdf 需要将表头 3 和表头 4 的 pdf 下载下来，并打包成一个压缩包，压缩包以表头 1 和表头 2 命名，例如第一行就是 A_B.zip&#xA;ChatGPT 的交互 回合 1 定义角色 首先给 ChatGPT 一个角色，Prompt 如下：&#xA;我希望你能扮演一个软件开发者的角色。我将提供一些关于网络应用需求的具体信息，而你的工作是提出一个架构和代码，而你的技术栈是无所不能的。&#xA;ChatGPT 会欣然答应，立即进入角色：&#xA;非常好！请告诉我关于网络应用需求的具体信息，我会根据这些信息来设计一个合适的架构和代码。&#xA;回合 2 提交需求 我将需求描述调整一下，以写程序的角度告诉他应该完成什么内容，Prompt 如下：&#xA;我有一个需求：对含有文件 URL 下载链接的 Excel 文件进行处理，将每一行中的链接的文件下载下来后进行打包成 zip 文件，打包后的文件名使用该行的某几个属性值命名。注意这里每一行最终都是不同的 ZIP 文件。 我要你设计一个方法完成这个功能，方法的入参为 excel 的文件路径，下载链接所在的列索引列表，命名所需要指定的列索引列表，压缩包的存储路径（非必传，不传的话在执行路径下生成）。 你将使用 Python3 来实现这个需求功能。&#xA;ChatGPT 会很快给出相关的代码及说明：&#xA;import os import requests import pandas as pd from zipfile import ZipFile def process_excel(excel_path, link_columns, name_columns, zip_dir=None): df = pd.</description>
     </item>
   </channel>

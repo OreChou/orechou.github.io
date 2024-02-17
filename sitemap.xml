@@ -2,202 +2,202 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/</loc>
+    <loc>https://www.orechou.com/</loc>
     <lastmod>2023-11-07T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
+    <loc>https://www.orechou.com/posts/</loc>
     <lastmod>2023-11-07T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/</loc>
+    <loc>https://www.orechou.com/tags/</loc>
     <lastmod>2023-11-07T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/50-attack-on-titan/</loc>
+    <loc>https://www.orechou.com/posts/2023/50-attack-on-titan/</loc>
     <lastmod>2023-11-07T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/</loc>
+    <loc>https://www.orechou.com/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/</loc>
     <lastmod>2023-11-07T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/json-schema/</loc>
+    <loc>https://www.orechou.com/tags/json-schema/</loc>
     <lastmod>2023-09-11T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/mockjs/</loc>
+    <loc>https://www.orechou.com/tags/mockjs/</loc>
     <lastmod>2023-09-11T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/openapi/</loc>
+    <loc>https://www.orechou.com/tags/openapi/</loc>
     <lastmod>2023-09-11T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/49-the-practise-mock-api/</loc>
+    <loc>https://www.orechou.com/posts/2023/49-the-practise-mock-api/</loc>
     <lastmod>2023-09-11T20:50:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/life/</loc>
+    <loc>https://www.orechou.com/tags/life/</loc>
     <lastmod>2023-08-23T23:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/48-there-and-back-again/</loc>
+    <loc>https://www.orechou.com/posts/2023/48-there-and-back-again/</loc>
     <lastmod>2023-08-23T23:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/mysql-master-slave-practice/</loc>
+    <loc>https://www.orechou.com/posts/2023/mysql-master-slave-practice/</loc>
     <lastmod>2023-06-28T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/devops/</loc>
+    <loc>https://www.orechou.com/tags/devops/</loc>
     <lastmod>2023-06-28T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/mysql/</loc>
+    <loc>https://www.orechou.com/tags/mysql/</loc>
     <lastmod>2023-06-28T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/grafana-prometheus-practice/</loc>
+    <loc>https://www.orechou.com/posts/2023/grafana-prometheus-practice/</loc>
     <lastmod>2023-06-27T15:45:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/grafana/</loc>
+    <loc>https://www.orechou.com/tags/grafana/</loc>
     <lastmod>2023-06-27T15:45:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/prometheus/</loc>
+    <loc>https://www.orechou.com/tags/prometheus/</loc>
     <lastmod>2023-06-27T15:45:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/the-flash/</loc>
+    <loc>https://www.orechou.com/posts/2023/the-flash/</loc>
     <lastmod>2023-06-18T23:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/movie/</loc>
+    <loc>https://www.orechou.com/tags/movie/</loc>
     <lastmod>2023-06-18T23:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/use-chatgpt-program/</loc>
+    <loc>https://www.orechou.com/posts/2023/use-chatgpt-program/</loc>
     <lastmod>2023-06-14T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/ai/</loc>
+    <loc>https://www.orechou.com/tags/ai/</loc>
     <lastmod>2023-06-14T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/chatgpt/</loc>
+    <loc>https://www.orechou.com/tags/chatgpt/</loc>
     <lastmod>2023-06-14T18:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/java/</loc>
+    <loc>https://www.orechou.com/tags/java/</loc>
     <lastmod>2023-06-09T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/juc/</loc>
+    <loc>https://www.orechou.com/tags/juc/</loc>
     <lastmod>2023-06-09T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/juc-tools-locksupport/</loc>
+    <loc>https://www.orechou.com/posts/2023/juc-tools-locksupport/</loc>
     <lastmod>2023-06-09T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/kafka/</loc>
+    <loc>https://www.orechou.com/tags/kafka/</loc>
     <lastmod>2023-06-03T16:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/kafka-%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</loc>
+    <loc>https://www.orechou.com/posts/2023/kafka-%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2023-06-03T16:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/middleware/</loc>
+    <loc>https://www.orechou.com/tags/middleware/</loc>
     <lastmod>2023-06-03T16:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/investment/</loc>
+    <loc>https://www.orechou.com/tags/investment/</loc>
     <lastmod>2023-04-16T23:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%E4%B8%80%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</loc>
+    <loc>https://www.orechou.com/posts/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%E4%B8%80%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</loc>
     <lastmod>2023-04-16T23:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023q1_/</loc>
+    <loc>https://www.orechou.com/posts/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023q1_/</loc>
     <lastmod>2023-04-01T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/no.7-kanata-haluka/</loc>
+    <loc>https://www.orechou.com/posts/2023/no.7-kanata-haluka/</loc>
     <lastmod>2023-03-26T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/cyber-weekly/</loc>
+    <loc>https://www.orechou.com/tags/cyber-weekly/</loc>
     <lastmod>2023-03-26T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/no.6-suzume/</loc>
+    <loc>https://www.orechou.com/posts/2023/no.6-suzume/</loc>
     <lastmod>2023-03-19T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/no.5-the-curious-case-of-benjamin-button/</loc>
+    <loc>https://www.orechou.com/posts/2023/no.5-the-curious-case-of-benjamin-button/</loc>
     <lastmod>2023-03-05T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
+    <loc>https://www.orechou.com/posts/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</loc>
     <lastmod>2023-02-18T19:30:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/reading/</loc>
+    <loc>https://www.orechou.com/tags/reading/</loc>
     <lastmod>2023-02-18T19:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
+    <loc>https://www.orechou.com/posts/2023/bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</loc>
     <lastmod>2023-02-12T18:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/spring/</loc>
+    <loc>https://www.orechou.com/tags/spring/</loc>
     <lastmod>2023-02-12T18:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
+    <loc>https://www.orechou.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
     <lastmod>2023-02-12T18:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/%E5%85%B3%E4%BA%8E-priorityordered-%E5%92%8C-ordered-%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
+    <loc>https://www.orechou.com/posts/2023/%E5%85%B3%E4%BA%8E-priorityordered-%E5%92%8C-ordered-%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2023-02-09T23:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/no.4-do-not-go-gentle-into-that-good-night/</loc>
+    <loc>https://www.orechou.com/posts/2023/no.4-do-not-go-gentle-into-that-good-night/</loc>
     <lastmod>2023-02-05T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</loc>
+    <loc>https://www.orechou.com/posts/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</loc>
     <lastmod>2023-01-25T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/efficiency/</loc>
+    <loc>https://www.orechou.com/tags/efficiency/</loc>
     <lastmod>2023-01-25T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/tools/</loc>
+    <loc>https://www.orechou.com/tags/tools/</loc>
     <lastmod>2023-01-25T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/no.3-there-and-back-again/</loc>
+    <loc>https://www.orechou.com/posts/2023/no.3-there-and-back-again/</loc>
     <lastmod>2023-01-22T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2023/2023-%E5%B9%B4-okr/</loc>
+    <loc>https://www.orechou.com/posts/2023/2023-%E5%B9%B4-okr/</loc>
     <lastmod>2023-01-19T12:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/no.2-red-dead-redemption/</loc>
+    <loc>https://www.orechou.com/posts/2022/no.2-red-dead-redemption/</loc>
     <lastmod>2022-12-11T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/no.1-the-shining/</loc>
+    <loc>https://www.orechou.com/posts/2022/no.1-the-shining/</loc>
     <lastmod>2022-12-04T22:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</loc>
+    <loc>https://www.orechou.com/posts/2022/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</loc>
     <lastmod>2022-08-13T15:37:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    <loc>https://www.orechou.com/posts/2022/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2022-06-05T00:20:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/java_%E8%87%AA%E5%AE%9A%E4%B9%89-spring-security-%E9%89%B4%E6%9D%83/</loc>
+    <loc>https://www.orechou.com/posts/2022/java_%E8%87%AA%E5%AE%9A%E4%B9%89-spring-security-%E9%89%B4%E6%9D%83/</loc>
     <lastmod>2022-06-01T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</loc>
+    <loc>https://www.orechou.com/posts/2022/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</loc>
     <lastmod>2022-05-13T23:40:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/other/</loc>
+    <loc>https://www.orechou.com/tags/other/</loc>
     <lastmod>2022-05-13T23:40:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/deadmans-gun/</loc>
+    <loc>https://www.orechou.com/posts/2022/deadmans-gun/</loc>
     <lastmod>2022-04-28T00:25:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/song/</loc>
+    <loc>https://www.orechou.com/tags/song/</loc>
     <lastmod>2022-04-28T00:25:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/edc-%E6%B8%85%E5%8D%95/</loc>
+    <loc>https://www.orechou.com/posts/2022/edc-%E6%B8%85%E5%8D%95/</loc>
     <lastmod>2022-04-12T23:40:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/ios/</loc>
+    <loc>https://www.orechou.com/tags/ios/</loc>
     <lastmod>2022-03-27T17:43:00+00:00</lastmod>
   </url><url>
-    <loc>/tags/swiftui/</loc>
+    <loc>https://www.orechou.com/tags/swiftui/</loc>
     <lastmod>2022-03-27T17:43:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/%E4%BD%BF%E7%94%A8-swiftui-%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</loc>
+    <loc>https://www.orechou.com/posts/2022/%E4%BD%BF%E7%94%A8-swiftui-%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</loc>
     <lastmod>2022-03-27T17:43:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2022/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/</loc>
+    <loc>https://www.orechou.com/posts/2022/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/</loc>
     <lastmod>2022-02-13T15:40:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</loc>
+    <loc>https://www.orechou.com/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</loc>
     <lastmod>2021-08-16T14:46:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</loc>
+    <loc>https://www.orechou.com/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</loc>
     <lastmod>2021-08-10T12:30:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/2021/mysql_explain/</loc>
+    <loc>https://www.orechou.com/posts/2021/mysql_explain/</loc>
     <lastmod>2021-08-06T17:00:00+00:00</lastmod>
   </url><url>
-    <loc>/about/</loc>
+    <loc>https://www.orechou.com/about/</loc>
   </url><url>
-    <loc>/categories/</loc>
+    <loc>https://www.orechou.com/categories/</loc>
   </url><url>
-    <loc>/books/</loc>
+    <loc>https://www.orechou.com/books/</loc>
   </url>
 </urlset>
