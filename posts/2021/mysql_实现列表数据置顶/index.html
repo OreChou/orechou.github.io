@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>【MySQL】实现列表数据置顶 - OreChou</title>
+    <meta property="og:title" content="【MySQL】实现列表数据置顶 - OreChou">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="有的列表获取的业务场景，需要根据一些条件将数据置顶。
+例如有一张表有 id 和 name 两个字段。数据表如下。
+[&amp;hellip;] 若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：
+">
+      <meta property="og:description" content="有的列表获取的业务场景，需要根据一些条件将数据置顶。
+例如有一张表有 id 和 name 两个字段。数据表如下。
+[&amp;hellip;] 若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：
+">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">OreChou</a></h1>
+
+<p class="tagline">It&#39;s not who I am underneath, but what I do that defines me.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/index.xml">RSS</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>【MySQL】实现列表数据置顶</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2021-08-16
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<p>有的列表获取的业务场景，需要根据一些条件将数据置顶。</p>
+<p>例如有一张表有 id 和 name 两个字段。数据表如下。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1_name</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2_name</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3_name</td>
+</tr>
+<tr>
+<td>4</td>
+<td>4_name</td>
+</tr>
+<tr>
+<td>5</td>
+<td>5_name</td>
+</tr>
+<tr>
+<td>6</td>
+<td>6_name</td>
+</tr>
+<tr>
+<td>7</td>
+<td>7_name</td>
+</tr>
+<tr>
+<td>8</td>
+<td>8_name</td>
+</tr>
+<tr>
+<td>9</td>
+<td>9_name</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10_name</td>
+</tr>
+</tbody>
+</table>
+<p>若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：</p>
+<pre><code>SELECT * FROM goods ORDER BY 
+	CASE 
+		WHEN id = 5 THEN -10000
+		WHEN id = 7 THEN -9999 
+		ELSE id 
+	END
+LIMIT 0, 5
+</code></pre>
+
+
+
+  <footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://orechou.com">OreChou</a> 2017-2024 | <a href="https://github.com/orechou">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

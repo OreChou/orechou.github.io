@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>关于 PriorityOrdered 和 Ordered 的使用 - OreChou</title>
+    <meta property="og:title" content="关于 PriorityOrdered 和 Ordered 的使用 - OreChou">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered 接口来定义优先级，然后用 AnnotationAwareOrderComparator 对些 Bean 进行排序的时候，其顺序并没有按照 order 的大小进行排序。相关的代码如下：
+public class A implements &amp;hellip;">
+      <meta property="og:description" content="在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered 接口来定义优先级，然后用 AnnotationAwareOrderComparator 对些 Bean 进行排序的时候，其顺序并没有按照 order 的大小进行排序。相关的代码如下：
+public class A implements &amp;hellip;">
+      
+    
+
+    
+    
+    
+    <meta name="twitter:image" content="https://orechou.oss-cn-shenzhen.aliyuncs.com/images/chatgpt_answer_priorityordered_ordered.png">
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">OreChou</a></h1>
+
+<p class="tagline">It&#39;s not who I am underneath, but what I do that defines me.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/index.xml">RSS</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>关于 PriorityOrdered 和 Ordered 的使用</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2023-02-09
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h2 id="背景">背景</h2>
+<p>在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered 接口来定义优先级，然后用 AnnotationAwareOrderComparator 对些 Bean 进行排序的时候，其顺序并没有按照 order 的大小进行排序。相关的代码如下：</p>
+<pre><code class="language-java">public class A implements PriorityOrdered {
+	
+    @Override  
+    public int getOrder() {  
+        return 0;  
+    }
+	
+}
+
+public class B implements Ordered {
+    @Override  
+    public int getOrder() {  
+        return -1;  
+    }
+}
+
+public class C implements Ordered {
+
+    @Override  
+    public int getOrder() {  
+        return -2;  
+    }
+	
+}
+
+public class Test {
+
+    public void sort() {
+        List&lt;Object&gt; list = new ArrayList();
+        list.add(new A());
+        list.add(new B());
+        list.add(new C());
+
+        // 排序的结果为: A-&gt;C-&gt;B，而不是第一反应认为的 C-&gt;B-&gt;A
+        AnnotationAwareOrderComparator.sort(list);
+    }
+	
+}
+</code></pre>
+<h2 id="原因">原因</h2>
+<p>跟一下源码可以很快查到原因，AnnotationAwareOrderComparator 是继承的 OrderComparator，而 OrderComparator 的比较是这样的：</p>
+<pre><code class="language-Java">@Override  
+public int compare(@Nullable Object o1, @Nullable Object o2) {  
+    return doCompare(o1, o2, null);  
+}  
+  
+private int doCompare(@Nullable Object o1, @Nullable Object o2, @Nullable OrderSourceProvider sourceProvider) {
+    // 当比较 PriorityOrdered 和 Ordered 的时候，默认 PriorityOrdered 的优先级是比 Ordered 高的，不会去看设置的 order 数值。
+    boolean p1 = (o1 instanceof PriorityOrdered);  
+    boolean p2 = (o2 instanceof PriorityOrdered);  
+    if (p1 &amp;&amp; !p2) {  
+        return -1;  
+    }  
+    else if (p2 &amp;&amp; !p1) {  
+        return 1;  
+    }
+    int i1 = getOrder(o1, sourceProvider);  
+    int i2 = getOrder(o2, sourceProvider);  
+    return Integer.compare(i1, i2);  
+}
+</code></pre>
+<p>其实 Spring 的文档里面也说得很清楚：</p>
+<blockquote>
+<p>Extension of the <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/Ordered.html" title="interface in org.springframework.core"><code>Ordered</code></a> interface, expressing a <em>priority</em> ordering: <code>PriorityOrdered</code> objects are always applied before <em>plain</em> <a href="https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/Ordered.html" title="interface in org.springframework.core"><code>Ordered</code></a> objects regardless of their order values.
+When sorting a set of <code>Ordered</code> objects, <code>PriorityOrdered</code> objects and <em>plain</em> <code>Ordered</code> objects are effectively treated as two separate subsets, with the set of <code>PriorityOrdered</code> objects preceding the set of <em>plain</em> <code>Ordered</code> objects and with relative ordering applied within those subsets.</p>
+</blockquote>
+<p>另外使用 ChatGPT ，它也可以很好的回答这个问题：
+<img src="https://orechou.oss-cn-shenzhen.aliyuncs.com/images/chatgpt_answer_priorityordered_ordered.png" alt=""></p>
+<h2 id="启发">启发</h2>
+<p>如果我们要让某个 Bean 具有最高优先级，可以通过给这个 Bean 设置 PriorityOrdered，而其它的 Bean 设置 Ordered。这样即使这个 Bean 的 order 数值很小，也不会被其他的 Bean 所影响。</p>
+
+
+
+  <footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://orechou.com">OreChou</a> 2017-2024 | <a href="https://github.com/orechou">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

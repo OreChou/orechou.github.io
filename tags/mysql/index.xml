@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MySQL on OreChou</title>
+    <link>/tags/mysql/</link>
+    <description>Recent content in MySQL on OreChou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Jun 2023 18:30:00 +0000</lastBuildDate>
+    <atom:link href="/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【DevOps】使用 Docker 搭建 MySQL 主从复制架构</title>
+      <link>/posts/2023/mysql-master-slave-practice/</link>
+      <pubDate>Wed, 28 Jun 2023 18:30:00 +0000</pubDate>
+      <guid>/posts/2023/mysql-master-slave-practice/</guid>
+      <description>这篇文章介绍一下如何使用 Docker 搭建 MySQL 主从复制架构，文中的架构中包含一个主节点 master，一个从节点 slave。&#xA;创建 docker 网络 在 Docker 中，容器之间如果需要可以相互访问，那么你需要把这些容器添加到同一个 Docker 网络中。创建一个叫 mysql-net 的 Docker 网络，命令如下：&#xA;docker network create mysql-net 搭建 master 节点 配置文件 配置 master 节点的配置文件 my.conf，注意修改 server-id，这里我们将 server-id 设置为 1。MySQL 复制过程中，主服务器和从服务器需要具有不同的 server id。配置文件内容如下：&#xA;[mysqld] server-id=1 user=mysql character-set-server=utf8 collation-server=utf8_unicode_ci default_authentication_plugin=mysql_native_password secure_file_priv=/var/lib/mysql expire_logs_days=7 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION max_connections=1000 [client] default-character-set=utf8 [mysql] default-character-set=utf8 启动容器 在本地创建 master 节点的 logs、data、conf 挂载到 Docker 容器，启动容器的命令如下：&#xA;docker run --name mysql-master \ -v /Users/orechou/docker/mysql-cluster/master/logs:/var/log/mysql \ -v /Users/orechou/docker/mysql-cluster/master/data:/var/lib/mysql \ -v /Users/orechou/docker/mysql-cluster/master/conf:/etc/mysql \ --network=mysql-net \ -p 3306:3306 \ -e MYSQL_ROOT_PASSWORD=root \ -d mysql/mysql-server:latest 注意我们将本机的 3306 端口映射到容器的 3306 端口，并将容器加入到 mysql-net 网络中。</description>
+    </item>
+    <item>
+      <title>【MySQL】实现列表数据置顶</title>
+      <link>/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</link>
+      <pubDate>Mon, 16 Aug 2021 14:46:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</guid>
+      <description>有的列表获取的业务场景，需要根据一些条件将数据置顶。&#xA;例如有一张表有 id 和 name 两个字段。数据表如下。&#xA;id name 1 1_name 2 2_name 3 3_name 4 4_name 5 5_name 6 6_name 7 7_name 8 8_name 9 9_name 10 10_name 若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：&#xA;SELECT * FROM goods ORDER BY CASE WHEN id = 5 THEN -10000 WHEN id = 7 THEN -9999 ELSE id END LIMIT 0, 5 </description>
+    </item>
+    <item>
+      <title>【MySQL】慢 SQL 分析</title>
+      <link>/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</link>
+      <pubDate>Tue, 10 Aug 2021 12:30:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</guid>
+      <description>慢查询日志分析 设置慢查询 可以通过修改命令设置：&#xA;设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效 查看是否开启：SHOW VARIABLES LIKE &amp;lsquo;%slow_query_log%&amp;rsquo;; 设置阈值：SET GLOBAL long_query_time=3; 查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE &amp;rsquo;long_query_time%&amp;rsquo;; #重连或新开一个会话才能看到修改值 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：&#xA;[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log long_query_time=3;　#运行时间超过该值的SQL会被记录，默认值&amp;gt;10 log_output=FILE　获取慢 SQL 信息 查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE &amp;lsquo;%Slow_queries%&amp;rsquo;;&#xA;模拟语句：SELECT SLEEP(4);&#xA;查看慢查询日志：&#xA;$ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with: Tcp port: 3306 Unix socket: /tmp/mysql.sock Time Id Command Argument # Time: 2021-08-10T06:29:53.513752Z # User@Host: root[root] @ localhost [127.</description>
+    </item>
+    <item>
+      <title>【MySQL】Explain</title>
+      <link>/posts/2021/mysql_explain/</link>
+      <pubDate>Fri, 06 Aug 2021 17:00:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_explain/</guid>
+      <description>MySQL Explain Explain 是 MySQL 自带的查询优化器。&#xA;使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性： id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra&#xA;数据库性能瓶颈，主要关注 CPU 和 IO。&#xA;id 反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。&#xA;小表永远驱动大表，三种情况： （1）id 相同，执行顺序是由上至下的 （2）id 不同，如果是子查询，id 序号会递增，id 值越大优先级越高，越先被执行 （3）id 存在相同的，也存在不同的，所有组中，id 越大越先执行，如果 id 相同的，从上往下顺序执行&#xA;select_type 反映的是 MySQL 理解的查询类型，有几下几种：&#xA;SIMPLE：简单的 SELECT 查询，查询中不包含子查询或 UNION PRIMARY：查询中若包含任何复杂的字部分，最外层查询标记为 PRIMARY SUBQUERY：SELECT 或 WHERE 列表中的子查询 DERIVED：在 FROM 列表中包含的子查询，MySQL 会递归执行这些子查询，把结果放在临时表里 UNION：若第二个 SELECT 出现在 UNION 后，则被标记为 UNION，若 UNION 包含在 FROM 字句的子查询中，外层 SELECT 将被标记为 DERIVED UNION RESULT：UNION 后的结果集 table 反映的是数据从哪张表中读取出来。</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>自定义 Spring Security 鉴权 - OreChou</title>
+    <meta property="og:title" content="自定义 Spring Security 鉴权 - OreChou">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个 RBAC 的权限模型，很容易实现一套 OAuth2 鉴权、授权的流程。 随着业务扩展，单体的服务作为一个微服务并入一个大的系统之后。我们为保证其他业务能够调用该单体服务，但是又无法让其他系统来使用该服务已有鉴权，从而引入其他微服务都用基础的鉴权服务。根据业务场景的 &amp;hellip;">
+      <meta property="og:description" content="当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个 RBAC 的权限模型，很容易实现一套 OAuth2 鉴权、授权的流程。 随着业务扩展，单体的服务作为一个微服务并入一个大的系统之后。我们为保证其他业务能够调用该单体服务，但是又无法让其他系统来使用该服务已有鉴权，从而引入其他微服务都用基础的鉴权服务。根据业务场景的 &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">OreChou</a></h1>
+
+<p class="tagline">It&#39;s not who I am underneath, but what I do that defines me.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/index.xml">RSS</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>自定义 Spring Security 鉴权</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2022-06-01
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h1 id="背景">背景</h1>
+<p>当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个 RBAC 的权限模型，很容易实现一套 OAuth2 鉴权、授权的流程。
+随着业务扩展，单体的服务作为一个微服务并入一个大的系统之后。我们为保证其他业务能够调用该单体服务，但是又无法让其他系统来使用该服务已有鉴权，从而引入其他微服务都用基础的鉴权服务。根据业务场景的区分，当单体服务内部使用的时候走 SpringSecurity 的鉴权，单体服务外部调用的时候使用基础鉴权服务鉴权。</p>
+<h1 id="基础">基础</h1>
+<p>要根据不同的场景启用或绕过 SpringSecurity。我们可以首先想到能否通过 URL 来区分不同的场景，使用 <code>HttpSecurity</code> 的 <code>permitAll()</code> 和 <code>authenticated()</code> 来让不同路径的接口是否需要走鉴权。除此之外，可以去修改 SpringSecurity 的 Filter ，使用自定义 Filter 或者用动态代理对 Filter 进行增强。</p>
+<h1 id="实现">实现</h1>
+<pre><code class="language-Java">@Aspect
+@Component
+@Slf4j
+public class AuthorizationHeaderAspect {
+
+    /**
+     * 基础鉴权服务 Feign 调用业务
+     */
+    @Autowired
+    private OauthFeignBiz oauthFeignBiz;
+
+    @Pointcut(&quot;execution(* org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter.doFilter(..))&quot;)
+    public void securityOauth2DoFilter() {
+    }
+
+    @Pointcut(&quot;execution(* org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(..))&quot;)
+    public void securitySecurityInterceptor2DoFilter() {
+
+    }
+
+    @Around(&quot;securityOauth2DoFilter()&quot;)
+    public void enhanceSecurityOauth2DoFilter(ProceedingJoinPoint joinPoint) throws Throwable {
+        Object[] args = joinPoint.getArgs();
+        if (args == null || args.length != 3 || !(args[0] instanceof HttpServletRequest &amp;&amp; args[1] instanceof javax.servlet.ServletResponse &amp;&amp; args[2] instanceof FilterChain)) {
+            joinPoint.proceed();
+            return;
+        }
+
+        HttpServletRequest request = (HttpServletRequest) args[0];
+        String accessToken = request.getHeader(&quot;Authorization&quot;);
+
+        if (StringUtils.isNotBlank(request.getParameter(&quot;sceneId&quot;)) &amp;&amp; StringUtils.isNotBlank(request.getParameter(&quot;sceneType&quot;))) {
+            // 这里我们可以根据业务场景确定走哪种鉴权方式
+            SecurityUtils.setBaseAuth(true);
+        } else {
+            SecurityUtils.setBaseAuth(false);
+        }
+
+        if (SecurityUtils.isBaseAuth()) {
+            Response&lt;CheckTokenResponse&gt; checkTokenResponse = oauthFeignBiz.checkToken(accessToken);
+            if (checkTokenResponse.getCode() == 0) {
+                SecurityUtils.setBaseAuth((true));
+                ((FilterChain) args[2]).doFilter((ServletRequest) args[0], (ServletResponse) args[1]);
+            } else {
+                throw new Exception(&quot;鉴权失败&quot;);
+            }
+        } else {
+            // 让原 Filter 的逻辑继续执行
+            joinPoint.proceed();
+        }
+    }
+
+    @Around(&quot;securitySecurityInterceptor2DoFilter()&quot;)
+    public void enhanceSecuritySecurityInterceptor2DoFilter(ProceedingJoinPoint joinPoint) throws Throwable {
+        Object[] args = joinPoint.getArgs();
+        if (args == null || args.length != 3 || !(args[0] instanceof HttpServletRequest &amp;&amp; args[1] instanceof javax.servlet.ServletResponse &amp;&amp; args[2] instanceof FilterChain)) {
+            joinPoint.proceed();
+            return;
+        }
+
+        if (!SecurityUtils.isBaseOauth()) {
+            joinPoint.proceed();
+            return;
+        }
+        ((FilterChain) args[2]).doFilter((ServletRequest) args[0], (ServletResponse) args[1]);
+    }
+
+}
+</code></pre>
+
+
+
+  <footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://orechou.com">OreChou</a> 2017-2024 | <a href="https://github.com/orechou">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

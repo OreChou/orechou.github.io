@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Movie on OreChou</title>
+    <link>/tags/movie/</link>
+    <description>Recent content in Movie on OreChou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 18 Jun 2023 23:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/movie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【观影】《The Flash》</title>
+      <link>/posts/2023/the-flash/</link>
+      <pubDate>Sun, 18 Jun 2023 23:00:00 +0000</pubDate>
+      <guid>/posts/2023/the-flash/</guid>
+      <description>Run, Barry, Run.&#xA;最终 DCEU 来到了它的完结，《The Flash》划上了最后的句号。一直以来 DCEU 超级英雄电影，跟 Marvel 电影一路爽不一样的地方，它在基于漫画背景故事下有一致的风格基调。《Man of Steel》、《Batman v Superman: Dawn of Justice》、《Zack Snyder&amp;rsquo;s Justice League》三部电影，从 14 年到 21 年，一路坎坷。但我认为是非常好的正义联盟系列漫改电影，故事清晰、人物立体。但扎导的退出，整个故事没法延续最后的高潮。但值得庆幸的是《The Flash》给了一个不错的告别。&#xA;整个电影基于闪点的原著背景改编，闪点里面其实有两个感人的事件，电影是讲述了 Barry 这一件。另外一件是 Barry 给 Bruce 带回了闪点宇宙 Tomas 写给 Bruce 的信。原文如下：&#xA;There&#39;s only one thing I know about life. I know some things happen by chance, And some things happen because we make them happen. Barry Allen was a man haunted by his past.</description>
+    </item>
+  </channel>
+</rss>

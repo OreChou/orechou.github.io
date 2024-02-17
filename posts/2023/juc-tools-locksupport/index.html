@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>JUC 工具：LockSupport - OreChou</title>
+    <meta property="og:title" content="JUC 工具：LockSupport - OreChou">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="LockSupport 是 Java 并发工具包 java.util.concurrent 中的一个用于创建锁和其他同步类的基本线程阻塞原语。LockSupport 提供了 park() 和 unpark() 方法来停止和恢复线程。这些方法比低级的 wait/notify 和 notifyAll 方法更容易使用，并且与 java.util.concurrent 的高级同步工具更好地互相配合。 &amp;hellip;">
+      <meta property="og:description" content="LockSupport 是 Java 并发工具包 java.util.concurrent 中的一个用于创建锁和其他同步类的基本线程阻塞原语。LockSupport 提供了 park() 和 unpark() 方法来停止和恢复线程。这些方法比低级的 wait/notify 和 notifyAll 方法更容易使用，并且与 java.util.concurrent 的高级同步工具更好地互相配合。 &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">OreChou</a></h1>
+
+<p class="tagline">It&#39;s not who I am underneath, but what I do that defines me.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/index.xml">RSS</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>JUC 工具：LockSupport</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2023-06-09
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h1 id="简介">简介</h1>
+<p><code>LockSupport</code> 是 Java 并发工具包 <code>java.util.concurrent</code> 中的一个用于创建锁和其他同步类的基本线程阻塞原语。<code>LockSupport</code> 提供了 <code>park()</code> 和 <code>unpark()</code> 方法来停止和恢复线程。这些方法比低级的 <code>wait/notify</code> 和 <code>notifyAll</code> 方法更容易使用，并且与 <code>java.util.concurrent</code> 的高级同步工具更好地互相配合。</p>
+<h1 id="示例">示例</h1>
+<p>在下面这个例子中，我们定义了两个线程。t1 打印数字，t2 打印字母。我们想要实现的效果是  t1 和 t2 交替打印，即输出结果为 &ldquo;1A2B3C4D5E6F7G&rdquo;。使用 <code>LockSupport</code> 的 <code>park()</code> 和 <code>unpark()</code> 方法，我们可以精确地控制线程的执行顺序，实现线程间的同步。</p>
+<pre><code class="language-Java">import java.util.concurrent.locks.LockSupport;
+
+public class LockSupportDemo {
+    static Thread t1 = null, t2 = null;
+
+    public static void main(String[] args) {
+        char[] a1 = &quot;1234567&quot;.toCharArray();
+        char[] a2 = &quot;ABCDEFG&quot;.toCharArray();
+
+        t1 = new Thread(() -&gt; {
+            for (char c : a1) {
+                System.out.print(c);
+                LockSupport.unpark(t2); // 叫醒t2
+                LockSupport.park(); // 阻塞t1
+            }
+        }, &quot;t1&quot;);
+
+        t2 = new Thread(() -&gt; {
+            for (char c : a2) {
+                LockSupport.park(); // 阻塞t2
+                System.out.print(c);
+                LockSupport.unpark(t1); // 叫醒t1
+            }
+        }, &quot;t2&quot;);
+
+        t1.start();
+        t2.start();
+    }
+}
+</code></pre>
+<h1 id="答疑">答疑</h1>
+<h2 id="q1park-方法中的-blocker-的作用">Q1：park 方法中的 blocker 的作用</h2>
+<p>这个 blocker 参数实际上是一个与该挂起操作关联的对象，这个对象会在调用 <code>park()</code> 方法后被设置到该线程，用于后续诊断和监控工具查看。它并不参与 <code>park()</code> 方法的工作逻辑，也不会影响挂起或者恢复线程的操作。这个对象通常是执行该操作的同步抽象（例如锁）。在调用 <code>park</code> 方法之后，可以使用 <code>getBlocker(Thread)</code> 方法来检索和清除该对象。</p>
+<p>总的来说，blocker 对象主要是用于诊断和监控目的，它能帮助开发者或者工具更好地理解线程为何被挂起，以及哪个对象是造成线程挂起的原因。</p>
+<h2 id="q2locksupport-相比于-objectwait-和-objectnotify-的优势">Q2：LockSupport 相比于 Object.wait 和 Object.notify 的优势</h2>
+<p><code>LockSupport</code> 相较于 <code>Object.wait</code> 和 <code>Object.notify</code> 提供了更高级、更安全、更灵活的线程同步机制，主要体现在以下几点：</p>
+<ol>
+<li>无需在同步代码块里：调用 <code>LockSupport</code> 的 <code>park()</code> 和 <code>unpark()</code> 方法不需要在 <code>synchronized</code> 代码块中，避免了不必要的同步，比较灵活。</li>
+<li>中断影响：如果线程正在调用 <code>park()</code> 阻塞，那么如果其他线程中断它，那么 <code>park()</code> 方法会返回，但不会抛出 <code>InterruptedException</code> 异常。</li>
+<li>提供了 blocker 的概念：<code>LockSupport</code> 可以知道是因为什么原因导致线程被阻塞，这对于问题排查等方面会更有帮助。</li>
+<li><code>unpark</code> 可以先于 <code>park</code> 调用：在 <code>Object.wait</code> 和 <code>Object.notify</code> 中，必须先执行 <code>wait</code> 再执行 <code>notify</code>，否则 <code>notify</code> 的作用会丢失，而 <code>LockSupport</code> 则允许 <code>unpark</code> 先执行。</li>
+</ol>
+<h2 id="q3-locksupportpark会释放锁资源吗">Q3: LockSupport.park()会释放锁资源吗</h2>
+<p>不会。<code>LockSupport.park()</code> 方法只是让当前线程进入等待状态，它不会释放任何线程可能持有的锁。这是因为，<code>LockSupport.park()</code> 是一个底层的线程阻塞工具，而不涉及 Java 的同步控制块（即 synchronized 关键字）或者 <code>java.util.concurrent</code> 包中的高级锁工具。
+在使用 <code>LockSupport.park()</code> 时，需要特别注意这一点。如果一个线程在持有锁的情况下调用了 <code>park()</code> 方法并被阻塞，那么可能会导致其他试图获取该锁的线程也被阻塞，从而可能引发活跃性问题。</p>
+
+
+
+  <footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://orechou.com">OreChou</a> 2017-2024 | <a href="https://github.com/orechou">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+

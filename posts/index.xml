@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on OreChou</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on OreChou</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 07 Nov 2023 20:50:00 +0000</lastBuildDate>
+    <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>写在巨人完结之后</title>
+      <link>/posts/2023/50-attack-on-titan/</link>
+      <pubDate>Tue, 07 Nov 2023 20:50:00 +0000</pubDate>
+      <guid>/posts/2023/50-attack-on-titan/</guid>
+      <description>我是听了《ltterasshai》这首歌之后才去看的最终季后篇。 我很难过，难过的是，我终于也走到了对时间感知很弱，不断目睹青春、年少逝去的年龄。&#xA;巨人这部漫画给了我很好的回忆。我不认为他的结尾很差，也不认为作品本身有立场、价值观的问题。战争、人与人之间的不信任、不理解，始终贯穿了人类历史，至今也是这样。你也不能指望一个十几岁的中二热血青年，就能完美解决人类战争问题，哪怕是他能够窥探过去与未来的记忆。巨人中人们，都在与命运战斗，但又真实地，无奈、牺牲（无畏或无意义）。&#xA;我想回到 10 年前的那时，兴奋地说着，&#xA;戦い！ 戦い！！ 戦い！！！</description>
+    </item>
+    <item>
+      <title>关于接口 mock 的技术实现</title>
+      <link>/posts/2023/49-the-practise-mock-api/</link>
+      <pubDate>Mon, 11 Sep 2023 20:50:00 +0000</pubDate>
+      <guid>/posts/2023/49-the-practise-mock-api/</guid>
+      <description>最近在做接口 mock 的功能，用到了一些新的技术，主要有 OpenAPI 规范、JsonSchema 和 mockjs。这里简单的记录下技术方案，以及过程中曾踩到的坑。&#xA;原理 整个的原理比较简单，首先 OpenAPI 定义了一套接口规范，按照这个规范我们可以准确的描述一个接口，比如接口的方法类型、出入参格式和内容描述。这是 OpenAPI 规范中文版的文档地址。Apifox、Postman 等接口管理工具对接口的定义也是以这个规范进行存储的。我们可以通过这个地址很直观的观察一份 OpenAPI 规范的接口数据是什么样的。&#xA;当我们拥有了接口定义之后，我们就知道了接口的返回体的结构，大部分的服务接口通常将数据以 JSON 的格式进行返回，而描述这个 JSON 格式的就是 JSON Schema。JSON Schema 是 JSON 数据的模式描述语言，用来定义 JSON 数据结构和格式约束。JSON Schema提供了一套验证 JSON 数据有效性的规则集。这是 JSON Schema 规范中文版的文档地址。如果你仔细看的话，就会发现 OpenAPI 规范里面对 JSON 类型的请求体或返回体的就是用 JSON Schema 进行描述的。&#xA;最后要做的事情，就是解析 JSON Schema 的定义，将其转换成 mockjs 的模板，让 mockjs 能够 mock 出对应的 JSON。当然我们 Java 微服务要使用 mockjs，需要使用到 ScriptEngine。&#xA;踩坑 OpenAPI 扩展字段的存储 为了前端能够直接使用 mockjs 的预制变量，我们对接口定义增加了一个名为 mock 的属性，用以存储预制变量。后面联调的时候发现 mock 属性虽然能够转换到 OpenAPI 格式中，但是读取不出来。最后排查是因为 OpenAPI 的扩展字段需要增加 x- 前缀，且通过 OpenAPIV3Parser.</description>
+    </item>
+    <item>
+      <title>There and back again</title>
+      <link>/posts/2023/48-there-and-back-again/</link>
+      <pubDate>Wed, 23 Aug 2023 23:30:00 +0000</pubDate>
+      <guid>/posts/2023/48-there-and-back-again/</guid>
+      <description>我从小生活在重庆的一个边陲小县城里，读初中之前是在县里的一个镇上，上了初中到了县城，读大学就到了市里。在镇上的那十多年我活动的范围并不大，小的时候受我妈管束比较多，很多事情不让去做，现在那个镇子到底有几条街我也回忆不起来了。在县城读书的那几年倒是自由了不少，那时候对游戏厅和网吧如数家珍，觉得到网吧里面打游戏是最快乐的事情，如果还有余钱买一瓶可乐就是王炸。那个时候人不大，没有养成自己的价值观、世界观，对自己喜欢的就更进一步探索，对自己不喜欢的就主动回避。好笑的事情是，初中看到有些同学抽烟，在某个学期开学前一天我就买了一包烟体验体验，一个人坐在客厅里面一根接着一根炫完了一包，觉得索然无味，然后到现在也就从不抽烟了。初高中我的学习一直不好，年级中下游徘徊。那时候更多的心思在玩上面，父亲本打算我考个二本读书就算了，后面我也没想到上了本市的一个 985。到现在我记不起在教室里学习的那些画面，但对每次在 PS2 游戏厅出来后，发现自行车轮胎被人放完气的抓狂历历在目。&#xA;一个失恋的暑假之后，我一个人背着一个包就上了大学。县城到市里，当时是 4 个小时车程，路上没有什么风景，只有绿得发亮的山。那时感到了前所未有的自由，唯一能够约束到我的只有法律和上课时的点名。出来之后我很少回家，只有寒暑假没有生活费之后才会回去。游戏、电影、同学聚会，在图书馆看一些专业无关的书，本科前两三年就是这么过来的。那真的是很美好的日子，图书馆很安静，湖水很干净，人很年轻。我也有了相当多的时间观察重庆这座城市，当时洪崖洞没什么人，路边的小面几块钱，地铁只有三条线，道路很拥挤。大学的同学来自五湖四海，同学问我来自哪里。我，来自哪里？那时第一次有了一种归属感，我来自重庆。&#xA;我在学业上一向不是很认真，缺乏积极性，当时为了多一个研究生学历就考了本校的研。找工作那会，女朋友（现在的老婆）在深圳。所以我只找深圳的工作。当时主要想去腾讯，但没去了。英伟达那时在深圳有个 offer，工资稍微低点，我没有去。现在想想，可能去了更好。当时面试我的那个 leader 说，我们这里陪产假 3 个月。某个面试官说他收入主要买公司股票，下午要去看房。我心里想的是这跟我有什么关系。真是无知。&#xA;25 岁，我离开了重庆。到了深圳。这是一座看起来又新又破的大城市，高楼大厦是新的，城中村是破的。来到这个城市，你的目的是什么可能你并不知道，但城市的目的是让你创造价值贡献 GDP。工作之后，我的认知是每个打工人都在为国家做贡献。过去 10 多年移动互联网的发展，让这个行业的收入水平，要高出其他传统行业的平均水平，加上入行的门槛也比较低。所以移动互联网行业的从业人员，不愧新时代民工的称谓，为国家的税收做足了贡献。&#xA;我感觉透支了身体，工作日是高强度的上班，休息日那就真的是只想在家休息。对于普通打工人来说，深圳的房价是一颗巨石挡在你在深圳安家的路上，而你手上只有一把费力的锤子。那么是图什么要这样上强度呢？加上这几年的疫情，深圳财大气粗地开展全面核酸，每天让打工人下班之后排队做检测。给我的感受就是一个累字。&#xA;经过决定之后，我跟老婆决定回重庆生活。7、8 月份就在弄搬家事情。幸运的是，我一个人来，三个人回，还有两只猫咪。我很幸运，在 30 岁前有了自己的家庭。我不是那种争的人，这对我已经够好了。现在转回了户口，签了装修设计合同，入职了一家新的公司，明确自己想要的生活。&#xA;There and back again，开始新的故事。</description>
+    </item>
+    <item>
+      <title>【DevOps】使用 Docker 搭建 MySQL 主从复制架构</title>
+      <link>/posts/2023/mysql-master-slave-practice/</link>
+      <pubDate>Wed, 28 Jun 2023 18:30:00 +0000</pubDate>
+      <guid>/posts/2023/mysql-master-slave-practice/</guid>
+      <description>这篇文章介绍一下如何使用 Docker 搭建 MySQL 主从复制架构，文中的架构中包含一个主节点 master，一个从节点 slave。&#xA;创建 docker 网络 在 Docker 中，容器之间如果需要可以相互访问，那么你需要把这些容器添加到同一个 Docker 网络中。创建一个叫 mysql-net 的 Docker 网络，命令如下：&#xA;docker network create mysql-net 搭建 master 节点 配置文件 配置 master 节点的配置文件 my.conf，注意修改 server-id，这里我们将 server-id 设置为 1。MySQL 复制过程中，主服务器和从服务器需要具有不同的 server id。配置文件内容如下：&#xA;[mysqld] server-id=1 user=mysql character-set-server=utf8 collation-server=utf8_unicode_ci default_authentication_plugin=mysql_native_password secure_file_priv=/var/lib/mysql expire_logs_days=7 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION max_connections=1000 [client] default-character-set=utf8 [mysql] default-character-set=utf8 启动容器 在本地创建 master 节点的 logs、data、conf 挂载到 Docker 容器，启动容器的命令如下：&#xA;docker run --name mysql-master \ -v /Users/orechou/docker/mysql-cluster/master/logs:/var/log/mysql \ -v /Users/orechou/docker/mysql-cluster/master/data:/var/lib/mysql \ -v /Users/orechou/docker/mysql-cluster/master/conf:/etc/mysql \ --network=mysql-net \ -p 3306:3306 \ -e MYSQL_ROOT_PASSWORD=root \ -d mysql/mysql-server:latest 注意我们将本机的 3306 端口映射到容器的 3306 端口，并将容器加入到 mysql-net 网络中。</description>
+    </item>
+    <item>
+      <title>【DevOps】使用 Grafana 和 Prometheus 做服务监控</title>
+      <link>/posts/2023/grafana-prometheus-practice/</link>
+      <pubDate>Tue, 27 Jun 2023 15:45:00 +0000</pubDate>
+      <guid>/posts/2023/grafana-prometheus-practice/</guid>
+      <description>最近需要对自己的一些服务做监控，于是想要动手实践使用一下 Grafana 和 Prometheus。这篇文章就主要介绍搭建 Grafana 和 Prometheus 对 MySQL 做监控的过程。&#xA;工具介绍 Prometheus 是一个开源的系统监控和警报工具包，由 SoundCloud 启动。它的设计目标是对大规模的服务容器和微服务体系结构提供稳健的可靠性和实时的度量。Prometheus 提供了多种数据收集机制，包括通过 HTTP 拉取目标应用程序暴露的 metrics，通过服务发现或者静态配置去发现新的目标，或者接受推送的时间序列数据。Prometheus 还提供了一种灵活的查询语言（PromQL），以便在其数据上进行切片和切块，生成聚合，预测等操作。 Prometheus 服务器以一个独立的服务器形式运行，它从被配置的位置定期拉取度量数据，将数据存储在它的时间序列数据库中，并运行定义的警报规则以生成新的警报。它的核心组件是一个多维数据模型和一套灵活的查询语言。在数据收集方面，它主要采用了一种拉模式的设计，也支持推模式的数据收集。&#xA;Grafana 是一个开源的度量分析和可视化套件。它通常被用于时间序列数据的可视化，这种数据通常来源于如今在软件开发中广泛使用的实时监控系统，如 Prometheus。Grafana 主要用于可视化和探索度量数据。它可以通过一种查询编辑器（这种编辑器支持数据源特定的语言）来创建可视化的图表，并通过一种灵活的方式将这些图表组织在一个或多个&amp;quot;仪表板&amp;quot;上。此外，Grafana 还支持警报和通知功能，以及丰富的插件生态系统。 Grafana 是一个前后端分离的 Web 应用程序。其前端部分使用 AngularJS 和 Later.js 构建，后端部分则使用 Go 语言编写。在运行时，Grafana 服务器将请求时间序列数据，然后运行查询并将结果绘制成图表。&#xA;搭建过程 docker 运行 MySQL 首先，我们用 docker 启动一个 MySQL 8.0 的容器，来充当我们需要被监控的服务。&#xA;创建 MySQL 8.0 配置文件 my.conf，该配置文件需要放在 conf 文件夹下，配置如下：&#xA;[mysqld] user=mysql character-set-server=utf8 collation-server=utf8_unicode_ci default_authentication_plugin=mysql_native_password secure_file_priv=/var/lib/mysql expire_logs_days=7 sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION max_connections=1000 [client] default-character-set=utf8 [mysql] default-character-set=utf8 docker 命令如下：</description>
+    </item>
+    <item>
+      <title>【观影】《The Flash》</title>
+      <link>/posts/2023/the-flash/</link>
+      <pubDate>Sun, 18 Jun 2023 23:00:00 +0000</pubDate>
+      <guid>/posts/2023/the-flash/</guid>
+      <description>Run, Barry, Run.&#xA;最终 DCEU 来到了它的完结，《The Flash》划上了最后的句号。一直以来 DCEU 超级英雄电影，跟 Marvel 电影一路爽不一样的地方，它在基于漫画背景故事下有一致的风格基调。《Man of Steel》、《Batman v Superman: Dawn of Justice》、《Zack Snyder&amp;rsquo;s Justice League》三部电影，从 14 年到 21 年，一路坎坷。但我认为是非常好的正义联盟系列漫改电影，故事清晰、人物立体。但扎导的退出，整个故事没法延续最后的高潮。但值得庆幸的是《The Flash》给了一个不错的告别。&#xA;整个电影基于闪点的原著背景改编，闪点里面其实有两个感人的事件，电影是讲述了 Barry 这一件。另外一件是 Barry 给 Bruce 带回了闪点宇宙 Tomas 写给 Bruce 的信。原文如下：&#xA;There&#39;s only one thing I know about life. I know some things happen by chance, And some things happen because we make them happen. Barry Allen was a man haunted by his past.</description>
+    </item>
+    <item>
+      <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
+      <link>/posts/2023/use-chatgpt-program/</link>
+      <pubDate>Wed, 14 Jun 2023 18:30:00 +0000</pubDate>
+      <guid>/posts/2023/use-chatgpt-program/</guid>
+      <description>最近半导体和 AI 概念股狂涨，在二级市场没有搭上这趟车的我坐不住了。不敢追高的我只能写一写博客来缓解郁闷的心情。这篇文章是我作为程序员，介绍一下日常工作里，如何使用 ChatGPT 简化我的工作。&#xA;分析需求 比如本周有一个需求：对含有文件下载 URL 链接的 Excel 文件进行处理，将每一行中的链接的文件下载下来后进行打包，打包后的文件名使用该行的某几个属性值命名。 举一个例子，比如 Excel 的文件如下&#xA;表头1 表头2 表头3 表头4 A B https://www.apple.com.cn/privacy/docs/A_Day_in_the_Life_of_Your_Data.pdf https://www.apple.com.cn/privacy/docs/A_Day_in_the_Life_of_Your_Data.pdf 需要将表头 3 和表头 4 的 pdf 下载下来，并打包成一个压缩包，压缩包以表头 1 和表头 2 命名，例如第一行就是 A_B.zip&#xA;ChatGPT 的交互 回合 1 定义角色 首先给 ChatGPT 一个角色，Prompt 如下：&#xA;我希望你能扮演一个软件开发者的角色。我将提供一些关于网络应用需求的具体信息，而你的工作是提出一个架构和代码，而你的技术栈是无所不能的。&#xA;ChatGPT 会欣然答应，立即进入角色：&#xA;非常好！请告诉我关于网络应用需求的具体信息，我会根据这些信息来设计一个合适的架构和代码。&#xA;回合 2 提交需求 我将需求描述调整一下，以写程序的角度告诉他应该完成什么内容，Prompt 如下：&#xA;我有一个需求：对含有文件 URL 下载链接的 Excel 文件进行处理，将每一行中的链接的文件下载下来后进行打包成 zip 文件，打包后的文件名使用该行的某几个属性值命名。注意这里每一行最终都是不同的 ZIP 文件。 我要你设计一个方法完成这个功能，方法的入参为 excel 的文件路径，下载链接所在的列索引列表，命名所需要指定的列索引列表，压缩包的存储路径（非必传，不传的话在执行路径下生成）。 你将使用 Python3 来实现这个需求功能。&#xA;ChatGPT 会很快给出相关的代码及说明：&#xA;import os import requests import pandas as pd from zipfile import ZipFile def process_excel(excel_path, link_columns, name_columns, zip_dir=None): df = pd.</description>
+    </item>
+    <item>
+      <title>JUC 工具：LockSupport</title>
+      <link>/posts/2023/juc-tools-locksupport/</link>
+      <pubDate>Fri, 09 Jun 2023 17:00:00 +0000</pubDate>
+      <guid>/posts/2023/juc-tools-locksupport/</guid>
+      <description>简介 LockSupport 是 Java 并发工具包 java.util.concurrent 中的一个用于创建锁和其他同步类的基本线程阻塞原语。LockSupport 提供了 park() 和 unpark() 方法来停止和恢复线程。这些方法比低级的 wait/notify 和 notifyAll 方法更容易使用，并且与 java.util.concurrent 的高级同步工具更好地互相配合。&#xA;示例 在下面这个例子中，我们定义了两个线程。t1 打印数字，t2 打印字母。我们想要实现的效果是 t1 和 t2 交替打印，即输出结果为 &amp;ldquo;1A2B3C4D5E6F7G&amp;rdquo;。使用 LockSupport 的 park() 和 unpark() 方法，我们可以精确地控制线程的执行顺序，实现线程间的同步。&#xA;import java.util.concurrent.locks.LockSupport; public class LockSupportDemo { static Thread t1 = null, t2 = null; public static void main(String[] args) { char[] a1 = &amp;quot;1234567&amp;quot;.toCharArray(); char[] a2 = &amp;quot;ABCDEFG&amp;quot;.toCharArray(); t1 = new Thread(() -&amp;gt; { for (char c : a1) { System.</description>
+    </item>
+    <item>
+      <title>Kafka 消息大量积压的一些总结</title>
+      <link>/posts/2023/kafka-%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sat, 03 Jun 2023 16:30:00 +0000</pubDate>
+      <guid>/posts/2023/kafka-%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</guid>
+      <description>本文主要总结一些 Kafka 作为消息队列使用时，当线上出现消息大量积压后的处理方法以及平时使用时应该注意的点。一般从三个方向排查分析问题，消费者的问题、分区设计的问题和网络问题。&#xA;消费者导致 大部分消息积压基本都是消费者出现了状况，消费者处理的速度慢、或者消费者出现了故障。确认消费者出现问题后，我们首先要做的就是恢复或者提高消费速度。&#xA;提高消费速度 一般来说，我们会对消息队列里面消息数量做监控，当消息到达一定阈值的时候，自动化地去对消费者的数量扩容。但是因为 Kafka 的 Topic 的 Partition 数量是有限制的，当消费者的数量扩容到 Partition 数量之后，再对消费者数量进行增加就没有作用了。如果这时并没有解决消费者速度的问题，我们需要能够快速把消费的能力再放大，相应的步骤如下：&#xA;问题修复: 先解决消费者的问题，以恢复消费速度，随后停止所有消费者。 新建 Topic: 创建一个新 Topic，其 Partition 数量是原先的 10 倍，并且创建相应数量的队列。一般不直接对原 Topic 的分区进行调整，因为分区增加之后没有办法去缩小。 数据分发: 编写并部署一个临时的消费者程序，此程序将积压的数据消费后，不进行耗时处理，而是均匀分发至新创建的队列中。 并发消费: 临时增加 10 倍的消费者机器，每一批消费者消费一个临时队列的数据，相当于以原本的10倍速度消费数据。 架构恢复: 在积压数据消费完后，恢复原始架构，重新用原先的消费者机器来消费消息。 上面的方法能够快速地解决线上堆积了大量的消息。除此之外，我们对消费者的设计也会影响到消费的速率。&#xA;其他的注意点 控制消费者获取消息的数量 Kafka 支持批量消费数据。在消费者端，可以通过修改配置参数来改变每次从 Kafka 服务器获取的消息数量。 这主要通过以下两个配置参数控制：&#xA;fetch.min.bytes: 消费者从服务器获取的最小数据，如果不满足这个值，消费者会等待直到满足此值。 fetch.max.wait.ms: 消费者等待 Kafka 服务端积累数据的最长时间。 还有一个与之相关的参数： max.poll.records：它能够控制消费者每次调用 poll() 时返回的最大记录数。 以上三个参数都是在实时性和吞吐量之间进行权衡的，你可以根据业务需求，对这些参数进行适当的调整。在调整这些参数之前，最好先在测试环境中进行性能测试，以确定最佳的参数设置。&#xA;如果你的业务场景对实时性要求较高，即希望消息一生成就能尽快被消费，那么 fetch.min.bytes 可以设置得较小，fetch.max.wait.ms 也可以设置得较小，这样可以确保消费者能够更快地获取到新的消息。 如果你的业务场景对吞吐量要求较高，即希望消费者能够以较高的速度处理大量的消息，那么 fetch.min.bytes 可以设置得较大，fetch.max.wait.ms 也可以设置得较大，这样可以通过增加每次获取的消息数量，提高消费者的处理效率。 max.poll.records 参数用于控制每次调用poll()时返回的最大记录数。如果你希望消费者每次能处理更多的消息，可以增大这个值。但是，这个值的增大可能会增加消费者处理消息的延迟。 优化消费者的处理逻辑 对于消费者的处理代码，优化其代码逻辑。有以下的点可以考虑：&#xA;是否能够使用多线程来加快业务逻辑的处理速度； 是否能够减少数据库的调用次数； 是否能够减少下游 PRC 调用的次数。 分区设计不合理导致 观察 Kafka 的消费在不同的 Partition 上的消息堆积情况，如果消息主要分布在部分 Parition 上，那么我们也许要确认是否是分区设计不合理导致。如果是的话，可能需要重新设计分区策略。比如，考虑使用更细粒度的key进行分区，或者增加总的分区数。</description>
+    </item>
+    <item>
+      <title>何时退休（一）：先做一个财务自由计划</title>
+      <link>/posts/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%E4%B8%80%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</link>
+      <pubDate>Sun, 16 Apr 2023 23:30:00 +0000</pubDate>
+      <guid>/posts/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%E4%B8%80%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</guid>
+      <description>I think it the excitement only a free man can feel, a free man at the start of a long journey whose conclusion is uncertain. I hope the Pacific is as blue as it has been in my dreams.&#xA;人生这趟旅途，如果提早确定自己的目标、做好有用的计划，就会有更多的时间、精力来享受自己的人生。而在当下，很多人因为钱的问题走在自己不喜欢的路途上。我父辈的这一代，大部分人从事教师和医生的职业，在一个县城工作或奉献了自己大部分的人生。他们的思想更加关注工作的稳定、收入的高低、福利的好坏，关注绩效工资、关注退休金等等。我从小接受的教育是搞好成绩，考个大学，当个白领。我很自然地就这样做了，但实际上工作的越久，人生的多样性越单一。具体的，工资越高，债务越高；年龄越大，压力越大。久而久之就会为了金钱的事情妥协，做一些不喜欢的事情。每个行业高速发展的福利期过去了，按部就班的工作也能搭上一辆车，驶向财务自由的机率也变低了。所以何时退休，如何摆脱不想做的事情，先做一个财务自由计划是关键的第一步。&#xA;财务自由和财富自由 做计划前需要先分清楚财务自由（Financial Freedom）和财富自由（Wealth Freedom）是两个相关但略有不同的概念。财务自由意味着非劳动的收入足以支付你的日常生活开支，无需依赖工作收入。而财富自由意味着你拥有足够的财富，可以实现你的梦想、目标和愿望，过上奢华的生活，不仅仅是满足基本生活需求。两种自由的标准和程度是不一样的。&#xA;我们先定义收入类型，主要有三种收入类型：&#xA;工作收入：劳动获得的收入，如上班的薪酬等。 证券收入：来源于纸资产，如股票、债券和共同基金等。 被动收入：来源于非纸资产，如房产出租所带来的租金，专利或者知识产权产品的收入等。 在上面的收入类型中，学会获取被动收入和证券收入的速度越快，年轻富有地退休就会越快。&#xA;财务自由公式 实现财务自由，我们可以使用一个简化的公式。&#xA;退休本金 = ((年度总支出 - 年度总被动收入) * (1 - (1 + (年化收益率 - 通货膨胀率))^(-退休年限))) / (年化收益率 - 通货膨胀率)&#xA;公式中，年度总支出、年度总被动收入很好理解。年化收益率和通货膨胀率大家也基本知晓。公式中的 (1 - (1 + (年化收益率 - 通货膨胀率))^(-退休年限))：这一部分表示了从退休开始到退休结束这段时间内，本金逐渐减少的比例。我们假设在退休期间的最后一年，本金刚好用完，所以用 1 减去剩余本金比例，得到消耗掉的本金比例。</description>
+    </item>
+    <item>
+      <title>投资季度总结（2023Q1）</title>
+      <link>/posts/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023q1_/</link>
+      <pubDate>Sat, 01 Apr 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023q1_/</guid>
+      <description>投资？ 人投入社会生产获取到金钱收入后，都会接触到投资、理财，不管是主动驱使还是朋友诱发，都会去想一个怎么用钱去生钱的问题。大部分人所参与到社会生产是充当劳动力的角色，依托于机构或公司，上班领取薪水。如果停止社会活动，或者经济环境变化，对个人的影响很大。所以扩展一些投资收入做一些财务管理是很必要的事情。本文中的投资指的是股票及衍生品的投资，而理财则是指对财产债务的管理。 在格雷厄姆的著作《聪明的投资者》中说明，“投资就是以深入分析为基础，确保本金的安全，并获得适当的回报。 而投机则是完全试图从市场价格波动中牟利“。区分一个人是在投资还是投机很简单：1. 有无确保保证本金安全的意识和措施；2. 有无对所参与的市场活动有相应研究及行动的准则。投资者也分为两种，保守型和进取型。保守型的主要目的是保证资产不贬值，进取型的目的是在市场中获取更多的收益。 关于鸡蛋要不要放在同一个篮子里面，这其实是一个风险控制的问题，对于入门者你不知道哪种投资市场适合你，那么将资金分散到不同的投资市场上是降低风险的方式。当你在市场中交够了学费，对于市场及其规则有了更多的了解，那么就可以多承担一些风险获取更高的收益。 在参与投资、投机的前期，我将资金分成多份，分别参与到国内基金、A 股、港股、美股还有数字货币中。当时美其名曰资产配置，盲拍一个目标是跑赢通胀。但实际上无论是进入的时机，还是后续的操作都是不正确的，所以去年才基本回本。亏钱并没有助长我的赌徒心理，在交学费期间我是保守型的，不愿意将风险扩大。所以从 21 年到 22 年这两年基本是一个学习期，学习经典的书籍、学习别人的投资理念。期间看了很多书，比如入门的《穷爸爸，富爸爸》、《工薪族财务自由说明书》，经典的《聪明的投资者》、《证券分析》，技战术的《高胜率期权交易心法》，人物传记的 《股票作手回忆录》等。现在越来越确信的两点是：1. 财富是认知的变现；2. 不读书不可怕，只读一两本书很可怕。&#xA;对于我自己过往更多是投机的经历，我有以下三点总结：&#xA;做好储蓄，储蓄是投资的第一步。不要信什么钱不是省下来的鬼话。 评估自己，能承担的风险多大？投资的目标是什么？ 找到自己的能力圈，寻找到简单有效的投资策略，严格执行。 一个简单有效的策略 一个简单有效的投资策略是：做看跌期权的卖方（Short put option）。接触到这个策略是一个很厉害的朋友教给我，大家有兴趣可以关注他的微信公众号：菠萝泵，今年他每周也在分享实盘。 看跌期权 首先期权是一种金融衍生品，它赋予买方在一定时间内以某一特定价格购买或出售标的资产的权利；而对于期权的卖方来说，则有义务在买方行使期权时按约定的价格进行交易。 期权通常涉及两个关键参数：行权价和到期日。行权价格是在期权到期时买方可以以该价格购买或出售标的资产的价格，而到期日则是期权的最后有效日。在期权交易中，买方支付给卖方一个权利金（也称为期权费用）以获得期权。如果在到期日，买方选择行使期权，卖方必须按照合同约定的价格交付标的资产或接收标的资产。如果买方选择不行使期权，卖方就可以保留所收到的权利金。文本的后续用股票来指代标的资产。 用一个大家好理解的保险来解释这个内容。在股票市场中有许多持有股票的交易者，对于手上的股票的他们需要买一份保险来防止股票价格下降所造成的损失。然后有人能够提供这样一份保单：对于股票 A ，在保单的到期时间 B 时，可以将股票以 C 的价格卖给卖保单的人，这份保单的保费是 D 。这就是看跌期权的内容，其中 A 是标的资产，B 是到期日， C 是行权价， D 是权利金。做看跌期权的卖方，也就是做卖保险的人，收取保费 D。&#xA;TSLA 具体案例 卖方赚取的是权利金，可能亏的是在被行权时，行权价和股票价差乘股数的金额。那么我们能赚多少钱，又有多大的概率亏钱呢？我们以特斯拉股票举例。 TSLA 股票 3.31 日的收盘价格是 207 美元，一份到期日是 5 月 5 号、行权价是 145 美元的看跌期权，权利金是 108 美元（一份美式期权，在行权时对于 100 股）。 首先不管股票上涨还是下跌，期权到期我们赚到就是权力金 108 美元。那么我们看看到期发生的情况：&#xA;如果 TSLA 的股价大于 145 美元，没人会行权，因为没人会在这时把股票以 145 卖给你。 如果 TSLA 的股价小于 145 美元，假如是 140 美元。那么你将以 145 美元购入 100 股股票，那么接受股票亏的是 （145 -140） x 100 = 500 美元。如果 TSLA 跌到 0 ，接受股票的亏损达到了 （145 - 0）x 100 = 14500 美元。 看到这里，很多人可能会觉得才赚 108 美元，亏能亏到 1 万多美元。这是什么骗人鬼策略。这个时候要讲的内容是胜率。我们参与到市场交易活动中，每一笔交易盈利和亏损是一个概率游戏。而这个策略对卖方来说是一个高胜率的方法。从上面的例子直观来讲，TSLA 在一个月的时间，从 207 美元下跌 30% 到 145 有多大的概率，可能不高但还是可能。那么 TSLA 在一个月的时间，从 207 美元下跌 100% 直接归零有多大的概率呢？可能在某个平行时空才会发生吧 。 我以 TSLA 举例是告诉大家明白这里可能会出现的亏损，警惕里面的风险点。但实际的市场交易中，我们可以选择那么股票价格没那么高，但权力金一样的股票标的。</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.7 Kanata Haluka</title>
+      <link>/posts/2023/no.7-kanata-haluka/</link>
+      <pubDate>Sun, 26 Mar 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/no.7-kanata-haluka/</guid>
+      <description>歌词： 君の笑い方はなぜか優しさに似てた 君の歌い方は今日の夕立に見えた 何千年後の人類が何をしているかより まだ誰も知らない顔で 笑う君を見たい 僕にはない 僕にはないものでできてる&#xA;君がこの僕を形作ってる&#xA;枯れるほど君の名前叫んだら&#xA;君に届くなら今叫ぶよ 翻译： 你的笑声仿佛温柔亲切 你的歌声如今天的夕雨 比起几千年后人类将做什么 我更想看见你用一个仍未知晓的笑容 我没有的东西，是你所拥有的 你塑造着我的样子 如果我高声呼喊你的名字到枯竭 只要你能听到，我现在就会呼喊&#xA;Cyber Weekly 每篇的题目都用的写这篇周记期间对我产生影响的艺术作品的相关内容，目前有电影台词、游戏名称、诗歌、电影名称等。《Kanata Haluka》是《铃芽之旅》里面的一首歌，歌曲 Youtube 链接 Radwimps / カナタハルカ (Kanata Haluka)。&#xA;资源 ChatGPT4 &amp;amp; ChatGPT3 &amp;amp; 文心一言心智成熟程度对比 文心一言的理性思维能力距离GPT-4差多少？-虎嗅网 这篇文章将 ChatGPT4、ChatGPT3.5 和文心一言的心智成熟程度做了对比，其挑选了认知科学家用来评定人类理性思维的四类经典测试任务：语义错觉类任务；认知反射类任务；证伪选择类任务；心智程序类任务。三者的正确率是，88%、58% 和 8%。而人类作答的正确率是：62%。即 GPT-4 实现了大跃迁，达到了一个超越人类的水准。&#xA;GraphQL 后端架构的经验分享 GraphQL 后端架构的经验分享 这篇博客是一位作者分享了他们使用 GraphQL 搭建后端的经验。作者总结了他们使用 GraphQL 的好处和建议，例如使用 GraphQL 需要仔细考虑数据模型和数据关系，避免查询性能问题，并建议开发人员使用 GraphQL 的工具和库，以提高开发效率。&#xA;Prompts 网站 请稍候… ChatGPT、Midjourney、Stable Diffusion 等，直接复制 Prompts 就可以。&#xA;DNS 泄漏查询网站 DNS leak test 一个 DNS 泄漏的在线查询网站。</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.6 Suzume</title>
+      <link>/posts/2023/no.6-suzume/</link>
+      <pubDate>Sun, 19 Mar 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/no.6-suzume/</guid>
+      <description>《Suzume》是新海诚的第 8 部电影，中文名是《铃芽之旅》，国内将在本月的 24 号引进上映。本周在 Apple Music 上一直循环该电影歌词（电影在日本去年年底已上映），仍旧是 RADWIMPS 乐队的词曲。自 16 年看完那部《Your Name.》后，新海诚的电影我都看了一遍、某些电影看过多遍，我喜欢电影里面那些很美的画面，也很喜欢搭配的电影配乐。这几年对日文歌曲有很大的偏爱，虽然我并不听得懂歌词，只听得出情绪。希望在我心未老去之前，去一趟日本感触一下电影里面的那些画面。 资源 这一两个月 AIGI 和 ChatGPT 点爆了科技圈，这段时间关注的内容也跟这些相关。&#xA;AI 项目商业分析 小报童上一个探索 AI 项目的内容，内容更新比较快，可以比较快速的了解已经在实践的一些项目。我订阅的目的是搜集一些 AI Idea。下面是一个分享订阅的链接。 AI项目商业解析&#xA;awesome-ai-painting 国内外 AI 绘画工具合集。不差钱的可以直接使用 midjourney。 awesome-ai-painting: AI绘画资料合集&#xA;将 Siri 和 ChatGPT 搭配 使用 iOS 快捷指令搭配 ChatGPT API。 如何将 Siri 的生产力提高100倍&#xA;ChatGPT Plus 本周开通了 ChatGPT Plus。使用 Depay 的虚拟信用卡，接受 USDT 的充值。我用币安直接出售了部分 ETH 直接转的。国内用户推荐使用欧易购买 USDT ，支持微信和支付宝，但是需要 T+7 很是蛋疼。现在 ChatGPT 除了我自己在用以外，今天也帮老婆搭配 Voice control 实现了英语外教。&#xA;市场 通货膨胀 &amp;amp; 银行危机 美联储在过去的一年进行了多次加息，提高短期利率。加息可以通过减少借贷和消费支出来控制通货膨胀，这可能导致股票价格下跌。因为随着利率上升，企业和个人的贷款成本会增加，他们的消费和投资需求可能会减少。这会影响公司的盈利能力和市场情绪。另一方面，加息也可能会使美元走强。当美国的利率上升，国际投资者可能会更愿意购买美国的资产，以获得更高的回报。这会增加对美元的需求，从而推高美元汇率，增加美国的货币吸引力。 上周 4 硅谷银行出现了流动性危机，在周 5 被加州监管机构关闭，其资产约为 2090 亿美元。成为美国史上第二大的银行倒闭案。在此事影响下，美股连续两日收跌。导致破产的直接原因是美联储持续加息导致债券投资账面浮亏，挤爆了投资端；货币紧缩导致企业不断取出存款补充现金流，挤爆了流动性；科技行业的退潮，科技行业存贷款业务萎缩；硅谷银行投资了很多长期债券，资产在高利率背景下出现大的浮亏，但在储户的挤兑下卖债券，使浮亏变成实亏。 现在不管美联储是要治理通胀，还是要解决银行危机，市场的机遇都摆在眼前。这周我会关注以下美国债券的 ETF，如长期国债的 TLT 和短期国债的 GOVT、SHY。</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.5 The Curious Case of Benjamin Button</title>
+      <link>/posts/2023/no.5-the-curious-case-of-benjamin-button/</link>
+      <pubDate>Sun, 05 Mar 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/no.5-the-curious-case-of-benjamin-button/</guid>
+      <description>You could be mad as a mad dog at the way things went, you can swear and curse the fates, but when it comes to the end, you have to let go. 资源 FilmGrab [FILMGRAB] 免费电影截图网站，本期文章的截图即来自此网站。&#xA;PlanetScale PlanetScale: The world’s most advanced database platform 数据库云服务。提供免费套餐，5GB 存储容量。&#xA;MailChimp Marketing, Automation &amp;amp; Email Platform | Mailchimp 邮件发送商。提供免费套餐，每月 1000 邮件发送。&#xA;AI 作画科普 推文 / Twitter 陈浩在 twitter 上做的 AI 作画的科普。&#xA;生活 影视 本杰明·巴顿奇事 The Curious Case of Benjamin Button 豆瓣链接：本杰明·巴顿奇事 (豆瓣) 读初高中那会儿是互联网未繁荣的时代，当时最大的兴趣爱好是看好莱坞电影，央视六台每周六晚的佳片有约是我当时接触到好电影的窗口。《本杰明巴顿奇事》第一次就是在那时看的，那时有点愤青，很喜欢电影里面的台词，“You could be mad as a mad dog at the way things went, you can swear and curse the fates, but when it comes to the end, you have to let go.</description>
+    </item>
+    <item>
+      <title>【读书】《卓有成效的工程师》</title>
+      <link>/posts/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</link>
+      <pubDate>Sat, 18 Feb 2023 19:30:00 +0000</pubDate>
+      <guid>/posts/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</guid>
+      <description>三句话总结本书 关注杠杆率（投资回报率） 关注代办事项，设置优先级四象限，重点是第一象限（重要、紧急）和第二象限（重要、不紧急）的事情 做一个高效率的工程师， 简单总结和感受 这是一本面向程序员工程师的一本成长类的书籍，给出了成为一个高效率工程师或团队的方法论。对于个人来说，书中给出了一个杠杆率的可计算的指标，杠杆率 = 工作产生的影响 / 投入的时间，可以理解投资回报率。我们应该去做那些杠杆率高的事情。另外学习方式、任务优先级、投资迭代速度和想法验证等问题也是值得去关注的。不过后续的章节有些内容是交叉的，有些冗余。&#xA;读书笔记 杠杆率 高效工程师应时刻专注于做杠杆率（投资回报率）高的事情。&#xA;什么是杠杆率 杠杆率 = 产生的影响 / 投入的时间 可以理解成投资回报率（ROI）&#xA;如何提高杠杆率 减少完成某项工作所需时间 ==&amp;gt; 如何在更短的时间内完成工作? 增加该工作的产出 ==&amp;gt; 如何增加该工作产生的价值？ 转向杠杆率更好的工作 ==&amp;gt; 是否有其他工作可以在当下创造更多价值? 我们在实际开展某项工作之前可以问自己上面三个问题，尝试提升该项工作的杠杆率。思考自己的杠杆点，优先做那些高杠杆率的事情。人总有一天会意识到时间才是自己自己最优先、最珍贵的资源。 学习方式 培养成长型思维方式 工程师是成长型的，我们要为自己能够改变的每一个方面负责，从提高谈话技巧到掌握新的工程重点都是自己能够掌控的内容。&#xA;提升学习的速率 复利是一件强大的武器。做一件事最好的时间是 10 年前，其次是现在。 明白学习复利的效益。虽然没有实际复利曲线那么夸张，但越早学习、优化学习方式（选择有挑战的事项）越能够获得更高的收益。&#xA;寻求好的工作环境 选择工作或团队考虑以下影响因素：&#xA;公司或团队正在快速增长。（目前 Web3 就是这样的一共行业） 培训。 开放。鼓励提出问题；积极反馈和分享信息。 节奏。快速行动，但不会让人身心俱疲。 人员。身边有更聪明、更有才华、更有创造力的人。 自治。有自己的主导权和自由度。 培养新的技能并持续学习 每天花 20% 的时间在 Side Project 、专业领域或者相邻学科上。作为程序员工程师可以有如下的建议：&#xA;学习最优秀工程师写的核心抽象代码。努力编写代码，让最严格的人审核代码。 研读内部可获取的任何技术和学习资料，参加专业技能培训课程，学习自己不熟悉的代码，虚心请教。 掌握所使用的编程语言。（通过技术面试或者写技术文章来检验自己的掌握程度） 主动参加感兴趣项目的设计讨论。在不同类型的项目上工作，能够交叉练习不同的技能。 对于学习，有如下建议：&#xA;多阅读，加入讨论小组。能够将知识说出来是很有效的检验学习成果的方式。 参加讲座、行业会议或者线下聚会。 建立并维护一个强大的人际关系网。不要害怕或可以避免与不认识的人会面，走出自己的舒适圈，外面也并没有那么可怕。 关注那些传授技能的博客。 为教学写作。输出是最好的输入。 扩展兴趣项目。目的是提升自己的创造性。 培养健康的业余爱好。目的是提升自己的积极性。 优先级问题 人的大脑是用来处理事情，而不善于存储的。对于一件件代办事项最好的事项是将其记录，而不是放在大脑中让其一直叨扰你的。 如何记录代办事项参考 Get Things Done，对于任务的优先级划分使用任务紧急性四象限。</description>
+    </item>
+    <item>
+      <title>Bcrypt 加密算法详解</title>
+      <link>/posts/2023/bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Sun, 12 Feb 2023 18:00:00 +0000</pubDate>
+      <guid>/posts/2023/bcrypt-%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</guid>
+      <description>最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。&#xA;什么是 Bcrypt 加密算法 Bcrypt 是一种密码哈希函数，用于加密用户密码。它是一种强大且安全的算法，用于存储用户密码，并在用户登录时进行验证。 Bcrypt 算法使用了 Blowfish 加密算法，它在对用户密码进行加密时需要一个随机的盐值，这样就可以避免暴力破解。此外，Bcrypt 算法还具有慢哈希的特性，即在加密过程中使用的复杂度可以通过 cost 参数来控制，从而使用户的密码更加安全。&#xA;加密的过程 生成 Salt 首先，Bcrypt 会生成一个随机的 salt，这个 salt 会被用于密码加密过程。&#xA;对密码和 salt 进行加密 然后，密码和 salt 会被结合在一起，并使用密码哈希函数进行加密。&#xA;增加复杂度 在加密的过程中，Bcrypt 会使用指定的 cost 参数进行加密，这个参数代表加密的次数。通过增加 cost 参数，可以使加密过程更加复杂，从而提高密码的安全性。&#xA;生成密文 Bcrypt 加密后的密文是一个长度为 60~100 个字符的字符串。它包含了以下几部分信息：&#xA;版本标识：Bcrypt 的密文开头一般以 &amp;ldquo;$2y$&amp;rdquo; 或 &amp;ldquo;$2a$&amp;rdquo; 开头，这代表了 Bcrypt 的版本信息。 cost 参数：密文的下一个字符是数字，代表了 Bcrypt 加密过程中使用的 cost 参数。 salt：接下来的 22 个字符代表了随机生成的 salt。使用 Base64 编码。 哈希值：最后的字符串是加密后的哈希值，代表了密码的密文形式。使用 Base 64 编码。 一个加密后的密文可能如下所示：&amp;quot;$2a$10$S8U6dsEjvAUtf7XuUzK8.eDmI.xMh7OJj0s8Q7WuOvZDz9XBk1PM2&amp;quot;。 与 SHA-256 算法的对比 Bcrypt 和 SHA-256 都是常用的哈希算法，但它们的安全性是有所不同的。Bcrypt 有如下的优点：</description>
+    </item>
+    <item>
+      <title>关于 PriorityOrdered 和 Ordered 的使用</title>
+      <link>/posts/2023/%E5%85%B3%E4%BA%8E-priorityordered-%E5%92%8C-ordered-%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Thu, 09 Feb 2023 23:00:00 +0000</pubDate>
+      <guid>/posts/2023/%E5%85%B3%E4%BA%8E-priorityordered-%E5%92%8C-ordered-%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>背景 在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered 接口来定义优先级，然后用 AnnotationAwareOrderComparator 对些 Bean 进行排序的时候，其顺序并没有按照 order 的大小进行排序。相关的代码如下：&#xA;public class A implements PriorityOrdered { @Override public int getOrder() { return 0; } } public class B implements Ordered { @Override public int getOrder() { return -1; } } public class C implements Ordered { @Override public int getOrder() { return -2; } } public class Test { public void sort() { List&amp;lt;Object&amp;gt; list = new ArrayList(); list.</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.4 Do not go gentle into that good night</title>
+      <link>/posts/2023/no.4-do-not-go-gentle-into-that-good-night/</link>
+      <pubDate>Sun, 05 Feb 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/no.4-do-not-go-gentle-into-that-good-night/</guid>
+      <description>本周看了很多科幻影视剧，其实也就是《流浪地球2》和《三体》啦，所以本周的图片我将使用《星际穿越》的截图。[Doge] Do not go gentle into that good night.&#xA;资源 开源项目归类网站 Find Open Source 该网站收录了 Github 上众多有价值的开源项目。可以按目录查找。&#xA;影子图书馆 安娜的档案 影子图书馆搜索引擎：书籍、论文、漫画、杂志。 包含：Z-Library、Library Genesis、Sci-Hub。&#xA;Big Ideas 2023 ARK Invest | We Believe Innovation Is Key to Growth 木头姐（Cathie Wood）的方舟投资公司（Ark Invest）发布了《Big Ideas 2023》年度投研报告，综述了全球最新的创新技术融合趋势，并覆盖了十三个创新领域的最新行业数据，分析及预测。&#xA;Web3.0创作者经济报告 BlockBeats - 深度研究报告 Web3.0创作者经济报告：CreatorFi的发展现状和想象空间&#xA;k8s_PaaS GitHub - ben1234560/k8s_PaaS: 如何基于K8s(Kubernetes)部署成PaaS/DevOps(一套完整的软件研发和部署平台) 一个 k8s 的学习教程，一步步介绍如何部署成 PaaS/DevOps。&#xA;Damus 推特创始人发布了基于 Nostr 的社交产品 Damus。去中心化，你将掌握自身数据，没人能够封禁你。 我的公钥（身份地址）：npub1rfhhxz7n7ldu9wh8lc976ftjt0yrlan394mjr8ef4rmh789csucqteafdp&#xA;生活 影视 利刃出鞘2 Glass Onion: A Knives Out Mystery 利刃出鞘2 (豆瓣) 整个观影下来故事很易懂，故事剪辑的手法和故事讲述的顺序才让电视的时长达到了 2 个小时之久。不是很过瘾，演员的出场让我对电影的期待比较高，还有一些角色的出现让我没明白其中作用。比如岛上的陌生男子、码头上的《前目的地》男主。</description>
+    </item>
+    <item>
+      <title>【效率】关于记录的工具及流程</title>
+      <link>/posts/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Wed, 25 Jan 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</guid>
+      <description>一直以来我对知识的整理记录主要以摘录为主，久而久之发现其检索和提取的十分不方便，发展到最后就是很难坚持。所以我也有看一些关于写作、知识管理、工具推荐的书籍和文章。启发最大的两本书是《卡片笔记写作法》和《写作这回事：创作生涯回忆录》，前者让我学习到一种知识的收集整理方法，后者让我找到一种坚持写作记录的信念。算是找到了一套比较符合我自己的工具和流程。现总结如下，因为自身是 Apple 生态的用户，所以工具的选择主要是考虑到跨设备，其次再考虑跨平台。&#xA;知识管理 知识管理：Obsidian + Dropbox 。Obsidian 是一个基于文件的 Markdown 编辑器，特点是支持笔记的双向链接，其次能够使用很多三方插件对软件自身的功能进行补齐。相比于 Notion ，Obsidian 最大的优点是数据存储在本地，在如今的互联网时代，自身对数据拥有绝对自主权是最大的优势。当然使用 Obsidian 也需要考虑多端同步的问题，使用云存储服务的免费方案是很好的选择，例如 Dropbox 的免费 1 GB 的容量，对于纯文本笔记已经绰绰有余了。当然对于图片的需求，可以搭建免费（Github）的图床或收费的 OSS 服务（云服务厂商）。 使用 Obsidian 完成知识管理，形成第二大脑，把内容和思维在工具上外显，主要注意以下几点：&#xA;使用文件目录分类，这主要是保留我之前的记录习惯。 所有的输入在 Obsidian 中进行，目的是将思维过程外显。 内容积累 内容积累：Drafts。Drafts 是一个便捷的文本记录工具，文本格式支持普通文本和 Markdown，设备支持 Mac、iPhone、iPad，甚至还有 iWatch 应用。使用 iCloud 同步的体验非常好。另外 iWatch 的录音转文本的功能，可以在很多非通用场景下做文字记录。 使用 Drafts 主要是完成卡片笔记的第一步，材料的收集，在收集的过程中主要注意以下几点：&#xA;非摘录内容必须用自己的话转述，这样才能确保内容已理解。 摘录的内容必须注明出处，这样才能方便后续知识管理的整理和引用。 记录的内容必须打上 Tag，方便后续提取和归纳。 每周定期回顾 Inbox 的内容，整理到 Obsidian 之中。 日记 日常记录：Notes。Notes 是 Apple 原生的备忘录软件。其实日记有一款叫 iDaily 的软件很好，其还有插入定位和天气的功能，但这款软件已经从买断制变成了订阅制，订阅的费用不菲。对于我来说就没什么必要了，我用 Notes 搭配 iCloud 记录一些生活上的日记，能够上传图片即可。</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.3 There and back again</title>
+      <link>/posts/2023/no.3-there-and-back-again/</link>
+      <pubDate>Sun, 22 Jan 2023 22:00:00 +0000</pubDate>
+      <guid>/posts/2023/no.3-there-and-back-again/</guid>
+      <description>Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活记录。&#xA;有几周没有更新了，得了新冠之后恢复身体调整了比较久的时间，后面家里也有些事情就搁置了。现在春节前后也有点时间，就抽时间来续上。&#xA;Life 读库 本周买了一年的读库会员，京东上面的购买的话，除了今年的 6 本书以外，还有一年的读库 APP 会员，上面可以读往期的内容，还是比较划算。今年需要提升一下自己的阅读量，扩宽一下知识面。总的了解下来《读库》还是一个比较好的选择。上周一共看了两篇文章，一篇讲第九艺术的《暴风将至》和一篇互联网信息相关的《互联网是人类历史的一段歪路吗？》，后需整理一下相关的总结。&#xA;使用 n8n 聚合信息摄入和输出 本周通过 n8n 使用自动工作流搭建了下信息摄入的聚合并输入到 telegram 的账号。参考了如下的两篇文章，使用自动化工作流聚合信息摄入和输出 | Reorx’s Forge ，使用 Railway 和 Supabase 零成本搭建 n8n 自动化平台 | Reorx’s Forge。除此之外，因为 twitter 的开发者账号能使用的 API 权限变更了，所以集成 twitter 进来还踩了一些坑。&#xA;除夕 &amp;amp; 新年 今年考虑到宝宝太小，今年没有回家去过年，待在深圳这边在岳父家过年了。算上来这也是第一次没有回家跟父母过春节，有些滋味是说不出来的。另外把家里一直隔离“小黑屋”的两小只放出来了，希望两小只能和女儿和平相处。&#xA;新年快乐。</description>
+    </item>
+    <item>
+      <title>【生活】2023 年 OKR</title>
+      <link>/posts/2023/2023-%E5%B9%B4-okr/</link>
+      <pubDate>Thu, 19 Jan 2023 12:00:00 +0000</pubDate>
+      <guid>/posts/2023/2023-%E5%B9%B4-okr/</guid>
+      <description>今年的 OKR 如下，年底 review：&#xA;家庭 okr1: 陪伴妻子和女儿成长 ，记录家人在一起、女儿成长的瞬间 okr2: 定期给父母视频通话，频率由每月一次提高到每月两次 okr3: 协助妻子确定其未来的职业方向 okr4: 装修好在重庆的房子&#xA;个人成长 okr1: 职业生涯更进一步，成为 senior engineer，扩展技术视野，入局 Web3 okr2: 搭建知识管理系统，做好输入和输入，利用高效工具提升生产力 okr3: 减少无意义的纯打发时间的娱乐，即使是游戏、电影，也争取做到有记录、有思考、有输出 okr4: 维护个人博客、微信公众号、twitter okr5: 锻炼身体，增加体重（60kg）；锻炼与人沟通的能力&#xA;生活 okr1: 旅游 3 次，每次 3 天以上，今年年底出入境放松的话去一趟日本 okr2: 做好每日记录，文字记录，影像记录 okr3: 应用软件数字移民，搭建 NAS 掌握私人数据&#xA;财务 okr1: 美股年化收益率达 30%，不排除在 A 股、港股、数字货币市场寻找机会 okr2: 控制家庭非必须消费，把钱用到刀刃上，做到能不消费的就不消费，必须消费的就消费最好的、长久的</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.2 Red dead Redemption</title>
+      <link>/posts/2022/no.2-red-dead-redemption/</link>
+      <pubDate>Sun, 11 Dec 2022 22:00:00 +0000</pubDate>
+      <guid>/posts/2022/no.2-red-dead-redemption/</guid>
+      <description>Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活碎嘴。 &amp;ldquo;Cruel cruel world, must I go on? Cruel cruel world, I&amp;rsquo;m moving on.&amp;rdquo; 本周事情较多。天气和疫情放开的原因，周末也没有出门，待在家里空了刷 RDR2 二周目。&#xA;Crypto # Web3 支付赛道全景式解读与趋势分析 https://mp.weixin.qq.com/s?__biz=Mzg4MTU1MTE4NQ==&amp;amp;mid=2247484501&amp;amp;idx=1&amp;amp;sn=16c9ed33fcb7a1558a848f4915791e6c&amp;amp;chksm=cf65766bf812ff7d066285d03cf40a6f98055c14f44b8f361b83b6dac058069349d8c0c2b5fc#rd 支付机构的基本面：&#xA;政策监管 商业模式（盈利方式：手续费、外汇、接入服务费、数字资产收益） 产品技术（包含：渠道层、支付网关、清结算系统 、通知模块、收银台） 全球出入金支付方式：&#xA;中心化交易所 独立出入金支付机构（Moonpay） 出入金聚合支付 加密货币零售终端（Bitcoin Depot） 场外出入金 加密货币支付解决方案&#xA;第三方支付机构先将加密货币通过出入金的方式换成法币，再进行支付。 直接用加密货币交易，用户和商家同事使用加密货币。 Web3 支付产品技术 Web3 支付行业赛道 Tether Launches Offshore Chinese Yuan（CNHT） on Tron https://twitter.com/Tether_to/status/1600148779721756672 泰达在 Tron 上发行锚定离岸人民币（Offshore RMB，中国境外流通的人民币）的人民币稳定币。离岸人民币不受中国境内的货币政策限制，主要集中在香港、新加坡等城市流通。泰达发行的 CNHT 本质上和 USDT 无任何区别。CNHT 不需要真实的人民币保证金。泰达只保证了自己 USDT 的资产价值和自己发行的资产价值挂钩。 其意义在于，深圳小电商，卖货到国外。外汇的话黑市很难，回款要快只能用 USDT。目前找现金境内对敲，风险高时间长，CNHT 可以离岸快速匹配对敲。</description>
+    </item>
+    <item>
+      <title>【Cyber Weekly】No.1 The Shining</title>
+      <link>/posts/2022/no.1-the-shining/</link>
+      <pubDate>Sun, 04 Dec 2022 22:00:00 +0000</pubDate>
+      <guid>/posts/2022/no.1-the-shining/</guid>
+      <description>Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活碎嘴。 All work and no play makes Jack a dull boy. 图摄于深圳高新园。上班，下班，是打工人的日常。&#xA;Crypto 信任危机 - 中心化交易所透明度该何去何从 https://tokeninsight.com/zh/research/market-analysis/trust-crisis-how-far-will-the-centralized-exchanges-transparency-go 数据货币交易所的雷曼时刻。&#xA;2022年传统机构进入 Web3 里程碑 https://twitter.com/0xjingle/status/1595327928543236096 中心化 Web3 - 你的小狐狸钱包还安全吗？ https://tokeninsight.com/zh/research/market-analysis/unmasking-metamask-is-web3-really-decentralized-and-private Metamask 在链上交互时使用的 Infura 的 RPC，Infura 是一个中心化的基础设施服务商，而 Infura 会收集用户的 IP 地址以及 ETH 钱包地址。&#xA;当我们在谈论去中心化身份（DID）时，我们在谈论什么 https://mirror.xyz/0xF9e46113DDddB347259fcc2699283250Ac745303/MlMEFi_2dDqFH0vcISLNY2uSd9ZAnsbr_7FCSSbCFbw&#xA;wtf.academy https://wtf.academy/learning-center 一个 solidity 学习的网站，每个章节结束之后有练习可以做。&#xA;宏观经济网站 http://currentmarketvaluation.com 一个可以看宏观经济的网站，这个网站分别从收益率曲线、巴菲特指数、市盈率、利率、保证金债务、均值回归等6个角度看目前的市场在历史上所处的位置。&#xA;Backend Twitter Architecture 2022 https://twitter.com/alexxubyte/status/1594008281340530688 CS 自学指南 https://csdiy.wiki/ 收录了 CS 相关的课程视频，是比较好的课程资料。有时间重走学习的路线，比机械的背八股要好得多。我很反感背八股，可能因为我记忆力差，总是背不好吧。&#xA;Spring Boot 3.0 正式发布 https://spring.</description>
+    </item>
+    <item>
+      <title>【读书】《被讨厌的勇气：“自我启发之父”阿德勒的哲学课》</title>
+      <link>/posts/2022/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</link>
+      <pubDate>Sat, 13 Aug 2022 15:37:00 +0000</pubDate>
+      <guid>/posts/2022/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E8%87%AA%E6%88%91%E5%90%AF%E5%8F%91%E4%B9%8B%E7%88%B6%E9%98%BF%E5%BE%B7%E5%8B%92%E7%9A%84%E5%93%B2%E5%AD%A6%E8%AF%BE/</guid>
+      <description>三句话总结本书 人生目的论。你现在所做所为，所经历、遭遇的一切都不是过去的原因造成的，而是受现在你的目的影响。（过去已经发生，你所能做的唯有改变自己的目的、心态） 课题分离（理清楚课题属于谁）、他者贡献（自己有贡献感即可，不需要关注别人的看法）。 将人生的聚光灯打在当下，过好此时此刻，不要特别在意过去（过去已经发生的无法改变）和未来（当下做的每一件事都影响着未来）。 简单总结和感受 书的内容简单 &amp;amp; 直观，以一个青年人与一个哲人的对话的形式展开。内容不多、章节很短，让人看着不累，我也许久没有完整看完过一本书了。更为主要的是最近工作 &amp;amp; 生活压力比较大，外界噪音也比较多，很难有时间能够静下心来审视自己的内心。&#xA;最精华的3句书摘 ”即使你逃避人生课题、依赖人生谎言，那也不是因为你沾染了“恶”。这不是一个应该从道德方面来谴责的问题，它只是“勇气”的问题。“ 原谅自己、与自己和解：有些场合、有些事情、有些关系，我害怕去做、去拖延、去维护，心里有很大的负罪感、对自己失望，认为自己已经不行了。其实认清这是个勇气的问题，然后解决勇气的问题就好了，不要对自己失望很重要。&#xA;“有些男人会骂家庭主妇”又不挣钱！“或者”是谁养着你呀？“之类的话，也听到过有人说”钱随便你花，还有什么不满的呀？“之类的话，这都是多么无情的话呀！经济地位跟人的价值毫无关系。公司职员和家庭主妇只是劳动场所和任务不同，完全是”虽不同但平等“。” 我已经成家立业，与妻子也即将迎来爱情的结晶。摘录这段问题是提醒自己不要变成这种讨厌、无情的人。&#xA;“跨出家门的那一瞬间，“旅行”已经开始，朝着目的地出发途中的每一个瞬间都是旅行。当然，即使因为某些事情而没能够到达金字塔，那也并非没有旅行。这就是现实性的人生。” 我一直都在旅途中，希望自己把聚光灯打在当下，过好每一天、做好每一件事，别揪着过去不放，又一直对未来停留在幻想。</description>
+    </item>
+    <item>
+      <title>【生活】手机应用安装 &amp; 使用指南</title>
+      <link>/posts/2022/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sun, 05 Jun 2022 00:20:00 +0000</pubDate>
+      <guid>/posts/2022/%E6%89%8B%E6%9C%BA%E5%BA%94%E7%94%A8%E5%AE%89%E8%A3%85-%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <description>如今的世界，手机已经属于出行、工作、娱乐、生活所必不可缺少的设备。各种应用软件，例如知乎、抖音、淘宝等占据了人生的大部分时间。我作为电子产品的重度用户，在每天与电子设备的接触过程中，不仅耗费了大量的时间、也让身体出现一些问题。鉴于此，我决定优化手机应用软件的安装、使用，将手机的娱乐属性剔除，降低一些无效时间的消耗。&#xA;原则 No.1 卸载所有游戏 我不认为能在手机上玩到真正的好游戏，花点钱买 PS5 、Switch 你会有更好的游戏体验。手机游戏的最大优势是能够在任何时候杀掉你的时间。&#xA;No.2 劲量使用国外的软件 &amp;amp; 服务 如果不想被封禁、被 404，劲量选用国外的软件 &amp;amp; 服务，做一个数字移民。&#xA;No.3 软件 &amp;amp; 服务如果能通过电脑访问，劲量减少手机版安装 此条规则主要是针对一些非实时性知识软件，例如：知乎、B 站。我在手机上刷知乎和 B 站大部分是娱乐内容、碎片化的讯息，过了一遍大脑什么都不会留下。如果使用电脑，我才会是主动有目的性的去了解一些内容。&#xA;No.4 卸载长时间不用的软件，让手机简单 长时间不用的软件大概率之后也不会使用，而且现在流量很便宜，先卸载也没用任何关系。&#xA;一些软件推荐 阅读 iBooks 目前对于数字书籍，已经弃坑了 kindle 、微信读书等一众硬软件。目前使用 epub 格式电子书 + iBooks + iCloud，可以在 iPhone、iPad 和 mac 上无缝切换，同步阅读记录、进度。&#xA;金融投资 Futubull 雪球 Binance </description>
+    </item>
+    <item>
+      <title>自定义 Spring Security 鉴权</title>
+      <link>/posts/2022/java_%E8%87%AA%E5%AE%9A%E4%B9%89-spring-security-%E9%89%B4%E6%9D%83/</link>
+      <pubDate>Wed, 01 Jun 2022 17:00:00 +0000</pubDate>
+      <guid>/posts/2022/java_%E8%87%AA%E5%AE%9A%E4%B9%89-spring-security-%E9%89%B4%E6%9D%83/</guid>
+      <description>背景 当我们使用 Spring 技术栈搭建单体的系统或服务时，若系统涉及到登录鉴权等功能，一般会使用 SpringSecurity 搭配一个 RBAC 的权限模型，很容易实现一套 OAuth2 鉴权、授权的流程。 随着业务扩展，单体的服务作为一个微服务并入一个大的系统之后。我们为保证其他业务能够调用该单体服务，但是又无法让其他系统来使用该服务已有鉴权，从而引入其他微服务都用基础的鉴权服务。根据业务场景的区分，当单体服务内部使用的时候走 SpringSecurity 的鉴权，单体服务外部调用的时候使用基础鉴权服务鉴权。&#xA;基础 要根据不同的场景启用或绕过 SpringSecurity。我们可以首先想到能否通过 URL 来区分不同的场景，使用 HttpSecurity 的 permitAll() 和 authenticated() 来让不同路径的接口是否需要走鉴权。除此之外，可以去修改 SpringSecurity 的 Filter ，使用自定义 Filter 或者用动态代理对 Filter 进行增强。&#xA;实现 @Aspect @Component @Slf4j public class AuthorizationHeaderAspect { /** * 基础鉴权服务 Feign 调用业务 */ @Autowired private OauthFeignBiz oauthFeignBiz; @Pointcut(&amp;quot;execution(* org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationProcessingFilter.doFilter(..))&amp;quot;) public void securityOauth2DoFilter() { } @Pointcut(&amp;quot;execution(* org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(..))&amp;quot;) public void securitySecurityInterceptor2DoFilter() { } @Around(&amp;quot;securityOauth2DoFilter()&amp;quot;) public void enhanceSecurityOauth2DoFilter(ProceedingJoinPoint joinPoint) throws Throwable { Object[] args = joinPoint.</description>
+    </item>
+    <item>
+      <title>【资源】Batcave Resources 第一期</title>
+      <link>/posts/2022/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</link>
+      <pubDate>Fri, 13 May 2022 23:40:00 +0000</pubDate>
+      <guid>/posts/2022/%E7%BD%91%E7%BB%9C%E8%B5%84%E6%BA%90/</guid>
+      <description>下面记录一些平时收录的一些资源。&#xA;资源站 [1]Z-Library: 全球最大的数字图书馆 目前对于数字书籍，已经弃坑了 kindle 、微信读书等一众硬软件。目前使用 epub 格式电子书 + iBooks + iCloud，可以在 iPhone、iPad 和 mac 上无缝切换，同步阅读记录、进度。&#xA;小工具 [1]Batman-Logo: 新蝙蝠侠 Logo 生成器&#xA;[2]earth.fm: 聆听世界的白噪音&#xA;[3]muselink: 极简数字名片，只为创作者&#xA;[4]imgg: 以图片的方式截取并分享万物，简单，美观且隐私安全&#xA;[5]ActivityWatch: 一款免费的自动追踪在你设备上使用时间的软件</description>
+    </item>
+    <item>
+      <title>【歌曲】Deadman&#39;s Gun &amp;&amp; That&#39;s The Way It Is</title>
+      <link>/posts/2022/deadmans-gun/</link>
+      <pubDate>Thu, 28 Apr 2022 00:25:00 +0000</pubDate>
+      <guid>/posts/2022/deadmans-gun/</guid>
+      <description>成长道路是比较痛苦的，从青年一路走过来，自己的棱角被磨圆，没有了以往的神气。 往往在深夜的时候，想起曾经那些喜欢的英雄，都已过去，都已逝去。 而我才后知后觉，忘了告别。&#xA;歌曲 Deadman&amp;rsquo;s Gun 的 YouTube 地址。 歌词如下：&#xA;Your hands upon A deadman&#39;s gun, and you&#39;re Lookin&#39; down the sights Your heart is warm And the seams are torn, and they&#39;ve Given you a reason to fight And you&#39;re not gonna take What they&#39;ve got to give And you&#39;re not gonna let &#39;em take your will to live Because they&#39;ve taken enough And you&#39;ve given them all you can give And luck won&#39;t save them tonight They&#39;ve given you a reason to fight And all the storms you&#39;ve been chasin&#39; About to rain down tonight And all that pain you&#39;ve been facin&#39; About to come into the light Your hands upon A deadman&#39;s gun, and you&#39;re Lookin&#39; down the sights Your heart is warm And the seams are torn, and they&#39;ve Given you a reason to fight And you&#39;re not gonna take What they&#39;ve got to give And you&#39;re not gonna let &#39;em take your will to live Because they&#39;ve taken enough And you&#39;ve given them all you can give And luck won&#39;t save them tonight They&#39;ve given you a reason to fight And all the storms you&#39;ve been chasin&#39; About to rain down tonight And all that pain you&#39;ve been facin&#39; About to come into the light 歌曲 That&amp;rsquo;s The Way It Is 的 YouTube 地址。 歌词如下：</description>
+    </item>
+    <item>
+      <title>【生活】EDC 清单</title>
+      <link>/posts/2022/edc-%E6%B8%85%E5%8D%95/</link>
+      <pubDate>Tue, 12 Apr 2022 23:40:00 +0000</pubDate>
+      <guid>/posts/2022/edc-%E6%B8%85%E5%8D%95/</guid>
+      <description>EDC means everyday carry，即是每日通勤携带的物件。之前看过一本书《只过必要生活》，里面有一个建议是将你每天会用到的物品都放到通勤背包中每天携带。这篇博文就是整理我如今每天必用、必带的物品。&#xA;数码物品 No.1 MacBook Pro 13 公司配发的 MacBook Pro (13-inch, 2020)，Intel i7，32G。 用途：写代码，写博客。&#xA;No.2 iPhone13 Pro Max 自用手机，128G。 用途：社交，投资，资讯。&#xA;No.3 Apple Watch Series 6 自用手表，44 毫米款。 用途：看时间，记录数据。&#xA;非数码物品 No.1 新秀丽背包 </description>
+    </item>
+    <item>
+      <title>使用 SwiftUI 在地图中绘制坐标轨迹</title>
+      <link>/posts/2022/%E4%BD%BF%E7%94%A8-swiftui-%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</link>
+      <pubDate>Sun, 27 Mar 2022 17:43:00 +0000</pubDate>
+      <guid>/posts/2022/%E4%BD%BF%E7%94%A8-swiftui-%E5%9C%A8%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%BB%98%E5%88%B6%E5%9D%90%E6%A0%87%E8%BD%A8%E8%BF%B9/</guid>
+      <description>一直有想做属于自己的 App 的想法，零零散散地有学习一些内容，现在决定开启一个记录学习过程的系列博文，以此来巩固自己所学到的 iOS 开发知识和激励自己把第一个 App 实现出来。 脑海中一直有个做地图类应用的想法，本科做移动轨迹相关的毕业设计。此类应用主要包括地图（Map）、坐标点（Location）、绘制轨迹（Polyline）几个要素。这篇博文将会使用 SwiftUI 在地图上连接坐标点绘制出轨迹。GPS 坐标数据可以在 microsoft 上下载。效果如下： 首先创建一个 SwiftUI 工程的项目，项目的文件组织如下： 先定义坐标点的数据结构，代码如下：&#xA;import Foundation struct Location: Hashable, Codable, Identifiable { var id: Int // 经度 var longitude: Double // 纬度 var latitude: Double var isValid: Bool } 坐标数据的 ViewModel，我们将从 location.json 中加载所有的坐标点，代码如下：&#xA;import Foundation final class LocationViewModel: ObservableObject { @Published var locations: [Location] = load(&amp;quot;location.json&amp;quot;) } func load&amp;lt;T: Decodable&amp;gt;(_ fileName: String) -&amp;gt; T { // The data value type allows simple byte buffers to take on behavior of Foundation objects.</description>
+    </item>
+    <item>
+      <title>【生活】记事一则</title>
+      <link>/posts/2022/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/</link>
+      <pubDate>Sun, 13 Feb 2022 15:40:00 +0000</pubDate>
+      <guid>/posts/2022/%E8%AE%B0%E4%BA%8B%E4%B8%80%E5%88%99/</guid>
+      <description>下午，yoyo 和两支小🐱虎在😴。我坐在客厅写一些文字，记录一下心情。&#xA;首先要说的是，年前我和 yoyo 在老家举办完了婚礼，虽然我们还没有领证，但终于我们也算是完成了去年最大、最重要的一个 OKR。现在 yoyo 也🤰🏻了，虽然这也是之前一直计划的事情，但当 ta 真的来了的事情，我内心除了惊喜 max，还是有些慌张的。这种慌张不能让 yoyo 看出来。年后没几天我跟 yoyo 就工作城市深圳了，这座城市是很忙碌、劳累的。所以这段时间，我也一直在考虑怎么让我们更加轻松一些。所以现在关注了本身工作之外的一些内容，例如 区块链、NFTs、美股等等，想要找到一些虽不能说完成跨越，但至少能让自己工作不那么累的事情。我也一直在考虑未来自由职业的道路，但无奈自己现在很缺乏自信和对自己的认同。&#xA;今年定了几个 OKR，努力去实现吧。另外我得放松体验生活。不管再多事情，生活是我们自己的。先不说这么多了，我得叫 yoyo 起来出去散步了。</description>
+    </item>
+    <item>
+      <title>【MySQL】实现列表数据置顶</title>
+      <link>/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</link>
+      <pubDate>Mon, 16 Aug 2021 14:46:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/</guid>
+      <description>有的列表获取的业务场景，需要根据一些条件将数据置顶。&#xA;例如有一张表有 id 和 name 两个字段。数据表如下。&#xA;id name 1 1_name 2 2_name 3 3_name 4 4_name 5 5_name 6 6_name 7 7_name 8 8_name 9 9_name 10 10_name 若需要将 id 为 5 和 7 的数据置顶，并且分页的 size 是 5 的话，我们的 SQL 可以这样写：&#xA;SELECT * FROM goods ORDER BY CASE WHEN id = 5 THEN -10000 WHEN id = 7 THEN -9999 ELSE id END LIMIT 0, 5 </description>
+    </item>
+    <item>
+      <title>【MySQL】慢 SQL 分析</title>
+      <link>/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</link>
+      <pubDate>Tue, 10 Aug 2021 12:30:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/</guid>
+      <description>慢查询日志分析 设置慢查询 可以通过修改命令设置：&#xA;设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效 查看是否开启：SHOW VARIABLES LIKE &amp;lsquo;%slow_query_log%&amp;rsquo;; 设置阈值：SET GLOBAL long_query_time=3; 查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE &amp;rsquo;long_query_time%&amp;rsquo;; #重连或新开一个会话才能看到修改值 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：&#xA;[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log long_query_time=3;　#运行时间超过该值的SQL会被记录，默认值&amp;gt;10 log_output=FILE　获取慢 SQL 信息 查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE &amp;lsquo;%Slow_queries%&amp;rsquo;;&#xA;模拟语句：SELECT SLEEP(4);&#xA;查看慢查询日志：&#xA;$ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with: Tcp port: 3306 Unix socket: /tmp/mysql.sock Time Id Command Argument # Time: 2021-08-10T06:29:53.513752Z # User@Host: root[root] @ localhost [127.</description>
+    </item>
+    <item>
+      <title>【MySQL】Explain</title>
+      <link>/posts/2021/mysql_explain/</link>
+      <pubDate>Fri, 06 Aug 2021 17:00:00 +0000</pubDate>
+      <guid>/posts/2021/mysql_explain/</guid>
+      <description>MySQL Explain Explain 是 MySQL 自带的查询优化器。&#xA;使用 Explain + SQL 可查询出执行的相关信息，主要包含以下 10 个属性： id, select_type, table, type, possible_key, key, key_len, ref, row, filtered, Extra&#xA;数据库性能瓶颈，主要关注 CPU 和 IO。&#xA;id 反映的是表的读取顺序，或者查询中 SELECT 的执行顺序。&#xA;小表永远驱动大表，三种情况： （1）id 相同，执行顺序是由上至下的 （2）id 不同，如果是子查询，id 序号会递增，id 值越大优先级越高，越先被执行 （3）id 存在相同的，也存在不同的，所有组中，id 越大越先执行，如果 id 相同的，从上往下顺序执行&#xA;select_type 反映的是 MySQL 理解的查询类型，有几下几种：&#xA;SIMPLE：简单的 SELECT 查询，查询中不包含子查询或 UNION PRIMARY：查询中若包含任何复杂的字部分，最外层查询标记为 PRIMARY SUBQUERY：SELECT 或 WHERE 列表中的子查询 DERIVED：在 FROM 列表中包含的子查询，MySQL 会递归执行这些子查询，把结果放在临时表里 UNION：若第二个 SELECT 出现在 UNION 后，则被标记为 UNION，若 UNION 包含在 FROM 字句的子查询中，外层 SELECT 将被标记为 DERIVED UNION RESULT：UNION 后的结果集 table 反映的是数据从哪张表中读取出来。</description>
+    </item>
+  </channel>
+</rss>

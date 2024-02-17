@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>【MySQL】慢 SQL 分析 - OreChou</title>
+    <meta property="og:title" content="【MySQL】慢 SQL 分析 - OreChou">
+    
+    <meta name="twitter:card" content="summary">
+
+    
+    
+      
+    
+
+    
+      
+      <meta property="description" content="可以通过修改命令设置：
+[&amp;hellip;] 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：
+[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log &amp;hellip;">
+      <meta property="og:description" content="可以通过修改命令设置：
+[&amp;hellip;] 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：
+[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log &amp;hellip;">
+      
+    
+
+    
+    
+    
+
+    
+
+    
+    
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/github.min.css">
+
+
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+  <body class="posts">
+    <header class="masthead">
+      <h1><a href="/">OreChou</a></h1>
+
+<p class="tagline">It&#39;s not who I am underneath, but what I do that defines me.</p>
+
+      <nav class="menu">
+  <input id="menu-check" type="checkbox" hidden/>
+  <label id="menu-label" for="menu-check" class="unselectable" hidden>
+    <span class="icon close-icon">✕</span>
+    <span class="icon open-icon">☰</span>
+    <span class="text">Menu</span>
+  </label>
+  <ul>
+  
+  
+  <li><a href="/">主页</a></li>
+  
+  <li><a href="/about/">关于</a></li>
+  
+  <li><a href="/index.xml">RSS</a></li>
+  
+  
+  </ul>
+</nav>
+
+    </header>
+
+    <article class="main">
+      <header class="title">
+      
+<h1>【MySQL】慢 SQL 分析</h1>
+
+
+
+<h3>
+
+
+
+
+
+
+2021-08-10
+</h3>
+
+<hr>
+
+
+      </header>
+
+
+
+
+
+<h2 id="慢查询日志分析">慢查询日志分析</h2>
+<h3 id="设置慢查询">设置慢查询</h3>
+<p>可以通过修改命令设置：</p>
+<ul>
+<li>设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效</li>
+<li>查看是否开启：SHOW VARIABLES LIKE &lsquo;%slow_query_log%&rsquo;;</li>
+<li>设置阈值：SET GLOBAL long_query_time=3;</li>
+<li>查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE &rsquo;long_query_time%&rsquo;; #重连或新开一个会话才能看到修改值</li>
+</ul>
+<p>也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：</p>
+<pre><code>    [mysqld]
+    slow_query_log = 1;　　#开启
+    slow_query_log_file=/var/lib/mysql/atguigu-slow.log　　　#慢日志地址，缺省文件名host_name-slow.log
+    long_query_time=3;　　  #运行时间超过该值的SQL会被记录，默认值&gt;10
+    log_output=FILE　　　　　　　　　　　
+</code></pre>
+<h3 id="获取慢-sql-信息">获取慢 SQL 信息</h3>
+<p>查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE &lsquo;%Slow_queries%&rsquo;;</p>
+<p>模拟语句：SELECT SLEEP(4);</p>
+<p>查看慢查询日志：</p>
+<pre><code>    $ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log
+    /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with:
+    Tcp port: 3306  Unix socket: /tmp/mysql.sock
+    Time                 Id Command    Argument
+    # Time: 2021-08-10T06:29:53.513752Z
+    # User@Host: root[root] @ localhost [127.0.0.1]  Id:    11
+    # Query_time: 4.003605  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 1
+    use test;
+    SET timestamp=1628576989;
+    select sleep(4);
+</code></pre>
+<h3 id="使用-mysqldumpslow-分析">使用 mysqldumpslow 分析</h3>
+<p>使用样例：</p>
+<ul>
+<li>mysqldumpslow -s r -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log     #得到返回记录集最多的10个SQL</li>
+<li>mysqldumpslow -s c -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log     #得到访问次数最多的10个SQL</li>
+<li>mysqldumpslow -s t -t 10 -g &ldquo;LEFT JOIN&rdquo; /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log   #得到按照时间排序的前10条里面含有左连接的查询语句</li>
+<li>mysqldumpslow -s r -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log | more      #结合| more使用，防止爆屏情况</li>
+</ul>
+<h2 id="explain-分析">Explain 分析</h2>
+<h2 id="show-profile-分析">Show Profile 分析</h2>
+<p>Show Profile 能够获取比 Explain 更为详细的信息，能够分析当前会话中语句执行时的资源消耗，获取 SQL 在整个生命周期的时间。</p>
+<h3 id="开启-profile">开启 Profile</h3>
+<pre><code>    开启：set profiling = on;
+    查看：SHOW VARIABLES LIKE 'profiling%';
+</code></pre>
+<p>开启后 MySQL 后台会保存最近 15 次的结果。</p>
+<h3 id="查看-profile">查看 Profile</h3>
+<p>使用 SHOW PROFILES 可以查看最近的 15 次结果。</p>
+<h3 id="查看具体的-profile">查看具体的 Profile</h3>
+<p>通过 Query_ID 可以得到具体 SQL 从连接 - 服务 - 引擎 - 存储四层结构完整生命周期的耗时。</p>
+<p>使用命令：SHOW PROFILE CPU, BLOCK IO FOR Query_ID</p>
+<p>可用参数type:</p>
+<ul>
+<li>ALL  　　#显示所有的开销信息</li>
+<li>BLOCK IO　　#显示块IO相关开销</li>
+<li>CONTEXT SWITCHES　　#上下文切换相关开销</li>
+<li>CPU     #显示CPU相关开销信息</li>
+<li>IPC     #显示发送和接收相关开销信息</li>
+<li>MEMORY　#显示内存相关开销信息</li>
+<li>PAGE FAULTS　　#显示页面错误相关开销信息</li>
+<li>SOURCE　　#显示和Source_function，Source_file，Source_line相关的开销信息</li>
+<li>SWAPS　　#显示交换次数相关开销的信息</li>
+</ul>
+<p>如果出现以下几个状态则 SQL 需要重点分析：</p>
+<ul>
+<li>converting HEAP to MyISAM  　　#查询结果太大，内存不够用了，在往磁盘上搬</li>
+<li>Creating tmp table         　　#创建了临时表，回先把数据拷贝到临时表，用完后再删除临时表</li>
+<li>Copying to tmp table on disk 　#把内存中临时表复制到磁盘，危险！！！</li>
+<li>locked</li>
+</ul>
+
+
+
+  <footer>
+  
+  
+
+
+
+
+
+
+
+<script src="//cdn.jsdelivr.net/combine/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js,npm/@xiee/utils/js/load-highlight.js" defer></script>
+
+
+
+  
+  <hr>
+  <div class="copyright">© <a href="https://orechou.com">OreChou</a> 2017-2024 | <a href="https://github.com/orechou">Github</a></div>
+  
+  </footer>
+  </article>
+  
+  </body>
+</html>
+
