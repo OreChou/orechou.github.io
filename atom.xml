@@ -6,7 +6,7 @@
   <link href="https://orechou.live/atom.xml" rel="self"/>
   
   <link href="https://orechou.live/"/>
-  <updated>2023-11-07T15:34:39.992Z</updated>
+  <updated>2024-05-16T08:28:57.789Z</updated>
   <id>https://orechou.live/</id>
   
   <author>
@@ -15,6 +15,116 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【读书】《30岁人生开挂7步法》</title>
+    <link href="https://orechou.live/2024/seven-steps-to-mastering-life-at-30/"/>
+    <id>https://orechou.live/2024/seven-steps-to-mastering-life-at-30/</id>
+    <published>2024-04-28T16:00:00.000Z</published>
+    <updated>2024-05-16T08:28:57.789Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;95% 的人会顺应命运，平凡地生活，我把这类人称为“顺理者”。&lt;/p&gt;
+&lt;p&gt;5%</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>执行力验证</title>
+    <link href="https://orechou.live/2024/test-execution-ability/"/>
+    <id>https://orechou.live/2024/test-execution-ability/</id>
+    <published>2024-04-27T16:00:00.000Z</published>
+    <updated>2024-05-16T08:28:57.782Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;“从现在起，按照我说的做3件事情，每件事最长只需要20分钟。如果你做到了，我敢肯定你的生活会发生很大的变化。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;创建一个博客，随便写一篇文章（打开计时器，精准地倒计时20分钟并开始）。&lt;/li&gt;
+&lt;li&gt;创建一个YouTube，上传你手机上的任何视频</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【读书】《股票大作手回忆录》</title>
+    <link href="https://orechou.live/2024/reminiscences-of-a-stock-operator/"/>
+    <id>https://orechou.live/2024/reminiscences-of-a-stock-operator/</id>
+    <published>2024-04-22T16:00:00.000Z</published>
+    <updated>2024-05-16T08:28:57.795Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;原文一些段落的摘录&quot;&gt;&lt;a href=&quot;#原文一些段落的摘录&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>小猫晚饭记</title>
+    <link href="https://orechou.live/2024/kittens-dinner/"/>
+    <id>https://orechou.live/2024/kittens-dinner/</id>
+    <published>2024-02-25T16:00:00.000Z</published>
+    <updated>2024-05-16T08:28:57.796Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;晚上回家喂猫发生了一件比较好玩的事情，在这里记录一下。我家有两只猫咪，第一只叫 Pikachu，是一只金渐层公猫；另一只叫 Tyche，是一只美短母猫。两只都三岁多了，Pikachu 比 Tyche 大几个月的样子。Pikachu 性格上要高冷一些，Tyche</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Blog Phoenix Project</title>
+    <link href="https://orechou.live/2024/blog-phoenix-project/"/>
+    <id>https://orechou.live/2024/blog-phoenix-project/</id>
+    <published>2024-02-15T16:00:00.000Z</published>
+    <updated>2024-05-16T08:28:57.799Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;换了城市和工作之后，一直比较忙，所以博客的内容更新一直耽搁了。年前回顾了一下以往的博客内容，质量其实很差。我想改变一下现状，让自己的博客存在得更加有意义。其实我的生活开始渐入正规，我的人生目标似乎也是一直在追寻自我价值。我可以投入更多的时间来维护好 Blog</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>写在巨人完结之后</title>
@@ -389,134 +499,6 @@
     
     
     <category term="Reading" scheme="https://orechou.live/tags/Reading/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Bcrypt 加密算法详解</title>
-    <link href="https://orechou.live/2023/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://orechou.live/2023/Bcrypt%20%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</id>
-    <published>2023-02-12T10:00:00.000Z</published>
-    <updated>2023-02-12T13:17:37.750Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近在回顾中台系统的用户权限设计，在用户密码落库这块使用了 Bcrypt 算法来保证安全性，这篇文章是对该算法的一个详细介绍。&lt;/p&gt;
-&lt;h2 id=&quot;什么是-Bcrypt-加密算法&quot;&gt;&lt;a href=&quot;#什么是-Bcrypt-加密算法&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Spring" scheme="https://orechou.live/tags/Spring/"/>
-    
-    <category term="Java" scheme="https://orechou.live/tags/Java/"/>
-    
-    <category term="密码学" scheme="https://orechou.live/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于 PriorityOrdered 和 Ordered 的使用</title>
-    <link href="https://orechou.live/2023/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://orechou.live/2023/%E5%85%B3%E4%BA%8E%20PriorityOrdered%20%E5%92%8C%20Ordered%20%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
-    <published>2023-02-09T15:00:00.000Z</published>
-    <updated>2023-02-12T13:17:43.415Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;在调试某个 Springboot 项目业务代码的时候发现了一个现象：Bean 通过实现 Ordered 或 PriorityOrdered</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Spring" scheme="https://orechou.live/tags/Spring/"/>
-    
-    <category term="Java" scheme="https://orechou.live/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Cyber Weekly】No.4 Do not go gentle into that good night</title>
-    <link href="https://orechou.live/2023/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/"/>
-    <id>https://orechou.live/2023/No.4%20Do%20not%20go%20gentle%20into%20that%20good%20night/</id>
-    <published>2023-02-05T14:00:00.000Z</published>
-    <updated>2023-02-05T09:51:27.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;本周看了很多科幻影视剧，其实也就是《流浪地球2》和《三体》啦，所以本周的图片我将使用《星际穿越》的截图。[Doge]&lt;br&gt;Do not go gentle into that good night.</summary>
-        
-      
-    
-    
-    
-    
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【效率】关于记录的工具及流程</title>
-    <link href="https://orechou.live/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/"/>
-    <id>https://orechou.live/2023/%E5%85%B3%E4%BA%8E%E8%AE%B0%E5%BD%95%E7%9A%84%E5%B7%A5%E5%85%B7%E5%8F%8A%E6%B5%81%E7%A8%8B/</id>
-    <published>2023-01-25T14:00:00.000Z</published>
-    <updated>2023-01-25T15:10:01.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;一直以来我对知识的整理记录主要以摘录为主，久而久之发现其检索和提取的十分不方便，发展到最后就是很难坚持。所以我也有看一些关于写作、知识管理、工具推荐的书籍和文章。启发最大的两本书是《卡片笔记写作法》和《写作这回事：创作生涯回忆录》，前者让我学习到一种知识的收集整理方法，后者</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Tools" scheme="https://orechou.live/tags/Tools/"/>
-    
-    <category term="Efficiency" scheme="https://orechou.live/tags/Efficiency/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Cyber Weekly】No.3 There and back again</title>
-    <link href="https://orechou.live/2023/No.3%20There%20and%20back%20again/"/>
-    <id>https://orechou.live/2023/No.3%20There%20and%20back%20again/</id>
-    <published>2023-01-22T14:00:00.000Z</published>
-    <updated>2023-01-23T14:10:40.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;Cyber weekly 收录本人获取到的 Crypto、Backend &amp;amp; Mobile 相关资讯、技术，另外夹杂一些生活记录。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
     
   </entry>
   

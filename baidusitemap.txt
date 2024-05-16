@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orechou.live/2024/blog-phoenix-project/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.live/2024/kittens-dinner/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.live/2024/reminiscences-of-a-stock-operator/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.live/2024/seven-steps-to-mastering-life-at-30/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.live/2024/test-execution-ability/</loc>
+    <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
     <loc>https://orechou.live/2023/50-attack-on-titan/</loc>
     <lastmod>2023-11-07</lastmod>
   </url>
