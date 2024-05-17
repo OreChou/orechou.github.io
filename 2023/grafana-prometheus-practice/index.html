@@ -9,8 +9,8 @@
     <meta name="description" content="最近需要对自己的一些服务做监控，于是想要动手实践使用一下 Grafana 和 Prometheus。这篇文章就主要介绍搭建 Grafana 和 Prometheus 对 MySQL 做监控的过程。 工具介绍Prometheus 是一个开源的系统监控和警报工具包，由 SoundCloud 启动。它的设计目标是对大规模的服务容器和微服务体系结构提供稳健的可靠性和实时的度量。Prometheus 提供了">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【DevOps】使用 Grafana 和 Prometheus 做服务监控">
-<meta property="og:url" content="https://orechou.live/2023/grafana-prometheus-practice/index.html">
-<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:url" content="https://orechou.com/2023/grafana-prometheus-practice/index.html">
+<meta property="og:site_name" content="奥力手记">
 <meta property="og:description" content="最近需要对自己的一些服务做监控，于是想要动手实践使用一下 Grafana 和 Prometheus。这篇文章就主要介绍搭建 Grafana 和 Prometheus 对 MySQL 做监控的过程。 工具介绍Prometheus 是一个开源的系统监控和警报工具包，由 SoundCloud 启动。它的设计目标是对大规模的服务容器和微服务体系结构提供稳健的可靠性和实时的度量。Prometheus 提供了">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://orechou.oss-cn-shenzhen.aliyuncs.com/images/prometheus-target.png">
@@ -72,7 +72,7 @@
     
 	<!-- mathjax -->
 	
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="奥力手记" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -116,17 +116,17 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2023/grafana-prometheus-practice/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2023/grafana-prometheus-practice/&text=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2023/grafana-prometheus-practice/&is_video=false&description=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【DevOps】使用 Grafana 和 Prometheus 做服务监控&body=Check out this article: https://orechou.live/2023/grafana-prometheus-practice/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2023/grafana-prometheus-practice/&name=【DevOps】使用 Grafana 和 Prometheus 做服务监控&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2023/grafana-prometheus-practice/&t=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.com/2023/grafana-prometheus-practice/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.com/2023/grafana-prometheus-practice/&text=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.com/2023/grafana-prometheus-practice/&is_video=false&description=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【DevOps】使用 Grafana 和 Prometheus 做服务监控&body=Check out this article: https://orechou.com/2023/grafana-prometheus-practice/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.com/2023/grafana-prometheus-practice/&name=【DevOps】使用 Grafana 和 Prometheus 做服务监控&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.com/2023/grafana-prometheus-practice/&t=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -259,17 +259,17 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2023/grafana-prometheus-practice/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2023/grafana-prometheus-practice/&text=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2023/grafana-prometheus-practice/&is_video=false&description=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=【DevOps】使用 Grafana 和 Prometheus 做服务监控&body=Check out this article: https://orechou.live/2023/grafana-prometheus-practice/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2023/grafana-prometheus-practice/&name=【DevOps】使用 Grafana 和 Prometheus 做服务监控&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2023/grafana-prometheus-practice/&t=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.com/2023/grafana-prometheus-practice/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.com/2023/grafana-prometheus-practice/&text=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.com/2023/grafana-prometheus-practice/&is_video=false&description=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【DevOps】使用 Grafana 和 Prometheus 做服务监控&body=Check out this article: https://orechou.com/2023/grafana-prometheus-practice/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.com/2023/grafana-prometheus-practice/&title=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.com/2023/grafana-prometheus-practice/&name=【DevOps】使用 Grafana 和 Prometheus 做服务监控&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.com/2023/grafana-prometheus-practice/&t=【DevOps】使用 Grafana 和 Prometheus 做服务监控"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>

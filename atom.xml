@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>OreChou&#39;s Batcave</title>
-  <icon>https://orechou.live/icon.png</icon>
-  <subtitle>Coding &amp; Reading &amp; Playing &amp; Listening</subtitle>
-  <link href="https://orechou.live/atom.xml" rel="self"/>
+  <title>奥力手记</title>
+  <icon>https://orechou.com/icon.png</icon>
+  <subtitle>Coding &amp; Reading &amp; Playing &amp; Listening &amp; Photography</subtitle>
+  <link href="https://orechou.com/atom.xml" rel="self"/>
   
-  <link href="https://orechou.live/"/>
+  <link href="https://orechou.com/"/>
   <updated>2024-05-16T08:28:57.789Z</updated>
-  <id>https://orechou.live/</id>
+  <id>https://orechou.com/</id>
   
   <author>
     <name>OreChou</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>【读书】《30岁人生开挂7步法》</title>
-    <link href="https://orechou.live/2024/seven-steps-to-mastering-life-at-30/"/>
-    <id>https://orechou.live/2024/seven-steps-to-mastering-life-at-30/</id>
+    <link href="https://orechou.com/2024/seven-steps-to-mastering-life-at-30/"/>
+    <id>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</id>
     <published>2024-04-28T16:00:00.000Z</published>
     <updated>2024-05-16T08:28:57.789Z</updated>
     
@@ -41,8 +41,8 @@
   
   <entry>
     <title>执行力验证</title>
-    <link href="https://orechou.live/2024/test-execution-ability/"/>
-    <id>https://orechou.live/2024/test-execution-ability/</id>
+    <link href="https://orechou.com/2024/test-execution-ability/"/>
+    <id>https://orechou.com/2024/test-execution-ability/</id>
     <published>2024-04-27T16:00:00.000Z</published>
     <updated>2024-05-16T08:28:57.782Z</updated>
     
@@ -65,8 +65,8 @@
   
   <entry>
     <title>【读书】《股票大作手回忆录》</title>
-    <link href="https://orechou.live/2024/reminiscences-of-a-stock-operator/"/>
-    <id>https://orechou.live/2024/reminiscences-of-a-stock-operator/</id>
+    <link href="https://orechou.com/2024/reminiscences-of-a-stock-operator/"/>
+    <id>https://orechou.com/2024/reminiscences-of-a-stock-operator/</id>
     <published>2024-04-22T16:00:00.000Z</published>
     <updated>2024-05-16T08:28:57.795Z</updated>
     
@@ -86,8 +86,8 @@
   
   <entry>
     <title>小猫晚饭记</title>
-    <link href="https://orechou.live/2024/kittens-dinner/"/>
-    <id>https://orechou.live/2024/kittens-dinner/</id>
+    <link href="https://orechou.com/2024/kittens-dinner/"/>
+    <id>https://orechou.com/2024/kittens-dinner/</id>
     <published>2024-02-25T16:00:00.000Z</published>
     <updated>2024-05-16T08:28:57.796Z</updated>
     
@@ -107,8 +107,8 @@
   
   <entry>
     <title>Blog Phoenix Project</title>
-    <link href="https://orechou.live/2024/blog-phoenix-project/"/>
-    <id>https://orechou.live/2024/blog-phoenix-project/</id>
+    <link href="https://orechou.com/2024/blog-phoenix-project/"/>
+    <id>https://orechou.com/2024/blog-phoenix-project/</id>
     <published>2024-02-15T16:00:00.000Z</published>
     <updated>2024-05-16T08:28:57.799Z</updated>
     
@@ -128,8 +128,8 @@
   
   <entry>
     <title>写在巨人完结之后</title>
-    <link href="https://orechou.live/2023/50-attack-on-titan/"/>
-    <id>https://orechou.live/2023/50-attack-on-titan/</id>
+    <link href="https://orechou.com/2023/50-attack-on-titan/"/>
+    <id>https://orechou.com/2023/50-attack-on-titan/</id>
     <published>2023-11-07T12:50:00.000Z</published>
     <updated>2023-11-07T15:34:39.992Z</updated>
     
@@ -145,14 +145,14 @@
     
     
     
-    <category term="進撃の巨人" scheme="https://orechou.live/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/"/>
+    <category term="進撃の巨人" scheme="https://orechou.com/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/"/>
     
   </entry>
   
   <entry>
     <title>关于接口 mock 的技术实现</title>
-    <link href="https://orechou.live/2023/49-the-practise-mock-api/"/>
-    <id>https://orechou.live/2023/49-the-practise-mock-api/</id>
+    <link href="https://orechou.com/2023/49-the-practise-mock-api/"/>
+    <id>https://orechou.com/2023/49-the-practise-mock-api/</id>
     <published>2023-09-11T12:50:00.000Z</published>
     <updated>2023-09-11T12:49:57.012Z</updated>
     
@@ -169,18 +169,18 @@
     
     
     
-    <category term="OpenAPI" scheme="https://orechou.live/tags/OpenAPI/"/>
+    <category term="OpenAPI" scheme="https://orechou.com/tags/OpenAPI/"/>
     
-    <category term="JSON Schema" scheme="https://orechou.live/tags/JSON-Schema/"/>
+    <category term="JSON Schema" scheme="https://orechou.com/tags/JSON-Schema/"/>
     
-    <category term="mockjs" scheme="https://orechou.live/tags/mockjs/"/>
+    <category term="mockjs" scheme="https://orechou.com/tags/mockjs/"/>
     
   </entry>
   
   <entry>
     <title>There and back again</title>
-    <link href="https://orechou.live/2023/48-there-and-back-again/"/>
-    <id>https://orechou.live/2023/48-there-and-back-again/</id>
+    <link href="https://orechou.com/2023/48-there-and-back-again/"/>
+    <id>https://orechou.com/2023/48-there-and-back-again/</id>
     <published>2023-08-23T15:30:00.000Z</published>
     <updated>2023-08-26T03:36:52.044Z</updated>
     
@@ -196,14 +196,14 @@
     
     
     
-    <category term="Life" scheme="https://orechou.live/tags/Life/"/>
+    <category term="Life" scheme="https://orechou.com/tags/Life/"/>
     
   </entry>
   
   <entry>
     <title>【DevOps】使用 Docker 搭建 MySQL 主从复制架构</title>
-    <link href="https://orechou.live/2023/mysql-master-slave-practice/"/>
-    <id>https://orechou.live/2023/mysql-master-slave-practice/</id>
+    <link href="https://orechou.com/2023/mysql-master-slave-practice/"/>
+    <id>https://orechou.com/2023/mysql-master-slave-practice/</id>
     <published>2023-06-28T10:30:00.000Z</published>
     <updated>2023-06-28T10:23:11.000Z</updated>
     
@@ -220,16 +220,16 @@
     
     
     
-    <category term="MySQL" scheme="https://orechou.live/tags/MySQL/"/>
+    <category term="MySQL" scheme="https://orechou.com/tags/MySQL/"/>
     
-    <category term="DevOps" scheme="https://orechou.live/tags/DevOps/"/>
+    <category term="DevOps" scheme="https://orechou.com/tags/DevOps/"/>
     
   </entry>
   
   <entry>
     <title>【DevOps】使用 Grafana 和 Prometheus 做服务监控</title>
-    <link href="https://orechou.live/2023/grafana-prometheus-practice/"/>
-    <id>https://orechou.live/2023/grafana-prometheus-practice/</id>
+    <link href="https://orechou.com/2023/grafana-prometheus-practice/"/>
+    <id>https://orechou.com/2023/grafana-prometheus-practice/</id>
     <published>2023-06-27T07:45:00.000Z</published>
     <updated>2023-06-27T08:23:44.000Z</updated>
     
@@ -246,18 +246,18 @@
     
     
     
-    <category term="DevOps" scheme="https://orechou.live/tags/DevOps/"/>
+    <category term="DevOps" scheme="https://orechou.com/tags/DevOps/"/>
     
-    <category term="Grafana" scheme="https://orechou.live/tags/Grafana/"/>
+    <category term="Grafana" scheme="https://orechou.com/tags/Grafana/"/>
     
-    <category term="Prometheus" scheme="https://orechou.live/tags/Prometheus/"/>
+    <category term="Prometheus" scheme="https://orechou.com/tags/Prometheus/"/>
     
   </entry>
   
   <entry>
     <title>【观影】《The Flash》</title>
-    <link href="https://orechou.live/2023/the-flash/"/>
-    <id>https://orechou.live/2023/the-flash/</id>
+    <link href="https://orechou.com/2023/the-flash/"/>
+    <id>https://orechou.com/2023/the-flash/</id>
     <published>2023-06-18T15:00:00.000Z</published>
     <updated>2023-06-18T14:29:46.677Z</updated>
     
@@ -277,14 +277,14 @@
     
     
     
-    <category term="Movie" scheme="https://orechou.live/tags/Movie/"/>
+    <category term="Movie" scheme="https://orechou.com/tags/Movie/"/>
     
   </entry>
   
   <entry>
     <title>【AI 赋能小日常】使用 ChatGPT 辅助编程</title>
-    <link href="https://orechou.live/2023/use-chatgpt-program/"/>
-    <id>https://orechou.live/2023/use-chatgpt-program/</id>
+    <link href="https://orechou.com/2023/use-chatgpt-program/"/>
+    <id>https://orechou.com/2023/use-chatgpt-program/</id>
     <published>2023-06-14T10:30:00.000Z</published>
     <updated>2023-06-14T10:07:14.000Z</updated>
     
@@ -301,16 +301,16 @@
     
     
     
-    <category term="AI" scheme="https://orechou.live/tags/AI/"/>
+    <category term="AI" scheme="https://orechou.com/tags/AI/"/>
     
-    <category term="ChatGPT" scheme="https://orechou.live/tags/ChatGPT/"/>
+    <category term="ChatGPT" scheme="https://orechou.com/tags/ChatGPT/"/>
     
   </entry>
   
   <entry>
     <title>JUC 工具：LockSupport</title>
-    <link href="https://orechou.live/2023/juc-tools-locksupport/"/>
-    <id>https://orechou.live/2023/juc-tools-locksupport/</id>
+    <link href="https://orechou.com/2023/juc-tools-locksupport/"/>
+    <id>https://orechou.com/2023/juc-tools-locksupport/</id>
     <published>2023-06-09T09:00:00.000Z</published>
     <updated>2023-06-09T07:20:01.000Z</updated>
     
@@ -326,16 +326,16 @@
     
     
     
-    <category term="Java" scheme="https://orechou.live/tags/Java/"/>
+    <category term="Java" scheme="https://orechou.com/tags/Java/"/>
     
-    <category term="JUC" scheme="https://orechou.live/tags/JUC/"/>
+    <category term="JUC" scheme="https://orechou.com/tags/JUC/"/>
     
   </entry>
   
   <entry>
     <title>Kafka 消息大量积压的一些总结</title>
-    <link href="https://orechou.live/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
-    <id>https://orechou.live/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
+    <link href="https://orechou.com/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
+    <id>https://orechou.com/2023/Kafka%20%E6%B6%88%E6%81%AF%E5%A4%A7%E9%87%8F%E7%A7%AF%E5%8E%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/</id>
     <published>2023-06-03T08:30:00.000Z</published>
     <updated>2023-06-03T08:29:48.519Z</updated>
     
@@ -352,16 +352,16 @@
     
     
     
-    <category term="middleware" scheme="https://orechou.live/tags/middleware/"/>
+    <category term="middleware" scheme="https://orechou.com/tags/middleware/"/>
     
-    <category term="Kafka" scheme="https://orechou.live/tags/Kafka/"/>
+    <category term="Kafka" scheme="https://orechou.com/tags/Kafka/"/>
     
   </entry>
   
   <entry>
     <title>何时退休（一）：先做一个财务自由计划</title>
-    <link href="https://orechou.live/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"/>
-    <id>https://orechou.live/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</id>
+    <link href="https://orechou.com/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/"/>
+    <id>https://orechou.com/2023/%E4%BD%95%E6%97%B6%E9%80%80%E4%BC%91%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%85%88%E5%81%9A%E4%B8%80%E4%B8%AA%E8%B4%A2%E5%8A%A1%E8%87%AA%E7%94%B1%E8%AE%A1%E5%88%92/</id>
     <published>2023-04-16T15:30:00.000Z</published>
     <updated>2023-04-16T16:10:52.199Z</updated>
     
@@ -379,14 +379,14 @@
     
     
     
-    <category term="investment" scheme="https://orechou.live/tags/investment/"/>
+    <category term="investment" scheme="https://orechou.com/tags/investment/"/>
     
   </entry>
   
   <entry>
     <title>投资季度总结（2023Q1）</title>
-    <link href="https://orechou.live/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/"/>
-    <id>https://orechou.live/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/</id>
+    <link href="https://orechou.com/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/"/>
+    <id>https://orechou.com/2023/%E6%8A%95%E8%B5%84%E5%AD%A3%E5%BA%A6%E6%80%BB%E7%BB%93_2023Q1_/</id>
     <published>2023-04-01T14:00:00.000Z</published>
     <updated>2023-04-01T07:17:39.060Z</updated>
     
@@ -403,14 +403,14 @@
     
     
     
-    <category term="investment" scheme="https://orechou.live/tags/investment/"/>
+    <category term="investment" scheme="https://orechou.com/tags/investment/"/>
     
   </entry>
   
   <entry>
     <title>【Cyber Weekly】No.7 Kanata Haluka</title>
-    <link href="https://orechou.live/2023/No.7%20Kanata%20Haluka/"/>
-    <id>https://orechou.live/2023/No.7%20Kanata%20Haluka/</id>
+    <link href="https://orechou.com/2023/No.7%20Kanata%20Haluka/"/>
+    <id>https://orechou.com/2023/No.7%20Kanata%20Haluka/</id>
     <published>2023-03-26T14:00:00.000Z</published>
     <updated>2023-03-26T13:33:54.492Z</updated>
     
@@ -427,14 +427,14 @@
     
     
     
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    <category term="cyber weekly" scheme="https://orechou.com/tags/cyber-weekly/"/>
     
   </entry>
   
   <entry>
     <title>【Cyber Weekly】No.6 Suzume</title>
-    <link href="https://orechou.live/2023/No.6%20Suzume/"/>
-    <id>https://orechou.live/2023/No.6%20Suzume/</id>
+    <link href="https://orechou.com/2023/No.6%20Suzume/"/>
+    <id>https://orechou.com/2023/No.6%20Suzume/</id>
     <published>2023-03-19T14:00:00.000Z</published>
     <updated>2023-03-19T13:44:30.213Z</updated>
     
@@ -451,14 +451,14 @@
     
     
     
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    <category term="cyber weekly" scheme="https://orechou.com/tags/cyber-weekly/"/>
     
   </entry>
   
   <entry>
     <title>【Cyber Weekly】No.5 The Curious Case of Benjamin Button</title>
-    <link href="https://orechou.live/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/"/>
-    <id>https://orechou.live/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</id>
+    <link href="https://orechou.com/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/"/>
+    <id>https://orechou.com/2023/No.5%20The%20Curious%20Case%20of%20Benjamin%20Button/</id>
     <published>2023-03-05T14:00:00.000Z</published>
     <updated>2023-03-05T12:57:01.471Z</updated>
     
@@ -475,14 +475,14 @@
     
     
     
-    <category term="cyber weekly" scheme="https://orechou.live/tags/cyber-weekly/"/>
+    <category term="cyber weekly" scheme="https://orechou.com/tags/cyber-weekly/"/>
     
   </entry>
   
   <entry>
     <title>【读书】《卓有成效的工程师》</title>
-    <link href="https://orechou.live/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
-    <id>https://orechou.live/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</id>
+    <link href="https://orechou.com/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
+    <id>https://orechou.com/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</id>
     <published>2023-02-18T11:30:00.000Z</published>
     <updated>2023-02-18T11:15:33.903Z</updated>
     
@@ -498,7 +498,7 @@
     
     
     
-    <category term="Reading" scheme="https://orechou.live/tags/Reading/"/>
+    <category term="Reading" scheme="https://orechou.com/tags/Reading/"/>
     
   </entry>
   

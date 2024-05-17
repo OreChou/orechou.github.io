@@ -9,27 +9,27 @@
     <meta name="description" content="Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。 Java 的 IO 大致可以分为如下几类：  磁盘操作：File 字节操作：InputStream &amp; OutputStream 字符操作：Reader &amp; Writer 网">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java NIO">
-<meta property="og:url" content="https://orechou.live/2018/Java%20NIO/index.html">
-<meta property="og:site_name" content="OreChou&#39;s Batcave">
+<meta property="og:url" content="https://orechou.com/2018/Java%20NIO/index.html">
+<meta property="og:site_name" content="奥力手记">
 <meta property="og:description" content="Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。 Java 的 IO 大致可以分为如下几类：  磁盘操作：File 字节操作：InputStream &amp; OutputStream 字符操作：Reader &amp; Writer 网">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://orechou.live/images/buffer_1.png">
-<meta property="og:image" content="https://orechou.live/images/buffer_2.png">
-<meta property="og:image" content="https://orechou.live/images/buffer_3.png">
-<meta property="og:image" content="https://orechou.live/images/buffer_4.png">
-<meta property="og:image" content="https://orechou.live/images/buffer_5.png">
-<meta property="og:image" content="https://orechou.live/images/buffer_6.png">
-<meta property="og:image" content="https://orechou.live/images/nio_selector.png">
-<meta property="og:image" content="https://orechou.live/images/reactor.png">
-<meta property="og:image" content="https://orechou.live/images/reactor_1.png">
-<meta property="og:image" content="https://orechou.live/images/reactor_2.png">
-<meta property="og:image" content="https://orechou.live/images/reactor_3.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_1.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_2.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_3.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_4.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_5.png">
+<meta property="og:image" content="https://orechou.com/images/buffer_6.png">
+<meta property="og:image" content="https://orechou.com/images/nio_selector.png">
+<meta property="og:image" content="https://orechou.com/images/reactor.png">
+<meta property="og:image" content="https://orechou.com/images/reactor_1.png">
+<meta property="og:image" content="https://orechou.com/images/reactor_2.png">
+<meta property="og:image" content="https://orechou.com/images/reactor_3.png">
 <meta property="article:published_time" content="2018-09-16T14:52:38.000Z">
 <meta property="article:modified_time" content="2018-09-16T14:52:38.000Z">
 <meta property="article:author" content="OreChou">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://orechou.live/images/buffer_1.png">
+<meta name="twitter:image" content="https://orechou.com/images/buffer_1.png">
     
     
       
@@ -76,7 +76,7 @@
     
 	<!-- mathjax -->
 	
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="OreChou's Batcave" type="application/atom+xml">
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="奥力手记" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
@@ -120,16 +120,16 @@
     <br/>
     <div id="share" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2018/Java%20NIO/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2018/Java%20NIO/&text=Java NIO"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2018/Java%20NIO/&is_video=false&description=Java NIO"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java NIO&body=Check out this article: https://orechou.live/2018/Java%20NIO/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2018/Java%20NIO/&name=Java NIO&description=&lt;p&gt;Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.com/2018/Java%20NIO/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.com/2018/Java%20NIO/&text=Java NIO"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.com/2018/Java%20NIO/&is_video=false&description=Java NIO"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java NIO&body=Check out this article: https://orechou.com/2018/Java%20NIO/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.com/2018/Java%20NIO/&name=Java NIO&description=&lt;p&gt;Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。&lt;/p&gt;
 &lt;p&gt;Java 的 IO 大致可以分为如下几类：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;磁盘操作：File&lt;/li&gt;
@@ -139,7 +139,7 @@
 &lt;/ul&gt;
 &lt;p&gt;最开始 Java 只提供了 BIO（Block IO），Block IO 的意思是线程调用 IO 操作的时候，线程会阻塞等待 IO 完成。在这个期间，线程除了等待无法完成其他的事情。因为这种 IO 模式，之前的 Java 框架在编写服务器的时候，会对每一个 Socket 的请求新建一个线程进行处理。因为线程的新建与销毁是需要消耗系统资源的，所以若系统频繁地创建与销毁线程，那么会对系统资源造成很大的浪费。在这种 IO 模式下的改进方式是利用池化技术，通过线程池的方式来管理线程，减少线程频繁创建和销毁的开销。但是并没有改变最根本的问题，即一个服务请求的连接都需要一个线程来处理，在高并发的情况下，阻塞 IO 的实现肯定无法满足性能的需求。&lt;/p&gt;
 &lt;p&gt;针对这一问题，在 JDK 1.4 中 NIO 就登场了。&lt;/p&gt;"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2018/Java%20NIO/&t=Java NIO"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.com/2018/Java%20NIO/&t=Java NIO"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
@@ -326,16 +326,16 @@
 
     <div id="share-footer" style="display: none">
       <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.live/2018/Java%20NIO/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.live/2018/Java%20NIO/&text=Java NIO"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.live/2018/Java%20NIO/&is_video=false&description=Java NIO"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=Java NIO&body=Check out this article: https://orechou.live/2018/Java%20NIO/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.live/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.live/2018/Java%20NIO/&name=Java NIO&description=&lt;p&gt;Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。&lt;/p&gt;
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://orechou.com/2018/Java%20NIO/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://orechou.com/2018/Java%20NIO/&text=Java NIO"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://orechou.com/2018/Java%20NIO/&is_video=false&description=Java NIO"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Java NIO&body=Check out this article: https://orechou.com/2018/Java%20NIO/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://orechou.com/2018/Java%20NIO/&title=Java NIO"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://orechou.com/2018/Java%20NIO/&name=Java NIO&description=&lt;p&gt;Java IO 相关的文章，在网络上可以搜索到一大堆，并且 《Java NIO》和《Netty 权威指南》两本书可以包读者从入门到进阶。写这篇文章的目的在于让自己总结一下 Java IO 知识，从总结中学习。&lt;/p&gt;
 &lt;p&gt;Java 的 IO 大致可以分为如下几类：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;磁盘操作：File&lt;/li&gt;
@@ -345,7 +345,7 @@
 &lt;/ul&gt;
 &lt;p&gt;最开始 Java 只提供了 BIO（Block IO），Block IO 的意思是线程调用 IO 操作的时候，线程会阻塞等待 IO 完成。在这个期间，线程除了等待无法完成其他的事情。因为这种 IO 模式，之前的 Java 框架在编写服务器的时候，会对每一个 Socket 的请求新建一个线程进行处理。因为线程的新建与销毁是需要消耗系统资源的，所以若系统频繁地创建与销毁线程，那么会对系统资源造成很大的浪费。在这种 IO 模式下的改进方式是利用池化技术，通过线程池的方式来管理线程，减少线程频繁创建和销毁的开销。但是并没有改变最根本的问题，即一个服务请求的连接都需要一个线程来处理，在高并发的情况下，阻塞 IO 的实现肯定无法满足性能的需求。&lt;/p&gt;
 &lt;p&gt;针对这一问题，在 JDK 1.4 中 NIO 就登场了。&lt;/p&gt;"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.live/2018/Java%20NIO/&t=Java NIO"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://orechou.com/2018/Java%20NIO/&t=Java NIO"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
