@@ -6,7 +6,7 @@
   <link href="https://orechou.com/atom.xml" rel="self"/>
   
   <link href="https://orechou.com/"/>
-  <updated>2024-05-16T08:28:57.789Z</updated>
+  <updated>2024-05-23T07:49:03.875Z</updated>
   <id>https://orechou.com/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【读书】《每周工作4小时》</title>
+    <link href="https://orechou.com/2024/the-4-hour-workweek/"/>
+    <id>https://orechou.com/2024/the-4-hour-workweek/</id>
+    <published>2024-05-21T16:00:00.000Z</published>
+    <updated>2024-05-23T07:49:03.875Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;书单里面一直有这本书，一直没读完心里总有些不爽，本周花了些时间粗读完了。这本书里面讲了很多故事，也给了很多网站工具，我想这些网站地址大概是为什么该书在微信读书下架的原因。书里面有些观点和行动方法是值得思考的，比如攒到一定的资金后就退休不是一个可行的思路。当你花很大的时间和精</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Reading" scheme="https://orechou.com/tags/Reading/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【读书】《30岁人生开挂7步法》</title>
     <link href="https://orechou.com/2024/seven-steps-to-mastering-life-at-30/"/>
     <id>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</id>
     <published>2024-04-28T16:00:00.000Z</published>
-    <updated>2024-05-16T08:28:57.789Z</updated>
+    <updated>2024-05-23T07:23:42.861Z</updated>
     
     
       
@@ -36,6 +59,8 @@
     
     
     
+    
+    <category term="Reading" scheme="https://orechou.com/tags/Reading/"/>
     
   </entry>
   
@@ -68,7 +93,7 @@
     <link href="https://orechou.com/2024/reminiscences-of-a-stock-operator/"/>
     <id>https://orechou.com/2024/reminiscences-of-a-stock-operator/</id>
     <published>2024-04-22T16:00:00.000Z</published>
-    <updated>2024-05-16T08:28:57.795Z</updated>
+    <updated>2024-05-23T07:23:46.752Z</updated>
     
     
       
@@ -81,6 +106,8 @@
     
     
     
+    
+    <category term="Reading" scheme="https://orechou.com/tags/Reading/"/>
     
   </entry>
   
@@ -476,29 +503,6 @@
     
     
     <category term="cyber weekly" scheme="https://orechou.com/tags/cyber-weekly/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【读书】《卓有成效的工程师》</title>
-    <link href="https://orechou.com/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/"/>
-    <id>https://orechou.com/2023/%E5%8D%93%E6%9C%89%E6%88%90%E6%95%88%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88/</id>
-    <published>2023-02-18T11:30:00.000Z</published>
-    <updated>2023-02-18T11:15:33.903Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;三句话总结本书&quot;&gt;&lt;a href=&quot;#三句话总结本书&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Reading" scheme="https://orechou.com/tags/Reading/"/>
     
   </entry>
   
