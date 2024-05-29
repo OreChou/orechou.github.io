@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://orechou.com/about/index.html</loc>
+    
+    <lastmod>2024-05-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.com/application/index.html</loc>
+    
+    <lastmod>2024-05-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://orechou.com/book/index.html</loc>
     
     <lastmod>2024-05-29</lastmod>
@@ -29,15 +47,6 @@
   </url>
   
   <url>
-    <loc>https://orechou.com/application/index.html</loc>
-    
-    <lastmod>2024-05-24</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
     
     <lastmod>2024-05-23</lastmod>
@@ -59,15 +68,6 @@
     <loc>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</loc>
     
     <lastmod>2024-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.com/about/index.html</loc>
-    
-    <lastmod>2024-05-17</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
