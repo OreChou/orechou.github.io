@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orechou.com/2025/No1/</loc>
+    <lastmod>2025-11-03</lastmod>
+  </url>
+  <url>
     <loc>https://orechou.com/2025/car-accident-recording/</loc>
+    <lastmod>2025-10-26</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.com/2025/about-iphone/</loc>
     <lastmod>2025-10-26</lastmod>
   </url>
   <url>
