@@ -6,7 +6,7 @@
   <link href="https://orechou.com/atom.xml" rel="self"/>
   
   <link href="https://orechou.com/"/>
-  <updated>2025-10-26T14:13:00.415Z</updated>
+  <updated>2025-11-09T10:45:48.902Z</updated>
   <id>https://orechou.com/</id>
   
   <author>
@@ -17,33 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于iPhone</title>
-    <link href="https://orechou.com/2025/about-iphone/"/>
-    <id>https://orechou.com/2025/about-iphone/</id>
-    <published>2025-10-25T16:00:00.000Z</published>
-    <updated>2025-10-26T14:13:00.415Z</updated>
-    
-    
-    
-    
-    
-    <category term="Life" scheme="https://orechou.com/tags/Life/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Weekly No.1</title>
-    <link href="https://orechou.com/2025/No1/"/>
-    <id>https://orechou.com/2025/No1/</id>
-    <published>2025-10-25T16:00:00.000Z</published>
-    <updated>2025-11-03T08:02:46.358Z</updated>
+    <title>七日书 Vol.1</title>
+    <link href="https://orechou.com/weekly/001/"/>
+    <id>https://orechou.com/weekly/001/</id>
+    <published>2025-11-09T13:00:00.000Z</published>
+    <updated>2025-11-09T10:45:48.902Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;技术&quot;&gt;&lt;a href=&quot;#技术&quot; class=&quot;headerlink&quot; title=&quot;技术&quot;&gt;&lt;/a&gt;技术&lt;/h2&gt;&lt;h3 id=&quot;&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;headerlink&quot; title=&quot;&quot;&gt;&lt;/a&gt;&lt;img</summary>
+    <summary type="html">&lt;p&gt;七日书。我即将开启的周刊系列的刊名，言简意赅的名字。&lt;br&gt;我很喜欢写文字这件事情，虽然我并不擅长。但我觉得一个人，如果能写自己喜欢的文字，输出想要输出的内容，是一件很开心的事情。所以我要成为一个开心的人。&lt;br&gt;我写的文字并不好阅读，但所有的文字均会从我指尖敲出，产生于我</summary>
         
       
     
@@ -59,7 +44,7 @@
     <link href="https://orechou.com/2025/car-accident-recording/"/>
     <id>https://orechou.com/2025/car-accident-recording/</id>
     <published>2025-10-25T16:00:00.000Z</published>
-    <updated>2025-10-26T14:16:11.994Z</updated>
+    <updated>2025-11-04T03:21:18.239Z</updated>
     
     
       
@@ -308,9 +293,9 @@
     
     
     
-    <category term="DevOps" scheme="https://orechou.com/tags/DevOps/"/>
-    
     <category term="MySQL" scheme="https://orechou.com/tags/MySQL/"/>
+    
+    <category term="DevOps" scheme="https://orechou.com/tags/DevOps/"/>
     
   </entry>
   
@@ -492,6 +477,30 @@
     
     
     <category term="investment" scheme="https://orechou.com/tags/investment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Cyber Weekly】No.7 Kanata Haluka</title>
+    <link href="https://orechou.com/2023/No.7%20Kanata%20Haluka/"/>
+    <id>https://orechou.com/2023/No.7%20Kanata%20Haluka/</id>
+    <published>2023-03-26T14:00:00.000Z</published>
+    <updated>2023-03-26T13:33:54.492Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;歌词：&lt;br&gt;君の笑い方はなぜか優しさに似てた&lt;br&gt;君の歌い方は今日の夕立に見えた&lt;br&gt;何千年後の人類が何をしているかより&lt;br&gt;まだ誰も知らない顔で 笑う君を見たい&lt;br&gt;僕にはない</summary>
+        
+      
+    
+    
+    
+    
+    <category term="cyber weekly" scheme="https://orechou.com/tags/cyber-weekly/"/>
     
   </entry>
   
