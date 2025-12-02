@@ -2,6 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
+    
+    <lastmod>2025-12-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</loc>
+    
+    <lastmod>2025-12-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.com/2024/reminiscences-of-a-stock-operator/</loc>
+    
+    <lastmod>2025-12-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.com/2025/the-earth-chronicles-reading/</loc>
+    
+    <lastmod>2025-12-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://orechou.com/book/2025.html</loc>
+    
+    <lastmod>2025-11-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://orechou.com/weekly/001/</loc>
     
     <lastmod>2025-11-09</lastmod>
@@ -65,15 +110,6 @@
   </url>
   
   <url>
-    <loc>https://orechou.com/book/2025.html</loc>
-    
-    <lastmod>2025-10-12</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://orechou.com/book/2023.html</loc>
     
     <lastmod>2025-10-12</lastmod>
@@ -92,52 +128,7 @@
   </url>
   
   <url>
-    <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
-    
-    <lastmod>2024-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.com/2024/reminiscences-of-a-stock-operator/</loc>
-    
-    <lastmod>2024-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</loc>
-    
-    <lastmod>2024-05-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.com/2024/blog-phoenix-project/</loc>
-    
-    <lastmod>2024-05-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://orechou.com/2024/kittens-dinner/</loc>
-    
-    <lastmod>2024-05-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://orechou.com/2024/test-execution-ability/</loc>
     
     <lastmod>2024-05-16</lastmod>
     
@@ -625,7 +616,7 @@
 
   <url>
     <loc>https://orechou.com/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -633,252 +624,252 @@
   
   <url>
     <loc>https://orechou.com/tags/Java/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/JPA/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Linux/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/JS/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Python/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Tensor/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Network/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Socket/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/MySQL/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Song/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Life/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Spring/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/cyber-weekly/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/iOS/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/SwiftUI/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Other/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/weekly/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Reading/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/OpenAPI/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/JSON-Schema/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/mockjs/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/%E9%80%B2%E6%92%83%E3%81%AE%E5%B7%A8%E4%BA%BA/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/%E5%AF%86%E7%A0%81%E5%AD%A6/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/middleware/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Kafka/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/DevOps/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Grafana/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Prometheus/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/JUC/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/AI/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/ChatGPT/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Movie/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Tools/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/Efficiency/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/tags/investment/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -887,35 +878,35 @@
   
   <url>
     <loc>https://orechou.com/categories/Java/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/categories/Linux/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/categories/JavaScript/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/categories/Python/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://orechou.com/categories/Linux/Network/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

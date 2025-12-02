@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
+    <lastmod>2025-12-02</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</loc>
+    <lastmod>2025-12-02</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.com/2024/reminiscences-of-a-stock-operator/</loc>
+    <lastmod>2025-12-02</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.com/2025/the-earth-chronicles-reading/</loc>
+    <lastmod>2025-12-02</lastmod>
+  </url>
+  <url>
     <loc>https://orechou.com/weekly/001/</loc>
     <lastmod>2025-11-09</lastmod>
   </url>
@@ -9,27 +25,7 @@
     <lastmod>2025-11-04</lastmod>
   </url>
   <url>
-    <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
-    <lastmod>2024-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://orechou.com/2024/reminiscences-of-a-stock-operator/</loc>
-    <lastmod>2024-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://orechou.com/2024/seven-steps-to-mastering-life-at-30/</loc>
-    <lastmod>2024-05-23</lastmod>
-  </url>
-  <url>
-    <loc>https://orechou.com/2024/blog-phoenix-project/</loc>
-    <lastmod>2024-05-16</lastmod>
-  </url>
-  <url>
     <loc>https://orechou.com/2024/kittens-dinner/</loc>
-    <lastmod>2024-05-16</lastmod>
-  </url>
-  <url>
-    <loc>https://orechou.com/2024/test-execution-ability/</loc>
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
