@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://orechou.com/2025/Nexus-reading/</loc>
+    <lastmod>2026-01-04</lastmod>
+  </url>
+  <url>
+    <loc>https://orechou.com/weekly/001/</loc>
+    <lastmod>2025-12-26</lastmod>
+  </url>
+  <url>
     <loc>https://orechou.com/2024/the-4-hour-workweek/</loc>
     <lastmod>2025-12-02</lastmod>
   </url>
@@ -15,10 +23,6 @@
   <url>
     <loc>https://orechou.com/2025/the-earth-chronicles-reading/</loc>
     <lastmod>2025-12-02</lastmod>
-  </url>
-  <url>
-    <loc>https://orechou.com/weekly/001/</loc>
-    <lastmod>2025-11-09</lastmod>
   </url>
   <url>
     <loc>https://orechou.com/2025/car-accident-recording/</loc>
