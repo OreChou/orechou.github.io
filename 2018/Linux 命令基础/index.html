@@ -84,6 +84,8 @@
      --><!--
        --><li><a href="/weekly/">Weekly</a></li><!--
      --><!--
+       --><li><a href="/diary/">Diary</a></li><!--
+     --><!--
        --><li><a href="/book/">Book</a></li><!--
      --><!--
        --><li><a href="/application/">Apps</a></li><!--
@@ -255,7 +257,7 @@
 </tr>
 </tbody></table>
 <h3 id="find-指令详解"><a href="#find-指令详解" class="headerlink" title="find 指令详解"></a>find 指令详解</h3><p>指令的基础用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">find [basedir] [option] // basedir 不指定则为当前目录，及其子目录</span></span><br><span class="line">find . -name &quot;shadow*&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> find [basedir] [option] // basedir 不指定则为当前目录，及其子目录</span></span><br><span class="line">find . -name &quot;shadow*&quot;</span><br></pre></td></tr></table></figure>
 
 <h4 id="按修改时间搜索的参数"><a href="#按修改时间搜索的参数" class="headerlink" title="按修改时间搜索的参数"></a>按修改时间搜索的参数</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-mtime  n ：列出在 n 天前的那一天修改过内容的文件</span><br><span class="line">-mtime +n ：列出在 n 天之前 (不含 n 天本身) 修改过内容的文件</span><br><span class="line">-mtime -n ：列出在 n 天之内 (含 n 天本身) 修改过内容的文件</span><br><span class="line">-newer file ： 列出比 file 更新的文件</span><br></pre></td></tr></table></figure>
 
@@ -290,13 +292,13 @@
 </tr>
 </tbody></table>
 <h3 id="grep-详解"><a href="#grep-详解" class="headerlink" title="grep 详解"></a>grep 详解</h3><p>指令 grep （globally search a regular expression and print）的基本用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">grep [-acinv] [--color=auto] 搜寻字符串 filename</span></span><br><span class="line">-c ： 统计个数</span><br><span class="line">-i ： 忽略大小写</span><br><span class="line">-n ： 输出行号</span><br><span class="line">-v ： 反向选择，也就是显示出没有 搜寻字符串 内容的那一行</span><br><span class="line">--color=auto ：找到的关键字加颜色显示</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> grep [-acinv] [--color=auto] 搜寻字符串 filename</span></span><br><span class="line">-c ： 统计个数</span><br><span class="line">-i ： 忽略大小写</span><br><span class="line">-n ： 输出行号</span><br><span class="line">-v ： 反向选择，也就是显示出没有 搜寻字符串 内容的那一行</span><br><span class="line">--color=auto ：找到的关键字加颜色显示</span><br></pre></td></tr></table></figure>
 
 <p>示例如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">test.txt 的内容如下</span></span><br><span class="line">hello world</span><br><span class="line">123</span><br><span class="line">aaaaa</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gerp -n <span class="string">&#x27;world&#x27;</span> test.txt</span></span><br><span class="line">1:hello world</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> test.txt 的内容如下</span></span><br><span class="line">hello world</span><br><span class="line">123</span><br><span class="line">aaaaa</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> gerp -n <span class="string">&#x27;world&#x27;</span> test.txt</span></span><br><span class="line">1:hello world</span><br></pre></td></tr></table></figure>
 
 <h3 id="awk-详解"><a href="#awk-详解" class="headerlink" title="awk 详解"></a>awk 详解</h3><p>指令 awk 的基本用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">awk <span class="string">&#x27;&#123;[pattern] action&#125;&#x27;</span> &#123;filenames&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> awk <span class="string">&#x27;&#123;[pattern] action&#125;&#x27;</span> &#123;filenames&#125;</span></span><br></pre></td></tr></table></figure>
 
 <p>每次处理输入流中的一行，然后根据设置的条件匹配相应的字段，然后做处理。</p>
 <p>awk 变量：</p>
@@ -321,7 +323,7 @@
 </tr>
 </tbody></table>
 <p>示例如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取出登录用户的用户名和 IP</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">last -n 5</span></span><br><span class="line">dmtsai pts/0 192.168.1.100 Tue Jul 14 17:32 still logged in</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 23:36 - 02:58 (03:22)</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 17:23 - 23:36 (06:12)</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 08:02 - 08:17 (00:14)</span><br><span class="line">dmtsai tty1 Fri May 29 11:55 - 12:11 (00:15)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="variable">$1</span>, <span class="variable">$3</span> 代表了第几个段，每行根据空格和tab来划分段</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">last -n 5 | awk <span class="string">&#x27;&#123;print $1 &quot;\t lines: &quot; NR &quot;\t columns: &quot; NF&#125;&#x27;</span></span></span><br><span class="line">dmtsai lines: 1 columns: 10</span><br><span class="line">dmtsai lines: 2 columns: 10</span><br><span class="line">dmtsai lines: 3 columns: 10</span><br><span class="line">dmtsai lines: 4 columns: 10</span><br><span class="line">dmtsai lines: 5 columns: 9</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 取出登录用户的用户名和 IP</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> last -n 5</span></span><br><span class="line">dmtsai pts/0 192.168.1.100 Tue Jul 14 17:32 still logged in</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 23:36 - 02:58 (03:22)</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 17:23 - 23:36 (06:12)</span><br><span class="line">dmtsai pts/0 192.168.1.100 Thu Jul 9 08:02 - 08:17 (00:14)</span><br><span class="line">dmtsai tty1 Fri May 29 11:55 - 12:11 (00:15)</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="variable">$1</span>, <span class="variable">$3</span> 代表了第几个段，每行根据空格和tab来划分段</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> last -n 5 | awk <span class="string">&#x27;&#123;print $1 &quot;\t lines: &quot; NR &quot;\t columns: &quot; NF&#125;&#x27;</span></span></span><br><span class="line">dmtsai lines: 1 columns: 10</span><br><span class="line">dmtsai lines: 2 columns: 10</span><br><span class="line">dmtsai lines: 3 columns: 10</span><br><span class="line">dmtsai lines: 4 columns: 10</span><br><span class="line">dmtsai lines: 5 columns: 9</span><br></pre></td></tr></table></figure>
 
 
 
@@ -367,13 +369,13 @@
 </tr>
 </tbody></table>
 <h3 id="cut-指令"><a href="#cut-指令" class="headerlink" title="cut 指令"></a>cut 指令</h3><p>cut 对数据进行一行一行的切分，用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cut</span> -d</span></span><br><span class="line">-d ：分隔符</span><br><span class="line">-f ：经过 -d 分隔后，使用 -f n 取出第 n 个区间</span><br><span class="line">-c ：以字符为单位取出区间</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> cut -d</span></span><br><span class="line">-d ：分隔符</span><br><span class="line">-f ：经过 -d 分隔后，使用 -f n 取出第 n 个区间</span><br><span class="line">-c ：以字符为单位取出区间</span><br></pre></td></tr></table></figure>
 
 <h3 id="sort-指令"><a href="#sort-指令" class="headerlink" title="sort 指令"></a>sort 指令</h3><p>sort 对数据进行排序，用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sort</span> [options] [file &amp; stdin]</span>  </span><br><span class="line">-f ：忽略大小写</span><br><span class="line">-b ：忽略最前面的空格</span><br><span class="line">-M ：以月份的名字来排序，例如 JAN，DEC</span><br><span class="line">-n ：使用数字</span><br><span class="line">-r ：反向排序</span><br><span class="line">-u ：相当于 unique，重复的内容只出现一次</span><br><span class="line">-t ：分隔符，默认为 tab</span><br><span class="line">-k ：指定排序的区间</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sort [options] [file &amp; stdin]</span>  </span><br><span class="line">-f ：忽略大小写</span><br><span class="line">-b ：忽略最前面的空格</span><br><span class="line">-M ：以月份的名字来排序，例如 JAN，DEC</span><br><span class="line">-n ：使用数字</span><br><span class="line">-r ：反向排序</span><br><span class="line">-u ：相当于 unique，重复的内容只出现一次</span><br><span class="line">-t ：分隔符，默认为 tab</span><br><span class="line">-k ：指定排序的区间</span><br></pre></td></tr></table></figure>
 
 <h3 id="uniq-指令"><a href="#uniq-指令" class="headerlink" title="uniq 指令"></a>uniq 指令</h3><p>uniq 只将重复的数据读取一次，用法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">uniq</span> [-ic]</span></span><br><span class="line">-i ：忽略大小写</span><br><span class="line">-c ：进行计数</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> uniq [-ic]</span></span><br><span class="line">-i ：忽略大小写</span><br><span class="line">-c ：进行计数</span><br></pre></td></tr></table></figure>
 
 <h3 id="tee-指令"><a href="#tee-指令" class="headerlink" title="tee 指令"></a>tee 指令</h3><p>输出重定向会将输出内容重定向到文件中，而 <strong>tee</strong> 不仅能够完成这个功能，还能保留屏幕上的输出。也就是说，使用 tee 指令，一个输出会同时传送到文件和屏幕上。</p>
 <h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><h3 id="基本指令-3"><a href="#基本指令-3" class="headerlink" title="基本指令"></a>基本指令</h3><table>
@@ -504,6 +506,8 @@
         
           <li><a href="/weekly/">Weekly</a></li>
         
+          <li><a href="/diary/">Diary</a></li>
+        
           <li><a href="/book/">Book</a></li>
         
           <li><a href="/application/">Apps</a></li>
@@ -567,6 +571,8 @@
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
        --><li><a href="/weekly/">Weekly</a></li><!--
+     --><!--
+       --><li><a href="/diary/">Diary</a></li><!--
      --><!--
        --><li><a href="/book/">Book</a></li><!--
      --><!--

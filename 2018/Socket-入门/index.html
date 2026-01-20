@@ -90,6 +90,8 @@
      --><!--
        --><li><a href="/weekly/">Weekly</a></li><!--
      --><!--
+       --><li><a href="/diary/">Diary</a></li><!--
+     --><!--
        --><li><a href="/book/">Book</a></li><!--
      --><!--
        --><li><a href="/application/">Apps</a></li><!--
@@ -198,18 +200,18 @@
 <p><img src="/images/socket_fd.png"></p>
 <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>Socket 通信双方的函数如下：</p>
 <p><img src="/images/socket_flow.png"></p>
-<h2 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">socket</span><span class="params">(<span class="type">int</span> domain, <span class="type">int</span> type, <span class="type">int</span> protocol)</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">socket</span><span class="params">(<span class="keyword">int</span> domain, <span class="keyword">int</span> type, <span class="keyword">int</span> protocol)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>socket() 函数对应于普通文件的打开操作。普通文件的打开操作返回一个文件描述字，而 socket() 用于创建一个 socket 描述符（socket descriptor），它唯一标识一个socket。</p>
 <p>打开一个网络通讯端口，如果成功的话，返回一个文件描述符，应用程序可以像读写文件一样用 read/write 在网络上收发数据，如果 socket() 调用出错则返回-1。</p>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">bind</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">const</span> <span class="keyword">struct</span> sockaddr *myaddr, <span class="type">socklen_t</span> addrlen)</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bind</span><span class="params">(<span class="keyword">int</span> sockfd, <span class="keyword">const</span> struct sockaddr *myaddr, <span class="keyword">socklen_t</span> addrlen)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>服务器需要调用 bind 绑定一个固定的网络地址和端口号。服务器程序所监听的网络地址和端口号通常是固定不变的，客户端程序得知服务器程序的地址和端口号后就可以向服务器发起连接。</p>
 <p>bind() 的作用是将参数 sockfd 和 myaddr 绑定在一起，使 sockfd 这个用于网络通讯的文件描述符监听 myaddr 所描述的地址和端口号。</p>
-<h2 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">listen</span><span class="params">(<span class="type">int</span> sockfd, <span class="type">int</span> backlog)</span>;<span class="comment">// backlog取值0~5.</span></span><br></pre></td></tr></table></figure>
+<h2 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">listen</span><span class="params">(<span class="keyword">int</span> sockfd, <span class="keyword">int</span> backlog)</span></span>;<span class="comment">// backlog取值0~5.</span></span><br></pre></td></tr></table></figure>
 
 <p>listen() 声明 sockfd 处于监听状态，并且最多允许有 backlog 个客户端处于连接待状态，如果接收到更多的连接请求就忽略。 listen() 成功返回 0，失败返回 -1。</p>
-<h2 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">accept</span><span class="params">(<span class="type">int</span> sockfd, <span class="keyword">struct</span> sockaddr *cliaddr, <span class="type">socklen_t</span> *addrlen)</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">accept</span><span class="params">(<span class="keyword">int</span> sockfd, struct sockaddr *cliaddr, <span class="keyword">socklen_t</span> *addrlen)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>三方握手完成后，服务器调用 accept() 接受连接，如果服务器调用 accept() 时还没有客户端的连接请求，就阻塞等待直到有客户端连接上来。</p>
 
@@ -236,6 +238,8 @@
           <li><a href="/archives/">Writing</a></li>
         
           <li><a href="/weekly/">Weekly</a></li>
+        
+          <li><a href="/diary/">Diary</a></li>
         
           <li><a href="/book/">Book</a></li>
         
@@ -302,6 +306,8 @@
        --><li><a href="/archives/">Writing</a></li><!--
      --><!--
        --><li><a href="/weekly/">Weekly</a></li><!--
+     --><!--
+       --><li><a href="/diary/">Diary</a></li><!--
      --><!--
        --><li><a href="/book/">Book</a></li><!--
      --><!--
