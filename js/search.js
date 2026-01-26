@@ -20,6 +20,7 @@
 //
 // Modified by:
 // Pieter Robberechts <http://github.com/probberechts>
+// Modernized to use Fetch API instead of jQuery AJAX
 
 /*exported searchFunc*/
 var searchFunc = function(path, searchId, contentId) {
@@ -49,18 +50,39 @@ var searchFunc = function(path, searchId, contentId) {
     return result;
   }
 
-  $.ajax({
-    url: path,
-    dataType: "xml",
-    success: function(xmlResponse) {
-      // get the contents from search data
-      var datas = $("entry", xmlResponse).map(function() {
+  // Use Fetch API instead of jQuery AJAX
+  fetch(path)
+    .then(function(response) {
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.text();
+    })
+    .then(function(xmlText) {
+      // Parse XML using native DOMParser
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(xmlText, "text/xml");
+
+      // Check for XML parsing errors
+      var parseError = xmlDoc.querySelector('parsererror');
+      if (parseError) {
+        console.error('XML Parse Error:', parseError.textContent);
+        return;
+      }
+
+      // Extract data from XML
+      var entries = xmlDoc.getElementsByTagName('entry');
+      var datas = Array.from(entries).map(function(entry) {
+        var titleEl = entry.getElementsByTagName('title')[0];
+        var contentEl = entry.getElementsByTagName('content')[0];
+        var linkEl = entry.getElementsByTagName('link')[0];
+
         return {
-          title: $("title", this).text(),
-          content: $("content", this).text(),
-          url: $("link", this).attr("href")
+          title: titleEl ? titleEl.textContent : '',
+          content: contentEl ? contentEl.textContent : '',
+          url: linkEl ? linkEl.getAttribute('href') : ''
         };
-      }).get();
+      });
 
       var $input = document.getElementById(searchId);
       if (!$input) { return; }
@@ -81,18 +103,16 @@ var searchFunc = function(path, searchId, contentId) {
             data.title = "Untitled";
           }
           var dataTitle = data.title.trim().toLowerCase();
-          var dataTitleLowerCase = dataTitle.toLowerCase();
           var dataContent = stripHtml(data.content.trim());
-          var dataContentLowerCase = dataContent.toLowerCase();
           var dataUrl = data.url;
           var indexTitle = -1;
           var indexContent = -1;
           var firstOccur = -1;
-          // only match artiles with not empty contents
+          // only match articles with not empty contents
           if (dataContent !== "") {
             keywords.forEach(function(keyword) {
-              indexTitle = dataTitleLowerCase.indexOf(keyword);
-              indexContent = dataContentLowerCase.indexOf(keyword);
+              indexTitle = dataTitle.indexOf(keyword);
+              indexContent = dataContent.indexOf(keyword);
 
               if( indexTitle >= 0 || indexContent >= 0 ){
                 matches += 1;
@@ -127,7 +147,7 @@ var searchFunc = function(path, searchId, contentId) {
                 end = dataContent.length;
               }
 
-              var matchContent = dataContent.substring(start, end);
+              var matchContent = dataContent.substr(start, end);
 
               // highlight all keywords
               var regS = new RegExp(keywords.join("|"), "gi");
@@ -141,18 +161,18 @@ var searchFunc = function(path, searchId, contentId) {
             resultList.push(searchResult);
           }
         });
-        if (resultList.length) {
-          resultList.sort(function(a, b) {
-              return b.rank - a.rank;
-          });
-          var result ="<ul class=\"search-result-list\">";
-          for (var i = 0; i < resultList.length; i++) {
-            result += resultList[i].str;
-          }
-          result += "</ul>";
-          $resultContent.innerHTML = result;
+        resultList.sort(function(a, b) {
+            return b.rank - a.rank;
+        });
+        var result ="<ul class=\"search-result-list\">";
+        for (var i = 0; i < resultList.length; i++) {
+          result += resultList[i].str;
         }
+        result += "</ul>";
+        $resultContent.innerHTML = result;
       });
-    }
-  });
+    })
+    .catch(function(error) {
+      console.error('Search failed:', error);
+    });
 };

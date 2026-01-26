@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  
+  <link rel="dns-prefetch" href="https://latest.cactus.chat">
+  <link rel="preconnect" href="https://latest.cactus.chat" crossorigin>
+
+  
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/font-awesome/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> 【MySQL】慢 SQL 分析 | OreChou</title>
+  <link rel = 'canonical' href = 'https://www.orechou.com/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/'>
+  <meta name="description" content="所有的文字，均致十年后的自己.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:url" content="https://www.orechou.com/posts/2021/mysql_%E6%85%A2-sql-%E5%88%86%E6%9E%90/">
+  <meta property="og:site_name" content="OreChou">
+  <meta property="og:title" content="【MySQL】慢 SQL 分析">
+  <meta property="og:description" content="慢查询日志分析 设置慢查询 可以通过修改命令设置：
+设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效 查看是否开启：SHOW VARIABLES LIKE ‘%slow_query_log%’; 设置阈值：SET GLOBAL long_query_time=3; 查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE ’long_query_time%’; #重连或新开一个会话才能看到修改值 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：
+[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log long_query_time=3;　#运行时间超过该值的SQL会被记录，默认值&gt;10 log_output=FILE　获取慢 SQL 信息 查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE ‘%Slow_queries%’;
+模拟语句：SELECT SLEEP(4);
+查看慢查询日志：
+$ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with: Tcp port: 3306 Unix socket: /tmp/mysql.sock Time Id Command Argument # Time: 2021-08-10T06:29:53.513752Z # User@Host: root[root] @ localhost [127.0.0.1] Id: 11 # Query_time: 4.003605 Lock_time: 0.000000 Rows_sent: 1 Rows_examined: 1 use test; SET timestamp=1628576989; select sleep(4); 使用 mysqldumpslow 分析 使用样例：">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2021-08-10T12:30:00+00:00">
+    <meta property="article:modified_time" content="2021-08-10T12:30:00+00:00">
+    <meta property="article:tag" content="MySQL">
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="【MySQL】慢 SQL 分析">
+  <meta name="twitter:description" content="慢查询日志分析 设置慢查询 可以通过修改命令设置：
+设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效 查看是否开启：SHOW VARIABLES LIKE ‘%slow_query_log%’; 设置阈值：SET GLOBAL long_query_time=3; 查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE ’long_query_time%’; #重连或新开一个会话才能看到修改值 也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：
+[mysqld] slow_query_log = 1;　#开启 slow_query_log_file=/var/lib/mysql/atguigu-slow.log　#慢日志地址，缺省文件名host_name-slow.log long_query_time=3;　#运行时间超过该值的SQL会被记录，默认值&gt;10 log_output=FILE　获取慢 SQL 信息 查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE ‘%Slow_queries%’;
+模拟语句：SELECT SLEEP(4);
+查看慢查询日志：
+$ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with: Tcp port: 3306 Unix socket: /tmp/mysql.sock Time Id Command Argument # Time: 2021-08-10T06:29:53.513752Z # User@Host: root[root] @ localhost [127.0.0.1] Id: 11 # Query_time: 4.003605 Lock_time: 0.000000 Rows_sent: 1 Rows_examined: 1 use test; SET timestamp=1628576989; select sleep(4); 使用 mysqldumpslow 分析 使用样例：">
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="https://www.orechou.com/css/styles.f59e168855cac03647a80389be8d4e966cc06837a3de71c1b96562ddeabd494d52680d81ff33656008c30a0c66df76d770f79469f4cfa414a77be60ec0f403dd.css" integrity="sha512-9Z4WiFXKwDZHqAOJvo1OlmzAaDej3nHBuWVi3eq9SU1SaA2B/zNlYAjDCgxm33bXcPeUafTPpBSne&#43;YOwPQD3Q=="> 
+
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  <link rel="icon" type="image/x-icon" href="https://www.orechou.com/images/favicon.ico" />
+<link rel="shortcut icon" type="image/x-icon" href="https://www.orechou.com/images/favicon.ico" />
+
+  
+  
+  
+  
+  
+
+  
+  <script>
+    (function() {
+      try {
+        
+        var savedTheme = localStorage.getItem('theme');
+        var systemTheme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var theme = savedTheme || systemTheme;
+
+        
+        if (theme === 'white' || theme === 'classic') {
+          theme = 'light';
+          localStorage.setItem('theme', theme);
+        }
+
+        
+        if (theme && theme !== 'default') {
+          document.documentElement.classList.add('theme-' + theme);
+        }
+      } catch (e) {
+        
+      }
+    })();
+  </script>
+
+  
+  <script>
+    document.documentElement.dataset.copyLabel = "Copy";
+    document.documentElement.dataset.copiedLabel = "Copied!";
+  </script>
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  
+  <div class="theme-switcher">
+    
+  </div>
+
+  <div class="content index py4">
+
+  <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" style="display:none;" aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/books">Books</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li>
+          <a class="icon" href=" https://www.orechou.com/posts/2021/mysql_explain/" aria-label="Previous">
+            <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="toggleDisplay('i-prev')" onmouseout="toggleDisplay('i-prev')"></i>
+          </a>
+        </li>
+        
+        
+        <li>
+          <a class="icon" href="https://www.orechou.com/posts/2021/mysql_%E5%AE%9E%E7%8E%B0%E5%88%97%E8%A1%A8%E6%95%B0%E6%8D%AE%E7%BD%AE%E9%A1%B6/" aria-label="Next">
+            <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="toggleDisplay('i-next')" onmouseout="toggleDisplay('i-next')"></i>
+          </a>
+        </li>
+        
+        <li>
+          <a class="icon" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" aria-label="Top of Page">
+            <i class="fas fa-chevron-up" aria-hidden="true" onmouseover="toggleDisplay('i-top')" onmouseout="toggleDisplay('i-top')"></i>
+          </a>
+        </li>
+        <li>
+          <a class="icon" href="#" aria-label="Share">
+            <i class="fas fa-share-alt" aria-hidden="true" onmouseover="toggleDisplay('i-share')" onmouseout="toggleDisplay('i-share')" onclick="toggleDisplay('share');return false;"></i>
+          </a>
+        </li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f" aria-label="Facebook">
+      <i class="fab fa-facebook " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&text=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Twitter">
+      <i class="fab fa-twitter " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Linkedin">
+      <i class="fab fa-linkedin " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&is_video=false&description=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Pinterest">
+      <i class="fab fa-pinterest " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90&body=Check out this article: https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f" aria-label="Email">
+      <i class="fas fa-envelope " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Pocket">
+      <i class="fab fa-get-pocket " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="reddit">
+      <i class="fab fa-reddit " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&name=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90&description=%3ch2%20id%3d%22%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e5%88%86%e6%9e%90%22%3e%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e5%88%86%e6%9e%90%3c%2fh2%3e%0a%3ch3%20id%3d%22%e8%ae%be%e7%bd%ae%e6%85%a2%e6%9f%a5%e8%af%a2%22%3e%e8%ae%be%e7%bd%ae%e6%85%a2%e6%9f%a5%e8%af%a2%3c%2fh3%3e%0a%3cp%3e%e5%8f%af%e4%bb%a5%e9%80%9a%e8%bf%87%e4%bf%ae%e6%94%b9%e5%91%bd%e4%bb%a4%e8%ae%be%e7%bd%ae%ef%bc%9a%3c%2fp%3e%0a%3cul%3e%0a%3cli%3e%e8%ae%be%e7%bd%ae%e5%bc%80%e5%90%af%ef%bc%9aSET%20GLOBAL%20slow_query_log%20%3d%201%3b%20%23%e9%bb%98%e8%ae%a4%e6%9c%aa%e5%bc%80%e5%90%af%ef%bc%8c%e5%bc%80%e5%90%af%e4%bc%9a%e5%bd%b1%e5%93%8d%e6%80%a7%e8%83%bd%ef%bc%8cmysql%e9%87%8d%e5%90%af%e4%bc%9a%e5%a4%b1%e6%95%88%3c%2fli%3e%0a%3cli%3e%e6%9f%a5%e7%9c%8b%e6%98%af%e5%90%a6%e5%bc%80%e5%90%af%ef%bc%9aSHOW%20VARIABLES%20LIKE%20%26lsquo%3b%25slow_query_log%25%26rsquo%3b%3b%3c%2fli%3e%0a%3cli%3e%e8%ae%be%e7%bd%ae%e9%98%88%e5%80%bc%ef%bc%9aSET%20GLOBAL%20long_query_time%3d3%3b%3c%2fli%3e%0a%3cli%3e%e6%9f%a5%e7%9c%8b%e9%98%88%e5%80%bc%ef%bc%9aSHOW%20%e3%80%90GLOBAL%e3%80%91%20VARIABLES%20LIKE%20%26rsquo%3blong_query_time%25%26rsquo%3b%3b%20%23%e9%87%8d%e8%bf%9e%e6%88%96%e6%96%b0%e5%bc%80%e4%b8%80%e4%b8%aa%e4%bc%9a%e8%af%9d%e6%89%8d%e8%83%bd%e7%9c%8b%e5%88%b0%e4%bf%ae%e6%94%b9%e5%80%bc%3c%2fli%3e%0a%3c%2ful%3e%0a%3cp%3e%e4%b9%9f%e5%8f%af%e4%bb%a5%e9%80%9a%e8%bf%87%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e8%ae%be%e7%bd%ae%ef%bc%8c%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%20my.conf%20%e4%bc%9a%e4%b8%80%e7%9b%b4%e7%94%9f%e6%95%88%ef%bc%8c%e5%9c%a8%5bmysqld%5d%e4%b8%8b%e9%85%8d%e7%bd%ae%ef%bc%9a%3c%2fp%3e%0a%3cpre%20tabindex%3d%220%22%3e%3ccode%3e%20%20%20%20%5bmysqld%5d%0a%20%20%20%20slow_query_log%20%3d%201%3b%e3%80%80%e3%80%80%23%e5%bc%80%e5%90%af%0a%20%20%20%20slow_query_log_file%3d%2fvar%2flib%2fmysql%2fatguigu-slow.log%e3%80%80%e3%80%80%e3%80%80%23%e6%85%a2%e6%97%a5%e5%bf%97%e5%9c%b0%e5%9d%80%ef%bc%8c%e7%bc%ba%e7%9c%81%e6%96%87%e4%bb%b6%e5%90%8dhost_name-slow.log%0a%20%20%20%20long_query_time%3d3%3b%e3%80%80%e3%80%80%20%20%23%e8%bf%90%e8%a1%8c%e6%97%b6%e9%97%b4%e8%b6%85%e8%bf%87%e8%af%a5%e5%80%bc%e7%9a%84SQL%e4%bc%9a%e8%a2%ab%e8%ae%b0%e5%bd%95%ef%bc%8c%e9%bb%98%e8%ae%a4%e5%80%bc%26gt%3b10%0a%20%20%20%20log_output%3dFILE%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%0a%3c%2fcode%3e%3c%2fpre%3e%3ch3%20id%3d%22%e8%8e%b7%e5%8f%96%e6%85%a2-sql-%e4%bf%a1%e6%81%af%22%3e%e8%8e%b7%e5%8f%96%e6%85%a2%20SQL%20%e4%bf%a1%e6%81%af%3c%2fh3%3e%0a%3cp%3e%e6%9f%a5%e7%9c%8b%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e8%ae%b0%e5%bd%95%e6%95%b0%ef%bc%9aSHOW%20GLOBAL%20STATUS%20LIKE%20%26lsquo%3b%25Slow_queries%25%26rsquo%3b%3b%3c%2fp%3e%0a%3cp%3e%e6%a8%a1%e6%8b%9f%e8%af%ad%e5%8f%a5%ef%bc%9aSELECT%20SLEEP%284%29%3b%3c%2fp%3e%0a%3cp%3e%e6%9f%a5%e7%9c%8b%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%ef%bc%9a%3c%2fp%3e%0a%3cpre%20tabindex%3d%220%22%3e%3ccode%3e%20%20%20%20%24%20cat%20%2fusr%2flocal%2fvar%2fmysql%2fOreChoudeMacBook-Pro-slow.log%0a%20%20%20%20%2fusr%2flocal%2fCellar%2fmysql%2f8.0.25_1%2fbin%2fmysqld%2c%20Version%3a%208.0.25%20%28Homebrew%29.%20started%20with%3a%0a%20%20%20%20Tcp%20port%3a%203306%20%20Unix%20socket%3a%20%2ftmp%2fmysql.sock%0a%20%20%20%20Time%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Id%20Command%20%20%20%20Argument%0a%20%20%20%20%23%20Time%3a%202021-08-10T06%3a29%3a53.513752Z%0a%20%20%20%20%23%20User%40Host%3a%20root%5broot%5d%20%40%20localhost%20%5b127.0.0.1%5d%20%20Id%3a%20%20%20%2011%0a%20%20%20%20%23%20Query_time%3a%204.003605%20%20Lock_time%3a%200.000000%20Rows_sent%3a%201%20%20Rows_examined%3a%201%0a%20%20%20%20use%20test%3b%0a%20%20%20%20SET%20timestamp%3d1628576989%3b%0a%20%20%20%20select%20sleep%284%29%3b%0a%3c%2fcode%3e%3c%2fpre%3e%3ch3%20id%3d%22%e4%bd%bf%e7%94%a8-mysqldumpslow-%e5%88%86%e6%9e%90%22%3e%e4%bd%bf%e7%94%a8%20mysqldumpslow%20%e5%88%86%e6%9e%90%3c%2fh3%3e%0a%3cp%3e%e4%bd%bf%e7%94%a8%e6%a0%b7%e4%be%8b%ef%bc%9a%3c%2fp%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr " aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&t=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Hacker News">
+      <i class="fab fa-hacker-news " aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+    
+    <div id="toc">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#慢查询日志分析">慢查询日志分析</a>
+      <ul>
+        <li><a href="#设置慢查询">设置慢查询</a></li>
+        <li><a href="#获取慢-sql-信息">获取慢 SQL 信息</a></li>
+        <li><a href="#使用-mysqldumpslow-分析">使用 mysqldumpslow 分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#explain-分析">Explain 分析</a></li>
+    <li><a href="#show-profile-分析">Show Profile 分析</a>
+      <ul>
+        <li><a href="#开启-profile">开启 Profile</a></li>
+        <li><a href="#查看-profile">查看 Profile</a></li>
+        <li><a href="#查看具体的-profile">查看具体的 Profile</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+  </span>
+</div>
+
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        【MySQL】慢 SQL 分析
+      </h1>
+      <div class="meta">
+        
+        <div class="postdate">
+          
+          <time datetime="2021-08-10 12:30:00 &#43;0000 UTC" itemprop="datePublished">2021-08-10</time>
+          
+        </div>
+        
+        
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          
+          4 minute read
+        </div>
+        
+        
+        
+      </div>
+    </header>
+
+  
+    
+    <div class="content" itemprop="articleBody">
+      <h2 id="慢查询日志分析">慢查询日志分析</h2>
+<h3 id="设置慢查询">设置慢查询</h3>
+<p>可以通过修改命令设置：</p>
+<ul>
+<li>设置开启：SET GLOBAL slow_query_log = 1; #默认未开启，开启会影响性能，mysql重启会失效</li>
+<li>查看是否开启：SHOW VARIABLES LIKE &lsquo;%slow_query_log%&rsquo;;</li>
+<li>设置阈值：SET GLOBAL long_query_time=3;</li>
+<li>查看阈值：SHOW 【GLOBAL】 VARIABLES LIKE &rsquo;long_query_time%&rsquo;; #重连或新开一个会话才能看到修改值</li>
+</ul>
+<p>也可以通过修改配置文件设置，配置文件 my.conf 会一直生效，在[mysqld]下配置：</p>
+<pre tabindex="0"><code>    [mysqld]
+    slow_query_log = 1;　　#开启
+    slow_query_log_file=/var/lib/mysql/atguigu-slow.log　　　#慢日志地址，缺省文件名host_name-slow.log
+    long_query_time=3;　　  #运行时间超过该值的SQL会被记录，默认值&gt;10
+    log_output=FILE　　　　　　　　　　　
+</code></pre><h3 id="获取慢-sql-信息">获取慢 SQL 信息</h3>
+<p>查看慢查询日志记录数：SHOW GLOBAL STATUS LIKE &lsquo;%Slow_queries%&rsquo;;</p>
+<p>模拟语句：SELECT SLEEP(4);</p>
+<p>查看慢查询日志：</p>
+<pre tabindex="0"><code>    $ cat /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log
+    /usr/local/Cellar/mysql/8.0.25_1/bin/mysqld, Version: 8.0.25 (Homebrew). started with:
+    Tcp port: 3306  Unix socket: /tmp/mysql.sock
+    Time                 Id Command    Argument
+    # Time: 2021-08-10T06:29:53.513752Z
+    # User@Host: root[root] @ localhost [127.0.0.1]  Id:    11
+    # Query_time: 4.003605  Lock_time: 0.000000 Rows_sent: 1  Rows_examined: 1
+    use test;
+    SET timestamp=1628576989;
+    select sleep(4);
+</code></pre><h3 id="使用-mysqldumpslow-分析">使用 mysqldumpslow 分析</h3>
+<p>使用样例：</p>
+<ul>
+<li>mysqldumpslow -s r -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log     #得到返回记录集最多的10个SQL</li>
+<li>mysqldumpslow -s c -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log     #得到访问次数最多的10个SQL</li>
+<li>mysqldumpslow -s t -t 10 -g &ldquo;LEFT JOIN&rdquo; /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log   #得到按照时间排序的前10条里面含有左连接的查询语句</li>
+<li>mysqldumpslow -s r -t 10 /usr/local/var/mysql/OreChoudeMacBook-Pro-slow.log | more      #结合| more使用，防止爆屏情况</li>
+</ul>
+<h2 id="explain-分析">Explain 分析</h2>
+<h2 id="show-profile-分析">Show Profile 分析</h2>
+<p>Show Profile 能够获取比 Explain 更为详细的信息，能够分析当前会话中语句执行时的资源消耗，获取 SQL 在整个生命周期的时间。</p>
+<h3 id="开启-profile">开启 Profile</h3>
+<pre tabindex="0"><code>    开启：set profiling = on;
+    查看：SHOW VARIABLES LIKE &#39;profiling%&#39;;
+</code></pre><p>开启后 MySQL 后台会保存最近 15 次的结果。</p>
+<h3 id="查看-profile">查看 Profile</h3>
+<p>使用 SHOW PROFILES 可以查看最近的 15 次结果。</p>
+<h3 id="查看具体的-profile">查看具体的 Profile</h3>
+<p>通过 Query_ID 可以得到具体 SQL 从连接 - 服务 - 引擎 - 存储四层结构完整生命周期的耗时。</p>
+<p>使用命令：SHOW PROFILE CPU, BLOCK IO FOR Query_ID</p>
+<p>可用参数type:</p>
+<ul>
+<li>ALL  　　#显示所有的开销信息</li>
+<li>BLOCK IO　　#显示块IO相关开销</li>
+<li>CONTEXT SWITCHES　　#上下文切换相关开销</li>
+<li>CPU     #显示CPU相关开销信息</li>
+<li>IPC     #显示发送和接收相关开销信息</li>
+<li>MEMORY　#显示内存相关开销信息</li>
+<li>PAGE FAULTS　　#显示页面错误相关开销信息</li>
+<li>SOURCE　　#显示和Source_function，Source_file，Source_line相关的开销信息</li>
+<li>SWAPS　　#显示交换次数相关开销的信息</li>
+</ul>
+<p>如果出现以下几个状态则 SQL 需要重点分析：</p>
+<ul>
+<li>converting HEAP to MyISAM  　　#查询结果太大，内存不够用了，在往磁盘上搬</li>
+<li>Creating tmp table         　　#创建了临时表，回先把数据拷贝到临时表，用完后再删除临时表</li>
+<li>Copying to tmp table on disk 　#把内存中临时表复制到磁盘，危险！！！</li>
+<li>locked</li>
+</ul>
+
+    </div>
+  </article>
+
+  
+  
+
+
+
+
+
+
+  <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/posts">Posts</a></li>
+         
+          <li><a href="/books">Books</a></li>
+         
+          <li><a href="/about">About</a></li>
+        
+      </ul>
+    </div>
+
+    
+    <div id="toc-footer" style="display: none">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#慢查询日志分析">慢查询日志分析</a>
+      <ul>
+        <li><a href="#设置慢查询">设置慢查询</a></li>
+        <li><a href="#获取慢-sql-信息">获取慢 SQL 信息</a></li>
+        <li><a href="#使用-mysqldumpslow-分析">使用 mysqldumpslow 分析</a></li>
+      </ul>
+    </li>
+    <li><a href="#explain-分析">Explain 分析</a></li>
+    <li><a href="#show-profile-分析">Show Profile 分析</a>
+      <ul>
+        <li><a href="#开启-profile">开启 Profile</a></li>
+        <li><a href="#查看-profile">查看 Profile</a></li>
+        <li><a href="#查看具体的-profile">查看具体的 Profile</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+    
+
+    <div id="share-footer" style="display: none">
+      
+      <ul>
+  
+  
+    
+  
+  
+  <li>
+    <a class="icon" href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f" aria-label="Facebook">
+      <i class="fab fa-facebook fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://twitter.com/share?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&text=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Twitter">
+      <i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Linkedin">
+      <i class="fab fa-linkedin fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&is_video=false&description=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Pinterest">
+      <i class="fab fa-pinterest fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="mailto:?subject=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90&body=Check out this article: https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f" aria-label="Email">
+      <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://getpocket.com/save?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Pocket">
+      <i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://reddit.com/submit?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&title=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="reddit">
+      <i class="fab fa-reddit fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&name=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90&description=%3ch2%20id%3d%22%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e5%88%86%e6%9e%90%22%3e%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e5%88%86%e6%9e%90%3c%2fh2%3e%0a%3ch3%20id%3d%22%e8%ae%be%e7%bd%ae%e6%85%a2%e6%9f%a5%e8%af%a2%22%3e%e8%ae%be%e7%bd%ae%e6%85%a2%e6%9f%a5%e8%af%a2%3c%2fh3%3e%0a%3cp%3e%e5%8f%af%e4%bb%a5%e9%80%9a%e8%bf%87%e4%bf%ae%e6%94%b9%e5%91%bd%e4%bb%a4%e8%ae%be%e7%bd%ae%ef%bc%9a%3c%2fp%3e%0a%3cul%3e%0a%3cli%3e%e8%ae%be%e7%bd%ae%e5%bc%80%e5%90%af%ef%bc%9aSET%20GLOBAL%20slow_query_log%20%3d%201%3b%20%23%e9%bb%98%e8%ae%a4%e6%9c%aa%e5%bc%80%e5%90%af%ef%bc%8c%e5%bc%80%e5%90%af%e4%bc%9a%e5%bd%b1%e5%93%8d%e6%80%a7%e8%83%bd%ef%bc%8cmysql%e9%87%8d%e5%90%af%e4%bc%9a%e5%a4%b1%e6%95%88%3c%2fli%3e%0a%3cli%3e%e6%9f%a5%e7%9c%8b%e6%98%af%e5%90%a6%e5%bc%80%e5%90%af%ef%bc%9aSHOW%20VARIABLES%20LIKE%20%26lsquo%3b%25slow_query_log%25%26rsquo%3b%3b%3c%2fli%3e%0a%3cli%3e%e8%ae%be%e7%bd%ae%e9%98%88%e5%80%bc%ef%bc%9aSET%20GLOBAL%20long_query_time%3d3%3b%3c%2fli%3e%0a%3cli%3e%e6%9f%a5%e7%9c%8b%e9%98%88%e5%80%bc%ef%bc%9aSHOW%20%e3%80%90GLOBAL%e3%80%91%20VARIABLES%20LIKE%20%26rsquo%3blong_query_time%25%26rsquo%3b%3b%20%23%e9%87%8d%e8%bf%9e%e6%88%96%e6%96%b0%e5%bc%80%e4%b8%80%e4%b8%aa%e4%bc%9a%e8%af%9d%e6%89%8d%e8%83%bd%e7%9c%8b%e5%88%b0%e4%bf%ae%e6%94%b9%e5%80%bc%3c%2fli%3e%0a%3c%2ful%3e%0a%3cp%3e%e4%b9%9f%e5%8f%af%e4%bb%a5%e9%80%9a%e8%bf%87%e4%bf%ae%e6%94%b9%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%e8%ae%be%e7%bd%ae%ef%bc%8c%e9%85%8d%e7%bd%ae%e6%96%87%e4%bb%b6%20my.conf%20%e4%bc%9a%e4%b8%80%e7%9b%b4%e7%94%9f%e6%95%88%ef%bc%8c%e5%9c%a8%5bmysqld%5d%e4%b8%8b%e9%85%8d%e7%bd%ae%ef%bc%9a%3c%2fp%3e%0a%3cpre%20tabindex%3d%220%22%3e%3ccode%3e%20%20%20%20%5bmysqld%5d%0a%20%20%20%20slow_query_log%20%3d%201%3b%e3%80%80%e3%80%80%23%e5%bc%80%e5%90%af%0a%20%20%20%20slow_query_log_file%3d%2fvar%2flib%2fmysql%2fatguigu-slow.log%e3%80%80%e3%80%80%e3%80%80%23%e6%85%a2%e6%97%a5%e5%bf%97%e5%9c%b0%e5%9d%80%ef%bc%8c%e7%bc%ba%e7%9c%81%e6%96%87%e4%bb%b6%e5%90%8dhost_name-slow.log%0a%20%20%20%20long_query_time%3d3%3b%e3%80%80%e3%80%80%20%20%23%e8%bf%90%e8%a1%8c%e6%97%b6%e9%97%b4%e8%b6%85%e8%bf%87%e8%af%a5%e5%80%bc%e7%9a%84SQL%e4%bc%9a%e8%a2%ab%e8%ae%b0%e5%bd%95%ef%bc%8c%e9%bb%98%e8%ae%a4%e5%80%bc%26gt%3b10%0a%20%20%20%20log_output%3dFILE%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%e3%80%80%0a%3c%2fcode%3e%3c%2fpre%3e%3ch3%20id%3d%22%e8%8e%b7%e5%8f%96%e6%85%a2-sql-%e4%bf%a1%e6%81%af%22%3e%e8%8e%b7%e5%8f%96%e6%85%a2%20SQL%20%e4%bf%a1%e6%81%af%3c%2fh3%3e%0a%3cp%3e%e6%9f%a5%e7%9c%8b%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%e8%ae%b0%e5%bd%95%e6%95%b0%ef%bc%9aSHOW%20GLOBAL%20STATUS%20LIKE%20%26lsquo%3b%25Slow_queries%25%26rsquo%3b%3b%3c%2fp%3e%0a%3cp%3e%e6%a8%a1%e6%8b%9f%e8%af%ad%e5%8f%a5%ef%bc%9aSELECT%20SLEEP%284%29%3b%3c%2fp%3e%0a%3cp%3e%e6%9f%a5%e7%9c%8b%e6%85%a2%e6%9f%a5%e8%af%a2%e6%97%a5%e5%bf%97%ef%bc%9a%3c%2fp%3e%0a%3cpre%20tabindex%3d%220%22%3e%3ccode%3e%20%20%20%20%24%20cat%20%2fusr%2flocal%2fvar%2fmysql%2fOreChoudeMacBook-Pro-slow.log%0a%20%20%20%20%2fusr%2flocal%2fCellar%2fmysql%2f8.0.25_1%2fbin%2fmysqld%2c%20Version%3a%208.0.25%20%28Homebrew%29.%20started%20with%3a%0a%20%20%20%20Tcp%20port%3a%203306%20%20Unix%20socket%3a%20%2ftmp%2fmysql.sock%0a%20%20%20%20Time%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20Id%20Command%20%20%20%20Argument%0a%20%20%20%20%23%20Time%3a%202021-08-10T06%3a29%3a53.513752Z%0a%20%20%20%20%23%20User%40Host%3a%20root%5broot%5d%20%40%20localhost%20%5b127.0.0.1%5d%20%20Id%3a%20%20%20%2011%0a%20%20%20%20%23%20Query_time%3a%204.003605%20%20Lock_time%3a%200.000000%20Rows_sent%3a%201%20%20Rows_examined%3a%201%0a%20%20%20%20use%20test%3b%0a%20%20%20%20SET%20timestamp%3d1628576989%3b%0a%20%20%20%20select%20sleep%284%29%3b%0a%3c%2fcode%3e%3c%2fpre%3e%3ch3%20id%3d%22%e4%bd%bf%e7%94%a8-mysqldumpslow-%e5%88%86%e6%9e%90%22%3e%e4%bd%bf%e7%94%a8%20mysqldumpslow%20%e5%88%86%e6%9e%90%3c%2fh3%3e%0a%3cp%3e%e4%bd%bf%e7%94%a8%e6%a0%b7%e4%be%8b%ef%bc%9a%3c%2fp%3e" aria-label="Tumblr">
+      <i class="fab fa-tumblr fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+  <li>
+    <a class="icon" href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.orechou.com%2fposts%2f2021%2fmysql_%25E6%2585%25A2-sql-%25E5%2588%2586%25E6%259E%2590%2f&t=%e3%80%90MySQL%e3%80%91%e6%85%a2%20SQL%20%e5%88%86%e6%9e%90" aria-label="Hacker News">
+      <i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i>
+    </a>
+  </li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      
+        <a id="menu-toggle" class="icon" href="#" onclick="toggleDisplay('nav-footer');return false;" aria-label="Menu">
+          <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+        <a id="toc-toggle" class="icon" href="#" onclick="toggleDisplay('toc-footer');return false;" aria-label="TOC">
+          <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share-toggle" class="icon" href="#" onclick="toggleDisplay('share-footer');return false;" aria-label="Share">
+          <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" aria-label="Top of Page">
+          <i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+
+  <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2026  OreChou 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/">Home</a></li>
+         
+        <li><a href="/posts">Posts</a></li>
+         
+        <li><a href="/books">Books</a></li>
+         
+        <li><a href="/about">About</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/js/main.js defer></script>
+
+<script src=/js/code-copy.js defer></script>
+
+
+
+
+</html>
