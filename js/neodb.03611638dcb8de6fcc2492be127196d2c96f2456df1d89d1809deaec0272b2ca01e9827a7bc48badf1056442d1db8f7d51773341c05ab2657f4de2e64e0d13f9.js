@@ -7,7 +7,11 @@
   var currentPage = 1;
   var totalPages = 1;
   var loading = false;
+  // Monotonic across re-inits: responses whose id no longer matches are
+  // discarded. Never reset this — an old in-flight fetch must not be able
+  // to pass the staleness check after a re-init restarts the counter.
   var fetchId = 0;
+  var abortController = null;
   var activeCategory = '';
   var activeType = 'complete';
 
@@ -244,10 +248,22 @@
     }
   }
 
+  // Cancel any in-flight request and release the loading flag so a new
+  // fetch can start immediately (used by re-init and filter changes).
+  function abortPending() {
+    if (abortController) {
+      abortController.abort();
+      abortController = null;
+    }
+    loading = false;
+  }
+
   function fetchItems(page) {
     if (loading) return;
     loading = true;
     var currentFetchId = ++fetchId;
+    var currentController = new AbortController();
+    abortController = currentController;
     var config = window.neodbConfig;
 
     var url = config.apiUrl + '/shelf/' + activeType + '?page=' + page;
@@ -259,15 +275,14 @@
     if (loadMoreBtn) loadMoreBtn.hidden = true;
 
     var timeoutId = setTimeout(function () {
+      if (currentFetchId !== fetchId) return;
       loading = false;
-      if (currentFetchId === fetchId) {
-        showError(config.labels.error || 'Request timed out');
-      }
+      currentController.abort();
+      showError(config.labels.error || 'Request timed out');
     }, 15000);
 
-    fetch(url)
+    fetch(url, { signal: currentController.signal })
       .then(function (r) {
-        clearTimeout(timeoutId);
         if (!r.ok) throw new Error('API returned ' + r.status);
         return r.json();
       })
@@ -306,18 +321,22 @@
         }
       })
       .catch(function (err) {
+        if (err && err.name === 'AbortError') return;
         if (!container || !container.parentNode) return;
         if (currentFetchId !== fetchId) return;
         showError(config.labels.error || 'Failed to load');
       })
       .finally(function () {
-        loading = false;
+        clearTimeout(timeoutId);
+        if (currentFetchId === fetchId) loading = false;
       });
   }
 
   function resetAndFetch() {
+    abortPending();
     allItems = [];
     currentPage = 1;
+    totalPages = 1;
     grid.innerHTML = '';
     hideAll();
     updateFilterButtons();
@@ -329,11 +348,11 @@
     if (!queryElements()) return;
     if (!window.neodbConfig || !window.neodbConfig.apiUrl) return;
 
+    abortPending();
     allItems = [];
     currentPage = 1;
     totalPages = 1;
-    loading = false;
-    fetchId = 0;
+    // fetchId is intentionally NOT reset here (see its declaration).
     activeCategory = '';
     activeType = 'complete';
     grid.innerHTML = '';

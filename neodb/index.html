@@ -150,10 +150,14 @@
 <script>window.neodbConfig = {"apiUrl":"https://neodb-proxy.orechou.workers.dev","labels":{"error":"Failed to load. Please try again later.","filterAll":"All","filterBook":"Books","filterGame":"Games","filterMovie":"Movies","filterMusic":"Music","filterTV":"TV","loadMore":"Load More","loading":"Loading...","myRating":"My Rating","noResults":"No records found","rating":"Rating","typeComplete":"Completed","typeProgress":"In Progress","typeWishlist":"Wishlist","userComment":"Comment"}};
 if (typeof window.initNeoDB === 'function') {
   window.initNeoDB();
+} else if (window.__neodbScriptLoading) {
+  
 } else {
+  window.__neodbScriptLoading = true;
   var s = document.createElement('script');
-  s.src = "/js/neodb.8bbb944a9fb4396e1f62e09b961d7b577b13e62e6c08198b2d0f652d9ea1d6a46fc02e1a47cdd9a5b1fb3638cc699f0ac7b0058d48af78e5fec4ff56a4451c30.js";
-  s.onload = function() { window.initNeoDB(); };
+  s.src = "/js/neodb.03611638dcb8de6fcc2492be127196d2c96f2456df1d89d1809deaec0272b2ca01e9827a7bc48badf1056442d1db8f7d51773341c05ab2657f4de2e64e0d13f9.js";
+  s.onload = function() { window.__neodbScriptLoading = false; window.initNeoDB(); };
+  s.onerror = function() { window.__neodbScriptLoading = false; };
   document.body.appendChild(s);
 }
 </script>
