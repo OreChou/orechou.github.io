@@ -47,7 +47,7 @@ AppStore 上线一个 app。（最终的目标是手机主页最下方 4 个 app
     
   
   
-  <link rel="stylesheet" href="/css/styles.3b1cc9572a109bce3644750504dba1f83e7b156c84bf9d6080d5e50a12a314f81634ddd7fe08fe8ab1864ca6730eee7ba30453d2469bfb63cdae77ea252ee211.css" integrity="sha512-OxzJVyoQm842RHUFBNuh&#43;D57FWyEv51ggNXlChKjFPgWNN3X/gj&#43;irGGTKZzDu57owRT0kab&#43;2PNrnfqJS7iEQ==" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.b16f83e38b9fcc67ee4a461557786a6efb0ead2843a7b62011a171bd9449a8db2fedcfc3593f64324acbb1e453c9856810f4bf02fc8fd7d7c63ce92afa933706.css" integrity="sha512-sW&#43;D44ufzGfuSkYVV3hqbvsOrShDp7YgEaFxvZRJqNsv7c/DWT9kMkrLseRTyYVoEPS/AvyP19fGPOkq&#43;pM3Bg==" crossorigin="anonymous">
 
   
   
@@ -90,6 +90,7 @@ AppStore 上线一个 app。（最终的目标是手机主页最下方 4 个 app
   <script>
     document.documentElement.dataset.copyLabel = "Copy";
     document.documentElement.dataset.copiedLabel = "Copied!";
+    document.documentElement.dataset.copyError = "Error";
     document.documentElement.dataset.searchTitle = "Search";
     document.documentElement.dataset.searchLoading = "Loading…";
     document.documentElement.dataset.searchNoResults = "No results found";
@@ -99,7 +100,7 @@ AppStore 上线一个 app。（最终的目标是手机主页最下方 4 个 app
   </script>
 </head>
 
-<body class="max-width mx-auto px3 ltr">
+<body class="max-width mx-auto px3">
   
   <div id="reading-progress" class="reading-progress" aria-hidden="true" hidden></div>
 
@@ -214,7 +215,7 @@ AppStore 上线一个 app。（最终的目标是手机主页最下方 4 个 app
 
 <script>window.musicData = [{"artist":"毛不易/中岛美嘉","cover":"/images/music/another-me.jpg","src":"/music/another-me.mp3","title":"生活在别处的你"}];</script>
 <audio id="music-player-audio" style="display:none"></audio>
-<script src="/js/music-player.363af8e07eccb517a07132da2f898711db12356c6b1779c992e2e3096769d51c9863d4941fc35d9bc9908359129d1347b34583667896494e48ece9ef4a9bbfbc.js" integrity="sha512-Njr44H7MtRegcTLaL4mHEdsSNWxrF3nJkuLjCWdp1RyYY9SUH8Ndm8mQg1kSnRNHs0WDZniWSU5I7OnvSpu/vA==" crossorigin="anonymous" defer></script>
+<script src="/js/music-player.8dfee7676a1480e0b5e02a15d3e6071d5c63c1e6ccb05de288c2b4b52aeb947c0ae6ddb71c803a2dbc57bb162bf18392f0cfa1ef1c332936c5c9ca30d6d2c13b.js" integrity="sha512-jf7nZ2oUgOC14CoV0&#43;YHHVxjwebMsF3iiMK0tSrrlHwK5t23HIA6LbxXuxYr8YOS8M&#43;h7xwzKTbFycow1tLBOw==" crossorigin="anonymous" defer></script>
 
 
 
@@ -258,17 +259,19 @@ AppStore 上线一个 app。（最终的目标是手机主页最下方 4 个 app
 
 
 
-  <script src="/js/spa-router.637fb8d1996ee2706d24be5bfd0c84d094823e34cc6b64ae75e659a08a1dd5ace5e70ab5e1a405f4eef6eb3517e482131d3cbdc790307d24cf4b06fe2ed41cc1.js" integrity="sha512-Y3&#43;40Zlu4nBtJL5b/QyE0JSCPjTMa2SudeZZoIod1azl5wq14aQF9O726zUX5IITHTy9x5AwfSTPSwb&#43;LtQcwQ==" crossorigin="anonymous" defer></script>
+  <script src="/js/common.40c732ca995a53961183fd69ede8829f49ce6a6c8badaf4b1060c58d10ed4cfad4e5b1dc1a43e98d6f01e9174d96176b4705ce1fe4f4e232fa1220017d71fb38.js" integrity="sha512-QMcyyplaU5YRg/1p7eiCn0nOamyLra9LEGDFjRDtTPrU5bHcGkPpjW8B6RdNlhdrRwXOH&#43;T04jL6EiABfXH7OA==" crossorigin="anonymous" defer></script>
 
-  <script src="/js/code-copy.c82195537f40dd8bba694424c2362c9bf5e9835816ddab480870f7753608648c2e99b169bc9ddbeada4a47087bbbc54a829bf01d8e7a962b9b72c2386a27bf38.js" integrity="sha512-yCGVU39A3Yu6aUQkwjYsm/Xpg1gW3atICHD3dTYIZIwumbFpvJ3b6tpKRwh7u8VKgpvwHY56liubcsI4aie/OA==" crossorigin="anonymous" defer></script>
+  <script src="/js/spa-router.03b8597931cd0e6d4e395651499d5910e423e0c708fc1a34d10e1e79e77fccfaf61c1b9f90edef16a6ed10a8f1326f482c65c8b2ce7d673a39be03260253bf42.js" integrity="sha512-A7hZeTHNDm1OOVZRSZ1ZEOQj4McI/Bo00Q4eeed/zPr2HBufkO3vFqbtEKjxMm9ILGXIss59Zzo5vgMmAlO/Qg==" crossorigin="anonymous" defer></script>
 
-  <script src="/js/main.f407aa89274d755c5ad346255c02f1c63de8d4cee8ca9020befd7accf69487592cd58d4bd00a58b0fedc83b5572364edbed85693edbc73cb778578d16ce42920.js" integrity="sha512-9AeqiSdNdVxa00YlXALxxj3o1M7oypAgvv16zPaUh1ks1Y1L0ApYsP7cg7VXI2TtvthWk&#43;28c8t3hXjRbOQpIA==" crossorigin="anonymous" defer></script>
+  <script src="/js/code-copy.96d7d11c59f8d6f59359bda77ef8cc404a7f10a3a11ddaefe26ed3484e61f3671391cc1661eb9f33cd40ef8f066b79321c3d54f13327b9c88dd8d465348f8bbf.js" integrity="sha512-ltfRHFn41vWTWb2nfvjMQEp/EKOhHdrv4m7TSE5h82cTkcwWYeufM81A748Ga3kyHD1U8TMnuciN2NRlNI&#43;Lvw==" crossorigin="anonymous" defer></script>
 
-  <script src="/js/reading-progress.617d26a5b6ebdc1eac7cd9669c3c9a1a83ac3feaa01bee9d10752b58333f41c701e54ee8050fa09eb93cfacc18ee0f49664323ae5c5fd7b16fd5912184e21751.js" integrity="sha512-YX0mpbbr3B6sfNlmnDyaGoOsP&#43;qgG&#43;6dEHUrWDM/QccB5U7oBQ&#43;gnrk8&#43;swY7g9JZkMjrlxf17Fv1ZEhhOIXUQ==" crossorigin="anonymous" defer></script>
+  <script src="/js/main.97869f69e9e01fc10f29110a65133ed002d32b7637ec1de997a8a4fdbb8020f4f6626012d86fc4b72b802dac445ff33f03df797e7877e728892e29330ed06340.js" integrity="sha512-l4afaengH8EPKREKZRM&#43;0ALTK3Y37B3pl6ik/buAIPT2YmAS2G/EtyuALaxEX/M/A995fnh35yiJLikzDtBjQA==" crossorigin="anonymous" defer></script>
+
+  <script src="/js/reading-progress.e2ccd9f870ae689c9be16a5a567df2cb2a885c43064c773d82f6dcdb6229b72aa4ef375b5374b6ed526393ddfbe28f34d5f6c4026ed730e02ac9f54fbb2caea8.js" integrity="sha512-4szZ&#43;HCuaJyb4WpaVn3yyyqIXEMGTHc9gvbc22Iptyqk7zdbU3S27VJjk9374o801fbEAm7XMOAqyfVPuyyuqA==" crossorigin="anonymous" defer></script>
 
   
   <script src=/lib/fuse/fuse.basic.min.js defer></script>
-  <script src="/js/search.0f172585ba9983cc1e7de57509b556c4e8485b25f3ffa869bb4d7c83f057496698fd0c4ff4e4a40aa9aea252cd74852c7e5122624822068a98ebc7b248b7cc43.js" integrity="sha512-DxclhbqZg8wefeV1CbVWxOhIWyXz/6hpu018g/BXSWaY/QxP9OSkCqmuolLNdIUsflEiYkgiBoqY68eySLfMQw==" crossorigin="anonymous" defer></script>
+  <script src="/js/search.4ece7f32e0c97ee0631d11686863f9639bd2e672b514928e21c367d2de1b1dd9231231525033691679a6b45c89ab1b80b5c06603c448a1a6e13993843c73d8ce.js" integrity="sha512-Ts5/MuDJfuBjHRFoaGP5Y5vS5nK1FJKOIcNn0t4bHdkjEjFSUDNpFnmmtFyJqxuAtcBmA8RIoabhOZOEPHPYzg==" crossorigin="anonymous" defer></script>
 
   
   

@@ -121,7 +121,7 @@
     lightbox.className = 'lightbox';
     const overlay = document.createElement('div');
     overlay.className = 'lightbox-overlay';
-    overlay.addEventListener('click', () => lightbox.remove());
+    overlay.addEventListener('click', closeLightbox);
     const content = document.createElement('div');
     content.className = 'lightbox-content';
     const img = document.createElement('img');
@@ -130,13 +130,23 @@
     const close = document.createElement('button');
     close.className = 'lightbox-close';
     close.textContent = '×';
-    close.addEventListener('click', () => lightbox.remove());
+    close.addEventListener('click', closeLightbox);
     content.appendChild(img);
     content.appendChild(close);
     lightbox.appendChild(overlay);
     lightbox.appendChild(content);
     document.body.appendChild(lightbox);
-    document.body.style.overflow = 'hidden';
+    window.cactus.lockScroll(true);
+  }
+
+  // Centralized close path so both the overlay click and the × button —
+  // plus the Escape handler below — restore the body scroll. The previous
+  // version only called lightbox.remove() in two places, which left
+  // document.body.style.overflow stuck at 'hidden' after viewing any image.
+  function closeLightbox() {
+    const existing = document.querySelector('.lightbox');
+    if (existing) existing.remove();
+    window.cactus.lockScroll(false);
   }
 
   function initMobileNav() {
@@ -164,7 +174,15 @@
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
+  // Single global Escape handler for the lightbox, bound once.
+  if (!window._lightboxEscBound) {
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && document.querySelector('.lightbox')) closeLightbox();
+    });
+    window._lightboxEscBound = true;
+  }
+
+  window.cactus.onReady(function() {
     initThemeSwitcher();
     initGallery();
     initMobileNav();
@@ -172,7 +190,7 @@
   });
 
   // Reinitialize gallery + content images after SPA navigation
-  window.addEventListener('spa-content-loaded', function() {
+  window.cactus.onSpaReinit(function() {
     initGallery();
     initContentImages();
   });

@@ -2,8 +2,6 @@ window.initTimeline = function () {
   var statsEl = document.getElementById('timeline-stats');
   if (!statsEl) return;
 
-  var labels = window.timelineConfig || {};
-
   var now = new Date();
   var startOfYear = new Date(now.getFullYear(), 0, 1);
   var endOfYear = new Date(now.getFullYear() + 1, 0, 1);
@@ -29,11 +27,5 @@ window.initTimeline = function () {
     dayProgressEl.textContent = dayProgress + '%';
   }
 };
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', window.initTimeline);
-} else {
-  window.initTimeline();
-}
-
-window.addEventListener('spa-content-loaded', window.initTimeline);
+// Initialized by the inline loader in layouts/posts/list.html (re-run by the
+// SPA router on every navigation to /posts/), the same way neodb.js is.

@@ -2,9 +2,9 @@
  * Command-palette search for the Cactus Plus theme.
  *
  * Architecture notes:
- *  - The header (with the trigger button) lives INSIDE `.content`, which the
- *    SPA router (spa-router.js) swaps on every navigation. So we re-inject the
- *    trigger button on each `spa-content-loaded` event.
+ *  - The header (with the trigger button) lives OUTSIDE `.content` (it's
+ *    appended into the .theme-switcher toolbar by bindTrigger), so SPA
+ *    navigation does not strip it. We bind once.
  *  - The modal is injected into <body> by the search.html partial (outside
  *    `.content`), so it persists across SPA navigations and is built once.
  *  - Result links are plain <a> internal links, so the SPA router picks them up
@@ -15,35 +15,24 @@
 (function () {
   'use strict';
 
-  // --- i18n (mirrors head.html dataset pattern used by code-copy.js) ---------
-  // dataset.searchNoResults is set from i18n in head.html (same pattern as
-  // code-copy.js). Build the camelCase property from the key.
-  function t(key, fallback) {
-    var prop = 'search' + key.charAt(0).toUpperCase() + key.slice(1);
-    var v = document.documentElement.dataset[prop];
-    return v ? v : fallback;
-  }
+  // --- module state ---------------------------------------------------------
+  var modal, input, resultsEl, statusEl, closeEl;
+  var fuse = null;
+  var indexState = 'idle'; // idle | loading | ready | error
+  var activeIndex = -1;
+  var lastFocused = null;
+  var debounceTimer = null;
 
   function isMac() {
     return /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
   }
   var MOD = isMac() ? '⌘' : 'Ctrl';
 
-  // --- module state ---------------------------------------------------------
-  var modal, input, resultsEl, statusEl, closeEl;
-  var fuse = null;
-  var indexState = 'idle'; // idle | loading | ready | error
-  var lastResults = [];
-  var activeIndex = -1;
-  var lastFocused = null;
-  var debounceTimer = null;
-
-  // --- html helpers ---------------------------------------------------------
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-  }
+  // Shortcuts into window.cactus (see assets/js/common.js) — escapeHtml and
+  // t are used everywhere below, so locals keep the call sites short.
+  var escapeHtml = window.cactus.escapeHtml;
+  var t = function (key, fallback) { return window.cactus.t('search', key, fallback); };
+  var lockScroll = window.cactus.lockScroll;
 
   // Wrap matched character ranges in <mark>. Indices are [start, end] inclusive
   // pairs against the ORIGINAL text; each segment is escaped individually so the
@@ -169,7 +158,6 @@
       return;
     }
     var res = fuse.search(query).slice(0, 25);
-    lastResults = res;
     if (!res.length) {
       setStatus('<span class="search-modal-empty">' + escapeHtml(t('noResults', 'No results found')) + '</span>');
       return;
@@ -212,7 +200,7 @@
     }
     modal.removeAttribute('hidden');
     modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    lockScroll(true);
     setTimeout(function () { if (input) input.focus(); }, 0);
     if (indexState === 'idle') {
       setStatus('<span class="search-modal-loading">' + escapeHtml(t('loading', 'Loading index…')) + '</span>');
@@ -232,7 +220,7 @@
     if (!modal || modal.hasAttribute('hidden')) return;
     modal.setAttribute('hidden', '');
     modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    lockScroll(false);
     if (input) input.value = '';
     render('');
     if (lastFocused && lastFocused.focus) { try { lastFocused.focus(); } catch (e) {} }

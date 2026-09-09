@@ -99,9 +99,10 @@
   function navigateTo(url, isPop) {
     url = normalizeUrl(url);
 
-    // Remember scroll position of the page we're leaving.
+    // Remember the scroll position of the page we're leaving — including on
+    // popstate, so Back → scroll → Forward → Back restores the latest offset.
+    scrollPositions[currentUrl] = window.scrollY;
     if (!isPop) {
-      scrollPositions[currentUrl] = window.scrollY;
       history.pushState({}, '', url);
     }
 
@@ -130,7 +131,6 @@
         dispatchSpaEvent();
         trackPageView(url);
 
-        var prevUrl = currentUrl;
         currentUrl = url;
 
         if (isPop && scrollPositions[url] != null) {
@@ -138,9 +138,9 @@
         } else {
           window.scrollTo(0, 0);
         }
-        // Clean up the stored position for the page we just left, unless we
-        // may come back to it via popstate (keep it).
-        if (!isPop) delete scrollPositions[prevUrl];
+        // Positions are intentionally kept: any pushState'd URL stays
+        // reachable via the browser Back button, so its stored offset must
+        // survive. The map is a few dozen bytes per visited page.
       })
       .catch(function () {
         location.href = url;

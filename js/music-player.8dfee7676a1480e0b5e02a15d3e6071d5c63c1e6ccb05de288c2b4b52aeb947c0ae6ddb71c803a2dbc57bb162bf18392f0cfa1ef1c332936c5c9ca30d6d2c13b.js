@@ -12,13 +12,6 @@
 
   if (!audio) return;
 
-  function formatTime(sec) {
-    if (isNaN(sec) || !isFinite(sec)) return '0:00';
-    var m = Math.floor(sec / 60);
-    var s = Math.floor(sec % 60);
-    return m + ':' + (s < 10 ? '0' : '') + s;
-  }
-
   function saveState() {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({

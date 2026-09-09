@@ -72,7 +72,7 @@
         })
         .catch((err) => {
           console.error('Failed to copy code:', err);
-          copyBtn.textContent = 'error';
+          copyBtn.textContent = errorLabel;
           setTimeout(() => {
             copyBtn.textContent = copyLabel;
           }, 1500);
@@ -86,9 +86,10 @@
    * Initialize copy buttons for all code blocks
    */
   function initCopyButtons() {
-    // Get i18n labels from data attributes or use defaults
-    const copyLabel = document.documentElement.dataset.copyLabel || 'Copy';
-    const copiedLabel = document.documentElement.dataset.copiedLabel || 'Copied!';
+    // i18n labels come from data-* attributes set by head.html
+    const copyLabel = window.cactus.t('code', 'copy', 'Copy');
+    const copiedLabel = window.cactus.t('code', 'copied', 'Copied!');
+    const errorLabel = window.cactus.t('code', 'copyError', 'Error');
 
     // Find all code blocks (excluding line number columns)
     const codeBlocks = document.querySelectorAll('.highlight pre > code, pre > code');
@@ -115,14 +116,8 @@
     });
   }
 
-  // Initialize on DOM content loaded
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCopyButtons);
-  } else {
-    initCopyButtons();
-  }
-
-  // Re-initialize after SPA navigation.
-  window.addEventListener('spa-content-loaded', initCopyButtons);
+  // Initialize on DOM ready and re-initialize after SPA navigation.
+  window.cactus.onReady(initCopyButtons);
+  window.cactus.onSpaReinit(initCopyButtons);
 
 })();

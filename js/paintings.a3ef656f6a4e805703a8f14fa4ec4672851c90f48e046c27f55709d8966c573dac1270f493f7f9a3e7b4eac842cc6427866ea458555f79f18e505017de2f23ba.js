@@ -273,14 +273,14 @@ window.initPaintings = function () {
     tagsEl.style.display = tagsEl.children.length ? '' : 'none';
 
     modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    window.cactus.lockScroll(true);
   }
 
   function closeModal() {
     var active = document.getElementById('paintingModal');
     if (!active) return;
     active.classList.remove('active');
-    document.body.style.overflow = '';
+    window.cactus.lockScroll(false);
   }
 
   if (modal) {

@@ -45,11 +45,6 @@
   window.addEventListener('scroll', requestUpdate, { passive: true });
   window.addEventListener('resize', requestUpdate, { passive: true });
   // Recompute after SPA navigation swaps the article.
-  window.addEventListener('spa-content-loaded', update);
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', update);
-  } else {
-    update();
-  }
+  window.cactus.onSpaReinit(update);
+  window.cactus.onReady(update);
 })();
